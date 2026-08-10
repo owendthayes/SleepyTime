@@ -44,7 +44,9 @@ namespace SleepyTime_2._0
 
         private void tmrMain_Tick(object sender, EventArgs e)
         {
-            lblCurrentTime.Text = ("Current Time: " + DateTime.Now.ToString("HH:mm"));
+            lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
+            imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
+
         }
 
 
@@ -118,27 +120,27 @@ namespace SleepyTime_2._0
         //draw rounded borders.
         private void frmMain_Paint(object sender, PaintEventArgs e)
         {
-            FormRegionAndBorder(this, borderRadius, e.Graphics, Color.FromArgb(45, 31, 48), 2);
+            FormRegionAndBorder(this, borderRadius, e.Graphics, Color.FromArgb(13, 15, 28), 2);
         }
 
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
-            btnExit.BackColor = Color.FromArgb(70, 48, 75);
+            btnExit.BackColor = Color.FromArgb(169, 5, 5);
         }
 
         private void btnMinimize_MouseEnter(object sender, EventArgs e)
         {
-            btnMinimize.BackColor = Color.FromArgb(70, 48, 75);
+            btnMinimize.BackColor = Color.FromArgb(25, 25, 41);
         }
 
         private void btnExit_MouseLeave(object sender, EventArgs e)
         {
-            btnExit.BackColor = Color.FromArgb(45, 31, 48);
+            btnExit.BackColor = Color.FromArgb(13, 15, 28);
         }
 
         private void btnMinimize_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimize.BackColor = Color.FromArgb(45, 31, 48);
+            btnMinimize.BackColor = Color.FromArgb(13, 15, 28);
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -157,6 +159,45 @@ namespace SleepyTime_2._0
             }
         }
 
+        private void greyOutSidebar()
+        {
+            btnSidebarAbout.ForeColor = Color.FromArgb(177, 178, 181);
+            btnSidebarCountdown.ForeColor = Color.FromArgb(177, 178, 181);
+            btnSideBarSettings.ForeColor = Color.FromArgb(177, 178, 181);
+            btnSidebarSchedule.ForeColor = Color.FromArgb(177, 178, 181);
+            btnSideBarPresets.ForeColor = Color.FromArgb(177, 178, 181);
+        }
+
+        private void btnSidebarCountdown_Click(object sender, EventArgs e)
+        {
+            greyOutSidebar();
+            btnSidebarCountdown.ForeColor = Color.FromArgb(126, 39, 201);
+        }
+
+        private void btnSidebarSchedule_Click(object sender, EventArgs e)
+        {
+            greyOutSidebar();
+            btnSidebarSchedule.ForeColor = Color.FromArgb(126, 39, 201);
+        }
+
+        private void btnSideBarPresets_Click(object sender, EventArgs e)
+        {
+            greyOutSidebar();
+            btnSideBarPresets.ForeColor = Color.FromArgb(126, 39, 201);
+        }
+
+        private void btnSideBarSettings_Click(object sender, EventArgs e)
+        {
+            greyOutSidebar();
+            btnSideBarSettings.ForeColor = Color.FromArgb(126, 39, 201);
+        }
+
+        private void btnSidebarAbout_Click(object sender, EventArgs e)
+        {
+            greyOutSidebar();
+            btnSidebarAbout.ForeColor = Color.FromArgb(126, 39, 201);
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             btnExit.FlatStyle = FlatStyle.Flat;
@@ -164,6 +205,21 @@ namespace SleepyTime_2._0
 
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.FlatAppearance.BorderSize = 0;
+
+            btnSidebarCountdown.FlatStyle = FlatStyle.Flat;
+            btnSidebarCountdown.FlatAppearance.BorderSize = 0;
+
+            btnSidebarSchedule.FlatStyle = FlatStyle.Flat;
+            btnSidebarSchedule.FlatAppearance.BorderSize = 0;
+
+            btnSideBarPresets.FlatStyle = FlatStyle.Flat;
+            btnSideBarPresets.FlatAppearance.BorderSize = 0;
+
+            btnSideBarSettings.FlatStyle = FlatStyle.Flat;
+            btnSideBarSettings.FlatAppearance.BorderSize = 0;
+
+            btnSidebarAbout.FlatStyle = FlatStyle.Flat;
+            btnSidebarAbout.FlatAppearance.BorderSize = 0;
         }
     }
 }
