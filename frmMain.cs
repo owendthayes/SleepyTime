@@ -166,36 +166,60 @@ namespace SleepyTime_2._0
             btnSideBarSettings.ForeColor = Color.FromArgb(177, 178, 181);
             btnSidebarSchedule.ForeColor = Color.FromArgb(177, 178, 181);
             btnSideBarPresets.ForeColor = Color.FromArgb(177, 178, 181);
+
+            btnSidebarAbout.BackColor = Color.FromArgb(13, 15, 28);
+            btnSidebarCountdown.BackColor = Color.FromArgb(13, 15, 28);
+            btnSideBarSettings.BackColor = Color.FromArgb(13, 15, 28);
+            btnSidebarSchedule.BackColor = Color.FromArgb(13, 15, 28);
+            btnSideBarPresets.BackColor = Color.FromArgb(13, 15, 28);
         }
 
         private void btnSidebarCountdown_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
             btnSidebarCountdown.ForeColor = Color.FromArgb(126, 39, 201);
+            btnSidebarCountdown.BackColor = Color.FromArgb(25, 22, 46);
+
+            pnlCountdown.Visible = true;
+            pnlCountdown.Enabled = true;
         }
 
         private void btnSidebarSchedule_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
             btnSidebarSchedule.ForeColor = Color.FromArgb(126, 39, 201);
+            btnSidebarSchedule.BackColor = Color.FromArgb(25, 22, 46);
         }
 
         private void btnSideBarPresets_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
             btnSideBarPresets.ForeColor = Color.FromArgb(126, 39, 201);
+            btnSideBarPresets.BackColor = Color.FromArgb(25, 22, 46);
         }
 
         private void btnSideBarSettings_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
             btnSideBarSettings.ForeColor = Color.FromArgb(126, 39, 201);
+            btnSideBarSettings.BackColor = Color.FromArgb(25, 22, 46);
         }
 
         private void btnSidebarAbout_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
             btnSidebarAbout.ForeColor = Color.FromArgb(126, 39, 201);
+            btnSidebarAbout.BackColor = Color.FromArgb(25, 22, 46);
+        }
+
+        private void NumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            char numsOnly = e.KeyChar;
+
+            if (!Char.IsDigit(numsOnly) && numsOnly != 8)
+            {
+                e.Handled = true;
+            }
         }
 
         private void frmMain_Load(object sender, EventArgs e)

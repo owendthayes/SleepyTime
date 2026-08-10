@@ -48,11 +48,21 @@ namespace SleepyTime_2._0
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.imgTimeAnimation = new System.Windows.Forms.PictureBox();
+            this.pnlCountdown = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSeconds = new System.Windows.Forms.TextBox();
+            this.txtHours = new System.Windows.Forms.TextBox();
+            this.txtMinutes = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTimeAnimation)).BeginInit();
+            this.pnlCountdown.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgHeaderDivider
@@ -92,7 +102,7 @@ namespace SleepyTime_2._0
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(800, 64);
             this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "SleepyTime";
+            this.lblTitle.Text = "   SleepyTime";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
             this.lblTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseMove);
@@ -102,7 +112,7 @@ namespace SleepyTime_2._0
             // 
             this.imgLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
             this.imgLogo.Image = global::SleepyTime_2._0.Properties.Resources.SleepyTimeImg;
-            this.imgLogo.Location = new System.Drawing.Point(237, 12);
+            this.imgLogo.Location = new System.Drawing.Point(19, 12);
             this.imgLogo.Name = "imgLogo";
             this.imgLogo.Size = new System.Drawing.Size(44, 41);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -172,7 +182,7 @@ namespace SleepyTime_2._0
             this.btnSidebarCountdown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
             this.btnSidebarCountdown.Location = new System.Drawing.Point(0, 77);
             this.btnSidebarCountdown.Name = "btnSidebarCountdown";
-            this.btnSidebarCountdown.Size = new System.Drawing.Size(121, 37);
+            this.btnSidebarCountdown.Size = new System.Drawing.Size(130, 37);
             this.btnSidebarCountdown.TabIndex = 14;
             this.btnSidebarCountdown.Text = "Countdown";
             this.btnSidebarCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -188,7 +198,7 @@ namespace SleepyTime_2._0
             this.btnSidebarSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
             this.btnSidebarSchedule.Location = new System.Drawing.Point(0, 120);
             this.btnSidebarSchedule.Name = "btnSidebarSchedule";
-            this.btnSidebarSchedule.Size = new System.Drawing.Size(121, 37);
+            this.btnSidebarSchedule.Size = new System.Drawing.Size(130, 37);
             this.btnSidebarSchedule.TabIndex = 15;
             this.btnSidebarSchedule.Text = "Schedule";
             this.btnSidebarSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -204,7 +214,7 @@ namespace SleepyTime_2._0
             this.btnSideBarPresets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
             this.btnSideBarPresets.Location = new System.Drawing.Point(0, 163);
             this.btnSideBarPresets.Name = "btnSideBarPresets";
-            this.btnSideBarPresets.Size = new System.Drawing.Size(121, 37);
+            this.btnSideBarPresets.Size = new System.Drawing.Size(130, 37);
             this.btnSideBarPresets.TabIndex = 16;
             this.btnSideBarPresets.Text = "Presets";
             this.btnSideBarPresets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -220,7 +230,7 @@ namespace SleepyTime_2._0
             this.btnSideBarSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
             this.btnSideBarSettings.Location = new System.Drawing.Point(0, 206);
             this.btnSideBarSettings.Name = "btnSideBarSettings";
-            this.btnSideBarSettings.Size = new System.Drawing.Size(121, 37);
+            this.btnSideBarSettings.Size = new System.Drawing.Size(130, 37);
             this.btnSideBarSettings.TabIndex = 17;
             this.btnSideBarSettings.Text = "Settings";
             this.btnSideBarSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -236,7 +246,7 @@ namespace SleepyTime_2._0
             this.btnSidebarAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
             this.btnSidebarAbout.Location = new System.Drawing.Point(0, 249);
             this.btnSidebarAbout.Name = "btnSidebarAbout";
-            this.btnSidebarAbout.Size = new System.Drawing.Size(121, 37);
+            this.btnSidebarAbout.Size = new System.Drawing.Size(130, 37);
             this.btnSidebarAbout.TabIndex = 18;
             this.btnSidebarAbout.Text = "About";
             this.btnSidebarAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -274,6 +284,121 @@ namespace SleepyTime_2._0
             this.imgTimeAnimation.TabStop = false;
             this.imgTimeAnimation.Visible = false;
             // 
+            // pnlCountdown
+            // 
+            this.pnlCountdown.Controls.Add(this.txtSeconds);
+            this.pnlCountdown.Controls.Add(this.txtHours);
+            this.pnlCountdown.Controls.Add(this.txtMinutes);
+            this.pnlCountdown.Controls.Add(this.label7);
+            this.pnlCountdown.Controls.Add(this.label6);
+            this.pnlCountdown.Controls.Add(this.label5);
+            this.pnlCountdown.Controls.Add(this.label4);
+            this.pnlCountdown.Controls.Add(this.label3);
+            this.pnlCountdown.Location = new System.Drawing.Point(127, 68);
+            this.pnlCountdown.Name = "pnlCountdown";
+            this.pnlCountdown.Size = new System.Drawing.Size(673, 385);
+            this.pnlCountdown.TabIndex = 22;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
+            this.label4.Location = new System.Drawing.Point(346, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 63);
+            this.label4.TabIndex = 4;
+            this.label4.Text = ":";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
+            this.label3.Location = new System.Drawing.Point(256, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 63);
+            this.label3.TabIndex = 3;
+            this.label3.Text = ":";
+            // 
+            // txtSeconds
+            // 
+            this.txtSeconds.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.txtSeconds.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSeconds.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSeconds.ForeColor = System.Drawing.Color.White;
+            this.txtSeconds.Location = new System.Drawing.Point(388, 52);
+            this.txtSeconds.MaxLength = 2;
+            this.txtSeconds.Name = "txtSeconds";
+            this.txtSeconds.Size = new System.Drawing.Size(61, 64);
+            this.txtSeconds.TabIndex = 2;
+            this.txtSeconds.Text = "00";
+            this.txtSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSeconds.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
+            // 
+            // txtHours
+            // 
+            this.txtHours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.txtHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHours.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtHours.ForeColor = System.Drawing.Color.White;
+            this.txtHours.Location = new System.Drawing.Point(208, 51);
+            this.txtHours.MaxLength = 2;
+            this.txtHours.Name = "txtHours";
+            this.txtHours.Size = new System.Drawing.Size(61, 64);
+            this.txtHours.TabIndex = 1;
+            this.txtHours.Text = "00";
+            this.txtHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtHours.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
+            // 
+            // txtMinutes
+            // 
+            this.txtMinutes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.txtMinutes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMinutes.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMinutes.ForeColor = System.Drawing.Color.White;
+            this.txtMinutes.Location = new System.Drawing.Point(298, 52);
+            this.txtMinutes.MaxLength = 2;
+            this.txtMinutes.Name = "txtMinutes";
+            this.txtMinutes.Size = new System.Drawing.Size(61, 64);
+            this.txtMinutes.TabIndex = 0;
+            this.txtMinutes.Text = "00";
+            this.txtMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMinutes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label7.Location = new System.Drawing.Point(390, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 16);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "SECONDS";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label6.Location = new System.Drawing.Point(298, 116);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "MINUTES";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label5.Location = new System.Drawing.Point(217, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 16);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "HOURS";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -282,11 +407,6 @@ namespace SleepyTime_2._0
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.imgTimeAnimation);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnSidebarAbout);
-            this.Controls.Add(this.btnSideBarSettings);
-            this.Controls.Add(this.btnSideBarPresets);
-            this.Controls.Add(this.btnSidebarSchedule);
-            this.Controls.Add(this.btnSidebarCountdown);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnExit);
@@ -296,6 +416,12 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.imgHeaderDivider);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnSidebarCountdown);
+            this.Controls.Add(this.btnSidebarSchedule);
+            this.Controls.Add(this.btnSideBarPresets);
+            this.Controls.Add(this.btnSideBarSettings);
+            this.Controls.Add(this.btnSidebarAbout);
+            this.Controls.Add(this.pnlCountdown);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
@@ -308,6 +434,8 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgTimeAnimation)).EndInit();
+            this.pnlCountdown.ResumeLayout(false);
+            this.pnlCountdown.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,6 +459,15 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox imgTimeAnimation;
+        private System.Windows.Forms.Panel pnlCountdown;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSeconds;
+        private System.Windows.Forms.TextBox txtHours;
+        private System.Windows.Forms.TextBox txtMinutes;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 
