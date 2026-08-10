@@ -121,12 +121,49 @@ namespace SleepyTime_2._0
             FormRegionAndBorder(this, borderRadius, e.Graphics, Color.FromArgb(45, 31, 48), 2);
         }
 
+        private void btnExit_MouseEnter(object sender, EventArgs e)
+        {
+            btnExit.BackColor = Color.FromArgb(70, 48, 75);
+        }
+
+        private void btnMinimize_MouseEnter(object sender, EventArgs e)
+        {
+            btnMinimize.BackColor = Color.FromArgb(70, 48, 75);
+        }
+
+        private void btnExit_MouseLeave(object sender, EventArgs e)
+        {
+            btnExit.BackColor = Color.FromArgb(45, 31, 48);
+        }
+
+        private void btnMinimize_MouseLeave(object sender, EventArgs e)
+        {
+            btnMinimize.BackColor = Color.FromArgb(45, 31, 48);
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?", "Close SleepyTime", MessageBoxButtons.YesNo);
+            {
+                if (exitBox == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //if (cmbOperations.Items.Count>0)
-            //{
-            //    cmbOperations.SelectedIndex = 0;
-            //}
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.FlatAppearance.BorderSize = 0;
+
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.FlatAppearance.BorderSize = 0;
         }
     }
 }
