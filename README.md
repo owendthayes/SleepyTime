@@ -1,4 +1,5 @@
 <h1><img src="https://github.com/owendthayes/SleepyTime/blob/master/Resources/SleepyTimeImg.png" alt="SleepyTime Icon" width="30" height="30"> SleepyTime - Delayed shutdown of your pc </h1>
+
 ## SleepyTime is an app designed for those who need to have their computer on for a given time, but are also conscious of their power usage or system health risks.
 
 ### Countdown
