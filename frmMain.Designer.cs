@@ -83,6 +83,7 @@ namespace SleepyTime_2._0
             this.btnHelp = new System.Windows.Forms.Button();
             this.pnlHelp = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
+            this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -779,6 +780,11 @@ namespace SleepyTime_2._0
             this.label15.TabIndex = 17;
             this.label15.Text = "HELP";
             // 
+            // tmrCountDown
+            // 
+            this.tmrCountDown.Interval = 1000;
+            this.tmrCountDown.Tick += new System.EventHandler(this.tmrCountDown_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -890,6 +896,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlHelp;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Timer tmrCountDown;
     }
 }
 

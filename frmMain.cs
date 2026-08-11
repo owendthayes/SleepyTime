@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
+using System.Diagnostics;
 
 namespace SleepyTime_2._0
 {
@@ -20,6 +21,7 @@ namespace SleepyTime_2._0
         private Color boderColour = Color.Yellow;
 
         private bool countdownStarted = false;
+        private TimeSpan remainingTime;
 
         //Drag and Drop functionality for form header.
         private bool Dragging = false;
@@ -274,13 +276,35 @@ namespace SleepyTime_2._0
 
         private void btnStartCountdown_Click(object sender, EventArgs e)
         {
+
             if (!countdownStarted)
             {
-                //START THE COUNTDOWN##################################################################################################
-                countdownStarted = true;
-                btnStartCountdown.ForeColor = Color.Red;
-                btnStartCountdown.BorderColor = Color.Red;
-                btnStartCountdown.Text = "Cancel";
+                //start the countdown
+                if (int.TryParse(txtHours.Text, out int Hours) &&
+                   int.TryParse(txtMinutes.Text, out int Minutes) &&
+                   int.TryParse(txtSeconds.Text, out int Seconds))
+                {
+                    countdownStarted = true;
+                    btnStartCountdown.ForeColor = Color.Red;
+                    btnStartCountdown.BorderColor = Color.Red;
+                    btnStartCountdown.Text = "Cancel";
+
+                    txtHours.ReadOnly = true;
+                    txtMinutes.ReadOnly = true;
+                    txtSeconds.ReadOnly = true;
+
+                    txtHours.Cursor = Cursors.Arrow;
+                    txtMinutes.Cursor = Cursors.Arrow;
+                    txtSeconds.Cursor = Cursors.Arrow;
+
+                    TimeSpan time = new TimeSpan(Hours, Minutes, Seconds);
+                    remainingTime = time;
+                    tmrCountDown.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid time");
+                }
             }
             else
             {
@@ -294,9 +318,55 @@ namespace SleepyTime_2._0
                         btnStartCountdown.Text = "Start Countdown";
 
                         //Cancel the countdown!#########################################################################################
+                        txtHours.Text = "00";
+                        txtMinutes.Text = "00";
+                        txtSeconds.Text = "00";
+
+                        txtHours.ReadOnly = false;
+                        txtMinutes.ReadOnly = false;
+                        txtSeconds.ReadOnly = false;
+
+                        txtHours.Cursor = Cursors.IBeam;
+                        txtMinutes.Cursor = Cursors.IBeam;
+                        txtSeconds.Cursor = Cursors.IBeam;
                     }
                 }
             } 
+        }
+
+        private void tmrCountDown_Tick(object sender, EventArgs e)
+        {
+            if (remainingTime.TotalSeconds > 0)
+            {
+                remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
+
+                txtHours.Text = remainingTime.Hours.ToString("00");
+                txtMinutes.Text = remainingTime.Minutes.ToString("00");
+                txtSeconds.Text = remainingTime.Seconds.ToString("00");
+            }
+            else
+            {
+                tmrCountDown.Stop();
+                switch (cmbOperation.SelectedIndex.ToString())
+                {
+                    case "0": // SHUTDOWN
+                        Process.Start("Shutdown", "/s");
+                        break;
+
+                    case "1": // RESTART
+                        Process.Start("Shutdown", "/r");
+                        break;
+
+                    case "2": // SLEEP
+                        Application.SetSuspendState(PowerState.Suspend, true, true);
+                        break;
+
+                    case "3": // LOCK
+                        Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                        break;
+                }
+
+            }
         }
 
         private void frmMain_Load(object sender, EventArgs e)
