@@ -22,6 +22,7 @@ namespace SleepyTime_2._0
 
         private bool countdownStarted = false;
         private TimeSpan remainingTime;
+        private bool countdownEnded = false;
 
         //Drag and Drop functionality for form header.
         private bool Dragging = false;
@@ -299,6 +300,7 @@ namespace SleepyTime_2._0
 
                     TimeSpan time = new TimeSpan(Hours, Minutes, Seconds);
                     remainingTime = time;
+                    countdownEnded = false;
                     tmrCountDown.Start();
                 }
                 else
@@ -306,32 +308,42 @@ namespace SleepyTime_2._0
                     MessageBox.Show("Please enter a valid time");
                 }
             }
+            else if (countdownEnded)
+            {
+                CancelCountdown();
+            }
             else
             {
                 DialogResult exitBox = MessageBox.Show("Cancel the Countdown?", "Cancel Shutdown", MessageBoxButtons.YesNo);
                 {
                     if (exitBox == DialogResult.Yes)
                     {
-                        countdownStarted = false;
-                        btnStartCountdown.ForeColor = Color.FromArgb(141, 74, 205);
-                        btnStartCountdown.BorderColor = Color.FromArgb(141, 74, 205);
-                        btnStartCountdown.Text = "Start Countdown";
-
-                        //Cancel the countdown!#########################################################################################
-                        txtHours.Text = "00";
-                        txtMinutes.Text = "00";
-                        txtSeconds.Text = "00";
-
-                        txtHours.ReadOnly = false;
-                        txtMinutes.ReadOnly = false;
-                        txtSeconds.ReadOnly = false;
-
-                        txtHours.Cursor = Cursors.IBeam;
-                        txtMinutes.Cursor = Cursors.IBeam;
-                        txtSeconds.Cursor = Cursors.IBeam;
+                        CancelCountdown();
                     }
                 }
             } 
+        }
+
+        private void CancelCountdown()
+        {
+            countdownStarted = false;
+            btnStartCountdown.ForeColor = Color.FromArgb(141, 74, 205);
+            btnStartCountdown.BorderColor = Color.FromArgb(141, 74, 205);
+            btnStartCountdown.Text = "Start Countdown";
+
+            txtHours.Text = "00";
+            txtMinutes.Text = "00";
+            txtSeconds.Text = "00";
+
+            txtHours.ReadOnly = false;
+            txtMinutes.ReadOnly = false;
+            txtSeconds.ReadOnly = false;
+
+            txtHours.Cursor = Cursors.IBeam;
+            txtMinutes.Cursor = Cursors.IBeam;
+            txtSeconds.Cursor = Cursors.IBeam;
+
+            tmrCountDown.Stop();
         }
 
         private void tmrCountDown_Tick(object sender, EventArgs e)
@@ -347,6 +359,7 @@ namespace SleepyTime_2._0
             else
             {
                 tmrCountDown.Stop();
+                countdownEnded = true;
                 switch (cmbOperation.SelectedIndex.ToString())
                 {
                     case "0": // SHUTDOWN
@@ -365,6 +378,8 @@ namespace SleepyTime_2._0
                         Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                         break;
                 }
+
+                btnStartCountdown.PerformClick();
 
             }
         }
