@@ -19,6 +19,8 @@ namespace SleepyTime_2._0
         private int borderRadius = 30, BorderSize = 2;
         private Color boderColour = Color.Yellow;
 
+        private bool countdownStarted = false;
+
         //Drag and Drop functionality for form header.
         private bool Dragging = false;
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -166,22 +168,52 @@ namespace SleepyTime_2._0
             btnSideBarSettings.ForeColor = Color.FromArgb(177, 178, 181);
             btnSidebarSchedule.ForeColor = Color.FromArgb(177, 178, 181);
             btnSideBarPresets.ForeColor = Color.FromArgb(177, 178, 181);
+            btnHelp.ForeColor = Color.FromArgb(177, 178, 181);
 
             btnSidebarAbout.BackColor = Color.FromArgb(13, 15, 28);
             btnSidebarCountdown.BackColor = Color.FromArgb(13, 15, 28);
             btnSideBarSettings.BackColor = Color.FromArgb(13, 15, 28);
             btnSidebarSchedule.BackColor = Color.FromArgb(13, 15, 28);
             btnSideBarPresets.BackColor = Color.FromArgb(13, 15, 28);
+            btnHelp.BackColor = Color.FromArgb(13, 15, 28);
+        }
+
+        private void SetActivePanel(string operation)
+        {
+            Panel[] panels =
+            {
+                pnlCountdown,
+                pnlSchedule,
+                pnlPresets,
+                pnlSettings,
+                pnlAbout,
+                pnlHelp
+            };
+
+            foreach (Panel panel in panels)
+            {
+                if (!panel.Name.Equals(operation))
+                {
+                    panel.Visible = false;
+                    panel.Enabled = false;
+                }
+                else
+                {
+                    panel.Visible = true;
+                    panel.Enabled = true;
+                }
+            }    
+            
         }
 
         private void btnSidebarCountdown_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
+
             btnSidebarCountdown.ForeColor = Color.FromArgb(126, 39, 201);
             btnSidebarCountdown.BackColor = Color.FromArgb(25, 22, 46);
 
-            pnlCountdown.Visible = true;
-            pnlCountdown.Enabled = true;
+            SetActivePanel("pnlCountdown");
         }
 
         private void btnSidebarSchedule_Click(object sender, EventArgs e)
@@ -189,6 +221,8 @@ namespace SleepyTime_2._0
             greyOutSidebar();
             btnSidebarSchedule.ForeColor = Color.FromArgb(126, 39, 201);
             btnSidebarSchedule.BackColor = Color.FromArgb(25, 22, 46);
+
+            SetActivePanel("pnlSchedule");
         }
 
         private void btnSideBarPresets_Click(object sender, EventArgs e)
@@ -196,6 +230,8 @@ namespace SleepyTime_2._0
             greyOutSidebar();
             btnSideBarPresets.ForeColor = Color.FromArgb(126, 39, 201);
             btnSideBarPresets.BackColor = Color.FromArgb(25, 22, 46);
+
+            SetActivePanel("pnlPresets");
         }
 
         private void btnSideBarSettings_Click(object sender, EventArgs e)
@@ -203,6 +239,8 @@ namespace SleepyTime_2._0
             greyOutSidebar();
             btnSideBarSettings.ForeColor = Color.FromArgb(126, 39, 201);
             btnSideBarSettings.BackColor = Color.FromArgb(25, 22, 46);
+
+            SetActivePanel("pnlSettings");
         }
 
         private void btnSidebarAbout_Click(object sender, EventArgs e)
@@ -210,7 +248,19 @@ namespace SleepyTime_2._0
             greyOutSidebar();
             btnSidebarAbout.ForeColor = Color.FromArgb(126, 39, 201);
             btnSidebarAbout.BackColor = Color.FromArgb(25, 22, 46);
+
+            SetActivePanel("pnlAbout");
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            greyOutSidebar();
+            btnHelp.ForeColor = Color.FromArgb(126, 39, 201);
+            btnHelp.BackColor = Color.FromArgb(25, 22, 46);
+
+            SetActivePanel("pnlHelp");
+        }
+
 
         private void NumbersOnly(object sender, KeyPressEventArgs e)
         {
@@ -222,8 +272,37 @@ namespace SleepyTime_2._0
             }
         }
 
+        private void btnStartCountdown_Click(object sender, EventArgs e)
+        {
+            if (!countdownStarted)
+            {
+                //START THE COUNTDOWN##################################################################################################
+                countdownStarted = true;
+                btnStartCountdown.ForeColor = Color.Red;
+                btnStartCountdown.BorderColor = Color.Red;
+                btnStartCountdown.Text = "Cancel";
+            }
+            else
+            {
+                DialogResult exitBox = MessageBox.Show("Cancel the Countdown?", "Cancel Shutdown", MessageBoxButtons.YesNo);
+                {
+                    if (exitBox == DialogResult.Yes)
+                    {
+                        countdownStarted = false;
+                        btnStartCountdown.ForeColor = Color.FromArgb(141, 74, 205);
+                        btnStartCountdown.BorderColor = Color.FromArgb(141, 74, 205);
+                        btnStartCountdown.Text = "Start Countdown";
+
+                        //Cancel the countdown!#########################################################################################
+                    }
+                }
+            } 
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
+            cmbOperation.SelectedIndex = 0;
+
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;
 
@@ -244,6 +323,9 @@ namespace SleepyTime_2._0
 
             btnSidebarAbout.FlatStyle = FlatStyle.Flat;
             btnSidebarAbout.FlatAppearance.BorderSize = 0;
+
+            btnHelp.FlatStyle = FlatStyle.Flat;
+            btnHelp.FlatAppearance.BorderSize = 0;
 
             btnSidebarCountdown.PerformClick();
         }
