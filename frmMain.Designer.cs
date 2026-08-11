@@ -49,11 +49,12 @@ namespace SleepyTime_2._0
             this.label2 = new System.Windows.Forms.Label();
             this.imgTimeAnimation = new System.Windows.Forms.PictureBox();
             this.pnlCountdown = new System.Windows.Forms.Panel();
+            this.btnClearTimer = new SleepyTime_2._0.RoundedButton();
             this.roundedButton5 = new SleepyTime_2._0.RoundedButton();
-            this.roundedButton4 = new SleepyTime_2._0.RoundedButton();
-            this.roundedButton3 = new SleepyTime_2._0.RoundedButton();
-            this.roundedButton2 = new SleepyTime_2._0.RoundedButton();
-            this.roundedButton1 = new SleepyTime_2._0.RoundedButton();
+            this.btnQuick2 = new SleepyTime_2._0.RoundedButton();
+            this.btnQuick1 = new SleepyTime_2._0.RoundedButton();
+            this.btnQuick30 = new SleepyTime_2._0.RoundedButton();
+            this.btnQuick15 = new SleepyTime_2._0.RoundedButton();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnAdd5Min = new SleepyTime_2._0.RoundedButton();
@@ -84,6 +85,7 @@ namespace SleepyTime_2._0
             this.pnlHelp = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
+            this.tmrValidation = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -318,11 +320,12 @@ namespace SleepyTime_2._0
             // 
             // pnlCountdown
             // 
+            this.pnlCountdown.Controls.Add(this.btnClearTimer);
             this.pnlCountdown.Controls.Add(this.roundedButton5);
-            this.pnlCountdown.Controls.Add(this.roundedButton4);
-            this.pnlCountdown.Controls.Add(this.roundedButton3);
-            this.pnlCountdown.Controls.Add(this.roundedButton2);
-            this.pnlCountdown.Controls.Add(this.roundedButton1);
+            this.pnlCountdown.Controls.Add(this.btnQuick2);
+            this.pnlCountdown.Controls.Add(this.btnQuick1);
+            this.pnlCountdown.Controls.Add(this.btnQuick30);
+            this.pnlCountdown.Controls.Add(this.btnQuick15);
             this.pnlCountdown.Controls.Add(this.label14);
             this.pnlCountdown.Controls.Add(this.label9);
             this.pnlCountdown.Controls.Add(this.btnAdd5Min);
@@ -346,6 +349,23 @@ namespace SleepyTime_2._0
             this.pnlCountdown.Size = new System.Drawing.Size(673, 385);
             this.pnlCountdown.TabIndex = 22;
             // 
+            // btnClearTimer
+            // 
+            this.btnClearTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnClearTimer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnClearTimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearTimer.FlatAppearance.BorderSize = 0;
+            this.btnClearTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearTimer.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClearTimer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnClearTimer.Location = new System.Drawing.Point(456, 68);
+            this.btnClearTimer.Name = "btnClearTimer";
+            this.btnClearTimer.Size = new System.Drawing.Size(50, 31);
+            this.btnClearTimer.TabIndex = 27;
+            this.btnClearTimer.Text = "CLR";
+            this.btnClearTimer.UseVisualStyleBackColor = false;
+            this.btnClearTimer.Click += new System.EventHandler(this.btnClearTimer_Click);
+            // 
             // roundedButton5
             // 
             this.roundedButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
@@ -361,70 +381,75 @@ namespace SleepyTime_2._0
             this.roundedButton5.TabIndex = 26;
             this.roundedButton5.Text = "⋯";
             this.roundedButton5.UseVisualStyleBackColor = false;
+            this.roundedButton5.Click += new System.EventHandler(this.btnSideBarPresets_Click);
             // 
-            // roundedButton4
+            // btnQuick2
             // 
-            this.roundedButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
-            this.roundedButton4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
-            this.roundedButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedButton4.FlatAppearance.BorderSize = 0;
-            this.roundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton4.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.roundedButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.roundedButton4.Location = new System.Drawing.Point(418, 331);
-            this.roundedButton4.Name = "roundedButton4";
-            this.roundedButton4.Size = new System.Drawing.Size(108, 31);
-            this.roundedButton4.TabIndex = 25;
-            this.roundedButton4.Text = "2 Hr";
-            this.roundedButton4.UseVisualStyleBackColor = false;
+            this.btnQuick2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnQuick2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuick2.FlatAppearance.BorderSize = 0;
+            this.btnQuick2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuick2.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnQuick2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnQuick2.Location = new System.Drawing.Point(418, 331);
+            this.btnQuick2.Name = "btnQuick2";
+            this.btnQuick2.Size = new System.Drawing.Size(108, 31);
+            this.btnQuick2.TabIndex = 25;
+            this.btnQuick2.Text = "2 Hr";
+            this.btnQuick2.UseVisualStyleBackColor = false;
+            this.btnQuick2.Click += new System.EventHandler(this.btnQuick2_Click);
             // 
-            // roundedButton3
+            // btnQuick1
             // 
-            this.roundedButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
-            this.roundedButton3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
-            this.roundedButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedButton3.FlatAppearance.BorderSize = 0;
-            this.roundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton3.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.roundedButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.roundedButton3.Location = new System.Drawing.Point(304, 331);
-            this.roundedButton3.Name = "roundedButton3";
-            this.roundedButton3.Size = new System.Drawing.Size(108, 31);
-            this.roundedButton3.TabIndex = 24;
-            this.roundedButton3.Text = "1 Hr";
-            this.roundedButton3.UseVisualStyleBackColor = false;
+            this.btnQuick1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnQuick1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuick1.FlatAppearance.BorderSize = 0;
+            this.btnQuick1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuick1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnQuick1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnQuick1.Location = new System.Drawing.Point(304, 331);
+            this.btnQuick1.Name = "btnQuick1";
+            this.btnQuick1.Size = new System.Drawing.Size(108, 31);
+            this.btnQuick1.TabIndex = 24;
+            this.btnQuick1.Text = "1 Hr";
+            this.btnQuick1.UseVisualStyleBackColor = false;
+            this.btnQuick1.Click += new System.EventHandler(this.btnQuick1_Click);
             // 
-            // roundedButton2
+            // btnQuick30
             // 
-            this.roundedButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
-            this.roundedButton2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
-            this.roundedButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedButton2.FlatAppearance.BorderSize = 0;
-            this.roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton2.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.roundedButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.roundedButton2.Location = new System.Drawing.Point(190, 331);
-            this.roundedButton2.Name = "roundedButton2";
-            this.roundedButton2.Size = new System.Drawing.Size(108, 31);
-            this.roundedButton2.TabIndex = 23;
-            this.roundedButton2.Text = "30 Mins";
-            this.roundedButton2.UseVisualStyleBackColor = false;
+            this.btnQuick30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnQuick30.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuick30.FlatAppearance.BorderSize = 0;
+            this.btnQuick30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuick30.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnQuick30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnQuick30.Location = new System.Drawing.Point(190, 331);
+            this.btnQuick30.Name = "btnQuick30";
+            this.btnQuick30.Size = new System.Drawing.Size(108, 31);
+            this.btnQuick30.TabIndex = 23;
+            this.btnQuick30.Text = "30 Mins";
+            this.btnQuick30.UseVisualStyleBackColor = false;
+            this.btnQuick30.Click += new System.EventHandler(this.btnQuick30_Click);
             // 
-            // roundedButton1
+            // btnQuick15
             // 
-            this.roundedButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
-            this.roundedButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
-            this.roundedButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedButton1.FlatAppearance.BorderSize = 0;
-            this.roundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.roundedButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.roundedButton1.Location = new System.Drawing.Point(80, 331);
-            this.roundedButton1.Name = "roundedButton1";
-            this.roundedButton1.Size = new System.Drawing.Size(108, 31);
-            this.roundedButton1.TabIndex = 22;
-            this.roundedButton1.Text = "15 Mins";
-            this.roundedButton1.UseVisualStyleBackColor = false;
+            this.btnQuick15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnQuick15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuick15.FlatAppearance.BorderSize = 0;
+            this.btnQuick15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuick15.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnQuick15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnQuick15.Location = new System.Drawing.Point(80, 331);
+            this.btnQuick15.Name = "btnQuick15";
+            this.btnQuick15.Size = new System.Drawing.Size(108, 31);
+            this.btnQuick15.TabIndex = 22;
+            this.btnQuick15.Text = "15 Mins";
+            this.btnQuick15.UseVisualStyleBackColor = false;
+            this.btnQuick15.Click += new System.EventHandler(this.btnQuick15_Click);
             // 
             // label14
             // 
@@ -463,6 +488,7 @@ namespace SleepyTime_2._0
             this.btnAdd5Min.TabIndex = 19;
             this.btnAdd5Min.Text = "+5 Min";
             this.btnAdd5Min.UseVisualStyleBackColor = false;
+            this.btnAdd5Min.Click += new System.EventHandler(this.btnAdd5Min_Click);
             // 
             // lblShutdownTime
             // 
@@ -536,6 +562,7 @@ namespace SleepyTime_2._0
             this.btnAdd1Hr.TabIndex = 14;
             this.btnAdd1Hr.Text = "+1 Hr";
             this.btnAdd1Hr.UseVisualStyleBackColor = false;
+            this.btnAdd1Hr.Click += new System.EventHandler(this.btnAdd1Hr_Click);
             // 
             // btnAdd30Min
             // 
@@ -552,6 +579,7 @@ namespace SleepyTime_2._0
             this.btnAdd30Min.TabIndex = 13;
             this.btnAdd30Min.Text = "+30 Min";
             this.btnAdd30Min.UseVisualStyleBackColor = false;
+            this.btnAdd30Min.Click += new System.EventHandler(this.btnAdd30Min_Click);
             // 
             // btnAdd15Min
             // 
@@ -568,6 +596,7 @@ namespace SleepyTime_2._0
             this.btnAdd15Min.TabIndex = 12;
             this.btnAdd15Min.Text = "+15 Min";
             this.btnAdd15Min.UseVisualStyleBackColor = false;
+            this.btnAdd15Min.Click += new System.EventHandler(this.btnAdd15Min_Click);
             // 
             // txtSeconds
             // 
@@ -583,6 +612,7 @@ namespace SleepyTime_2._0
             this.txtSeconds.Text = "00";
             this.txtSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSeconds.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
+            this.txtSeconds.Leave += new System.EventHandler(this.NotEmpty);
             // 
             // txtHours
             // 
@@ -598,6 +628,7 @@ namespace SleepyTime_2._0
             this.txtHours.Text = "00";
             this.txtHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtHours.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
+            this.txtHours.Leave += new System.EventHandler(this.NotEmpty);
             // 
             // txtMinutes
             // 
@@ -613,6 +644,7 @@ namespace SleepyTime_2._0
             this.txtMinutes.Text = "00";
             this.txtMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMinutes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
+            this.txtMinutes.Leave += new System.EventHandler(this.NotEmpty);
             // 
             // label7
             // 
@@ -785,6 +817,10 @@ namespace SleepyTime_2._0
             this.tmrCountDown.Interval = 1000;
             this.tmrCountDown.Tick += new System.EventHandler(this.tmrCountDown_Tick);
             // 
+            // tmrValidation
+            // 
+            this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -888,15 +924,17 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Panel pnlAbout;
         private System.Windows.Forms.Label label13;
         private RoundedButton roundedButton5;
-        private RoundedButton roundedButton4;
-        private RoundedButton roundedButton3;
-        private RoundedButton roundedButton2;
-        private RoundedButton roundedButton1;
+        private RoundedButton btnQuick2;
+        private RoundedButton btnQuick1;
+        private RoundedButton btnQuick30;
+        private RoundedButton btnQuick15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlHelp;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Timer tmrCountDown;
+        private System.Windows.Forms.Timer tmrValidation;
+        private RoundedButton btnClearTimer;
     }
 }
 

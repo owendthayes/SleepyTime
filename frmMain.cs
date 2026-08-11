@@ -45,6 +45,7 @@ namespace SleepyTime_2._0
 
 
             tmrMain.Start();
+            tmrValidation.Start();
         }
 
         private void tmrMain_Tick(object sender, EventArgs e)
@@ -277,7 +278,6 @@ namespace SleepyTime_2._0
 
         private void btnStartCountdown_Click(object sender, EventArgs e)
         {
-
             if (!countdownStarted)
             {
                 //start the countdown
@@ -285,6 +285,9 @@ namespace SleepyTime_2._0
                    int.TryParse(txtMinutes.Text, out int Minutes) &&
                    int.TryParse(txtSeconds.Text, out int Seconds))
                 {
+                    btnClearTimer.Enabled = false;
+                    btnClearTimer.Visible = false;
+
                     countdownStarted = true;
                     btnStartCountdown.ForeColor = Color.Red;
                     btnStartCountdown.BorderColor = Color.Red;
@@ -298,7 +301,7 @@ namespace SleepyTime_2._0
                     txtMinutes.Cursor = Cursors.Arrow;
                     txtSeconds.Cursor = Cursors.Arrow;
 
-                    TimeSpan time = new TimeSpan(Hours, Minutes, Seconds);
+                    TimeSpan time = new TimeSpan(0, Hours, Minutes, Seconds);
                     remainingTime = time;
                     countdownEnded = false;
                     tmrCountDown.Start();
@@ -314,11 +317,16 @@ namespace SleepyTime_2._0
             }
             else
             {
+                tmrCountDown.Stop();
                 DialogResult exitBox = MessageBox.Show("Cancel the Countdown?", "Cancel Shutdown", MessageBoxButtons.YesNo);
                 {
                     if (exitBox == DialogResult.Yes)
                     {
                         CancelCountdown();
+                    }
+                    else
+                    {
+                        tmrCountDown.Start();
                     }
                 }
             } 
@@ -326,14 +334,15 @@ namespace SleepyTime_2._0
 
         private void CancelCountdown()
         {
+            enableQuickTimers();
+
+            btnClearTimer.Enabled = true;
+            btnClearTimer.Visible = true;
+
             countdownStarted = false;
             btnStartCountdown.ForeColor = Color.FromArgb(141, 74, 205);
             btnStartCountdown.BorderColor = Color.FromArgb(141, 74, 205);
             btnStartCountdown.Text = "Start Countdown";
-
-            txtHours.Text = "00";
-            txtMinutes.Text = "00";
-            txtSeconds.Text = "00";
 
             txtHours.ReadOnly = false;
             txtMinutes.ReadOnly = false;
@@ -352,9 +361,7 @@ namespace SleepyTime_2._0
             {
                 remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
 
-                txtHours.Text = remainingTime.Hours.ToString("00");
-                txtMinutes.Text = remainingTime.Minutes.ToString("00");
-                txtSeconds.Text = remainingTime.Seconds.ToString("00");
+                UpdateTimerDisplay();
             }
             else
             {
@@ -363,25 +370,141 @@ namespace SleepyTime_2._0
                 switch (cmbOperation.SelectedIndex.ToString())
                 {
                     case "0": // SHUTDOWN
+                        btnStartCountdown.PerformClick();
                         Process.Start("Shutdown", "/s");
                         break;
 
                     case "1": // RESTART
+                        btnStartCountdown.PerformClick();
                         Process.Start("Shutdown", "/r");
                         break;
 
                     case "2": // SLEEP
+                        btnStartCountdown.PerformClick();
                         Application.SetSuspendState(PowerState.Suspend, true, true);
                         break;
 
                     case "3": // LOCK
+                        btnStartCountdown.PerformClick();
                         Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                         break;
                 }
-
-                btnStartCountdown.PerformClick();
-
             }
+        }
+        private void UpdateTimerDisplay()
+        {
+            txtHours.Text = ((int)remainingTime.TotalHours).ToString("00");
+            txtMinutes.Text = remainingTime.Minutes.ToString("00");
+            txtSeconds.Text = remainingTime.Seconds.ToString("00");
+        }
+
+        private void btnAdd5Min_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(5));
+            UpdateTimerDisplay();
+        }
+
+        private void btnAdd15Min_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(15));
+            UpdateTimerDisplay();
+        }
+
+        private void btnAdd30Min_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(30));
+            UpdateTimerDisplay();
+        }
+
+        private void btnAdd1Hr_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromHours(1));
+            UpdateTimerDisplay();
+        }
+
+        private void btnClearTimer_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Subtract(remainingTime);
+            UpdateTimerDisplay();
+        }
+
+        private void tmrValidation_Tick(object sender, EventArgs e)
+        {
+            if ((string.IsNullOrEmpty(txtHours.Text) || txtHours.Text == "00" || txtHours.Text == "0") && (string.IsNullOrEmpty(txtMinutes.Text) || txtMinutes.Text == "00" || txtMinutes.Text == "0") && (string.IsNullOrEmpty(txtSeconds.Text) || txtSeconds.Text == "00" || txtSeconds.Text == "0"))
+            {
+                btnStartCountdown.Enabled = false;
+            }
+            else
+            {
+                btnStartCountdown.Enabled = true;
+            }
+        }
+
+        private void NotEmpty(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = "00";
+            }
+
+            if (Convert.ToInt32(tb.Text) >= 60)
+            {
+                tb.Text = "59";
+            }
+        }
+
+        private void disableQuickTimers()
+        {
+            btnQuick15.Enabled = false;
+            btnQuick30.Enabled = false;
+            btnQuick1.Enabled = false;
+            btnQuick2.Enabled = false;
+        }
+
+        private void enableQuickTimers()
+        {
+            btnQuick15.Enabled = true;
+            btnQuick30.Enabled = true;
+            btnQuick1.Enabled = true;
+            btnQuick2.Enabled = true;
+        }
+
+        private void btnQuick15_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(15));
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
+        }
+
+        private void btnQuick30_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(30));
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
+        }
+
+        private void btnQuick1_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromHours(1));
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
+        }
+
+        private void btnQuick2_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Add(TimeSpan.FromHours(2));
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
