@@ -449,7 +449,7 @@ namespace SleepyTime_2._0
                 tb.Text = "00";
             }
 
-            if (Convert.ToInt32(tb.Text) >= 60)
+            if (Convert.ToInt32(tb.Text) >= 60 && tb != txtHours)
             {
                 tb.Text = "59";
             }
