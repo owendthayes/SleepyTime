@@ -244,6 +244,8 @@ namespace SleepyTime_2._0
 
             btnSidebarAbout.FlatStyle = FlatStyle.Flat;
             btnSidebarAbout.FlatAppearance.BorderSize = 0;
+
+            btnSidebarCountdown.PerformClick();
         }
     }
 }

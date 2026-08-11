@@ -49,14 +49,18 @@ namespace SleepyTime_2._0
             this.label2 = new System.Windows.Forms.Label();
             this.imgTimeAnimation = new System.Windows.Forms.PictureBox();
             this.pnlCountdown = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.btnCancelCountdown = new SleepyTime_2._0.RoundedButton();
+            this.btnAdd1Hr = new SleepyTime_2._0.RoundedButton();
+            this.btnAdd30Min = new SleepyTime_2._0.RoundedButton();
+            this.btnAdd15Min = new SleepyTime_2._0.RoundedButton();
             this.txtSeconds = new System.Windows.Forms.TextBox();
             this.txtHours = new System.Windows.Forms.TextBox();
             this.txtMinutes = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -286,6 +290,10 @@ namespace SleepyTime_2._0
             // 
             // pnlCountdown
             // 
+            this.pnlCountdown.Controls.Add(this.btnCancelCountdown);
+            this.pnlCountdown.Controls.Add(this.btnAdd1Hr);
+            this.pnlCountdown.Controls.Add(this.btnAdd30Min);
+            this.pnlCountdown.Controls.Add(this.btnAdd15Min);
             this.pnlCountdown.Controls.Add(this.txtSeconds);
             this.pnlCountdown.Controls.Add(this.txtHours);
             this.pnlCountdown.Controls.Add(this.txtMinutes);
@@ -299,27 +307,69 @@ namespace SleepyTime_2._0
             this.pnlCountdown.Size = new System.Drawing.Size(673, 385);
             this.pnlCountdown.TabIndex = 22;
             // 
-            // label4
+            // btnCancelCountdown
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
-            this.label4.Location = new System.Drawing.Point(346, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 63);
-            this.label4.TabIndex = 4;
-            this.label4.Text = ":";
+            this.btnCancelCountdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnCancelCountdown.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(57)))), ((int)(((byte)(129)))));
+            this.btnCancelCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelCountdown.FlatAppearance.BorderSize = 0;
+            this.btnCancelCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelCountdown.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelCountdown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(74)))), ((int)(((byte)(205)))));
+            this.btnCancelCountdown.Location = new System.Drawing.Point(442, 171);
+            this.btnCancelCountdown.Name = "btnCancelCountdown";
+            this.btnCancelCountdown.Size = new System.Drawing.Size(104, 47);
+            this.btnCancelCountdown.TabIndex = 15;
+            this.btnCancelCountdown.Text = "Cancel";
+            this.btnCancelCountdown.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // btnAdd1Hr
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
-            this.label3.Location = new System.Drawing.Point(256, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 63);
-            this.label3.TabIndex = 3;
-            this.label3.Text = ":";
+            this.btnAdd1Hr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd1Hr.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnAdd1Hr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd1Hr.FlatAppearance.BorderSize = 0;
+            this.btnAdd1Hr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd1Hr.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd1Hr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnAdd1Hr.Location = new System.Drawing.Point(332, 171);
+            this.btnAdd1Hr.Name = "btnAdd1Hr";
+            this.btnAdd1Hr.Size = new System.Drawing.Size(104, 47);
+            this.btnAdd1Hr.TabIndex = 14;
+            this.btnAdd1Hr.Text = "+1 Hr";
+            this.btnAdd1Hr.UseVisualStyleBackColor = false;
+            // 
+            // btnAdd30Min
+            // 
+            this.btnAdd30Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd30Min.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnAdd30Min.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd30Min.FlatAppearance.BorderSize = 0;
+            this.btnAdd30Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd30Min.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd30Min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnAdd30Min.Location = new System.Drawing.Point(222, 171);
+            this.btnAdd30Min.Name = "btnAdd30Min";
+            this.btnAdd30Min.Size = new System.Drawing.Size(104, 47);
+            this.btnAdd30Min.TabIndex = 13;
+            this.btnAdd30Min.Text = "+30 Min";
+            this.btnAdd30Min.UseVisualStyleBackColor = false;
+            // 
+            // btnAdd15Min
+            // 
+            this.btnAdd15Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd15Min.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnAdd15Min.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd15Min.FlatAppearance.BorderSize = 0;
+            this.btnAdd15Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd15Min.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd15Min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnAdd15Min.Location = new System.Drawing.Point(112, 171);
+            this.btnAdd15Min.Name = "btnAdd15Min";
+            this.btnAdd15Min.Size = new System.Drawing.Size(104, 47);
+            this.btnAdd15Min.TabIndex = 12;
+            this.btnAdd15Min.Text = "+15 Min";
+            this.btnAdd15Min.UseVisualStyleBackColor = false;
             // 
             // txtSeconds
             // 
@@ -399,6 +449,28 @@ namespace SleepyTime_2._0
             this.label5.TabIndex = 5;
             this.label5.Text = "HOURS";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
+            this.label4.Location = new System.Drawing.Point(346, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 63);
+            this.label4.TabIndex = 4;
+            this.label4.Text = ":";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
+            this.label3.Location = new System.Drawing.Point(256, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 63);
+            this.label3.TabIndex = 3;
+            this.label3.Text = ":";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -468,6 +540,10 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private RoundedButton btnAdd15Min;
+        private RoundedButton btnCancelCountdown;
+        private RoundedButton btnAdd1Hr;
+        private RoundedButton btnAdd30Min;
     }
 }
 
