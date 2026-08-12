@@ -692,7 +692,7 @@ namespace SleepyTime_2._0
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
             this.label4.Location = new System.Drawing.Point(347, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 63);
@@ -703,7 +703,7 @@ namespace SleepyTime_2._0
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(117)))), ((int)(((byte)(233)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
             this.label3.Location = new System.Drawing.Point(257, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 63);
@@ -772,6 +772,7 @@ namespace SleepyTime_2._0
             this.roundedButton1.TabIndex = 19;
             this.roundedButton1.Text = "Save Changes";
             this.roundedButton1.UseVisualStyleBackColor = false;
+            this.roundedButton1.Click += new System.EventHandler(this.roundedButton1_Click);
             // 
             // cmbAccent
             // 

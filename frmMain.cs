@@ -36,14 +36,17 @@ namespace SleepyTime_2._0
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         //COLOUR THEME
-        private Color accentColour = Color.FromArgb(140, 71, 203);
+        private string accentColour = "purple";
+        private Color primaryAccent;
+        private Color secondaryAccent;
 
         public frmMain()
         {
             InitializeComponent();
 
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
-            applyAccentColour(accentColour);
+            getAccentColour();
+            applyAccentColour(primaryAccent, secondaryAccent);
 
             //further options for rounded form borders
             this.FormBorderStyle = FormBorderStyle.None;
@@ -54,20 +57,28 @@ namespace SleepyTime_2._0
             tmrValidation.Start();
         }
 
-        private void applyAccentColour(Color accentColour)
+        private void applyAccentColour(Color accentColour, Color secondaryAccent)
         {
             foreach (Control c in GetAllControls(this))
             {
-                if (c.ForeColor == Color.FromArgb(140, 71, 203))
+                if (c.ForeColor == Color.FromArgb(140, 71, 203) || c.ForeColor == Color.FromArgb(17, 17, 171) || c.ForeColor == Color.LimeGreen || c.ForeColor == Color.FromArgb(197, 217, 20) || c.ForeColor == Color.FromArgb(222, 13, 13))
                 {
-                    c.ForeColor = Color.LimeGreen;                 
+                    c.ForeColor = primaryAccent;                  
                 }
 
                 if(c is RoundedButton button)
                 {
-                    button.BorderColor = Color.LimeGreen;
+                    button.BorderColor = primaryAccent;
                 }
+                
+                if (c is Label && Text == ":")
+                {
+                    c.ForeColor = primaryAccent;
+                }       
             }
+
+            btnStartCountdown.ForeColor = primaryAccent;
+            btnSideBarSettings.PerformClick();
         }
 
         private IEnumerable<Control> GetAllControls(Control parent)
@@ -89,6 +100,33 @@ namespace SleepyTime_2._0
         private void getAccentColour()
         {
             //return accent colours here, lighter darker etc.
+            switch(accentColour)
+            {
+                case "purple":
+                    primaryAccent = Color.FromArgb(140, 71, 203);
+                    secondaryAccent = Color.FromArgb(55, 28, 79);
+                    break;
+
+                case "blue":
+                    primaryAccent = Color.FromArgb(17, 17, 171);
+                    secondaryAccent = Color.FromArgb(19, 19, 99);
+                    break;
+
+                case "green":
+                    primaryAccent = Color.LimeGreen;
+                    secondaryAccent = Color.FromArgb(29, 107, 29);
+                    break;
+
+                case "yellow":
+                    primaryAccent = Color.FromArgb(197, 217, 20);
+                    secondaryAccent = Color.FromArgb(115, 125, 31);
+                    break;
+
+                case "red":
+                    primaryAccent = Color.FromArgb(222, 13, 13);
+                    secondaryAccent = Color.FromArgb(125, 29, 29);
+                    break;
+            }
         }
 
         private void tmrMain_Tick(object sender, EventArgs e)
@@ -258,10 +296,8 @@ namespace SleepyTime_2._0
         {
             greyOutSidebar();
 
-
-            //change this to use the accent colour instead of from argb
-            btnSidebarCountdown.ForeColor = Color.FromArgb(126, 39, 201);
-            btnSidebarCountdown.BackColor = Color.FromArgb(25, 22, 46);
+            btnSidebarCountdown.ForeColor = primaryAccent;
+            btnSidebarCountdown.BackColor = secondaryAccent;
 
             SetActivePanel("pnlCountdown");
         }
@@ -269,8 +305,8 @@ namespace SleepyTime_2._0
         private void btnSidebarSchedule_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
-            btnSidebarSchedule.ForeColor = Color.FromArgb(126, 39, 201);
-            btnSidebarSchedule.BackColor = Color.FromArgb(25, 22, 46);
+            btnSidebarSchedule.ForeColor = primaryAccent;
+            btnSidebarSchedule.BackColor = secondaryAccent;
 
             SetActivePanel("pnlSchedule");
         }
@@ -278,8 +314,8 @@ namespace SleepyTime_2._0
         private void btnSideBarPresets_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
-            btnSideBarPresets.ForeColor = Color.FromArgb(126, 39, 201);
-            btnSideBarPresets.BackColor = Color.FromArgb(25, 22, 46);
+            btnSideBarPresets.ForeColor = primaryAccent;
+            btnSideBarPresets.BackColor = secondaryAccent;
 
             SetActivePanel("pnlPresets");
         }
@@ -287,8 +323,8 @@ namespace SleepyTime_2._0
         private void btnSideBarSettings_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
-            btnSideBarSettings.ForeColor = Color.FromArgb(126, 39, 201);
-            btnSideBarSettings.BackColor = Color.FromArgb(25, 22, 46);
+            btnSideBarSettings.ForeColor = primaryAccent;
+            btnSideBarSettings.BackColor = secondaryAccent;
 
             SetActivePanel("pnlSettings");
         }
@@ -296,8 +332,8 @@ namespace SleepyTime_2._0
         private void btnSidebarAbout_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
-            btnSidebarAbout.ForeColor = Color.FromArgb(126, 39, 201);
-            btnSidebarAbout.BackColor = Color.FromArgb(25, 22, 46);
+            btnSidebarAbout.ForeColor = primaryAccent;
+            btnSidebarAbout.BackColor = secondaryAccent;
 
             SetActivePanel("pnlAbout");
         }
@@ -305,8 +341,8 @@ namespace SleepyTime_2._0
         private void btnHelp_Click(object sender, EventArgs e)
         {
             greyOutSidebar();
-            btnHelp.ForeColor = Color.FromArgb(126, 39, 201);
-            btnHelp.BackColor = Color.FromArgb(25, 22, 46);
+            btnHelp.ForeColor = primaryAccent;
+            btnHelp.BackColor = secondaryAccent;
 
             SetActivePanel("pnlHelp");
         }
@@ -386,8 +422,10 @@ namespace SleepyTime_2._0
             btnClearTimer.Visible = true;
 
             countdownStarted = false;
-            btnStartCountdown.ForeColor = Color.FromArgb(141, 74, 205);
-            btnStartCountdown.BorderColor = Color.FromArgb(141, 74, 205);
+
+            btnStartCountdown.ForeColor = primaryAccent;
+            btnStartCountdown.BorderColor = secondaryAccent;
+
             btnStartCountdown.Text = "Start Countdown";
 
             txtHours.ReadOnly = false;
@@ -605,7 +643,34 @@ namespace SleepyTime_2._0
             });
         }
 
+        private void roundedButton1_Click(object sender, EventArgs e)
+        {
+            switch (cmbAccent.SelectedIndex)
+            {
+                case 0: //purple
+                    accentColour = "purple";
+                    break;
 
+                case 1: //blue
+                    accentColour = "blue";
+                    break;
+
+                case 2: //green
+                    accentColour = "green";
+                    break;
+
+                case 3: //yellow
+                    accentColour = "yellow";
+                    break;
+
+                case 4: //red
+                    accentColour = "red";
+                    break;
+            }
+
+            getAccentColour();
+            applyAccentColour(primaryAccent, secondaryAccent);
+        }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
