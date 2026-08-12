@@ -367,25 +367,23 @@ namespace SleepyTime_2._0
             {
                 tmrCountDown.Stop();
                 countdownEnded = true;
+                btnStartCountdown.Enabled = true;
+                btnStartCountdown.PerformClick();
                 switch (cmbOperation.SelectedIndex.ToString())
                 {
                     case "0": // SHUTDOWN
-                        btnStartCountdown.PerformClick();
                         Process.Start("Shutdown", "/s");
                         break;
 
                     case "1": // RESTART
-                        btnStartCountdown.PerformClick();
                         Process.Start("Shutdown", "/r");
                         break;
 
                     case "2": // SLEEP
-                        btnStartCountdown.PerformClick();
                         Application.SetSuspendState(PowerState.Suspend, true, true);
                         break;
 
                     case "3": // LOCK
-                        btnStartCountdown.PerformClick();
                         Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                         break;
                 }
@@ -531,6 +529,37 @@ namespace SleepyTime_2._0
             btnStartCountdown.Enabled = true;
             btnStartCountdown.PerformClick();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://github.com/owendthayes/SleepyTime1.0");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://github.com/owendthayes/SleepyTime");
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://github.com/owendthayes");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://www.linkedin.com/in/owendthayes/");
+        }
+
+        private void OpenLink(string url)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });
+        }
+
+
 
         private void frmMain_Load(object sender, EventArgs e)
         {

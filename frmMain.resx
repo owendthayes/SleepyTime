@@ -60,6 +60,21 @@
   <metadata name="tmrMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="label16.Text" xml:space="preserve">
+    <value>This app was created by Owen Hayes to upgrade a previously
+made app with a stronger focus on functionalty and UX.
+SleepyTime is a personal project and therefore bugs may 
+be present.
+
+View SleepyTime 1.0 - 
+View SleepyTime 2.0 Download Page -
+owendthayes on GitHub - 
+Owen Hayes on LinkedIn - 
+
+August 2026
+
+Thanks for downloading :D</value>
+  </data>
   <metadata name="tmrCountDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>115, 17</value>
   </metadata>
