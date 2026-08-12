@@ -400,26 +400,38 @@ namespace SleepyTime_2._0
 
         private void btnAdd5Min_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(5));
-            UpdateTimerDisplay();
+            if (Convert.ToInt32(remainingTime.TotalHours) <= 99)
+            {
+                remainingTime = remainingTime.Add(TimeSpan.FromMinutes(5));
+                UpdateTimerDisplay();
+            }
         }
 
         private void btnAdd15Min_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(15));
-            UpdateTimerDisplay();
+            if (Convert.ToInt32(remainingTime.TotalHours) <= 99)
+            {
+                remainingTime = remainingTime.Add(TimeSpan.FromMinutes(15));
+                UpdateTimerDisplay();
+            }
         }
 
         private void btnAdd30Min_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(30));
-            UpdateTimerDisplay();
+            if (Convert.ToInt32(remainingTime.TotalHours) <= 99)
+            {
+                remainingTime = remainingTime.Add(TimeSpan.FromMinutes(30));
+                UpdateTimerDisplay();
+            }
         }
 
         private void btnAdd1Hr_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromHours(1));
-            UpdateTimerDisplay();
+            if (Convert.ToInt32(remainingTime.TotalHours) <= 99)
+            {
+                remainingTime = remainingTime.Add(TimeSpan.FromHours(1));
+                UpdateTimerDisplay();
+            }
         }
 
         private void btnClearTimer_Click(object sender, EventArgs e)
@@ -453,6 +465,19 @@ namespace SleepyTime_2._0
             {
                 tb.Text = "59";
             }
+
+            SetRemainingTimeFromTextBoxes();
+
+        }
+
+        private void SetRemainingTimeFromTextBoxes()
+        {
+            if (int.TryParse(txtHours.Text, out int hours) &&
+                int.TryParse(txtMinutes.Text, out int mins) &&
+                int.TryParse(txtSeconds.Text, out int secs))
+            {
+                remainingTime = new TimeSpan(0, hours, mins, secs);
+            }
         }
 
         private void disableQuickTimers()
@@ -473,7 +498,7 @@ namespace SleepyTime_2._0
 
         private void btnQuick15_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(15));
+            remainingTime = new TimeSpan(0, 15, 0);
             UpdateTimerDisplay();
             disableQuickTimers();
             btnStartCountdown.Enabled = true;
@@ -482,7 +507,7 @@ namespace SleepyTime_2._0
 
         private void btnQuick30_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromMinutes(30));
+            remainingTime = new TimeSpan(0, 30, 0);
             UpdateTimerDisplay();
             disableQuickTimers();
             btnStartCountdown.Enabled = true;
@@ -491,7 +516,7 @@ namespace SleepyTime_2._0
 
         private void btnQuick1_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromHours(1));
+            remainingTime = new TimeSpan(1, 0, 0);
             UpdateTimerDisplay();
             disableQuickTimers();
             btnStartCountdown.Enabled = true;
@@ -500,7 +525,7 @@ namespace SleepyTime_2._0
 
         private void btnQuick2_Click(object sender, EventArgs e)
         {
-            remainingTime = remainingTime.Add(TimeSpan.FromHours(2));
+            remainingTime = new TimeSpan(2, 0, 0);
             UpdateTimerDisplay();
             disableQuickTimers();
             btnStartCountdown.Enabled = true;
