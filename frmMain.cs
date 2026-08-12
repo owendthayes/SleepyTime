@@ -81,6 +81,11 @@ namespace SleepyTime_2._0
                 {
                     toggle.OnBackColor = primaryAccent;
                 }
+
+                if (c is LinkLabel label)
+                {
+                    label.LinkColor = primaryAccent;
+                }
             }
 
             btnStartCountdown.ForeColor = primaryAccent;
@@ -649,7 +654,7 @@ namespace SleepyTime_2._0
             });
         }
 
-        private void roundedButton1_Click(object sender, EventArgs e)
+        private void btnSaveSettings_Click(object sender, EventArgs e)
         {
             switch (cmbAccent.SelectedIndex)
             {
@@ -673,9 +678,11 @@ namespace SleepyTime_2._0
                     accentColour = "red";
                     break;
             }
-
             getAccentColour();
             applyAccentColour(primaryAccent, secondaryAccent);
+
+            this.TopMost = tglAOT.Checked;
+            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
