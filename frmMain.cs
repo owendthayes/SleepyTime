@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
+using SleepyTime_2._0.Custom_Controls;
 
 namespace SleepyTime_2._0
 {
@@ -74,7 +75,12 @@ namespace SleepyTime_2._0
                 if (c is Label && Text == ":")
                 {
                     c.ForeColor = primaryAccent;
-                }       
+                }
+
+                if (c is ToggleButton toggle)
+                {
+                    toggle.OnBackColor = primaryAccent;
+                }
             }
 
             btnStartCountdown.ForeColor = primaryAccent;

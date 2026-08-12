@@ -78,6 +78,7 @@ namespace SleepyTime_2._0
             this.pnlPresets = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlSettings = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.roundedButton1 = new SleepyTime_2._0.RoundedButton();
             this.cmbAccent = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -94,6 +95,7 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
+            this.toggleButton1 = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -750,6 +752,8 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            this.pnlSettings.Controls.Add(this.toggleButton1);
+            this.pnlSettings.Controls.Add(this.label17);
             this.pnlSettings.Controls.Add(this.roundedButton1);
             this.pnlSettings.Controls.Add(this.cmbAccent);
             this.pnlSettings.Controls.Add(this.label11);
@@ -757,6 +761,17 @@ namespace SleepyTime_2._0
             this.pnlSettings.Name = "pnlSettings";
             this.pnlSettings.Size = new System.Drawing.Size(673, 385);
             this.pnlSettings.TabIndex = 25;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(25, 61);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(140, 21);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Always On Top";
             // 
             // roundedButton1
             // 
@@ -951,6 +966,20 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
+            // toggleButton1
+            // 
+            this.toggleButton1.AutoSize = true;
+            this.toggleButton1.Location = new System.Drawing.Point(177, 60);
+            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton1.OnBackColor = System.Drawing.Color.Purple;
+            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton1.Size = new System.Drawing.Size(45, 22);
+            this.toggleButton1.TabIndex = 21;
+            this.toggleButton1.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1074,6 +1103,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.LinkLabel linkLabel4;
         private RoundedButton roundedButton1;
         private System.Windows.Forms.ComboBox cmbAccent;
+        private System.Windows.Forms.Label label17;
+        private Custom_Controls.ToggleButton toggleButton1;
     }
 }
 
