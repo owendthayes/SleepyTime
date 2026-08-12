@@ -78,8 +78,11 @@ namespace SleepyTime_2._0
             this.pnlPresets = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlSettings = new System.Windows.Forms.Panel();
+            this.roundedButton1 = new SleepyTime_2._0.RoundedButton();
+            this.cmbAccent = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pnlAbout = new System.Windows.Forms.Panel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -91,7 +94,6 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -748,22 +750,58 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            this.pnlSettings.Controls.Add(this.roundedButton1);
+            this.pnlSettings.Controls.Add(this.cmbAccent);
             this.pnlSettings.Controls.Add(this.label11);
             this.pnlSettings.Location = new System.Drawing.Point(127, 68);
             this.pnlSettings.Name = "pnlSettings";
             this.pnlSettings.Size = new System.Drawing.Size(673, 385);
             this.pnlSettings.TabIndex = 25;
             // 
+            // roundedButton1
+            // 
+            this.roundedButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.roundedButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.roundedButton1.FlatAppearance.BorderSize = 0;
+            this.roundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundedButton1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.roundedButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.roundedButton1.Location = new System.Drawing.Point(511, 329);
+            this.roundedButton1.Name = "roundedButton1";
+            this.roundedButton1.Size = new System.Drawing.Size(150, 40);
+            this.roundedButton1.TabIndex = 19;
+            this.roundedButton1.Text = "Save Changes";
+            this.roundedButton1.UseVisualStyleBackColor = false;
+            // 
+            // cmbAccent
+            // 
+            this.cmbAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbAccent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAccent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbAccent.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbAccent.ForeColor = System.Drawing.Color.White;
+            this.cmbAccent.FormattingEnabled = true;
+            this.cmbAccent.Items.AddRange(new object[] {
+            "Purple",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Red"});
+            this.cmbAccent.Location = new System.Drawing.Point(177, 22);
+            this.cmbAccent.Name = "cmbAccent";
+            this.cmbAccent.Size = new System.Drawing.Size(121, 29);
+            this.cmbAccent.TabIndex = 18;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(283, 178);
+            this.label11.Location = new System.Drawing.Point(25, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 21);
+            this.label11.Size = new System.Drawing.Size(140, 21);
             this.label11.TabIndex = 17;
-            this.label11.Text = "SETTINGS";
+            this.label11.Text = "Accent Colour";
             // 
             // pnlAbout
             // 
@@ -778,6 +816,20 @@ namespace SleepyTime_2._0
             this.pnlAbout.Name = "pnlAbout";
             this.pnlAbout.Size = new System.Drawing.Size(673, 385);
             this.pnlAbout.TabIndex = 26;
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabel4.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.linkLabel4.Location = new System.Drawing.Point(276, 240);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(290, 21);
+            this.linkLabel4.TabIndex = 32;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "linkedin.com/in/owendthayes/";
+            this.linkLabel4.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // linkLabel3
             // 
@@ -898,27 +950,12 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
-            // linkLabel4
-            // 
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel4.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.linkLabel4.Location = new System.Drawing.Point(276, 240);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(290, 21);
-            this.linkLabel4.TabIndex = 32;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "linkedin.com/in/owendthayes/";
-            this.linkLabel4.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlAbout);
             this.Controls.Add(this.imgTimeAnimation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -936,11 +973,12 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlSchedule);
+            this.Controls.Add(this.pnlAbout);
             this.Controls.Add(this.pnlPresets);
             this.Controls.Add(this.pnlHelp);
             this.Controls.Add(this.pnlCountdown);
-            this.Controls.Add(this.pnlSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
@@ -1033,6 +1071,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.LinkLabel linkLabel4;
+        private RoundedButton roundedButton1;
+        private System.Windows.Forms.ComboBox cmbAccent;
     }
 }
 

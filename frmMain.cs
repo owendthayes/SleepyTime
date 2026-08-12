@@ -35,9 +35,15 @@ namespace SleepyTime_2._0
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
+        //COLOUR THEME
+        private Color accentColour = Color.FromArgb(140, 71, 203);
+
         public frmMain()
         {
             InitializeComponent();
+
+            //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
+            applyAccentColour(accentColour);
 
             //further options for rounded form borders
             this.FormBorderStyle = FormBorderStyle.None;
@@ -46,6 +52,43 @@ namespace SleepyTime_2._0
 
             tmrMain.Start();
             tmrValidation.Start();
+        }
+
+        private void applyAccentColour(Color accentColour)
+        {
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c.ForeColor == Color.FromArgb(140, 71, 203))
+                {
+                    c.ForeColor = Color.LimeGreen;                 
+                }
+
+                if(c is RoundedButton button)
+                {
+                    button.BorderColor = Color.LimeGreen;
+                }
+            }
+        }
+
+        private IEnumerable<Control> GetAllControls(Control parent)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                yield return c;
+
+                if (c.HasChildren)
+                {
+                    foreach (Control child in GetAllControls(c))
+                    {
+                        yield return child;
+                    }
+                }
+            }
+        }
+
+        private void getAccentColour()
+        {
+            //return accent colours here, lighter darker etc.
         }
 
         private void tmrMain_Tick(object sender, EventArgs e)
@@ -167,6 +210,7 @@ namespace SleepyTime_2._0
 
         private void greyOutSidebar()
         {
+
             btnSidebarAbout.ForeColor = Color.FromArgb(177, 178, 181);
             btnSidebarCountdown.ForeColor = Color.FromArgb(177, 178, 181);
             btnSideBarSettings.ForeColor = Color.FromArgb(177, 178, 181);
@@ -214,6 +258,8 @@ namespace SleepyTime_2._0
         {
             greyOutSidebar();
 
+
+            //change this to use the accent colour instead of from argb
             btnSidebarCountdown.ForeColor = Color.FromArgb(126, 39, 201);
             btnSidebarCountdown.BackColor = Color.FromArgb(25, 22, 46);
 
@@ -564,6 +610,7 @@ namespace SleepyTime_2._0
         private void frmMain_Load(object sender, EventArgs e)
         {
             cmbOperation.SelectedIndex = 0;
+            cmbAccent.SelectedIndex = 0;
 
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;
