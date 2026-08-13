@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using SleepyTime_2._0.Custom_Controls;
+using System.IO;
 
 namespace SleepyTime_2._0
 {
@@ -36,14 +37,23 @@ namespace SleepyTime_2._0
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        //COLOUR THEME
+        //APP SETTINGS
+        private string settingsFile;
+
+            //COLOUR THEME
         private string accentColour = "purple";
         private Color primaryAccent;
         private Color secondaryAccent;
 
+            //ALWAYS ON TOP
+        private bool formAOT = false;
+
+
         public frmMain()
         {
             InitializeComponent();
+
+            readSettingsFile();
 
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
             getAccentColour();
@@ -56,6 +66,48 @@ namespace SleepyTime_2._0
 
             tmrMain.Start();
             tmrValidation.Start();
+        }
+
+        private void readSettingsFile()
+        {
+            if (!File.Exists("Settings.txt"))
+            {
+                File.WriteAllLines("Settings.txt", new[]
+                {
+                    "purple",
+                    "false"
+                });
+                //settingsFile = Path.GetFullPath("Settings.txt");
+            }
+
+            string[] settings = File.ReadAllLines("Settings.txt");
+
+            accentColour = settings[0];
+            switch (accentColour)
+            {
+                case "purple":
+                    cmbAccent.SelectedIndex = 0;
+                    break;
+
+                case "blue":
+                    cmbAccent.SelectedIndex = 1;
+                    break;
+
+                case "green":
+                    cmbAccent.SelectedIndex = 2;
+                    break;
+
+                case "yellow":
+                    cmbAccent.SelectedIndex = 3;
+                    break;
+
+                case "red":
+                    cmbAccent.SelectedIndex = 4;
+                    break;
+            }
+
+            tglAOT.Checked = bool.Parse(settings[1]);
+            this.TopMost = bool.Parse(settings[1]);
         }
 
         private void applyAccentColour(Color accentColour, Color secondaryAccent)
@@ -119,7 +171,7 @@ namespace SleepyTime_2._0
                     break;
 
                 case "blue":
-                    primaryAccent = Color.FromArgb(17, 17, 171);
+                    primaryAccent = Color.FromArgb(35, 35, 204);
                     secondaryAccent = Color.FromArgb(19, 19, 99);
                     break;
 
@@ -135,7 +187,7 @@ namespace SleepyTime_2._0
 
                 case "red":
                     primaryAccent = Color.FromArgb(222, 13, 13);
-                    secondaryAccent = Color.FromArgb(125, 29, 29);
+                    secondaryAccent = Color.FromArgb(82, 17, 12);
                     break;
             }
         }
@@ -682,13 +734,19 @@ namespace SleepyTime_2._0
             applyAccentColour(primaryAccent, secondaryAccent);
 
             this.TopMost = tglAOT.Checked;
-            
+
+            //save settings
+            File.WriteAllLines("Settings.txt", new[]
+            {
+                accentColour,
+                tglAOT.Checked.ToString()
+            });
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             cmbOperation.SelectedIndex = 0;
-            cmbAccent.SelectedIndex = 0;
+            //cmbAccent.SelectedIndex = 0;
 
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;
