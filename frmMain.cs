@@ -54,6 +54,7 @@ namespace SleepyTime_2._0
             InitializeComponent();
 
             readSettingsFile();
+            populateTimesComboBox();
 
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
             getAccentColour();
@@ -63,9 +64,21 @@ namespace SleepyTime_2._0
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(BorderSize);
 
+            
 
             tmrMain.Start();
             tmrValidation.Start();
+        }
+
+        private void populateTimesComboBox()
+        {
+            cmbScheduleTime.Items.Clear();
+
+            for (int minutes = 0; minutes < 24 * 60; minutes += 10)
+            {
+                TimeSpan time = TimeSpan.FromMinutes(minutes);
+                cmbScheduleTime.Items.Add(time.ToString(@"hh\:mm"));
+            }
         }
 
         private void readSettingsFile()
@@ -137,7 +150,7 @@ namespace SleepyTime_2._0
                 if (c is LinkLabel label)
                 {
                     label.LinkColor = primaryAccent;
-                }
+                }               
             }
 
             btnStartCountdown.ForeColor = primaryAccent;
@@ -441,6 +454,11 @@ namespace SleepyTime_2._0
                     txtHours.ReadOnly = true;
                     txtMinutes.ReadOnly = true;
                     txtSeconds.ReadOnly = true;
+
+                    btnQuick1.Enabled = false;
+                    btnQuick2.Enabled = false;
+                    btnQuick15.Enabled = false;
+                    btnQuick30.Enabled = false;
 
                     txtHours.Cursor = Cursors.Arrow;
                     txtMinutes.Cursor = Cursors.Arrow;
@@ -746,7 +764,9 @@ namespace SleepyTime_2._0
         private void frmMain_Load(object sender, EventArgs e)
         {
             cmbOperation.SelectedIndex = 0;
-            //cmbAccent.SelectedIndex = 0;
+            cmbScheduleOperation.SelectedIndex = 0;
+            cmbScheduleTime.SelectedIndex = 0;
+            cmbScheduleDate.MinDate = DateTime.Today;
 
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;
