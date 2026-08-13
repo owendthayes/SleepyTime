@@ -114,7 +114,7 @@ namespace SleepyTime_2._0
         {
             foreach (Control c in GetAllControls(this))
             {
-                if (c.ForeColor == Color.FromArgb(140, 71, 203) || c.ForeColor == Color.FromArgb(17, 17, 171) || c.ForeColor == Color.LimeGreen || c.ForeColor == Color.FromArgb(197, 217, 20) || c.ForeColor == Color.FromArgb(222, 13, 13))
+                if (c.ForeColor == Color.FromArgb(140, 71, 203) || c.ForeColor == Color.FromArgb(35, 35, 204) || c.ForeColor == Color.LimeGreen || c.ForeColor == Color.FromArgb(197, 217, 20) || c.ForeColor == Color.FromArgb(222, 13, 13))
                 {
                     c.ForeColor = primaryAccent;                  
                 }
