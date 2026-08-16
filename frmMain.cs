@@ -929,6 +929,11 @@ namespace SleepyTime_2._0
             updateScheduleUI();
         }
 
+        private void tglAOT_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             cmbOperation.SelectedIndex = 0;

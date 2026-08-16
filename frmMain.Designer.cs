@@ -74,6 +74,10 @@ namespace SleepyTime_2._0
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSchedule = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.btnClearSchedule = new SleepyTime_2._0.RoundedButton();
             this.pnlSavedSchedules = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
@@ -107,10 +111,8 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.toggleButton1 = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -750,6 +752,50 @@ namespace SleepyTime_2._0
             this.pnlSchedule.Size = new System.Drawing.Size(673, 385);
             this.pnlSchedule.TabIndex = 23;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(460, 152);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(63, 14);
+            this.label25.TabIndex = 40;
+            this.label25.Text = "REMINDER";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(320, 152);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(35, 14);
+            this.label24.TabIndex = 39;
+            this.label24.Text = "TIME";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(163, 152);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(35, 14);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "DATE";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(61, 152);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(49, 14);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "ACTION";
+            // 
             // btnClearSchedule
             // 
             this.btnClearSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
@@ -941,6 +987,8 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            this.pnlSettings.Controls.Add(this.toggleButton1);
+            this.pnlSettings.Controls.Add(this.label26);
             this.pnlSettings.Controls.Add(this.tglAOT);
             this.pnlSettings.Controls.Add(this.label17);
             this.pnlSettings.Controls.Add(this.btnSaveSettings);
@@ -953,7 +1001,7 @@ namespace SleepyTime_2._0
             // 
             // tglAOT
             // 
-            this.tglAOT.Location = new System.Drawing.Point(177, 59);
+            this.tglAOT.Location = new System.Drawing.Point(224, 93);
             this.tglAOT.MinimumSize = new System.Drawing.Size(45, 22);
             this.tglAOT.Name = "tglAOT";
             this.tglAOT.OffBackColor = System.Drawing.Color.Gray;
@@ -963,13 +1011,14 @@ namespace SleepyTime_2._0
             this.tglAOT.Size = new System.Drawing.Size(74, 22);
             this.tglAOT.TabIndex = 21;
             this.tglAOT.UseVisualStyleBackColor = true;
+            this.tglAOT.CheckedChanged += new System.EventHandler(this.tglAOT_CheckedChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(25, 61);
+            this.label17.Location = new System.Drawing.Point(25, 95);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(140, 21);
             this.label17.TabIndex = 20;
@@ -1168,49 +1217,29 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
-            // label22
+            // label26
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(61, 152);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(49, 14);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "ACTION";
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(25, 61);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(140, 21);
+            this.label26.TabIndex = 22;
+            this.label26.Text = "Dark Mode TBD";
             // 
-            // label23
+            // toggleButton1
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(163, 152);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(35, 14);
-            this.label23.TabIndex = 38;
-            this.label23.Text = "DATE";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(320, 152);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(35, 14);
-            this.label24.TabIndex = 39;
-            this.label24.Text = "TIME";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(460, 152);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(63, 14);
-            this.label25.TabIndex = 40;
-            this.label25.Text = "REMINDER";
+            this.toggleButton1.Location = new System.Drawing.Point(224, 62);
+            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton1.OnBackColor = System.Drawing.Color.Purple;
+            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton1.Size = new System.Drawing.Size(74, 22);
+            this.toggleButton1.TabIndex = 23;
+            this.toggleButton1.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -1235,9 +1264,9 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlCountdown);
-            this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlAbout);
             this.Controls.Add(this.pnlPresets);
             this.Controls.Add(this.pnlHelp);
@@ -1352,6 +1381,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label26;
+        private Custom_Controls.ToggleButton toggleButton1;
     }
 }
 
