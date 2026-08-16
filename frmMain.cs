@@ -839,7 +839,7 @@ namespace SleepyTime_2._0
                 
                 row.BackColor = Color.FromArgb(13, 15, 28);
 
-                row.Width = pnlSavedSchedules.ClientSize.Width - 20;
+                row.Width = pnlSavedSchedules.ClientSize.Width - 40;
                 row.Height = 40;
                 row.Location = new Point(10, y);
 
@@ -847,7 +847,7 @@ namespace SleepyTime_2._0
 
                 Label lblAction = new Label
                 {
-                    Text = $"{operations[Convert.ToInt32(item.Action)]} - ",
+                    Text = operations[Convert.ToInt32(item.Action)],
                     Location = new Point(10, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
@@ -857,7 +857,7 @@ namespace SleepyTime_2._0
                 Label lblDate = new Label
                 {
                     Text = item.Date.ToString(@"dd/MM/yyyy"),
-                    Location = new Point(100, 10),
+                    Location = new Point(110, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("JetBrains Mono", 12),
@@ -866,7 +866,7 @@ namespace SleepyTime_2._0
                 Label lblTime = new Label
                 {
                     Text = item.Time.ToString(@"hh\:mm"),
-                    Location = new Point(200, 10),
+                    Location = new Point(250, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("JetBrains Mono", 12),
@@ -875,7 +875,7 @@ namespace SleepyTime_2._0
                 Label lblReminder = new Label
                 {
                     Text = reminders[Convert.ToInt32(item.Reminder)],
-                    Location = new Point(300, 10),
+                    Location = new Point(350, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("JetBrains Mono", 12),

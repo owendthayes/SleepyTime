@@ -107,6 +107,10 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -725,6 +729,10 @@ namespace SleepyTime_2._0
             // 
             // pnlSchedule
             // 
+            this.pnlSchedule.Controls.Add(this.label25);
+            this.pnlSchedule.Controls.Add(this.label24);
+            this.pnlSchedule.Controls.Add(this.label23);
+            this.pnlSchedule.Controls.Add(this.label22);
             this.pnlSchedule.Controls.Add(this.btnClearSchedule);
             this.pnlSchedule.Controls.Add(this.pnlSavedSchedules);
             this.pnlSchedule.Controls.Add(this.label21);
@@ -762,7 +770,7 @@ namespace SleepyTime_2._0
             // 
             this.pnlSavedSchedules.AutoScroll = true;
             this.pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
-            this.pnlSavedSchedules.Location = new System.Drawing.Point(45, 161);
+            this.pnlSavedSchedules.Location = new System.Drawing.Point(45, 171);
             this.pnlSavedSchedules.Name = "pnlSavedSchedules";
             this.pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
             this.pnlSavedSchedules.TabIndex = 35;
@@ -1160,6 +1168,50 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(61, 152);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(49, 14);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "ACTION";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(163, 152);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(35, 14);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "DATE";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(320, 152);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(35, 14);
+            this.label24.TabIndex = 39;
+            this.label24.Text = "TIME";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(460, 152);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(63, 14);
+            this.label25.TabIndex = 40;
+            this.label25.Text = "REMINDER";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1296,6 +1348,10 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cmbRemindMe;
         private RoundedButton btnClearSchedule;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
     }
 }
 
