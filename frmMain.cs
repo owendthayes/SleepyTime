@@ -31,6 +31,9 @@ namespace SleepyTime_2._0
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
 
+        //list for populating scheduled items.
+        private List<ScheduleItem> scheduledItems = new List<ScheduleItem>();
+
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
@@ -54,7 +57,9 @@ namespace SleepyTime_2._0
             InitializeComponent();
 
             readSettingsFile();
+            readScheduleFile();
             populateTimesComboBox();
+            updateScheduleUI();
 
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
             getAccentColour();
@@ -63,8 +68,6 @@ namespace SleepyTime_2._0
             //further options for rounded form borders
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(BorderSize);
-
-            
 
             tmrMain.Start();
             tmrValidation.Start();
@@ -79,6 +82,61 @@ namespace SleepyTime_2._0
                 TimeSpan time = TimeSpan.FromMinutes(minutes);
                 cmbScheduleTime.Items.Add(time.ToString(@"hh\:mm"));
             }
+        }
+
+        private void readScheduleFile()
+        {
+            if (!File.Exists("Schedule.txt"))
+            {
+                File.Create("Schedule.txt");
+            }
+
+            string[] lines = File.ReadAllLines("Schedule.txt");
+
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                string[] data = line.Split('|');
+
+                //MessageBox.Show($"Action: {data[0]} Date: {data[1]} Time: {data[2]} Reminder: {data[3]}");
+
+                if (data.Length != 4)
+                    continue;
+
+                if (!DateTime.TryParseExact(
+                    data[1],
+                    "dd/MM/yyyy",
+                    null,
+                    System.Globalization.DateTimeStyles.None,
+                    out DateTime date))
+                {
+                    MessageBox.Show("Date incorrect");
+                    continue;
+                }
+
+
+
+                if (!TimeSpan.TryParse(data[2], out TimeSpan time))
+                {
+                    MessageBox.Show("Time incorrect");
+                    continue;
+                }
+
+                //MessageBox.Show("adding scheduled item");
+                scheduledItems.Add(
+                    new ScheduleItem(
+                        data[0],
+                        date,
+                        time,
+                        data[3]
+                        )
+                    );
+                //MessageBox.Show("Added scheduled item");
+            }
+            //MessageBox.Show(scheduledItems[0].ToString());
+            //MessageBox.Show(scheduledItems[1].ToString());
         }
 
         private void readSettingsFile()
@@ -761,12 +819,118 @@ namespace SleepyTime_2._0
             });
         }
 
+        private void btnClearSchedule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateScheduleUI()
+        {
+            pnlSavedSchedules.Controls.Clear();
+
+            int y = 10;
+
+            foreach (ScheduleItem item in scheduledItems)
+            {
+                Panel row = new Panel();
+
+                row.Width = pnlSchedule.ClientSize.Width - 25;
+                row.Height = 60;
+                row.Location = new Point(10, y);
+
+                //add the controls here
+
+                Label lblAction = new Label
+                {
+                    Text = item.Action,
+                    Location = new Point(10, 10),
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("JetBrains Mono", 12)
+                };
+
+                Label lblDate = new Label
+                {
+                    Text = item.Date.ToString(@"dd/MM/yyyy"),
+                    Location = new Point(100, 10),
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                Label lblTime = new Label
+                {
+                    Text = item.Time.ToString(@"hh\:mm"),
+                    Location = new Point(200, 10),
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                Label lblReminder = new Label
+                {
+                    Text = item.Reminder,
+                    Location = new Point(300, 10),
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                row.Controls.Add(lblAction);
+                row.Controls.Add(lblDate);
+                row.Controls.Add(lblTime);
+                row.Controls.Add(lblReminder);
+
+                pnlSavedSchedules.Controls.Add(row);
+                y += row.Height + 5;
+            }
+        }
+
+        private void updateScheduleFile()
+        {
+            using (StreamWriter sw = new StreamWriter("Schedule.txt"))
+            {
+                foreach (ScheduleItem item in scheduledItems)
+                {
+                    sw.WriteLine(
+                        $"{item.Action}|{item.Date:dd/MM/yyyy}|{item.Time:hh\\:mm}|{item.Reminder}"
+                        );
+                }
+            }
+        }
+
+        private void btnSaveSchedule_Click(object sender, EventArgs e)
+        {
+            TimeSpan scheduleTime;
+
+            if (!TimeSpan.TryParse(
+                cmbScheduleTime.GetItemText(cmbScheduleTime.SelectedItem),
+                out scheduleTime))
+            {
+                MessageBox.Show("Invalid time selected");
+                return;
+            }
+
+            ScheduleItem newItem = new ScheduleItem(
+                cmbScheduleOperation.GetItemText(cmbScheduleOperation.SelectedIndex),
+                cmbScheduleDate.Value,
+                scheduleTime,
+                cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex)
+                );
+
+            scheduledItems.Add(newItem);
+
+            updateScheduleFile();
+            updateScheduleUI();
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             cmbOperation.SelectedIndex = 0;
             cmbScheduleOperation.SelectedIndex = 0;
             cmbScheduleTime.SelectedIndex = 0;
             cmbScheduleDate.MinDate = DateTime.Today;
+            cmbRemindMe.SelectedIndex = 0;
 
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;

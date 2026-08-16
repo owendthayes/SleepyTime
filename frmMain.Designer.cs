@@ -74,6 +74,10 @@ namespace SleepyTime_2._0
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSchedule = new System.Windows.Forms.Panel();
+            this.btnClearSchedule = new SleepyTime_2._0.RoundedButton();
+            this.pnlSavedSchedules = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cmbRemindMe = new System.Windows.Forms.ComboBox();
             this.btnSaveSchedule = new SleepyTime_2._0.RoundedButton();
             this.label20 = new System.Windows.Forms.Label();
             this.cmbScheduleTime = new System.Windows.Forms.ComboBox();
@@ -103,9 +107,6 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.pnlSavedSchedules = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -724,9 +725,10 @@ namespace SleepyTime_2._0
             // 
             // pnlSchedule
             // 
+            this.pnlSchedule.Controls.Add(this.btnClearSchedule);
             this.pnlSchedule.Controls.Add(this.pnlSavedSchedules);
             this.pnlSchedule.Controls.Add(this.label21);
-            this.pnlSchedule.Controls.Add(this.comboBox1);
+            this.pnlSchedule.Controls.Add(this.cmbRemindMe);
             this.pnlSchedule.Controls.Add(this.btnSaveSchedule);
             this.pnlSchedule.Controls.Add(this.label20);
             this.pnlSchedule.Controls.Add(this.cmbScheduleTime);
@@ -740,6 +742,66 @@ namespace SleepyTime_2._0
             this.pnlSchedule.Size = new System.Drawing.Size(673, 385);
             this.pnlSchedule.TabIndex = 23;
             // 
+            // btnClearSchedule
+            // 
+            this.btnClearSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.btnClearSchedule.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnClearSchedule.FlatAppearance.BorderSize = 0;
+            this.btnClearSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnClearSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnClearSchedule.Location = new System.Drawing.Point(565, 67);
+            this.btnClearSchedule.Name = "btnClearSchedule";
+            this.btnClearSchedule.Size = new System.Drawing.Size(76, 70);
+            this.btnClearSchedule.TabIndex = 36;
+            this.btnClearSchedule.Text = "Clear";
+            this.btnClearSchedule.UseVisualStyleBackColor = false;
+            this.btnClearSchedule.Click += new System.EventHandler(this.btnClearSchedule_Click);
+            // 
+            // pnlSavedSchedules
+            // 
+            this.pnlSavedSchedules.AutoScroll = true;
+            this.pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.pnlSavedSchedules.Location = new System.Drawing.Point(45, 161);
+            this.pnlSavedSchedules.Name = "pnlSavedSchedules";
+            this.pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
+            this.pnlSavedSchedules.TabIndex = 35;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(150, 120);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(88, 17);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "Remind me:";
+            // 
+            // cmbRemindMe
+            // 
+            this.cmbRemindMe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbRemindMe.DropDownHeight = 200;
+            this.cmbRemindMe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRemindMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbRemindMe.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbRemindMe.ForeColor = System.Drawing.Color.White;
+            this.cmbRemindMe.FormattingEnabled = true;
+            this.cmbRemindMe.IntegralHeight = false;
+            this.cmbRemindMe.Items.AddRange(new object[] {
+            "Do not remind me",
+            "5 Minutes before",
+            "10 Minutes before",
+            "15 Minutes before",
+            "30 Minutes before",
+            "1 Hour before",
+            "2 Hours before"});
+            this.cmbRemindMe.Location = new System.Drawing.Point(244, 113);
+            this.cmbRemindMe.MaxDropDownItems = 10;
+            this.cmbRemindMe.Name = "cmbRemindMe";
+            this.cmbRemindMe.Size = new System.Drawing.Size(201, 25);
+            this.cmbRemindMe.TabIndex = 33;
+            // 
             // btnSaveSchedule
             // 
             this.btnSaveSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
@@ -748,19 +810,20 @@ namespace SleepyTime_2._0
             this.btnSaveSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSaveSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnSaveSchedule.Location = new System.Drawing.Point(381, 110);
+            this.btnSaveSchedule.Location = new System.Drawing.Point(456, 67);
             this.btnSaveSchedule.Name = "btnSaveSchedule";
-            this.btnSaveSchedule.Size = new System.Drawing.Size(150, 28);
+            this.btnSaveSchedule.Size = new System.Drawing.Size(103, 70);
             this.btnSaveSchedule.TabIndex = 31;
-            this.btnSaveSchedule.Text = "Schedule";
+            this.btnSaveSchedule.Text = "Save";
             this.btnSaveSchedule.UseVisualStyleBackColor = false;
+            this.btnSaveSchedule.Click += new System.EventHandler(this.btnSaveSchedule_Click);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(128, 23);
+            this.label20.Location = new System.Drawing.Point(30, 18);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(170, 21);
             this.label20.TabIndex = 30;
@@ -781,7 +844,7 @@ namespace SleepyTime_2._0
             "Restart",
             "Sleep",
             "Lock"});
-            this.cmbScheduleTime.Location = new System.Drawing.Point(410, 71);
+            this.cmbScheduleTime.Location = new System.Drawing.Point(324, 68);
             this.cmbScheduleTime.MaxDropDownItems = 10;
             this.cmbScheduleTime.Name = "cmbScheduleTime";
             this.cmbScheduleTime.Size = new System.Drawing.Size(121, 29);
@@ -793,7 +856,7 @@ namespace SleepyTime_2._0
             this.cmbScheduleDate.CustomFormat = "dd/MM/yyyy";
             this.cmbScheduleDate.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbScheduleDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.cmbScheduleDate.Location = new System.Drawing.Point(267, 71);
+            this.cmbScheduleDate.Location = new System.Drawing.Point(181, 68);
             this.cmbScheduleDate.Name = "cmbScheduleDate";
             this.cmbScheduleDate.Size = new System.Drawing.Size(137, 29);
             this.cmbScheduleDate.TabIndex = 28;
@@ -803,7 +866,7 @@ namespace SleepyTime_2._0
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label19.Location = new System.Drawing.Point(407, 51);
+            this.label19.Location = new System.Drawing.Point(321, 48);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 16);
             this.label19.TabIndex = 26;
@@ -814,7 +877,7 @@ namespace SleepyTime_2._0
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label18.Location = new System.Drawing.Point(263, 50);
+            this.label18.Location = new System.Drawing.Point(177, 47);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(35, 16);
             this.label18.TabIndex = 25;
@@ -825,7 +888,7 @@ namespace SleepyTime_2._0
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label12.Location = new System.Drawing.Point(131, 48);
+            this.label12.Location = new System.Drawing.Point(45, 45);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(49, 16);
             this.label12.TabIndex = 21;
@@ -844,7 +907,7 @@ namespace SleepyTime_2._0
             "Restart",
             "Sleep",
             "Lock"});
-            this.cmbScheduleOperation.Location = new System.Drawing.Point(131, 71);
+            this.cmbScheduleOperation.Location = new System.Drawing.Point(45, 68);
             this.cmbScheduleOperation.Name = "cmbScheduleOperation";
             this.cmbScheduleOperation.Size = new System.Drawing.Size(129, 29);
             this.cmbScheduleOperation.TabIndex = 17;
@@ -1097,47 +1160,6 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
-            this.comboBox1.DropDownHeight = 200;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Shutdown",
-            "Restart",
-            "Sleep",
-            "Lock"});
-            this.comboBox1.Location = new System.Drawing.Point(254, 108);
-            this.comboBox1.MaxDropDownItems = 10;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 29);
-            this.comboBox1.TabIndex = 33;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(136, 114);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(110, 21);
-            this.label21.TabIndex = 34;
-            this.label21.Text = "Remind me:";
-            // 
-            // pnlSavedSchedules
-            // 
-            this.pnlSavedSchedules.AutoScroll = true;
-            this.pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
-            this.pnlSavedSchedules.Location = new System.Drawing.Point(45, 161);
-            this.pnlSavedSchedules.Name = "pnlSavedSchedules";
-            this.pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
-            this.pnlSavedSchedules.TabIndex = 35;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1272,7 +1294,8 @@ namespace SleepyTime_2._0
         private RoundedButton btnSaveSchedule;
         private System.Windows.Forms.Panel pnlSavedSchedules;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbRemindMe;
+        private RoundedButton btnClearSchedule;
     }
 }
 
