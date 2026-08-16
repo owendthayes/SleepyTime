@@ -826,6 +826,9 @@ namespace SleepyTime_2._0
 
         private void updateScheduleUI()
         {
+            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
+            string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
+
             pnlSavedSchedules.Controls.Clear();
 
             int y = 10;
@@ -833,16 +836,18 @@ namespace SleepyTime_2._0
             foreach (ScheduleItem item in scheduledItems)
             {
                 Panel row = new Panel();
+                
+                row.BackColor = Color.FromArgb(13, 15, 28);
 
-                row.Width = pnlSchedule.ClientSize.Width - 25;
-                row.Height = 60;
+                row.Width = pnlSavedSchedules.ClientSize.Width - 20;
+                row.Height = 40;
                 row.Location = new Point(10, y);
 
                 //add the controls here
 
                 Label lblAction = new Label
                 {
-                    Text = item.Action,
+                    Text = $"{operations[Convert.ToInt32(item.Action)]} - ",
                     Location = new Point(10, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
@@ -869,7 +874,7 @@ namespace SleepyTime_2._0
 
                 Label lblReminder = new Label
                 {
-                    Text = item.Reminder,
+                    Text = reminders[Convert.ToInt32(item.Reminder)],
                     Location = new Point(300, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
