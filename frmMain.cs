@@ -191,7 +191,7 @@ namespace SleepyTime_2._0
                     c.ForeColor = primaryAccent;                  
                 }
 
-                if(c is RoundedButton button)
+                if(c is RoundedButton button && c.Tag != "noColourChange")
                 {
                     button.BorderColor = primaryAccent;
                 }
@@ -212,6 +212,8 @@ namespace SleepyTime_2._0
                 }               
             }
 
+            lblTimeTitle.ForeColor = primaryAccent;
+            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
             btnStartCountdown.ForeColor = primaryAccent;
             btnSideBarSettings.PerformClick();
         }
@@ -506,8 +508,8 @@ namespace SleepyTime_2._0
                     btnClearTimer.Visible = false;
 
                     countdownStarted = true;
-                    btnStartCountdown.ForeColor = Color.Red;
-                    btnStartCountdown.BorderColor = Color.Red;
+                    btnStartCountdown.ForeColor = Color.FromArgb(247, 62, 62);
+                    btnStartCountdown.BorderColor = Color.FromArgb(247, 62, 62);
                     btnStartCountdown.Text = "Cancel";
 
                     txtHours.ReadOnly = true;
@@ -884,8 +886,8 @@ namespace SleepyTime_2._0
 
                 RoundedButton btnEditSchedule = new RoundedButton
                 {
-                    Text = "Edi",
-                    Location = new Point(440, 5),
+                    Text = "✎",
+                    Location = new Point(450, 5),
                     AutoSize = true,
                     ForeColor = primaryAccent,
                     BorderColor = primaryAccent,
@@ -896,15 +898,18 @@ namespace SleepyTime_2._0
 
                 RoundedButton btnDeleteSchedule = new RoundedButton
                 {
-                    Text = "Del",
+                    Text = "🗑",
                     Location = new Point(500, 5),
                     AutoSize = true,
-                    ForeColor = primaryAccent,
-                    BorderColor = primaryAccent,
+                    ForeColor = Color.FromArgb(247, 62, 62),
+                    BorderColor = Color.FromArgb(247, 62, 62),
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
-                    Height = 25
+                    Height = 25,
+                    Tag = "noColourChange"
                 };
+
+                btnDeleteSchedule.Click += btnDeleteSchedule_Click;
 
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblDate);
@@ -916,6 +921,41 @@ namespace SleepyTime_2._0
                 pnlSavedSchedules.Controls.Add(row);
                 y += row.Height + 5;
             }
+        }
+
+        private void btnDeleteSchedule_Click(object sender, EventArgs e)
+        {
+            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
+            string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
+
+            string[] data = new string[4];
+
+            RoundedButton clickedButton = (RoundedButton)sender;
+
+            Panel parentPanel = (Panel)clickedButton.Parent;
+
+            //Action
+            foreach (Control c in parentPanel.Controls)
+            {
+                if (c is Label)
+                {
+                    if (operations.Contains(c.Text))
+                    {
+                        data[0] = Array.IndexOf(operations, c.Text).ToString();
+                    }
+
+                    //get the DATE
+
+                    //get the TIME
+
+                    if(reminders.Contains(c.Text))
+                    {
+                        data[3] = Array.IndexOf(reminders, c.Text).ToString();
+                    };
+
+                }
+            }
+            MessageBox.Show($"Entry to be deleted - {data[0]}|{data[1]}|{data[2]}|{data[3]}");
         }
 
         private void updateScheduleFile()
@@ -968,6 +1008,8 @@ namespace SleepyTime_2._0
             cmbScheduleTime.SelectedIndex = 0;
             cmbScheduleDate.MinDate = DateTime.Today;
             cmbRemindMe.SelectedIndex = 0;
+
+            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;

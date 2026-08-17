@@ -46,7 +46,7 @@ namespace SleepyTime_2._0
             this.btnSideBarSettings = new System.Windows.Forms.Button();
             this.btnSidebarAbout = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTimeTitle = new System.Windows.Forms.Label();
             this.imgTimeAnimation = new System.Windows.Forms.PictureBox();
             this.pnlCountdown = new System.Windows.Forms.Panel();
             this.btnClearTimer = new SleepyTime_2._0.RoundedButton();
@@ -325,17 +325,17 @@ namespace SleepyTime_2._0
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             // 
-            // label2
+            // lblTimeTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
-            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label2.Location = new System.Drawing.Point(19, 377);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 16);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Current Time";
+            this.lblTimeTitle.AutoSize = true;
+            this.lblTimeTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.lblTimeTitle.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTimeTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.lblTimeTitle.Location = new System.Drawing.Point(19, 377);
+            this.lblTimeTitle.Name = "lblTimeTitle";
+            this.lblTimeTitle.Size = new System.Drawing.Size(91, 16);
+            this.lblTimeTitle.TabIndex = 20;
+            this.lblTimeTitle.Text = "Current Time";
             // 
             // imgTimeAnimation
             // 
@@ -812,15 +812,16 @@ namespace SleepyTime_2._0
             // btnClearSchedule
             // 
             this.btnClearSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
-            this.btnClearSchedule.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnClearSchedule.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.btnClearSchedule.FlatAppearance.BorderSize = 0;
             this.btnClearSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnClearSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnClearSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.btnClearSchedule.Location = new System.Drawing.Point(565, 67);
             this.btnClearSchedule.Name = "btnClearSchedule";
             this.btnClearSchedule.Size = new System.Drawing.Size(76, 70);
             this.btnClearSchedule.TabIndex = 36;
+            this.btnClearSchedule.Tag = "noColourChange";
             this.btnClearSchedule.Text = "Reset";
             this.btnClearSchedule.UseVisualStyleBackColor = false;
             this.btnClearSchedule.Click += new System.EventHandler(this.btnClearSchedule_Click);
@@ -1261,7 +1262,7 @@ namespace SleepyTime_2._0
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.imgTimeAnimation);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblTimeTitle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnExit);
@@ -1329,7 +1330,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Button btnSideBarSettings;
         private System.Windows.Forms.Button btnSidebarAbout;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTimeTitle;
         private System.Windows.Forms.PictureBox imgTimeAnimation;
         private System.Windows.Forms.Panel pnlCountdown;
         private System.Windows.Forms.Label label4;
