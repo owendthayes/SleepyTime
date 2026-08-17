@@ -838,7 +838,7 @@ namespace SleepyTime_2._0
             {
                 Panel row = new Panel();
                 
-                row.BackColor = Color.FromArgb(13, 15, 28);
+                row.BackColor = Color.FromArgb(25, 25, 41);
 
                 row.Width = pnlSavedSchedules.ClientSize.Width - 40;
                 row.Height = 40;

@@ -821,14 +821,14 @@ namespace SleepyTime_2._0
             this.btnClearSchedule.Name = "btnClearSchedule";
             this.btnClearSchedule.Size = new System.Drawing.Size(76, 70);
             this.btnClearSchedule.TabIndex = 36;
-            this.btnClearSchedule.Text = "Clear";
+            this.btnClearSchedule.Text = "Reset";
             this.btnClearSchedule.UseVisualStyleBackColor = false;
             this.btnClearSchedule.Click += new System.EventHandler(this.btnClearSchedule_Click);
             // 
             // pnlSavedSchedules
             // 
             this.pnlSavedSchedules.AutoScroll = true;
-            this.pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
             this.pnlSavedSchedules.Location = new System.Drawing.Point(45, 171);
             this.pnlSavedSchedules.Name = "pnlSavedSchedules";
             this.pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
