@@ -57,13 +57,14 @@ namespace SleepyTime_2._0
             InitializeComponent();
 
             readSettingsFile();
+            //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
+            getAccentColour();
+            applyAccentColour(primaryAccent, secondaryAccent);
+
             readScheduleFile();
             populateTimesComboBox();
             updateScheduleUI();
 
-            //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
-            getAccentColour();
-            applyAccentColour(primaryAccent, secondaryAccent);
 
             //further options for rounded form borders
             this.FormBorderStyle = FormBorderStyle.None;
@@ -866,7 +867,7 @@ namespace SleepyTime_2._0
                 Label lblTime = new Label
                 {
                     Text = item.Time.ToString(@"hh\:mm"),
-                    Location = new Point(250, 10),
+                    Location = new Point(225, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("JetBrains Mono", 12),
@@ -875,16 +876,42 @@ namespace SleepyTime_2._0
                 Label lblReminder = new Label
                 {
                     Text = reminders[Convert.ToInt32(item.Reminder)],
-                    Location = new Point(350, 10),
+                    Location = new Point(310, 10),
                     AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("JetBrains Mono", 12),
+                };
+
+                RoundedButton btnEditSchedule = new RoundedButton
+                {
+                    Text = "Edi",
+                    Location = new Point(440, 5),
+                    AutoSize = true,
+                    ForeColor = primaryAccent,
+                    BorderColor = primaryAccent,
+                    Font = new Font("JetBrains Mono", 12),
+                    Width = 25,
+                    Height = 25
+                };
+
+                RoundedButton btnDeleteSchedule = new RoundedButton
+                {
+                    Text = "Del",
+                    Location = new Point(500, 5),
+                    AutoSize = true,
+                    ForeColor = primaryAccent,
+                    BorderColor = primaryAccent,
+                    Font = new Font("JetBrains Mono", 12),
+                    Width = 25,
+                    Height = 25
                 };
 
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblDate);
                 row.Controls.Add(lblTime);
                 row.Controls.Add(lblReminder);
+                row.Controls.Add(btnEditSchedule);
+                row.Controls.Add(btnDeleteSchedule);
 
                 pnlSavedSchedules.Controls.Add(row);
                 y += row.Height + 5;
