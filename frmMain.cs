@@ -824,7 +824,10 @@ namespace SleepyTime_2._0
 
         private void btnClearSchedule_Click(object sender, EventArgs e)
         {
-
+            cmbScheduleOperation.SelectedIndex = 0;
+            cmbScheduleTime.SelectedIndex = 0;
+            cmbRemindMe.SelectedIndex = 0;
+            cmbScheduleDate.Value = DateTime.Today;
         }
 
         private void updateScheduleUI()
@@ -1014,7 +1017,7 @@ namespace SleepyTime_2._0
 
             ScheduleItem newItem = new ScheduleItem(
                 cmbScheduleOperation.GetItemText(cmbScheduleOperation.SelectedIndex),
-                cmbScheduleDate.Value,
+                cmbScheduleDate.Value.Date,
                 scheduleTime,
                 cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex)
                 );
