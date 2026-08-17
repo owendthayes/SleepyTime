@@ -942,20 +942,49 @@ namespace SleepyTime_2._0
                     if (operations.Contains(c.Text))
                     {
                         data[0] = Array.IndexOf(operations, c.Text).ToString();
-                    }
+                    };
 
                     //get the DATE
+                    if (DateTime.TryParseExact(
+                    c.Text,
+                    "dd/MM/yyyy",
+                    null,
+                    System.Globalization.DateTimeStyles.None,
+                    out DateTime date))
+                    {
+                        data[1] = date.ToString();
+                    };
 
                     //get the TIME
+                    if(TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
+                    {
+                        data[2] = timeDel.ToString();
+                    };
 
-                    if(reminders.Contains(c.Text))
+                    if (reminders.Contains(c.Text))
                     {
                         data[3] = Array.IndexOf(reminders, c.Text).ToString();
                     };
 
                 }
             }
-            MessageBox.Show($"Entry to be deleted - {data[0]}|{data[1]}|{data[2]}|{data[3]}");
+
+            //CURRENT ISSUE IS THAT WHEN ADDING IT SAVES THE CURRENT TIME WITH THE DATE
+
+            string deletionTarget = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
+
+            foreach (ScheduleItem sI in scheduledItems)
+            {
+                MessageBox.Show($"TARGET - {deletionTarget}\nCURRENT - {sI.toString()}\nMATCH - {sI.toString().Equals(deletionTarget)}");
+                if (sI.toString().Equals(deletionTarget))
+                {
+                    scheduledItems.Remove(sI);
+                    updateScheduleFile();
+                    updateScheduleUI();
+                    return;
+                }
+            }
+  
         }
 
         private void updateScheduleFile()

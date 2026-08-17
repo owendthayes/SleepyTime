@@ -20,5 +20,10 @@ namespace SleepyTime_2._0
             Time = time;
             Reminder = reminder;
         }
+
+        public string toString()
+        {
+            return $"{Action}|{Date}|{Time}|{Reminder}";
+        }
     }
 }
