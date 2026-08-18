@@ -845,7 +845,7 @@ namespace SleepyTime_2._0
                 
                 row.BackColor = Color.FromArgb(25, 25, 41);
 
-                row.Width = pnlSavedSchedules.ClientSize.Width - 40;
+                row.Width = pnlSavedSchedules.Width - 40;
                 row.Height = 40;
                 row.Location = new Point(10, y);
 
@@ -933,61 +933,67 @@ namespace SleepyTime_2._0
 
             string[] data = new string[4];
 
-            RoundedButton clickedButton = (RoundedButton)sender;
-
-            Panel parentPanel = (Panel)clickedButton.Parent;
-
-            //Action
-            foreach (Control c in parentPanel.Controls)
+            DialogResult exitBox = MessageBox.Show("Delete this Action?", "Delete", MessageBoxButtons.YesNo);
             {
-                if (c is Label)
+                if (exitBox == DialogResult.Yes)
                 {
-                    if (operations.Contains(c.Text))
-                    {
-                        data[0] = Array.IndexOf(operations, c.Text).ToString();
-                    };
+                    RoundedButton clickedButton = (RoundedButton)sender;
 
-                    //get the DATE
-                    if (DateTime.TryParseExact(
-                    c.Text,
-                    "dd/MM/yyyy",
-                    null,
-                    System.Globalization.DateTimeStyles.None,
-                    out DateTime date))
-                    {
-                        data[1] = date.ToString();
-                    };
+                    Panel parentPanel = (Panel)clickedButton.Parent;
 
-                    //get the TIME
-                    if(TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
+                    //Action
+                    foreach (Control c in parentPanel.Controls)
                     {
-                        data[2] = timeDel.ToString();
-                    };
+                        if (c is Label)
+                        {
+                            if (operations.Contains(c.Text))
+                            {
+                                data[0] = Array.IndexOf(operations, c.Text).ToString();
+                            };
 
-                    if (reminders.Contains(c.Text))
+                            //get the DATE
+                            if (DateTime.TryParseExact(
+                            c.Text,
+                            "dd/MM/yyyy",
+                            null,
+                            System.Globalization.DateTimeStyles.None,
+                            out DateTime date))
+                            {
+                                data[1] = date.ToString();
+                            };
+
+                            //get the TIME
+                            if (TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
+                            {
+                                data[2] = timeDel.ToString();
+                            };
+
+                            if (reminders.Contains(c.Text))
+                            {
+                                data[3] = Array.IndexOf(reminders, c.Text).ToString();
+                            };
+
+                        }
+                    }
+
+                    //CURRENT ISSUE IS THAT WHEN ADDING IT SAVES THE CURRENT TIME WITH THE DATE
+
+                    string deletionTarget = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
+
+                    foreach (ScheduleItem sI in scheduledItems)
                     {
-                        data[3] = Array.IndexOf(reminders, c.Text).ToString();
-                    };
-
+                        //DEBUGGING testing deletion
+                        //MessageBox.Show($"TARGET - {deletionTarget}\nCURRENT - {sI.toString()}\nMATCH - {sI.toString().Equals(deletionTarget)}");
+                        if (sI.toString().Equals(deletionTarget))
+                        {
+                            scheduledItems.Remove(sI);
+                            updateScheduleFile();
+                            updateScheduleUI();
+                            return;
+                        }
+                    }
                 }
             }
-
-            //CURRENT ISSUE IS THAT WHEN ADDING IT SAVES THE CURRENT TIME WITH THE DATE
-
-            string deletionTarget = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
-
-            foreach (ScheduleItem sI in scheduledItems)
-            {
-                MessageBox.Show($"TARGET - {deletionTarget}\nCURRENT - {sI.toString()}\nMATCH - {sI.toString().Equals(deletionTarget)}");
-                if (sI.toString().Equals(deletionTarget))
-                {
-                    scheduledItems.Remove(sI);
-                    updateScheduleFile();
-                    updateScheduleUI();
-                    return;
-                }
-            }
-  
         }
 
         private void updateScheduleFile()
