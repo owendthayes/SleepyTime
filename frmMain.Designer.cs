@@ -94,7 +94,7 @@ namespace SleepyTime_2._0
             this.pnlPresets = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlSettings = new System.Windows.Forms.Panel();
-            this.toggleButton1 = new SleepyTime_2._0.Custom_Controls.ToggleButton();
+            this.tglDarkMode = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             this.label26 = new System.Windows.Forms.Label();
             this.tglAOT = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             this.label17 = new System.Windows.Forms.Label();
@@ -1001,7 +1001,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
-            this.pnlSettings.Controls.Add(this.toggleButton1);
+            this.pnlSettings.Controls.Add(this.tglDarkMode);
             this.pnlSettings.Controls.Add(this.label26);
             this.pnlSettings.Controls.Add(this.tglAOT);
             this.pnlSettings.Controls.Add(this.label17);
@@ -1013,25 +1013,25 @@ namespace SleepyTime_2._0
             this.pnlSettings.Size = new System.Drawing.Size(673, 385);
             this.pnlSettings.TabIndex = 25;
             // 
-            // toggleButton1
+            // tglDarkMode
             // 
-            this.toggleButton1.Location = new System.Drawing.Point(224, 62);
-            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
-            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.toggleButton1.OnBackColor = System.Drawing.Color.Purple;
-            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.toggleButton1.Size = new System.Drawing.Size(74, 22);
-            this.toggleButton1.TabIndex = 23;
-            this.toggleButton1.UseVisualStyleBackColor = true;
+            this.tglDarkMode.Location = new System.Drawing.Point(229, 105);
+            this.tglDarkMode.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tglDarkMode.Name = "tglDarkMode";
+            this.tglDarkMode.OffBackColor = System.Drawing.Color.Gray;
+            this.tglDarkMode.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.tglDarkMode.OnBackColor = System.Drawing.Color.Purple;
+            this.tglDarkMode.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.tglDarkMode.Size = new System.Drawing.Size(74, 22);
+            this.tglDarkMode.TabIndex = 23;
+            this.tglDarkMode.UseVisualStyleBackColor = true;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(25, 61);
+            this.label26.Location = new System.Drawing.Point(30, 104);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(140, 21);
             this.label26.TabIndex = 22;
@@ -1039,7 +1039,7 @@ namespace SleepyTime_2._0
             // 
             // tglAOT
             // 
-            this.tglAOT.Location = new System.Drawing.Point(224, 93);
+            this.tglAOT.Location = new System.Drawing.Point(229, 69);
             this.tglAOT.MinimumSize = new System.Drawing.Size(45, 22);
             this.tglAOT.Name = "tglAOT";
             this.tglAOT.OffBackColor = System.Drawing.Color.Gray;
@@ -1056,7 +1056,7 @@ namespace SleepyTime_2._0
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(25, 95);
+            this.label17.Location = new System.Drawing.Point(30, 71);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(140, 21);
             this.label17.TabIndex = 20;
@@ -1278,8 +1278,8 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlSettings);
+            this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlCountdown);
             this.Controls.Add(this.pnlAbout);
             this.Controls.Add(this.pnlPresets);
@@ -1396,7 +1396,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label26;
-        private Custom_Controls.ToggleButton toggleButton1;
+        private Custom_Controls.ToggleButton tglDarkMode;
         private System.Windows.Forms.Label label27;
     }
 }

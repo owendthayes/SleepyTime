@@ -47,8 +47,12 @@ namespace SleepyTime_2._0
         private string accentColour = "purple";
         private Color primaryAccent;
         private Color secondaryAccent;
+        private string mainTheme = "dark";
 
-            //ALWAYS ON TOP
+        Color primaryTheme;
+        Color secondaryTheme;
+
+        //ALWAYS ON TOP
         private bool formAOT = false;
 
 
@@ -64,6 +68,8 @@ namespace SleepyTime_2._0
             readScheduleFile();
             populateTimesComboBox();
             updateScheduleUI();
+
+            applyDarkMode(mainTheme);
 
 
             //further options for rounded form borders
@@ -147,7 +153,8 @@ namespace SleepyTime_2._0
                 File.WriteAllLines("Settings.txt", new[]
                 {
                     "purple",
-                    "false"
+                    "false",
+                    "dark"
                 });
                 //settingsFile = Path.GetFullPath("Settings.txt");
             }
@@ -180,6 +187,51 @@ namespace SleepyTime_2._0
 
             tglAOT.Checked = bool.Parse(settings[1]);
             this.TopMost = bool.Parse(settings[1]);
+
+            tglDarkMode.Checked = bool.Parse(settings[2]);
+            switch (settings[2])
+            {
+                case "false":
+                    mainTheme = "light";
+                    break;
+
+                case "true":
+                    mainTheme = "dark";
+                    break;
+            }
+
+            applyDarkMode(mainTheme);
+        }
+
+        private void applyDarkMode(string mode)
+        {
+            switch (mode)
+            {
+                case "dark":
+                    primaryTheme = Color.FromArgb(13, 15, 28);
+                    secondaryTheme = Color.FromArgb(25, 25, 41);
+                    break;
+
+                case "light":
+                    primaryTheme = Color.Gainsboro;
+                    secondaryTheme = Color.DarkGray;
+                    break;
+            }
+
+            //apply the main and secondary theme to everything on the form. EVERYTHING.
+            MessageBox.Show($"applying {mode} theme");
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.Gainsboro)
+                {
+                    c.BackColor = primaryTheme;
+                }
+                else if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.DarkGray)
+                {
+                    c.BackColor = secondaryTheme;
+                }
+            }
+
         }
 
         private void applyAccentColour(Color accentColour, Color secondaryAccent)
@@ -814,11 +866,25 @@ namespace SleepyTime_2._0
 
             this.TopMost = tglAOT.Checked;
 
+            switch (tglDarkMode.Checked)
+            {
+                case true:
+                    mainTheme = "dark";
+                    break;
+
+                case false:
+                    mainTheme = "light";
+                    break;
+            }
+
+            applyDarkMode(mainTheme);
+
             //save settings
             File.WriteAllLines("Settings.txt", new[]
             {
                 accentColour,
-                tglAOT.Checked.ToString()
+                tglAOT.Checked.ToString(),
+                tglDarkMode.Checked.ToString()
             });
         }
 
@@ -913,6 +979,7 @@ namespace SleepyTime_2._0
                 };
 
                 btnDeleteSchedule.Click += btnDeleteSchedule_Click;
+                btnEditSchedule.Click += btnEditSchedule_Click;
 
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblDate);
@@ -924,6 +991,11 @@ namespace SleepyTime_2._0
                 pnlSavedSchedules.Controls.Add(row);
                 y += row.Height + 5;
             }
+        }
+
+        private void btnEditSchedule_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
@@ -941,7 +1013,6 @@ namespace SleepyTime_2._0
 
                     Panel parentPanel = (Panel)clickedButton.Parent;
 
-                    //Action
                     foreach (Control c in parentPanel.Controls)
                     {
                         if (c is Label)
@@ -975,8 +1046,6 @@ namespace SleepyTime_2._0
 
                         }
                     }
-
-                    //CURRENT ISSUE IS THAT WHEN ADDING IT SAVES THE CURRENT TIME WITH THE DATE
 
                     string deletionTarget = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
 
@@ -1035,6 +1104,11 @@ namespace SleepyTime_2._0
         }
 
         private void tglAOT_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imgHeaderDivider_Click(object sender, EventArgs e)
         {
 
         }
