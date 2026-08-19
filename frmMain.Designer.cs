@@ -1278,8 +1278,8 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlSchedule);
+            this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlCountdown);
             this.Controls.Add(this.pnlAbout);
             this.Controls.Add(this.pnlPresets);

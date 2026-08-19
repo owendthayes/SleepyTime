@@ -993,9 +993,63 @@ namespace SleepyTime_2._0
             }
         }
 
+
+
         private void btnEditSchedule_Click(object sender, EventArgs e)
         {
+            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
+            string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
 
+            string[] data = new string[4];
+
+            RoundedButton clickedButton = (RoundedButton)sender;
+
+            Panel parentPanel = (Panel)clickedButton.Parent;
+
+            foreach (Control c in parentPanel.Controls)
+            {
+                if (c is Label)
+                {
+                    if (operations.Contains(c.Text))
+                    {
+                        data[0] = Array.IndexOf(operations, c.Text).ToString();
+                    };
+
+                    //get the DATE
+                    if (DateTime.TryParseExact(
+                    c.Text,
+                    "dd/MM/yyyy",
+                    null,
+                    System.Globalization.DateTimeStyles.None,
+                    out DateTime date))
+                    {
+                        data[1] = date.ToString();
+                    };
+
+                    //get the TIME
+                    if (TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
+                    {
+                        data[2] = timeDel.ToString();
+                    };
+
+                    if (reminders.Contains(c.Text))
+                    {
+                        data[3] = Array.IndexOf(reminders, c.Text).ToString();
+                    };
+
+                }
+            }
+
+            //located the correct target saved item.
+            string editTargett = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
+
+            //load the option boxes with the corresponding data.
+            //cmbScheduleOperation.SelectedIndex = data[0];
+            //cmbScheduleDate.Value = data[1];
+            //cmbScheduleTime.Text = data[2];
+            //cmbRemindMe.SelectedIndex = data[3];
+
+            //nevermind this doesnt work im confused, ill fix this later.
         }
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
