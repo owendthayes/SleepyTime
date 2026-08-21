@@ -219,7 +219,7 @@ namespace SleepyTime_2._0
             }
 
             //apply the main and secondary theme to everything on the form. EVERYTHING.
-            MessageBox.Show($"applying {mode} theme");
+            //MessageBox.Show($"applying {mode} theme");
             foreach (Control c in GetAllControls(this))
             {
                 if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.Gainsboro)
@@ -1041,15 +1041,20 @@ namespace SleepyTime_2._0
             }
 
             //located the correct target saved item.
-            string editTargett = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
+            TimeSpan editTime = TimeSpan.Parse(data[2]);
+            string formattedTime = editTime.ToString(@"hh\:mm");
+            
+            string editTargett = $"{data[0]}|{data[1]}|{formattedTime}|{data[3]}";
 
             //load the option boxes with the corresponding data.
-            //cmbScheduleOperation.SelectedIndex = data[0];
-            //cmbScheduleDate.Value = data[1];
-            //cmbScheduleTime.Text = data[2];
-            //cmbRemindMe.SelectedIndex = data[3];
+            cmbScheduleOperation.SelectedIndex = Convert.ToInt32(data[0]);
+            cmbScheduleDate.Value = DateTime.ParseExact(data[1], "dd/MM/yyyy HH:mm:ss", null);
+            cmbScheduleTime.SelectedIndex = cmbScheduleTime.Items.IndexOf(formattedTime);
+            cmbRemindMe.SelectedIndex = Convert.ToInt32(data[3]);
 
             //nevermind this doesnt work im confused, ill fix this later.
+
+            //use edit target to store the old schedule, create a new saved item and overwrite the old one with the new one in the list before writing to file again.
         }
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
