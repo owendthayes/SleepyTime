@@ -55,6 +55,8 @@ namespace SleepyTime_2._0
         //ALWAYS ON TOP
         private bool formAOT = false;
 
+        string editTarget;
+
 
         public frmMain()
         {
@@ -1051,7 +1053,7 @@ namespace SleepyTime_2._0
             TimeSpan editTime = TimeSpan.Parse(data[2]);
             string formattedTime = editTime.ToString(@"hh\:mm");
             
-            string editTargett = $"{data[0]}|{data[1]}|{formattedTime}|{data[3]}";
+            editTarget = $"{data[0]}|{data[1]}|{formattedTime}|{data[3]}";
 
             //load the option boxes with the corresponding data.
             cmbScheduleOperation.SelectedIndex = Convert.ToInt32(data[0]);
@@ -1176,11 +1178,38 @@ namespace SleepyTime_2._0
             
             else if (btnSaveSchedule.Text == "Update Schedule")
             {
+                string[] data = editTarget.Split('|');
                 //update the item instead of creating a new one
 
+                //first find the current item in the list and update it. use edittarget??
+                //MessageBox.Show(editTarget);
+                ScheduleItem target = new ScheduleItem(
+                   data[0],
+                   DateTime.ParseExact(data[1], "dd/MM/yyyy HH:mm:ss", null),
+                   TimeSpan.Parse(data[2]),
+                   data[3]);
 
-            }
-            
+                foreach (ScheduleItem item in scheduledItems)
+                {
+                    //MessageBox.Show($"Current Item: {item.toString()}\nTarget Item: {target.toString()}");
+                    if (item.Action == target.Action
+                        && item.Date == target.Date
+                        && item.Time == target.Time
+                        && item.Reminder == target.Reminder)
+                    {
+                        //use the values in the combo boxes etc to save the new item.
+
+
+                        //scheduledItems[scheduledItems.IndexOf(item)] = target;
+                        updateScheduleFile();
+                        updateScheduleUI();
+
+                        btnSaveSchedule.Text = "Save";
+                        pnlSavedSchedules.Enabled = true;
+                        return;
+                    }
+                }
+            } 
         }
 
         private void tglAOT_CheckedChanged(object sender, EventArgs e)
