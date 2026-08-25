@@ -1197,12 +1197,24 @@ namespace SleepyTime_2._0
                         && item.Time == target.Time
                         && item.Reminder == target.Reminder)
                     {
-                        //use the values in the combo boxes etc to save the new item.
+                        //read the values on the form into a new ScheduleItem
+                        ScheduleItem updated = new ScheduleItem(
+                            cmbScheduleOperation.SelectedIndex.ToString(),
+                            cmbScheduleDate.Value,
+                            TimeSpan.Parse(cmbScheduleTime.Text),
+                            cmbRemindMe.SelectedIndex.ToString()
+                            );
 
+                        //MessageBox.Show(updated.toString());
 
-                        //scheduledItems[scheduledItems.IndexOf(item)] = target;
+                        //add the new ScheduleItem to the list
+                        scheduledItems[scheduledItems.IndexOf(item)] = updated;
+
+                        //update the file and UI to fully save.
                         updateScheduleFile();
                         updateScheduleUI();
+
+                        MessageBox.Show("Schedule Updated");
 
                         btnSaveSchedule.Text = "Save";
                         pnlSavedSchedules.Enabled = true;
