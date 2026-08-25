@@ -817,9 +817,9 @@ namespace SleepyTime_2._0
             this.btnClearSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnClearSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
-            this.btnClearSchedule.Location = new System.Drawing.Point(565, 67);
+            this.btnClearSchedule.Location = new System.Drawing.Point(560, 67);
             this.btnClearSchedule.Name = "btnClearSchedule";
-            this.btnClearSchedule.Size = new System.Drawing.Size(76, 70);
+            this.btnClearSchedule.Size = new System.Drawing.Size(81, 70);
             this.btnClearSchedule.TabIndex = 36;
             this.btnClearSchedule.Tag = "noColourChange";
             this.btnClearSchedule.Text = "Reset";
@@ -878,7 +878,7 @@ namespace SleepyTime_2._0
             this.btnSaveSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSaveSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnSaveSchedule.Location = new System.Drawing.Point(456, 67);
+            this.btnSaveSchedule.Location = new System.Drawing.Point(451, 67);
             this.btnSaveSchedule.Name = "btnSaveSchedule";
             this.btnSaveSchedule.Size = new System.Drawing.Size(103, 70);
             this.btnSaveSchedule.TabIndex = 31;

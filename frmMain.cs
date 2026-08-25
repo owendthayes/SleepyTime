@@ -890,6 +890,13 @@ namespace SleepyTime_2._0
 
         private void btnClearSchedule_Click(object sender, EventArgs e)
         {
+            if (btnClearSchedule.Text == "Cancel")
+            {
+                //cancel the saving operations
+                btnClearSchedule.Text = "Reset";
+                pnlSavedSchedules.Enabled = true;
+            }
+
             cmbScheduleOperation.SelectedIndex = 0;
             cmbScheduleTime.SelectedIndex = 0;
             cmbRemindMe.SelectedIndex = 0;
@@ -1052,9 +1059,12 @@ namespace SleepyTime_2._0
             cmbScheduleTime.SelectedIndex = cmbScheduleTime.Items.IndexOf(formattedTime);
             cmbRemindMe.SelectedIndex = Convert.ToInt32(data[3]);
 
-            //nevermind this doesnt work im confused, ill fix this later.
-
             //use edit target to store the old schedule, create a new saved item and overwrite the old one with the new one in the list before writing to file again.
+
+            pnlSavedSchedules.Enabled = false;
+
+            btnClearSchedule.Text = "Cancel";
+            btnSaveSchedule.Text = "Update Schedule";
         }
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
@@ -1141,25 +1151,36 @@ namespace SleepyTime_2._0
         {
             TimeSpan scheduleTime;
 
-            if (!TimeSpan.TryParse(
+            if (btnSaveSchedule.Text == "Save")
+            {
+                if (!TimeSpan.TryParse(
                 cmbScheduleTime.GetItemText(cmbScheduleTime.SelectedItem),
                 out scheduleTime))
-            {
-                MessageBox.Show("Invalid time selected");
-                return;
+                {
+                    MessageBox.Show("Invalid time selected");
+                    return;
+                }
+
+                ScheduleItem newItem = new ScheduleItem(
+                    cmbScheduleOperation.GetItemText(cmbScheduleOperation.SelectedIndex),
+                    cmbScheduleDate.Value.Date,
+                    scheduleTime,
+                    cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex)
+                    );
+
+                scheduledItems.Add(newItem);
+
+                updateScheduleFile();
+                updateScheduleUI();
             }
+            
+            else if (btnSaveSchedule.Text == "Update Schedule")
+            {
+                //update the item instead of creating a new one
 
-            ScheduleItem newItem = new ScheduleItem(
-                cmbScheduleOperation.GetItemText(cmbScheduleOperation.SelectedIndex),
-                cmbScheduleDate.Value.Date,
-                scheduleTime,
-                cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex)
-                );
 
-            scheduledItems.Add(newItem);
-
-            updateScheduleFile();
-            updateScheduleUI();
+            }
+            
         }
 
         private void tglAOT_CheckedChanged(object sender, EventArgs e)
