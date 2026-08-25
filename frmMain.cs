@@ -1153,6 +1153,37 @@ namespace SleepyTime_2._0
         {
             TimeSpan scheduleTime;
 
+            foreach (ScheduleItem item in scheduledItems)
+            {
+                //MessageBox.Show($"Saved: {item.Action}|{item.Date}|{item.Time}|{item.Reminder}\nNew: {cmbScheduleOperation.SelectedIndex.ToString()}|{cmbScheduleDate.Value}|{TimeSpan.Parse(cmbScheduleTime.Text)}|{cmbRemindMe.SelectedIndex.ToString()}");
+                if (item.Action == cmbScheduleOperation.SelectedIndex.ToString()
+                    && item.Date == cmbScheduleDate.Value.Date
+                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Text)
+                    && item.Reminder == cmbRemindMe.SelectedIndex.ToString())
+                {
+                    MessageBox.Show("This item already exists");
+                    return;
+                }
+
+                else if (item.Date == cmbScheduleDate.Value.Date
+                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Text))
+                {
+                    MessageBox.Show("Item already scheduled for this date/time");
+                    return;
+                }
+            }
+
+            DateTime validDate = new DateTime(cmbScheduleDate.Value.Date.Year, cmbScheduleDate.Value.Month, cmbScheduleDate.Value.Day);
+            TimeSpan validTime = TimeSpan.Parse(cmbScheduleTime.Text);
+
+            DateTime validationDate = validDate.Date + validTime;
+
+            if (validationDate < DateTime.Now)
+            {
+                MessageBox.Show("This time has already passed");
+                return;
+            }
+
             if (btnSaveSchedule.Text == "Save")
             {
                 if (!TimeSpan.TryParse(
