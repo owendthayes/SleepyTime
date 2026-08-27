@@ -325,8 +325,36 @@ namespace SleepyTime_2._0
             lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
             imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
 
-        }
+            if (scheduledItems.Count > 0)
+            {
+                ScheduleItem soonest = scheduledItems[0];
 
+                //CALCULATE REMINDER HERE.
+
+                if (DateTime.Now.Date == soonest.Date && DateTime.Now.TimeOfDay == soonest.Time)
+                {
+                    switch (soonest.Action)
+                    {
+                        case "0": // SHUTDOWN
+                            Process.Start("Shutdown", "/s");
+                            break;
+
+                        case "1": // RESTART
+                            Process.Start("Shutdown", "/r");
+                            break;
+
+                        case "2": // SLEEP
+                            Application.SetSuspendState(PowerState.Suspend, true, true);
+                            break;
+
+                        case "3": // LOCK
+                            Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                            break;
+                    }
+                    //DELETE SOONEST AFTER IT HAS OCCURRED.
+                }
+            }         
+        }
 
         //drag and drop functionality for header of form.
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
@@ -914,7 +942,6 @@ namespace SleepyTime_2._0
 
             int y = 10;
 
-            //TODO: sort the items by date, closest first.
             scheduledItems = scheduledItems
                 .OrderBy(item => item.Date.Date + item.Time)
                 .ToList();
