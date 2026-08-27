@@ -914,6 +914,11 @@ namespace SleepyTime_2._0
 
             int y = 10;
 
+            //TODO: sort the items by date, closest first.
+            scheduledItems = scheduledItems
+                .OrderBy(item => item.Date.Date + item.Time)
+                .ToList();
+
             foreach (ScheduleItem item in scheduledItems)
             {
                 Panel row = new Panel();
