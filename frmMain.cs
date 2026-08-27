@@ -329,8 +329,8 @@ namespace SleepyTime_2._0
             {
                 ScheduleItem soonest = scheduledItems[0];
 
-                //CALCULATE REMINDER HERE.
-
+                //CALCULATE REMINDER HERE THIS NEEDS MORE WORK AS IT WILL ONLY CHECK THE SOONEST, NOT ALL.
+                sendReminderNotification(soonest.Reminder.ToString());
               
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
@@ -355,6 +355,33 @@ namespace SleepyTime_2._0
                     //DELETE SOONEST AFTER IT HAS OCCURRED.
                 }
             }         
+        }
+
+        private void sendReminderNotification(string reminder)
+        {
+            switch (reminder)
+            {
+                case "0": // no reminder
+                    break;
+
+                case "1": // 5 mins
+                    break;
+
+                case "2": // 10 mins
+                    break;
+
+                case "3": // 15 mins
+                    break;
+
+                case "4": // 30 mins
+                    break;
+
+                case "5": // 1 hr
+                    break;
+
+                case "6": // 2 hr
+                    break;
+            }
         }
 
         //drag and drop functionality for header of form.
