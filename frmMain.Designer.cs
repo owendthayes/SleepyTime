@@ -114,6 +114,7 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -732,6 +733,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSchedule
             // 
+            this.pnlSchedule.Controls.Add(this.label2);
             this.pnlSchedule.Controls.Add(this.label27);
             this.pnlSchedule.Controls.Add(this.label25);
             this.pnlSchedule.Controls.Add(this.label24);
@@ -1255,6 +1257,17 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label2.Location = new System.Drawing.Point(276, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(385, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "*SleepyTime must be open for scheduled actons to occur";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1398,6 +1411,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label26;
         private Custom_Controls.ToggleButton tglDarkMode;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -331,7 +331,8 @@ namespace SleepyTime_2._0
 
                 //CALCULATE REMINDER HERE.
 
-                if (DateTime.Now.Date == soonest.Date && DateTime.Now.TimeOfDay == soonest.Time)
+              
+                if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
                     switch (soonest.Action)
                     {
