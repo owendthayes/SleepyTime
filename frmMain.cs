@@ -244,6 +244,7 @@ namespace SleepyTime_2._0
                 {
                     c.BackColor = secondaryTheme;
                 }
+
             }
 
             this.BackColor = primaryTheme;

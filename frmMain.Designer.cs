@@ -74,7 +74,6 @@ namespace SleepyTime_2._0
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSchedule = new System.Windows.Forms.Panel();
-            this.lblSavedItems = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -83,6 +82,7 @@ namespace SleepyTime_2._0
             this.label22 = new System.Windows.Forms.Label();
             this.btnClearSchedule = new SleepyTime_2._0.RoundedButton();
             this.pnlSavedSchedules = new System.Windows.Forms.Panel();
+            this.lblSavedItems = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbRemindMe = new System.Windows.Forms.ComboBox();
             this.btnSaveSchedule = new SleepyTime_2._0.RoundedButton();
@@ -383,7 +383,7 @@ namespace SleepyTime_2._0
             // 
             // btnClearTimer
             // 
-            this.btnClearTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnClearTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnClearTimer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnClearTimer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearTimer.FlatAppearance.BorderSize = 0;
@@ -400,7 +400,7 @@ namespace SleepyTime_2._0
             // 
             // roundedButton5
             // 
-            this.roundedButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.roundedButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.roundedButton5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.roundedButton5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundedButton5.FlatAppearance.BorderSize = 0;
@@ -417,7 +417,7 @@ namespace SleepyTime_2._0
             // 
             // btnQuick2
             // 
-            this.btnQuick2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnQuick2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnQuick2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuick2.FlatAppearance.BorderSize = 0;
@@ -434,7 +434,7 @@ namespace SleepyTime_2._0
             // 
             // btnQuick1
             // 
-            this.btnQuick1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnQuick1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnQuick1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuick1.FlatAppearance.BorderSize = 0;
@@ -451,7 +451,7 @@ namespace SleepyTime_2._0
             // 
             // btnQuick30
             // 
-            this.btnQuick30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnQuick30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnQuick30.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuick30.FlatAppearance.BorderSize = 0;
@@ -468,7 +468,7 @@ namespace SleepyTime_2._0
             // 
             // btnQuick15
             // 
-            this.btnQuick15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnQuick15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnQuick15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnQuick15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQuick15.FlatAppearance.BorderSize = 0;
@@ -507,7 +507,7 @@ namespace SleepyTime_2._0
             // 
             // btnAdd5Min
             // 
-            this.btnAdd5Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd5Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnAdd5Min.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnAdd5Min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd5Min.FlatAppearance.BorderSize = 0;
@@ -546,7 +546,7 @@ namespace SleepyTime_2._0
             // 
             // cmbOperation
             // 
-            this.cmbOperation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbOperation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.cmbOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOperation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbOperation.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -564,7 +564,7 @@ namespace SleepyTime_2._0
             // 
             // btnStartCountdown
             // 
-            this.btnStartCountdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnStartCountdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnStartCountdown.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(57)))), ((int)(((byte)(129)))));
             this.btnStartCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStartCountdown.FlatAppearance.BorderSize = 0;
@@ -581,7 +581,7 @@ namespace SleepyTime_2._0
             // 
             // btnAdd1Hr
             // 
-            this.btnAdd1Hr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd1Hr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnAdd1Hr.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnAdd1Hr.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd1Hr.FlatAppearance.BorderSize = 0;
@@ -598,7 +598,7 @@ namespace SleepyTime_2._0
             // 
             // btnAdd30Min
             // 
-            this.btnAdd30Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd30Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnAdd30Min.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnAdd30Min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd30Min.FlatAppearance.BorderSize = 0;
@@ -615,7 +615,7 @@ namespace SleepyTime_2._0
             // 
             // btnAdd15Min
             // 
-            this.btnAdd15Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.btnAdd15Min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.btnAdd15Min.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
             this.btnAdd15Min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd15Min.FlatAppearance.BorderSize = 0;
@@ -758,17 +758,6 @@ namespace SleepyTime_2._0
             this.pnlSchedule.Size = new System.Drawing.Size(673, 385);
             this.pnlSchedule.TabIndex = 23;
             // 
-            // lblSavedItems
-            // 
-            this.lblSavedItems.AutoSize = true;
-            this.lblSavedItems.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSavedItems.ForeColor = System.Drawing.Color.White;
-            this.lblSavedItems.Location = new System.Drawing.Point(199, 76);
-            this.lblSavedItems.Name = "lblSavedItems";
-            this.lblSavedItems.Size = new System.Drawing.Size(150, 21);
-            this.lblSavedItems.TabIndex = 42;
-            this.lblSavedItems.Text = "No saved items";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -862,6 +851,17 @@ namespace SleepyTime_2._0
             this.pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
             this.pnlSavedSchedules.TabIndex = 35;
             // 
+            // lblSavedItems
+            // 
+            this.lblSavedItems.AutoSize = true;
+            this.lblSavedItems.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSavedItems.ForeColor = System.Drawing.Color.White;
+            this.lblSavedItems.Location = new System.Drawing.Point(199, 76);
+            this.lblSavedItems.Name = "lblSavedItems";
+            this.lblSavedItems.Size = new System.Drawing.Size(150, 21);
+            this.lblSavedItems.TabIndex = 42;
+            this.lblSavedItems.Text = "No saved items";
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -875,7 +875,7 @@ namespace SleepyTime_2._0
             // 
             // cmbRemindMe
             // 
-            this.cmbRemindMe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbRemindMe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.cmbRemindMe.DropDownHeight = 200;
             this.cmbRemindMe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRemindMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -926,7 +926,7 @@ namespace SleepyTime_2._0
             // 
             // cmbScheduleTime
             // 
-            this.cmbScheduleTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbScheduleTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.cmbScheduleTime.DropDownHeight = 200;
             this.cmbScheduleTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbScheduleTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -991,7 +991,7 @@ namespace SleepyTime_2._0
             // 
             // cmbScheduleOperation
             // 
-            this.cmbScheduleOperation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbScheduleOperation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.cmbScheduleOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbScheduleOperation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbScheduleOperation.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1107,7 +1107,7 @@ namespace SleepyTime_2._0
             // 
             // cmbAccent
             // 
-            this.cmbAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(36)))));
+            this.cmbAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
             this.cmbAccent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbAccent.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1305,9 +1305,9 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.pnlCountdown);
             this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlSettings);
-            this.Controls.Add(this.pnlCountdown);
             this.Controls.Add(this.pnlAbout);
             this.Controls.Add(this.pnlPresets);
             this.Controls.Add(this.pnlHelp);
