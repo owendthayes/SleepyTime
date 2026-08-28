@@ -20,7 +20,6 @@ namespace SleepyTime_2._0
     {
         //rounded borders values
         private int borderRadius = 30, BorderSize = 2;
-        private Color boderColour = Color.Yellow;
 
         private bool countdownStarted = false;
         private TimeSpan remainingTime;
@@ -193,11 +192,11 @@ namespace SleepyTime_2._0
             tglDarkMode.Checked = bool.Parse(settings[2]);
             switch (settings[2])
             {
-                case "false":
+                case "False":
                     mainTheme = "light";
                     break;
 
-                case "true":
+                case "True":
                     mainTheme = "dark";
                     break;
             }
@@ -233,6 +232,9 @@ namespace SleepyTime_2._0
                     c.BackColor = secondaryTheme;
                 }
             }
+
+            this.BackColor = primaryTheme;
+            
 
         }
 
@@ -330,7 +332,7 @@ namespace SleepyTime_2._0
                 ScheduleItem soonest = scheduledItems[0];
 
                 //CALCULATE REMINDER HERE THIS NEEDS MORE WORK AS IT WILL ONLY CHECK THE SOONEST, NOT ALL.
-                sendReminderNotification(soonest.Reminder.ToString());
+                //sendReminderNotification(soonest.Reminder.ToString());
               
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
@@ -361,25 +363,28 @@ namespace SleepyTime_2._0
         {
             switch (reminder)
             {
-                case "0": // no reminder
-                    break;
-
                 case "1": // 5 mins
+                    MessageBox.Show("Your computer will shut down in 5 minutes");
                     break;
 
                 case "2": // 10 mins
+                    MessageBox.Show("Your computer will shut down in 10 minutes");
                     break;
 
                 case "3": // 15 mins
+                    MessageBox.Show("Your computer will shut down in 15 minutes");
                     break;
 
                 case "4": // 30 mins
+                    MessageBox.Show("Your computer will shut down in 30 minutes");
                     break;
 
                 case "5": // 1 hr
+                    MessageBox.Show("Your computer will shut down in 1 hour");
                     break;
 
                 case "6": // 2 hr
+                    MessageBox.Show("Your computer will shut down in 1 hour");
                     break;
             }
         }
@@ -454,7 +459,7 @@ namespace SleepyTime_2._0
         //draw rounded borders.
         private void frmMain_Paint(object sender, PaintEventArgs e)
         {
-            FormRegionAndBorder(this, borderRadius, e.Graphics, Color.FromArgb(13, 15, 28), 2);
+            FormRegionAndBorder(this, borderRadius, e.Graphics, primaryTheme, 2);
         }
 
         private void btnExit_MouseEnter(object sender, EventArgs e)
@@ -503,12 +508,12 @@ namespace SleepyTime_2._0
             btnSideBarPresets.ForeColor = Color.FromArgb(177, 178, 181);
             btnHelp.ForeColor = Color.FromArgb(177, 178, 181);
 
-            btnSidebarAbout.BackColor = Color.FromArgb(13, 15, 28);
-            btnSidebarCountdown.BackColor = Color.FromArgb(13, 15, 28);
-            btnSideBarSettings.BackColor = Color.FromArgb(13, 15, 28);
-            btnSidebarSchedule.BackColor = Color.FromArgb(13, 15, 28);
-            btnSideBarPresets.BackColor = Color.FromArgb(13, 15, 28);
-            btnHelp.BackColor = Color.FromArgb(13, 15, 28);
+            btnSidebarAbout.BackColor = primaryTheme;
+            btnSidebarCountdown.BackColor = primaryTheme;
+            btnSideBarSettings.BackColor = primaryTheme;
+            btnSidebarSchedule.BackColor = primaryTheme;
+            btnSideBarPresets.BackColor = primaryTheme;
+            btnHelp.BackColor = primaryTheme;
         }
 
         private void SetActivePanel(string operation)
