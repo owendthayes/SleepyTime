@@ -53,6 +53,8 @@ namespace SleepyTime_2._0
         Color primaryTheme;
         Color secondaryTheme;
 
+        private bool quickActionsHidden = false;
+
         //ALWAYS ON TOP
         private bool formAOT = false;
 
@@ -531,12 +533,12 @@ namespace SleepyTime_2._0
         private void greyOutSidebar()
         {
 
-            btnSidebarAbout.ForeColor = Color.FromArgb(177, 178, 181);
-            btnSidebarCountdown.ForeColor = Color.FromArgb(177, 178, 181);
-            btnSideBarSettings.ForeColor = Color.FromArgb(177, 178, 181);
-            btnSidebarSchedule.ForeColor = Color.FromArgb(177, 178, 181);
-            btnSideBarPresets.ForeColor = Color.FromArgb(177, 178, 181);
-            btnHelp.ForeColor = Color.FromArgb(177, 178, 181);
+            btnSidebarAbout.ForeColor = secondaryTextColor;
+            btnSidebarCountdown.ForeColor = secondaryTextColor;
+            btnSideBarSettings.ForeColor = secondaryTextColor;
+            btnSidebarSchedule.ForeColor = secondaryTextColor;
+            btnSideBarPresets.ForeColor = secondaryTextColor;
+            btnHelp.ForeColor = secondaryTextColor;
 
             btnSidebarAbout.BackColor = primaryTheme;
             btnSidebarCountdown.BackColor = primaryTheme;
@@ -711,7 +713,7 @@ namespace SleepyTime_2._0
             countdownStarted = false;
 
             btnStartCountdown.ForeColor = primaryAccent;
-            btnStartCountdown.BorderColor = secondaryAccent;
+            btnStartCountdown.BorderColor = primaryAccent;
 
             btnStartCountdown.Text = "Start Countdown";
 
@@ -1371,6 +1373,37 @@ namespace SleepyTime_2._0
         private void imgHeaderDivider_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pnlCountdown_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblShowHideQuick_Click(object sender, EventArgs e)
+        {
+            if (quickActionsHidden == false)
+            {
+                btnQuick1.Visible = false;
+                btnQuick15.Visible = false;
+                btnQuick2.Visible = false;
+                btnQuick30.Visible = false;
+                btnMoreQuick.Visible = false;
+
+                lblShowHideQuick.Text = "Quick Timers ▶";
+            }
+            else
+            {
+                btnQuick1.Visible = true;
+                btnQuick15.Visible = true;
+                btnQuick2.Visible = true;
+                btnQuick30.Visible = true;
+                btnMoreQuick.Visible = true;
+
+                lblShowHideQuick.Text = "Quick Timers ▼";
+            }
+
+            quickActionsHidden = !quickActionsHidden;
         }
 
         private void frmMain_Load(object sender, EventArgs e)

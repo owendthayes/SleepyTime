@@ -50,12 +50,12 @@ namespace SleepyTime_2._0
             this.imgTimeAnimation = new System.Windows.Forms.PictureBox();
             this.pnlCountdown = new System.Windows.Forms.Panel();
             this.btnClearTimer = new SleepyTime_2._0.RoundedButton();
-            this.roundedButton5 = new SleepyTime_2._0.RoundedButton();
+            this.btnMoreQuick = new SleepyTime_2._0.RoundedButton();
             this.btnQuick2 = new SleepyTime_2._0.RoundedButton();
             this.btnQuick1 = new SleepyTime_2._0.RoundedButton();
             this.btnQuick30 = new SleepyTime_2._0.RoundedButton();
             this.btnQuick15 = new SleepyTime_2._0.RoundedButton();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblShowHideQuick = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnAdd5Min = new SleepyTime_2._0.RoundedButton();
             this.lblShutdownTime = new System.Windows.Forms.Label();
@@ -353,12 +353,12 @@ namespace SleepyTime_2._0
             // pnlCountdown
             // 
             this.pnlCountdown.Controls.Add(this.btnClearTimer);
-            this.pnlCountdown.Controls.Add(this.roundedButton5);
+            this.pnlCountdown.Controls.Add(this.btnMoreQuick);
             this.pnlCountdown.Controls.Add(this.btnQuick2);
             this.pnlCountdown.Controls.Add(this.btnQuick1);
             this.pnlCountdown.Controls.Add(this.btnQuick30);
             this.pnlCountdown.Controls.Add(this.btnQuick15);
-            this.pnlCountdown.Controls.Add(this.label14);
+            this.pnlCountdown.Controls.Add(this.lblShowHideQuick);
             this.pnlCountdown.Controls.Add(this.label9);
             this.pnlCountdown.Controls.Add(this.btnAdd5Min);
             this.pnlCountdown.Controls.Add(this.lblShutdownTime);
@@ -380,6 +380,7 @@ namespace SleepyTime_2._0
             this.pnlCountdown.Name = "pnlCountdown";
             this.pnlCountdown.Size = new System.Drawing.Size(673, 385);
             this.pnlCountdown.TabIndex = 22;
+            this.pnlCountdown.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCountdown_Paint);
             // 
             // btnClearTimer
             // 
@@ -398,22 +399,22 @@ namespace SleepyTime_2._0
             this.btnClearTimer.UseVisualStyleBackColor = false;
             this.btnClearTimer.Click += new System.EventHandler(this.btnClearTimer_Click);
             // 
-            // roundedButton5
+            // btnMoreQuick
             // 
-            this.roundedButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
-            this.roundedButton5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
-            this.roundedButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedButton5.FlatAppearance.BorderSize = 0;
-            this.roundedButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundedButton5.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.roundedButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.roundedButton5.Location = new System.Drawing.Point(532, 331);
-            this.roundedButton5.Name = "roundedButton5";
-            this.roundedButton5.Size = new System.Drawing.Size(41, 31);
-            this.roundedButton5.TabIndex = 26;
-            this.roundedButton5.Text = "⋯";
-            this.roundedButton5.UseVisualStyleBackColor = false;
-            this.roundedButton5.Click += new System.EventHandler(this.btnSideBarPresets_Click);
+            this.btnMoreQuick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.btnMoreQuick.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(47)))));
+            this.btnMoreQuick.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMoreQuick.FlatAppearance.BorderSize = 0;
+            this.btnMoreQuick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMoreQuick.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMoreQuick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnMoreQuick.Location = new System.Drawing.Point(532, 331);
+            this.btnMoreQuick.Name = "btnMoreQuick";
+            this.btnMoreQuick.Size = new System.Drawing.Size(41, 31);
+            this.btnMoreQuick.TabIndex = 26;
+            this.btnMoreQuick.Text = "⋯";
+            this.btnMoreQuick.UseVisualStyleBackColor = false;
+            this.btnMoreQuick.Click += new System.EventHandler(this.btnSideBarPresets_Click);
             // 
             // btnQuick2
             // 
@@ -483,16 +484,18 @@ namespace SleepyTime_2._0
             this.btnQuick15.UseVisualStyleBackColor = false;
             this.btnQuick15.Click += new System.EventHandler(this.btnQuick15_Click);
             // 
-            // label14
+            // lblShowHideQuick
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label14.Location = new System.Drawing.Point(80, 312);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 16);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Quick Timers";
+            this.lblShowHideQuick.AutoSize = true;
+            this.lblShowHideQuick.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblShowHideQuick.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblShowHideQuick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.lblShowHideQuick.Location = new System.Drawing.Point(80, 312);
+            this.lblShowHideQuick.Name = "lblShowHideQuick";
+            this.lblShowHideQuick.Size = new System.Drawing.Size(105, 16);
+            this.lblShowHideQuick.TabIndex = 21;
+            this.lblShowHideQuick.Text = "Quick Timers ▼";
+            this.lblShowHideQuick.Click += new System.EventHandler(this.lblShowHideQuick_Click);
             // 
             // label9
             // 
@@ -1386,12 +1389,12 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlAbout;
         private System.Windows.Forms.Label label13;
-        private RoundedButton roundedButton5;
+        private RoundedButton btnMoreQuick;
         private RoundedButton btnQuick2;
         private RoundedButton btnQuick1;
         private RoundedButton btnQuick30;
         private RoundedButton btnQuick15;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblShowHideQuick;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlHelp;
         private System.Windows.Forms.Label label15;
