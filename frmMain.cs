@@ -47,6 +47,8 @@ namespace SleepyTime_2._0
         private Color primaryAccent;
         private Color secondaryAccent;
         private string mainTheme = "dark";
+        private Color textColor = Color.Black;
+        private Color secondaryTextColor = Color.FromArgb(177, 178, 181);
 
         Color primaryTheme;
         Color secondaryTheme;
@@ -64,6 +66,7 @@ namespace SleepyTime_2._0
             readSettingsFile();
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
             getAccentColour();
+
             applyAccentColour(primaryAccent, secondaryAccent);
 
             readScheduleFile();
@@ -219,37 +222,47 @@ namespace SleepyTime_2._0
 
         private void applyDarkMode(string mode)
         {
+            textColor = Color.Black;
             switch (mode)
             {
                 case "dark":
                     primaryTheme = Color.FromArgb(13, 15, 28);
                     secondaryTheme = Color.FromArgb(25, 25, 41);
+                    textColor = Color.White;
+                    secondaryTextColor = Color.FromArgb(177, 178, 181);
                     break;
 
                 case "light":
-                    primaryTheme = Color.Gainsboro;
-                    secondaryTheme = Color.DarkGray;
+                    primaryTheme = Color.FromArgb(245, 245, 250);
+                    secondaryTheme = Color.FromArgb(211, 211, 230);
+                    textColor = Color.Black;
+                    secondaryTextColor = Color.FromArgb(39, 39, 41);
                     break;
             }
 
-            //apply the main and secondary theme to everything on the form. EVERYTHING.
-            //MessageBox.Show($"applying {mode} theme");
             foreach (Control c in GetAllControls(this))
             {
-                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.Gainsboro)
+                if (c.ForeColor == Color.White || c.ForeColor == Color.Black)
+                {
+                    c.ForeColor = textColor;
+                }
+
+                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.FromArgb(245, 245, 250))
                 {
                     c.BackColor = primaryTheme;
                 }
-                else if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.DarkGray)
+
+                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(211, 211, 230))
                 {
                     c.BackColor = secondaryTheme;
                 }
 
+                if (c.ForeColor == Color.FromArgb(177, 178, 181) || c.ForeColor == Color.FromArgb(39, 39, 41))
+                {
+                    c.ForeColor = secondaryTextColor;
+                }
             }
-
             this.BackColor = primaryTheme;
-            
-
         }
 
         private void applyAccentColour(Color accentColour, Color secondaryAccent)
@@ -486,17 +499,17 @@ namespace SleepyTime_2._0
 
         private void btnMinimize_MouseEnter(object sender, EventArgs e)
         {
-            btnMinimize.BackColor = Color.FromArgb(25, 25, 41);
+            btnMinimize.BackColor = secondaryTheme;
         }
 
         private void btnExit_MouseLeave(object sender, EventArgs e)
         {
-            btnExit.BackColor = Color.FromArgb(13, 15, 28);
+            btnExit.BackColor = primaryTheme;
         }
 
         private void btnMinimize_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimize.BackColor = Color.FromArgb(13, 15, 28);
+            btnMinimize.BackColor = primaryTheme;
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -1011,7 +1024,7 @@ namespace SleepyTime_2._0
             {
                 Panel row = new Panel();
                 
-                row.BackColor = Color.FromArgb(25, 25, 41);
+                row.BackColor = secondaryTheme;
 
                 row.Width = pnlSavedSchedules.Width - 40;
                 row.Height = 40;
@@ -1024,7 +1037,7 @@ namespace SleepyTime_2._0
                     Text = operations[Convert.ToInt32(item.Action)],
                     Location = new Point(10, 10),
                     AutoSize = true,
-                    ForeColor = Color.White,
+                    ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12)
                 };
 
@@ -1033,7 +1046,7 @@ namespace SleepyTime_2._0
                     Text = item.Date.ToString(@"dd/MM/yyyy"),
                     Location = new Point(110, 10),
                     AutoSize = true,
-                    ForeColor = Color.White,
+                    ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
                 };
 
@@ -1042,7 +1055,7 @@ namespace SleepyTime_2._0
                     Text = item.Time.ToString(@"hh\:mm"),
                     Location = new Point(225, 10),
                     AutoSize = true,
-                    ForeColor = Color.White,
+                    ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
                 };
 
@@ -1051,7 +1064,7 @@ namespace SleepyTime_2._0
                     Text = reminders[Convert.ToInt32(item.Reminder)],
                     Location = new Point(310, 10),
                     AutoSize = true,
-                    ForeColor = Color.White,
+                    ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
                 };
 
@@ -1062,6 +1075,7 @@ namespace SleepyTime_2._0
                     AutoSize = true,
                     ForeColor = primaryAccent,
                     BorderColor = primaryAccent,
+                    BackColor = primaryTheme,
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25
@@ -1074,6 +1088,7 @@ namespace SleepyTime_2._0
                     AutoSize = true,
                     ForeColor = Color.FromArgb(247, 62, 62),
                     BorderColor = Color.FromArgb(247, 62, 62),
+                    BackColor = primaryTheme,
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
