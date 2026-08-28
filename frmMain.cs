@@ -94,6 +94,8 @@ namespace SleepyTime_2._0
 
         private void readScheduleFile()
         {
+            bool messageShown = false;
+
             if (!File.Exists("Schedule.txt"))
             {
                 File.Create("Schedule.txt");
@@ -132,15 +134,26 @@ namespace SleepyTime_2._0
                     continue;
                 }
 
-                //MessageBox.Show("adding scheduled item");
-                scheduledItems.Add(
-                    new ScheduleItem(
-                        data[0],
-                        date,
-                        time,
-                        data[3]
-                        )
-                    );
+                DateTime givenDate = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+
+                if (DateTime.Now < givenDate)
+                {
+                    //MessageBox.Show("adding scheduled item");
+                    scheduledItems.Add(
+                        new ScheduleItem(
+                            data[0],
+                            date,
+                            time,
+                            data[3]
+                            )
+                        );
+                }
+                else if (messageShown == false)
+                {
+                    MessageBox.Show("The date of one or more of your saved schedules has passed\nThey have been removed.");
+                    messageShown = true;
+                }
+
                 //MessageBox.Show("Added scheduled item");
             }
             //MessageBox.Show(scheduledItems[0].ToString());
