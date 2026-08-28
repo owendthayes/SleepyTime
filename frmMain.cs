@@ -336,6 +336,10 @@ namespace SleepyTime_2._0
               
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
+                    //DELETE SOONEST AFTER IT HAS OCCURRED.
+                    scheduledItems.Remove(soonest);
+                    updateScheduleFile();
+                    updateScheduleUI();
                     switch (soonest.Action)
                     {
                         case "0": // SHUTDOWN
@@ -354,7 +358,6 @@ namespace SleepyTime_2._0
                             Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
                             break;
                     }
-                    //DELETE SOONEST AFTER IT HAS OCCURRED.
                 }
             }         
         }
@@ -968,10 +971,21 @@ namespace SleepyTime_2._0
 
         private void updateScheduleUI()
         {
+            foreach (Control ctr in pnlSavedSchedules.Controls.Cast<Control>().ToList())
+            {
+                if (ctr != lblSavedItems)
+                {
+                    pnlSavedSchedules.Controls.Remove(ctr);
+                    ctr.Dispose();
+                }
+            }
+
+            // inform the user if there are no items currently saved.
+            lblSavedItems.Visible = scheduledItems.Count == 0;
+            lblSavedItems.BringToFront();
+
             string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
             string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
-
-            pnlSavedSchedules.Controls.Clear();
 
             int y = 10;
 

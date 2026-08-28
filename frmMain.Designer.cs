@@ -74,6 +74,8 @@ namespace SleepyTime_2._0
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlSchedule = new System.Windows.Forms.Panel();
+            this.lblSavedItems = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -114,7 +116,6 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -122,6 +123,7 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)(this.imgTimeAnimation)).BeginInit();
             this.pnlCountdown.SuspendLayout();
             this.pnlSchedule.SuspendLayout();
+            this.pnlSavedSchedules.SuspendLayout();
             this.pnlPresets.SuspendLayout();
             this.pnlSettings.SuspendLayout();
             this.pnlAbout.SuspendLayout();
@@ -756,6 +758,28 @@ namespace SleepyTime_2._0
             this.pnlSchedule.Size = new System.Drawing.Size(673, 385);
             this.pnlSchedule.TabIndex = 23;
             // 
+            // lblSavedItems
+            // 
+            this.lblSavedItems.AutoSize = true;
+            this.lblSavedItems.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSavedItems.ForeColor = System.Drawing.Color.White;
+            this.lblSavedItems.Location = new System.Drawing.Point(199, 76);
+            this.lblSavedItems.Name = "lblSavedItems";
+            this.lblSavedItems.Size = new System.Drawing.Size(150, 21);
+            this.lblSavedItems.TabIndex = 42;
+            this.lblSavedItems.Text = "No saved items";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label2.Location = new System.Drawing.Point(276, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(385, 16);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "*SleepyTime must be open for scheduled actons to occur";
+            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -832,6 +856,7 @@ namespace SleepyTime_2._0
             // 
             this.pnlSavedSchedules.AutoScroll = true;
             this.pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.pnlSavedSchedules.Controls.Add(this.lblSavedItems);
             this.pnlSavedSchedules.Location = new System.Drawing.Point(45, 171);
             this.pnlSavedSchedules.Name = "pnlSavedSchedules";
             this.pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
@@ -1035,9 +1060,9 @@ namespace SleepyTime_2._0
             this.label26.ForeColor = System.Drawing.Color.White;
             this.label26.Location = new System.Drawing.Point(30, 104);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(140, 21);
+            this.label26.Size = new System.Drawing.Size(170, 21);
             this.label26.TabIndex = 22;
-            this.label26.Text = "Dark Mode TBD";
+            this.label26.Text = "Toggle Dark Mode";
             // 
             // tglAOT
             // 
@@ -1257,17 +1282,6 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label2.Location = new System.Drawing.Point(276, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(385, 16);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "*SleepyTime must be open for scheduled actons to occur";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1313,6 +1327,8 @@ namespace SleepyTime_2._0
             this.pnlCountdown.PerformLayout();
             this.pnlSchedule.ResumeLayout(false);
             this.pnlSchedule.PerformLayout();
+            this.pnlSavedSchedules.ResumeLayout(false);
+            this.pnlSavedSchedules.PerformLayout();
             this.pnlPresets.ResumeLayout(false);
             this.pnlPresets.PerformLayout();
             this.pnlSettings.ResumeLayout(false);
@@ -1412,6 +1428,7 @@ namespace SleepyTime_2._0
         private Custom_Controls.ToggleButton tglDarkMode;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSavedItems;
     }
 }
 
