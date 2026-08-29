@@ -502,11 +502,11 @@ namespace SleepyTime_2._0
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label9.Location = new System.Drawing.Point(80, 161);
+            this.label9.Location = new System.Drawing.Point(80, 244);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 16);
+            this.label9.Size = new System.Drawing.Size(91, 16);
             this.label9.TabIndex = 20;
-            this.label9.Text = "Quick Actions";
+            this.label9.Text = "Adjust Timer";
             // 
             // btnAdd5Min
             // 
@@ -517,9 +517,9 @@ namespace SleepyTime_2._0
             this.btnAdd5Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd5Min.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAdd5Min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnAdd5Min.Location = new System.Drawing.Point(81, 181);
+            this.btnAdd5Min.Location = new System.Drawing.Point(78, 264);
             this.btnAdd5Min.Name = "btnAdd5Min";
-            this.btnAdd5Min.Size = new System.Drawing.Size(119, 47);
+            this.btnAdd5Min.Size = new System.Drawing.Size(119, 31);
             this.btnAdd5Min.TabIndex = 19;
             this.btnAdd5Min.Text = "+5 Min";
             this.btnAdd5Min.UseVisualStyleBackColor = false;
@@ -574,7 +574,7 @@ namespace SleepyTime_2._0
             this.btnStartCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStartCountdown.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStartCountdown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(74)))), ((int)(((byte)(205)))));
-            this.btnStartCountdown.Location = new System.Drawing.Point(80, 234);
+            this.btnStartCountdown.Location = new System.Drawing.Point(73, 181);
             this.btnStartCountdown.Name = "btnStartCountdown";
             this.btnStartCountdown.Size = new System.Drawing.Size(493, 47);
             this.btnStartCountdown.TabIndex = 15;
@@ -591,9 +591,9 @@ namespace SleepyTime_2._0
             this.btnAdd1Hr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd1Hr.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAdd1Hr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnAdd1Hr.Location = new System.Drawing.Point(454, 181);
+            this.btnAdd1Hr.Location = new System.Drawing.Point(451, 264);
             this.btnAdd1Hr.Name = "btnAdd1Hr";
-            this.btnAdd1Hr.Size = new System.Drawing.Size(119, 47);
+            this.btnAdd1Hr.Size = new System.Drawing.Size(119, 31);
             this.btnAdd1Hr.TabIndex = 14;
             this.btnAdd1Hr.Text = "+1 Hr";
             this.btnAdd1Hr.UseVisualStyleBackColor = false;
@@ -608,9 +608,9 @@ namespace SleepyTime_2._0
             this.btnAdd30Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd30Min.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAdd30Min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnAdd30Min.Location = new System.Drawing.Point(331, 181);
+            this.btnAdd30Min.Location = new System.Drawing.Point(328, 264);
             this.btnAdd30Min.Name = "btnAdd30Min";
-            this.btnAdd30Min.Size = new System.Drawing.Size(119, 47);
+            this.btnAdd30Min.Size = new System.Drawing.Size(119, 31);
             this.btnAdd30Min.TabIndex = 13;
             this.btnAdd30Min.Text = "+30 Min";
             this.btnAdd30Min.UseVisualStyleBackColor = false;
@@ -625,9 +625,9 @@ namespace SleepyTime_2._0
             this.btnAdd15Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd15Min.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAdd15Min.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnAdd15Min.Location = new System.Drawing.Point(206, 181);
+            this.btnAdd15Min.Location = new System.Drawing.Point(203, 264);
             this.btnAdd15Min.Name = "btnAdd15Min";
-            this.btnAdd15Min.Size = new System.Drawing.Size(119, 47);
+            this.btnAdd15Min.Size = new System.Drawing.Size(119, 31);
             this.btnAdd15Min.TabIndex = 12;
             this.btnAdd15Min.Text = "+15 Min";
             this.btnAdd15Min.UseVisualStyleBackColor = false;

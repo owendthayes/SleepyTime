@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>SleepyTime_2._0</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Resources\SleepyTimeIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

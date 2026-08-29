@@ -989,6 +989,7 @@ namespace SleepyTime_2._0
             {
                 //cancel the saving operations
                 btnClearSchedule.Text = "Reset";
+                btnSaveSchedule.Text = "Save";
                 pnlSavedSchedules.Enabled = true;
             }
 
@@ -1276,7 +1277,8 @@ namespace SleepyTime_2._0
                 }
 
                 else if (item.Date == cmbScheduleDate.Value.Date
-                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Text))
+                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Text)
+                    && btnSaveSchedule.Text != "Update Schedule")
                 {
                     MessageBox.Show("Item already scheduled for this date/time");
                     return;
@@ -1358,6 +1360,7 @@ namespace SleepyTime_2._0
                         MessageBox.Show("Schedule Updated");
 
                         btnSaveSchedule.Text = "Save";
+                        btnClearSchedule.Text = "Reset";
                         pnlSavedSchedules.Enabled = true;
                         return;
                     }
