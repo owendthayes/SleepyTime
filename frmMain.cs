@@ -18,6 +18,10 @@ namespace SleepyTime_2._0
 {
     public partial class frmMain : Form
     {
+        //DELETE THIS LATER
+        private bool notifShown = false;
+
+
         //rounded borders values
         private int borderRadius = 30, BorderSize = 2;
 
@@ -360,9 +364,13 @@ namespace SleepyTime_2._0
             {
                 ScheduleItem soonest = scheduledItems[0];
 
-                //CALCULATE REMINDER HERE THIS NEEDS MORE WORK AS IT WILL ONLY CHECK THE SOONEST, NOT ALL.
-                //sendReminderNotification(soonest.Reminder.ToString());
-              
+                if (notifShown == false)
+                {
+                    //CALCULATE REMINDER HERE THIS NEEDS MORE WORK AS IT WILL ONLY CHECK THE SOONEST, NOT ALL.
+                    sendReminderNotification(soonest.Reminder.ToString(), soonest);
+                    notifShown = true;
+                }
+
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
                     //DELETE SOONEST AFTER IT HAS OCCURRED.
@@ -391,34 +399,44 @@ namespace SleepyTime_2._0
             }         
         }
 
-        private void sendReminderNotification(string reminder)
+        private void sendReminderNotification(string reminder, ScheduleItem soonest)
         {
+            string timePeriod = "";
+            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
+            string notifAction = operations[Convert.ToInt32(soonest.Action)];
+
             switch (reminder)
             {
                 case "1": // 5 mins
-                    MessageBox.Show("Your computer will shut down in 5 minutes");
+                    timePeriod = "5 Minutes";
                     break;
 
                 case "2": // 10 mins
-                    MessageBox.Show("Your computer will shut down in 10 minutes");
+                    timePeriod = "10 Minutes";
                     break;
 
                 case "3": // 15 mins
-                    MessageBox.Show("Your computer will shut down in 15 minutes");
+                    timePeriod = "15 Minutes"; 
                     break;
 
                 case "4": // 30 mins
-                    MessageBox.Show("Your computer will shut down in 30 minutes");
+                    timePeriod = "30 Minutes";
                     break;
 
                 case "5": // 1 hr
-                    MessageBox.Show("Your computer will shut down in 1 hour");
+                    timePeriod = "1 Hour";
                     break;
 
                 case "6": // 2 hr
-                    MessageBox.Show("Your computer will shut down in 1 hour");
+                    timePeriod = "2 Hours";
                     break;
             }
+            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
+            ntfReminder.Text = "Some Text";
+            ntfReminder.Visible = true;
+            ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
+            ntfReminder.BalloonTipText = "Click to open SleepyTime";
+            ntfReminder.ShowBalloonTip(500);
         }
 
         //drag and drop functionality for header of form.

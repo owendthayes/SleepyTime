@@ -116,6 +116,7 @@ namespace SleepyTime_2._0
             this.label15 = new System.Windows.Forms.Label();
             this.tmrCountDown = new System.Windows.Forms.Timer(this.components);
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
+            this.ntfReminder = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1285,6 +1286,11 @@ namespace SleepyTime_2._0
             // 
             this.tmrValidation.Tick += new System.EventHandler(this.tmrValidation_Tick);
             // 
+            // ntfReminder
+            // 
+            this.ntfReminder.Text = "notifyIcon1";
+            this.ntfReminder.Visible = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1432,6 +1438,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSavedItems;
+        private System.Windows.Forms.NotifyIcon ntfReminder;
     }
 }
 
