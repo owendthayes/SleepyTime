@@ -1290,6 +1290,7 @@ namespace SleepyTime_2._0
             // 
             this.ntfReminder.Text = "notifyIcon1";
             this.ntfReminder.Visible = true;
+            this.ntfReminder.BalloonTipClicked += new System.EventHandler(this.ntfReminder_BalloonTipClicked);
             // 
             // frmMain
             // 

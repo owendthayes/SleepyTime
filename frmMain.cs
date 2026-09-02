@@ -153,7 +153,8 @@ namespace SleepyTime_2._0
                             data[0],
                             date,
                             time,
-                            data[3]
+                            data[3],
+                            false
                             )
                         );
                 }
@@ -364,12 +365,9 @@ namespace SleepyTime_2._0
             {
                 ScheduleItem soonest = scheduledItems[0];
 
-                if (notifShown == false)
-                {
-                    //CALCULATE REMINDER HERE THIS NEEDS MORE WORK AS IT WILL ONLY CHECK THE SOONEST, NOT ALL.
-                    sendReminderNotification(soonest.Reminder.ToString(), soonest);
-                    notifShown = true;
-                }
+                
+                sendReminderNotification(soonest.Reminder.ToString(), soonest);
+
 
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
@@ -1328,7 +1326,8 @@ namespace SleepyTime_2._0
                     cmbScheduleOperation.GetItemText(cmbScheduleOperation.SelectedIndex),
                     cmbScheduleDate.Value.Date,
                     scheduleTime,
-                    cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex)
+                    cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex),
+                    false
                     );
 
                 scheduledItems.Add(newItem);
@@ -1348,7 +1347,9 @@ namespace SleepyTime_2._0
                    data[0],
                    DateTime.ParseExact(data[1], "dd/MM/yyyy HH:mm:ss", null),
                    TimeSpan.Parse(data[2]),
-                   data[3]);
+                   data[3],
+                   false
+                   );
 
                 foreach (ScheduleItem item in scheduledItems)
                 {
@@ -1363,7 +1364,8 @@ namespace SleepyTime_2._0
                             cmbScheduleOperation.SelectedIndex.ToString(),
                             cmbScheduleDate.Value,
                             TimeSpan.Parse(cmbScheduleTime.Text),
-                            cmbRemindMe.SelectedIndex.ToString()
+                            cmbRemindMe.SelectedIndex.ToString(),
+                            false
                             );
 
                         //MessageBox.Show(updated.toString());
@@ -1425,6 +1427,11 @@ namespace SleepyTime_2._0
             }
 
             quickActionsHidden = !quickActionsHidden;
+        }
+
+        private void ntfReminder_BalloonTipClicked(object sender, EventArgs e)
+        {
+            //open sleepytime again.
         }
 
         private void frmMain_Load(object sender, EventArgs e)

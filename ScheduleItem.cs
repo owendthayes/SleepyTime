@@ -12,13 +12,15 @@ namespace SleepyTime_2._0
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public string Reminder { get; set; }
+        public bool ReminderSent { get; set; }
 
-        public ScheduleItem(string action, DateTime date, TimeSpan time, string reminder)
+        public ScheduleItem(string action, DateTime date, TimeSpan time, string reminder, bool reminderSent)
         {
             Action = action;
             Date = date;
             Time = time;
             Reminder = reminder;
+            ReminderSent = reminderSent;
         }
 
         public string toString()
