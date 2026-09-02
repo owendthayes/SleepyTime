@@ -64,6 +64,9 @@ namespace SleepyTime_2._0
 
         string editTarget;
 
+        private string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
+        private string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
+        private string[] reminderMins = { "0", "5", "10", "15", "30", "60", "120" };
 
         public frmMain()
         {
@@ -360,10 +363,22 @@ namespace SleepyTime_2._0
         {
             lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
             imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
-
+            /
             if (scheduledItems.Count > 0)
             {
                 ScheduleItem soonest = scheduledItems[0];
+
+                //caluclate the soonest reminder
+                foreach (ScheduleItem item in scheduledItems)
+                {
+                    if (item.Reminder != "0" && soonest.Reminder != "0" && item != soonest)
+                    {
+                        TimeSpan soonestReminder = TimeSpan.FromMinutes(Convert.ToInt32(reminderMins[Convert.ToInt32(soonest.Reminder)]));
+                        TimeSpan currentReminder = TimeSpan.FromMinutes(Convert.ToInt32(reminderMins[Convert.ToInt32(item.Reminder)]));
+
+                        MessageBox.Show($"SOONEST: {soonestReminder}\nCURRENT: {currentReminder}");
+                    }
+                }
 
                 
                 sendReminderNotification(soonest.Reminder.ToString(), soonest);
@@ -1030,9 +1045,6 @@ namespace SleepyTime_2._0
             lblSavedItems.Visible = scheduledItems.Count == 0;
             lblSavedItems.BringToFront();
 
-            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
-            string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
-
             int y = 10;
 
             scheduledItems = scheduledItems
@@ -1133,9 +1145,6 @@ namespace SleepyTime_2._0
 
         private void btnEditSchedule_Click(object sender, EventArgs e)
         {
-            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
-            string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
-
             string[] data = new string[4];
 
             RoundedButton clickedButton = (RoundedButton)sender;
@@ -1198,9 +1207,6 @@ namespace SleepyTime_2._0
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
         {
-            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
-            string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
-
             string[] data = new string[4];
 
             DialogResult exitBox = MessageBox.Show("Delete this Action?", "Delete", MessageBoxButtons.YesNo);
