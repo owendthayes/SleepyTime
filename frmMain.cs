@@ -89,8 +89,11 @@ namespace SleepyTime_2._0
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(BorderSize);
 
+            lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
+
             tmrMain.Start();
             tmrValidation.Start();
+            tmrCurrentTime.Start();
         }
 
         private void populateTimesComboBox()
@@ -363,10 +366,7 @@ namespace SleepyTime_2._0
         {
             DateTime soonestDT;
             DateTime currentDT;
-
-            lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
-            imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
-            
+          
             if (scheduledItems.Count > 1)
             {
                 ScheduleItem soonest = scheduledItems[0];
@@ -1457,6 +1457,12 @@ namespace SleepyTime_2._0
         private void ntfReminder_BalloonTipClicked(object sender, EventArgs e)
         {
             //open sleepytime again.
+        }
+
+        private void tmrCurrentTime_Tick(object sender, EventArgs e)
+        {
+            lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
+            imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
