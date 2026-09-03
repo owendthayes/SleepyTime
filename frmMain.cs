@@ -361,10 +361,13 @@ namespace SleepyTime_2._0
 
         private void tmrMain_Tick(object sender, EventArgs e)
         {
+            DateTime soonestDT;
+            DateTime currentDT;
+
             lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
             imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
-            /
-            if (scheduledItems.Count > 0)
+            
+            if (scheduledItems.Count > 1)
             {
                 ScheduleItem soonest = scheduledItems[0];
 
@@ -373,15 +376,31 @@ namespace SleepyTime_2._0
                 {
                     if (item.Reminder != "0" && soonest.Reminder != "0" && item != soonest)
                     {
-                        TimeSpan soonestReminder = TimeSpan.FromMinutes(Convert.ToInt32(reminderMins[Convert.ToInt32(soonest.Reminder)]));
-                        TimeSpan currentReminder = TimeSpan.FromMinutes(Convert.ToInt32(reminderMins[Convert.ToInt32(item.Reminder)]));
+                        // get the specific date and time of the operation
+                        soonestDT = soonest.Date.Date + soonest.Time;
+                        currentDT = item.Date.Date + item.Time;
 
-                        MessageBox.Show($"SOONEST: {soonestReminder}\nCURRENT: {currentReminder}");
+                        // get the time that the reminder should be triggered
+                        soonestDT -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(soonest.Reminder)]));
+                        currentDT -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)]));
+
+                        // if current is sooner than soonest, it becomes soonest.                   
+                        if (currentDT < soonestDT)
+                        {
+                            soonest = item;
+                        }
                     }
                 }
 
-                
-                sendReminderNotification(soonest.Reminder.ToString(), soonest);
+                DateTime soonestDateTime = soonest.Date.Date + soonest.Time;
+                soonestDateTime -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(soonest.Reminder)]));
+
+                // once we have the soonest, we just need to trigger it when the time is right.
+                if (DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") == soonestDateTime.ToString("dd/MM/yyyy HH:mm:ss") && soonest.ReminderSent == false)
+                {
+                    sendReminderNotification(soonest.Reminder.ToString(), soonest);
+                    soonest.ReminderSent = true;
+                }
 
 
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
