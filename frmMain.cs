@@ -235,6 +235,9 @@ namespace SleepyTime_2._0
 
         private void applyDarkMode(string mode)
         {
+            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeImg.png");
+            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeImgBlack.png");
+
             textColor = Color.Black;
             switch (mode)
             {
@@ -243,6 +246,7 @@ namespace SleepyTime_2._0
                     secondaryTheme = Color.FromArgb(25, 25, 41);
                     textColor = Color.White;
                     secondaryTextColor = Color.FromArgb(177, 178, 181);
+                    imgLogo.Image = Image.FromFile(whiteLogo);
                     break;
 
                 case "light":
@@ -250,6 +254,7 @@ namespace SleepyTime_2._0
                     secondaryTheme = Color.FromArgb(211, 211, 230);
                     textColor = Color.Black;
                     secondaryTextColor = Color.FromArgb(39, 39, 41);
+                    imgLogo.Image = Image.FromFile(blackLogo);
                     break;
             }
 
@@ -276,6 +281,8 @@ namespace SleepyTime_2._0
                 }
             }
             this.BackColor = primaryTheme;
+
+            
         }
 
         private void applyAccentColour(Color accentColour, Color secondaryAccent)
@@ -1391,6 +1398,7 @@ namespace SleepyTime_2._0
                     cmbRemindMe.GetItemText(cmbRemindMe.SelectedIndex),
                     false
                     );
+                newItem.ReminderSent = false;
 
                 scheduledItems.Add(newItem);
 
@@ -1494,6 +1502,7 @@ namespace SleepyTime_2._0
         private void ntfReminder_BalloonTipClicked(object sender, EventArgs e)
         {
             //open sleepytime again.
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void tmrCurrentTime_Tick(object sender, EventArgs e)
