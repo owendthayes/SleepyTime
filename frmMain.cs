@@ -369,12 +369,28 @@ namespace SleepyTime_2._0
           
             if (scheduledItems.Count > 1)
             {
-                ScheduleItem soonest = scheduledItems[0];
+                ScheduleItem soonest = null;
+
+                // find the first scheduled item that has a reminder
+                foreach (ScheduleItem sch in scheduledItems)
+                {
+                    if (sch.Reminder != "0")
+                    {
+                        soonest = sch;
+                        break;
+                    }
+                }
+
+                // if none of the saved items have reminders, dont run anything else
+                if (soonest == null)
+                {
+                    return;
+                }
 
                 //caluclate the soonest reminder
                 foreach (ScheduleItem item in scheduledItems)
                 {
-                    if (item.Reminder != "0" && soonest.Reminder != "0" && item != soonest)
+                    if (item.Reminder != "0" && item != soonest)
                     {
                         // get the specific date and time of the operation
                         soonestDT = soonest.Date.Date + soonest.Time;
