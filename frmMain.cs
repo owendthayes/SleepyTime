@@ -366,7 +366,8 @@ namespace SleepyTime_2._0
         {
             DateTime soonestDT;
             DateTime currentDT;
-          
+            
+            // only if there are multiple items, do the calculation for the soonest reminder.
             if (scheduledItems.Count > 1)
             {
                 ScheduleItem soonest = null;
@@ -444,7 +445,27 @@ namespace SleepyTime_2._0
                             break;
                     }
                 }
-            }         
+            }
+            //if there is exactly one item, no calculation to be done, just send it for the existing item.
+            else if (scheduledItems.Count == 1 && scheduledItems[0].ReminderSent == false)
+            {
+                ScheduleItem item = scheduledItems[0];
+
+                // get the time the operation will occcur
+                DateTime scheduledTime = item.Date + item.Time;
+
+                // get the time the notification should send.
+                scheduledTime -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)]));
+
+                //MessageBox.Show($"NOW: {DateTime.Now.Date} {DateTime.Now.ToString("HH:mm:ss")}\nSCHEDULED: {scheduledTime.Date} {item.Time.ToString()}");
+
+                // check if it is time for the notif to send
+                if (DateTime.Now >= scheduledTime)
+                {
+                    sendReminderNotification(item.Reminder, item);
+                    scheduledItems[0].ReminderSent = true;
+                }
+            }
         }
 
         private void sendReminderNotification(string reminder, ScheduleItem soonest)
@@ -484,7 +505,7 @@ namespace SleepyTime_2._0
             ntfReminder.Visible = true;
             ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
-            ntfReminder.ShowBalloonTip(500);
+            ntfReminder.ShowBalloonTip(6000);
         }
 
         //drag and drop functionality for header of form.
