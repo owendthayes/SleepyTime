@@ -1359,8 +1359,22 @@ namespace SleepyTime_2._0
         {
             TimeSpan scheduleTime;
 
+            DateTime validDate = new DateTime(cmbScheduleDate.Value.Date.Year, cmbScheduleDate.Value.Month, cmbScheduleDate.Value.Day);
+            TimeSpan validTime = TimeSpan.Parse(cmbScheduleTime.Text);
+
+            DateTime validationDate = validDate.Date + validTime;
+
+            // check that the chosen reminder time has not already passed.
+            TimeSpan proposedReminderTime = TimeSpan.Parse(cmbScheduleTime.Text).Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[cmbRemindMe.SelectedIndex])));
+            DateTime proposedReminderDate = validDate + proposedReminderTime;
+
+
+
             foreach (ScheduleItem item in scheduledItems)
             {
+                DateTime itemDate = new DateTime(item.Date.Year, item.Date.Month, item.Date.Day, item.Time.Hours, item.Time.Minutes, item.Time.Seconds);
+                itemDate = itemDate.Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)])));
+
                 //MessageBox.Show($"Saved: {item.Action}|{item.Date}|{item.Time}|{item.Reminder}\nNew: {cmbScheduleOperation.SelectedIndex.ToString()}|{cmbScheduleDate.Value}|{TimeSpan.Parse(cmbScheduleTime.Text)}|{cmbRemindMe.SelectedIndex.ToString()}");
                 if (item.Action == cmbScheduleOperation.SelectedIndex.ToString()
                     && item.Date == cmbScheduleDate.Value.Date
@@ -1378,12 +1392,18 @@ namespace SleepyTime_2._0
                     MessageBox.Show("Item already scheduled for this date/time");
                     return;
                 }
+
+                else if (itemDate == proposedReminderDate)
+                {
+                    DialogResult exitBox = MessageBox.Show("You have an reminder scheduled at this time already.\nSave anyway?", "Save", MessageBoxButtons.YesNo);
+                    {
+                        if (exitBox == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
             }
-
-            DateTime validDate = new DateTime(cmbScheduleDate.Value.Date.Year, cmbScheduleDate.Value.Month, cmbScheduleDate.Value.Day);
-            TimeSpan validTime = TimeSpan.Parse(cmbScheduleTime.Text);
-
-            DateTime validationDate = validDate.Date + validTime;
 
             if (validationDate < DateTime.Now)
             {
@@ -1391,9 +1411,6 @@ namespace SleepyTime_2._0
                 return;
             }
 
-            // check that the chosen reminder time has not already passed.
-            TimeSpan proposedReminderTime = TimeSpan.Parse(cmbScheduleTime.Text).Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[cmbRemindMe.SelectedIndex])));
-            DateTime proposedReminderDate = validDate + proposedReminderTime;
 
             if (proposedReminderDate < DateTime.Now)
             {
