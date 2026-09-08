@@ -127,7 +127,7 @@ namespace SleepyTime_2._0
 
                 //MessageBox.Show($"Action: {data[0]} Date: {data[1]} Time: {data[2]} Reminder: {data[3]}");
 
-                if (data.Length != 4)
+                if (data.Length != 5)
                     continue;
 
                 if (!DateTime.TryParseExact(
@@ -153,14 +153,13 @@ namespace SleepyTime_2._0
 
                 if (DateTime.Now < givenDate)
                 {
-                    //MessageBox.Show("adding scheduled item");
                     scheduledItems.Add(
                         new ScheduleItem(
                             data[0],
                             date,
                             time,
                             data[3],
-                            false
+                            bool.Parse(data[4])
                             )
                         );
                 }
@@ -423,7 +422,6 @@ namespace SleepyTime_2._0
                 if (DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") == soonestDateTime.ToString("dd/MM/yyyy HH:mm:ss") && soonest.ReminderSent == false)
                 {
                     sendReminderNotification(soonest.Reminder.ToString(), soonest);
-                    soonest.ReminderSent = true;
                 }
 
 
@@ -470,7 +468,6 @@ namespace SleepyTime_2._0
                 if (DateTime.Now >= scheduledTime)
                 {
                     sendReminderNotification(item.Reminder, item);
-                    scheduledItems[0].ReminderSent = true;
                 }
             }
         }
@@ -513,6 +510,10 @@ namespace SleepyTime_2._0
             ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
             ntfReminder.ShowBalloonTip(6000);
+
+            soonest.ReminderSent = true;
+            updateScheduleFile()
+            updateScheduleUI();
         }
 
         //drag and drop functionality for header of form.
@@ -1189,8 +1190,15 @@ namespace SleepyTime_2._0
                     Tag = "noColourChange"
                 };
 
+                //if a notification has already sent, dont allow the user to edit the schedule.
+                if (item.ReminderSent)
+                {
+                    btnEditSchedule.Enabled = false;
+                }
+
                 btnDeleteSchedule.Click += btnDeleteSchedule_Click;
                 btnEditSchedule.Click += btnEditSchedule_Click;
+
 
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblDate);
@@ -1339,7 +1347,7 @@ namespace SleepyTime_2._0
                 foreach (ScheduleItem item in scheduledItems)
                 {
                     sw.WriteLine(
-                        $"{item.Action}|{item.Date:dd/MM/yyyy}|{item.Time:hh\\:mm}|{item.Reminder}"
+                        $"{item.Action}|{item.Date:dd/MM/yyyy}|{item.Time:hh\\:mm}|{item.Reminder}|{item.ReminderSent}"
                         );
                 }
             }
@@ -1435,7 +1443,7 @@ namespace SleepyTime_2._0
                             cmbScheduleDate.Value,
                             TimeSpan.Parse(cmbScheduleTime.Text),
                             cmbRemindMe.SelectedIndex.ToString(),
-                            false
+                            item.ReminderSent
                             );
 
                         //MessageBox.Show(updated.toString());
