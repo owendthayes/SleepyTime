@@ -512,7 +512,7 @@ namespace SleepyTime_2._0
             ntfReminder.ShowBalloonTip(6000);
 
             soonest.ReminderSent = true;
-            updateScheduleFile()
+            updateScheduleFile();
             updateScheduleUI();
         }
 
@@ -1388,6 +1388,17 @@ namespace SleepyTime_2._0
                 MessageBox.Show("This time has already passed");
                 return;
             }
+
+            // check that the chosen reminder time has not already passed.
+            TimeSpan proposedReminderTime = TimeSpan.Parse(cmbScheduleTime.Text).Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[cmbRemindMe.SelectedIndex])));
+            DateTime proposedReminderDate = validDate + proposedReminderTime;
+
+            if (proposedReminderDate < DateTime.Now)
+            {
+                MessageBox.Show("You can't set a reminder for a time that has already passed");
+                return;
+            }
+
 
             if (btnSaveSchedule.Text == "Save")
             {
