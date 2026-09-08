@@ -509,7 +509,9 @@ namespace SleepyTime_2._0
             ntfReminder.Visible = true;
             ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
-            ntfReminder.ShowBalloonTip(6000);
+
+            //show the notification for one minute.
+            ntfReminder.ShowBalloonTip(60000);
 
             soonest.ReminderSent = true;
             updateScheduleFile();
