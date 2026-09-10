@@ -95,6 +95,9 @@ namespace SleepyTime_2._0
             this.label12 = new System.Windows.Forms.Label();
             this.cmbScheduleOperation = new System.Windows.Forms.ComboBox();
             this.pnlPresets = new System.Windows.Forms.Panel();
+            this.pnlPresetTools = new System.Windows.Forms.Panel();
+            this.btnNewPreset = new SleepyTime_2._0.RoundedButton();
+            this.pnlSavedPresets = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.tglDarkMode = new SleepyTime_2._0.Custom_Controls.ToggleButton();
@@ -128,6 +131,7 @@ namespace SleepyTime_2._0
             this.pnlSchedule.SuspendLayout();
             this.pnlSavedSchedules.SuspendLayout();
             this.pnlPresets.SuspendLayout();
+            this.pnlPresetTools.SuspendLayout();
             this.pnlSettings.SuspendLayout();
             this.pnlAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -1026,11 +1030,43 @@ namespace SleepyTime_2._0
             // 
             // pnlPresets
             // 
+            this.pnlPresets.Controls.Add(this.pnlPresetTools);
+            this.pnlPresets.Controls.Add(this.pnlSavedPresets);
             this.pnlPresets.Controls.Add(this.label10);
             this.pnlPresets.Location = new System.Drawing.Point(127, 68);
             this.pnlPresets.Name = "pnlPresets";
             this.pnlPresets.Size = new System.Drawing.Size(673, 385);
             this.pnlPresets.TabIndex = 24;
+            // 
+            // pnlPresetTools
+            // 
+            this.pnlPresetTools.Controls.Add(this.btnNewPreset);
+            this.pnlPresetTools.Location = new System.Drawing.Point(30, 42);
+            this.pnlPresetTools.Name = "pnlPresetTools";
+            this.pnlPresetTools.Size = new System.Drawing.Size(621, 82);
+            this.pnlPresetTools.TabIndex = 32;
+            // 
+            // btnNewPreset
+            // 
+            this.btnNewPreset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.btnNewPreset.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnNewPreset.FlatAppearance.BorderSize = 0;
+            this.btnNewPreset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewPreset.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnNewPreset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
+            this.btnNewPreset.Location = new System.Drawing.Point(450, 20);
+            this.btnNewPreset.Name = "btnNewPreset";
+            this.btnNewPreset.Size = new System.Drawing.Size(150, 40);
+            this.btnNewPreset.TabIndex = 0;
+            this.btnNewPreset.Text = "New Preset";
+            this.btnNewPreset.UseVisualStyleBackColor = false;
+            // 
+            // pnlSavedPresets
+            // 
+            this.pnlSavedPresets.Location = new System.Drawing.Point(30, 133);
+            this.pnlSavedPresets.Name = "pnlSavedPresets";
+            this.pnlSavedPresets.Size = new System.Drawing.Size(621, 233);
+            this.pnlSavedPresets.TabIndex = 31;
             // 
             // label10
             // 
@@ -1359,6 +1395,7 @@ namespace SleepyTime_2._0
             this.pnlSavedSchedules.PerformLayout();
             this.pnlPresets.ResumeLayout(false);
             this.pnlPresets.PerformLayout();
+            this.pnlPresetTools.ResumeLayout(false);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
             this.pnlAbout.ResumeLayout(false);
@@ -1460,6 +1497,9 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Timer tmrCurrentTime;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel pnlPresetTools;
+        private RoundedButton btnNewPreset;
+        private System.Windows.Forms.Panel pnlSavedPresets;
     }
 }
 
