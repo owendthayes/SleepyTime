@@ -137,7 +137,7 @@ namespace SleepyTime_2._0
                     System.Globalization.DateTimeStyles.None,
                     out DateTime date))
                 {
-                    MessageBox.Show("Date incorrect");
+                    MessageBox.Show("Date incorrect", "Error");
                     continue;
                 }
 
@@ -145,7 +145,7 @@ namespace SleepyTime_2._0
 
                 if (!TimeSpan.TryParse(data[2], out TimeSpan time))
                 {
-                    MessageBox.Show("Time incorrect");
+                    MessageBox.Show("Time incorrect", "Error");
                     continue;
                 }
 
@@ -165,7 +165,7 @@ namespace SleepyTime_2._0
                 }
                 else if (messageShown == false)
                 {
-                    MessageBox.Show("The date of one or more of your saved schedules has passed\nThey have been removed.");
+                    MessageBox.Show("The date of one or more of your saved schedules has passed\nThey have been removed.", "Notice");
                     messageShown = true;
                 }
 
@@ -618,7 +618,7 @@ namespace SleepyTime_2._0
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?", "Close SleepyTime", MessageBoxButtons.YesNo);
+            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?\n\nScheduled actions will not occur when SleepyTime is closed.", "Close SleepyTime", MessageBoxButtons.YesNo);
             {
                 if (exitBox == DialogResult.Yes)
                 {
@@ -776,7 +776,7 @@ namespace SleepyTime_2._0
                 }
                 else
                 {
-                    MessageBox.Show("Please enter a valid time");
+                    MessageBox.Show("Please enter a valid time", "Error");
                 }
             }
             else if (countdownEnded)
@@ -1381,7 +1381,7 @@ namespace SleepyTime_2._0
                     && item.Time == TimeSpan.Parse(cmbScheduleTime.Text)
                     && item.Reminder == cmbRemindMe.SelectedIndex.ToString())
                 {
-                    MessageBox.Show("This item already exists");
+                    MessageBox.Show("This item already exists", "Could not save item.");
                     return;
                 }
 
@@ -1389,7 +1389,7 @@ namespace SleepyTime_2._0
                     && item.Time == TimeSpan.Parse(cmbScheduleTime.Text)
                     && btnSaveSchedule.Text != "Update Schedule")
                 {
-                    MessageBox.Show("Item already scheduled for this date/time");
+                    MessageBox.Show("Item already scheduled for this date/time", "Could not save item.");
                     return;
                 }
 
@@ -1407,14 +1407,14 @@ namespace SleepyTime_2._0
 
             if (validationDate < DateTime.Now)
             {
-                MessageBox.Show("This time has already passed");
+                MessageBox.Show("This time has already passed", "Could not save item.");
                 return;
             }
 
 
             if (proposedReminderDate < DateTime.Now)
             {
-                MessageBox.Show("You can't set a reminder for a time that has already passed");
+                MessageBox.Show("You can't set a reminder for a time that has already passed", "Could not save item.");
                 return;
             }
 
@@ -1425,7 +1425,7 @@ namespace SleepyTime_2._0
                 cmbScheduleTime.GetItemText(cmbScheduleTime.SelectedItem),
                 out scheduleTime))
                 {
-                    MessageBox.Show("Invalid time selected");
+                    MessageBox.Show("Invalid time selected", "Error");
                     return;
                 }
 
@@ -1485,7 +1485,7 @@ namespace SleepyTime_2._0
                         updateScheduleFile();
                         updateScheduleUI();
 
-                        MessageBox.Show("Schedule Updated");
+                        MessageBox.Show("Schedule Updated", "Success");
 
                         btnSaveSchedule.Text = "Save";
                         btnClearSchedule.Text = "Reset";

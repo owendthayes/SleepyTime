@@ -49,6 +49,7 @@ namespace SleepyTime_2._0
             this.lblTimeTitle = new System.Windows.Forms.Label();
             this.imgTimeAnimation = new System.Windows.Forms.PictureBox();
             this.pnlCountdown = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnClearTimer = new SleepyTime_2._0.RoundedButton();
             this.btnMoreQuick = new SleepyTime_2._0.RoundedButton();
             this.btnQuick2 = new SleepyTime_2._0.RoundedButton();
@@ -353,6 +354,7 @@ namespace SleepyTime_2._0
             // 
             // pnlCountdown
             // 
+            this.pnlCountdown.Controls.Add(this.label14);
             this.pnlCountdown.Controls.Add(this.btnClearTimer);
             this.pnlCountdown.Controls.Add(this.btnMoreQuick);
             this.pnlCountdown.Controls.Add(this.btnQuick2);
@@ -383,6 +385,17 @@ namespace SleepyTime_2._0
             this.pnlCountdown.TabIndex = 22;
             this.pnlCountdown.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCountdown_Paint);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label14.Location = new System.Drawing.Point(355, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(315, 16);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "*SleepyTime must be open for actons to occur";
+            // 
             // btnClearTimer
             // 
             this.btnClearTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
@@ -392,7 +405,7 @@ namespace SleepyTime_2._0
             this.btnClearTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearTimer.Font = new System.Drawing.Font("JetBrains Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnClearTimer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnClearTimer.Location = new System.Drawing.Point(456, 68);
+            this.btnClearTimer.Location = new System.Drawing.Point(451, 82);
             this.btnClearTimer.Name = "btnClearTimer";
             this.btnClearTimer.Size = new System.Drawing.Size(50, 31);
             this.btnClearTimer.TabIndex = 27;
@@ -531,7 +544,7 @@ namespace SleepyTime_2._0
             this.lblShutdownTime.AutoSize = true;
             this.lblShutdownTime.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblShutdownTime.ForeColor = System.Drawing.Color.White;
-            this.lblShutdownTime.Location = new System.Drawing.Point(455, 28);
+            this.lblShutdownTime.Location = new System.Drawing.Point(450, 50);
             this.lblShutdownTime.Name = "lblShutdownTime";
             this.lblShutdownTime.Size = new System.Drawing.Size(40, 21);
             this.lblShutdownTime.TabIndex = 18;
@@ -542,7 +555,7 @@ namespace SleepyTime_2._0
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(152, 28);
+            this.label8.Location = new System.Drawing.Point(147, 50);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(170, 21);
             this.label8.TabIndex = 17;
@@ -561,7 +574,7 @@ namespace SleepyTime_2._0
             "Restart",
             "Sleep",
             "Lock"});
-            this.cmbOperation.Location = new System.Drawing.Point(326, 25);
+            this.cmbOperation.Location = new System.Drawing.Point(321, 47);
             this.cmbOperation.Name = "cmbOperation";
             this.cmbOperation.Size = new System.Drawing.Size(121, 29);
             this.cmbOperation.TabIndex = 16;
@@ -640,7 +653,7 @@ namespace SleepyTime_2._0
             this.txtSeconds.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSeconds.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSeconds.ForeColor = System.Drawing.Color.White;
-            this.txtSeconds.Location = new System.Drawing.Point(389, 68);
+            this.txtSeconds.Location = new System.Drawing.Point(384, 82);
             this.txtSeconds.MaxLength = 2;
             this.txtSeconds.Name = "txtSeconds";
             this.txtSeconds.Size = new System.Drawing.Size(61, 64);
@@ -656,7 +669,7 @@ namespace SleepyTime_2._0
             this.txtHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHours.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtHours.ForeColor = System.Drawing.Color.White;
-            this.txtHours.Location = new System.Drawing.Point(209, 67);
+            this.txtHours.Location = new System.Drawing.Point(204, 81);
             this.txtHours.MaxLength = 2;
             this.txtHours.Name = "txtHours";
             this.txtHours.Size = new System.Drawing.Size(61, 64);
@@ -672,7 +685,7 @@ namespace SleepyTime_2._0
             this.txtMinutes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMinutes.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMinutes.ForeColor = System.Drawing.Color.White;
-            this.txtMinutes.Location = new System.Drawing.Point(299, 68);
+            this.txtMinutes.Location = new System.Drawing.Point(294, 82);
             this.txtMinutes.MaxLength = 2;
             this.txtMinutes.Name = "txtMinutes";
             this.txtMinutes.Size = new System.Drawing.Size(61, 64);
@@ -687,7 +700,7 @@ namespace SleepyTime_2._0
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label7.Location = new System.Drawing.Point(391, 132);
+            this.label7.Location = new System.Drawing.Point(386, 146);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 16);
             this.label7.TabIndex = 7;
@@ -698,7 +711,7 @@ namespace SleepyTime_2._0
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label6.Location = new System.Drawing.Point(299, 132);
+            this.label6.Location = new System.Drawing.Point(294, 146);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 6;
@@ -709,7 +722,7 @@ namespace SleepyTime_2._0
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label5.Location = new System.Drawing.Point(218, 132);
+            this.label5.Location = new System.Drawing.Point(213, 146);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 16);
             this.label5.TabIndex = 5;
@@ -720,7 +733,7 @@ namespace SleepyTime_2._0
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.label4.Location = new System.Drawing.Point(347, 68);
+            this.label4.Location = new System.Drawing.Point(342, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 63);
             this.label4.TabIndex = 4;
@@ -731,7 +744,7 @@ namespace SleepyTime_2._0
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("JetBrains Mono", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.label3.Location = new System.Drawing.Point(257, 68);
+            this.label3.Location = new System.Drawing.Point(252, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 63);
             this.label3.TabIndex = 3;
@@ -767,11 +780,11 @@ namespace SleepyTime_2._0
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label2.Location = new System.Drawing.Point(276, 9);
+            this.label2.Location = new System.Drawing.Point(355, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(385, 16);
+            this.label2.Size = new System.Drawing.Size(315, 16);
             this.label2.TabIndex = 28;
-            this.label2.Text = "*SleepyTime must be open for scheduled actons to occur";
+            this.label2.Text = "*SleepyTime must be open for actons to occur";
             // 
             // label27
             // 
@@ -1022,13 +1035,13 @@ namespace SleepyTime_2._0
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(283, 178);
+            this.label10.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label10.Location = new System.Drawing.Point(355, 6);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 21);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "PRESETS";
+            this.label10.Size = new System.Drawing.Size(315, 16);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "*SleepyTime must be open for actons to occur";
             // 
             // pnlSettings
             // 
@@ -1320,11 +1333,11 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.pnlPresets);
             this.Controls.Add(this.pnlCountdown);
             this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlAbout);
-            this.Controls.Add(this.pnlPresets);
             this.Controls.Add(this.pnlHelp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1396,7 +1409,6 @@ namespace SleepyTime_2._0
         private RoundedButton btnAdd5Min;
         private System.Windows.Forms.Panel pnlSchedule;
         private System.Windows.Forms.Panel pnlPresets;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel pnlSettings;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnlAbout;
@@ -1446,6 +1458,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label lblSavedItems;
         private System.Windows.Forms.NotifyIcon ntfReminder;
         private System.Windows.Forms.Timer tmrCurrentTime;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label10;
     }
 }
 
