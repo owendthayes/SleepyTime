@@ -96,6 +96,9 @@ namespace SleepyTime_2._0
             this.cmbScheduleOperation = new System.Windows.Forms.ComboBox();
             this.pnlPresets = new System.Windows.Forms.Panel();
             this.pnlPresetUpcoming = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnPresetCancel = new SleepyTime_2._0.RoundedButton();
             this.label28 = new System.Windows.Forms.Label();
             this.btnPresetSave = new SleepyTime_2._0.RoundedButton();
@@ -1042,13 +1045,55 @@ namespace SleepyTime_2._0
             // 
             // pnlPresetUpcoming
             // 
+            this.pnlPresetUpcoming.Controls.Add(this.comboBox1);
+            this.pnlPresetUpcoming.Controls.Add(this.label30);
+            this.pnlPresetUpcoming.Controls.Add(this.textBox1);
             this.pnlPresetUpcoming.Controls.Add(this.btnPresetCancel);
             this.pnlPresetUpcoming.Controls.Add(this.label28);
             this.pnlPresetUpcoming.Controls.Add(this.btnPresetSave);
-            this.pnlPresetUpcoming.Location = new System.Drawing.Point(30, 42);
+            this.pnlPresetUpcoming.Location = new System.Drawing.Point(30, 25);
             this.pnlPresetUpcoming.Name = "pnlPresetUpcoming";
-            this.pnlPresetUpcoming.Size = new System.Drawing.Size(621, 103);
+            this.pnlPresetUpcoming.Size = new System.Drawing.Size(621, 124);
             this.pnlPresetUpcoming.TabIndex = 32;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(41)))));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.ForeColor = System.Drawing.Color.White;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Shutdown",
+            "Restart",
+            "Sleep",
+            "Lock"});
+            this.comboBox1.Location = new System.Drawing.Point(156, 28);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 29);
+            this.comboBox1.TabIndex = 44;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label30.Location = new System.Drawing.Point(156, 9);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(49, 16);
+            this.label30.TabIndex = 43;
+            this.label30.Text = "Action";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(11, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(130, 29);
+            this.textBox1.TabIndex = 41;
             // 
             // btnPresetCancel
             // 
@@ -1056,14 +1101,14 @@ namespace SleepyTime_2._0
             this.btnPresetCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.btnPresetCancel.FlatAppearance.BorderSize = 0;
             this.btnPresetCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPresetCancel.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPresetCancel.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPresetCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
-            this.btnPresetCancel.Location = new System.Drawing.Point(537, 71);
+            this.btnPresetCancel.Location = new System.Drawing.Point(451, 83);
             this.btnPresetCancel.Name = "btnPresetCancel";
-            this.btnPresetCancel.Size = new System.Drawing.Size(81, 26);
+            this.btnPresetCancel.Size = new System.Drawing.Size(162, 33);
             this.btnPresetCancel.TabIndex = 37;
             this.btnPresetCancel.Tag = "noColourChange";
-            this.btnPresetCancel.Text = "Cancel";
+            this.btnPresetCancel.Text = "Reset";
             this.btnPresetCancel.UseVisualStyleBackColor = false;
             // 
             // label28
@@ -1073,9 +1118,9 @@ namespace SleepyTime_2._0
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
             this.label28.Location = new System.Drawing.Point(10, 8);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(133, 16);
+            this.label28.Size = new System.Drawing.Size(35, 16);
             this.label28.TabIndex = 33;
-            this.label28.Text = "Create/Edit Preset";
+            this.label28.Text = "Name";
             // 
             // btnPresetSave
             // 
@@ -1083,20 +1128,20 @@ namespace SleepyTime_2._0
             this.btnPresetSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
             this.btnPresetSave.FlatAppearance.BorderSize = 0;
             this.btnPresetSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPresetSave.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPresetSave.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPresetSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(71)))), ((int)(((byte)(203)))));
-            this.btnPresetSave.Location = new System.Drawing.Point(415, 71);
+            this.btnPresetSave.Location = new System.Drawing.Point(283, 83);
             this.btnPresetSave.Name = "btnPresetSave";
-            this.btnPresetSave.Size = new System.Drawing.Size(116, 26);
+            this.btnPresetSave.Size = new System.Drawing.Size(162, 33);
             this.btnPresetSave.TabIndex = 0;
             this.btnPresetSave.Text = "Save Preset";
             this.btnPresetSave.UseVisualStyleBackColor = false;
             // 
             // pnlSavedPresets
             // 
-            this.pnlSavedPresets.Location = new System.Drawing.Point(30, 152);
+            this.pnlSavedPresets.Location = new System.Drawing.Point(30, 155);
             this.pnlSavedPresets.Name = "pnlSavedPresets";
-            this.pnlSavedPresets.Size = new System.Drawing.Size(621, 214);
+            this.pnlSavedPresets.Size = new System.Drawing.Size(621, 219);
             this.pnlSavedPresets.TabIndex = 31;
             // 
             // label10
@@ -1400,8 +1445,8 @@ namespace SleepyTime_2._0
             this.Controls.Add(this.btnSideBarSettings);
             this.Controls.Add(this.btnSidebarAbout);
             this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlPresets);
+            this.Controls.Add(this.pnlSchedule);
             this.Controls.Add(this.pnlCountdown);
             this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.pnlAbout);
@@ -1534,6 +1579,9 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Panel pnlSavedPresets;
         private System.Windows.Forms.Label label28;
         private RoundedButton btnPresetCancel;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
