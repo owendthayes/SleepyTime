@@ -96,6 +96,7 @@ namespace SleepyTime_2._0
             this.cmbScheduleOperation = new System.Windows.Forms.ComboBox();
             this.pnlPresets = new System.Windows.Forms.Panel();
             this.pnlPresetUpcoming = new System.Windows.Forms.Panel();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -127,6 +128,9 @@ namespace SleepyTime_2._0
             this.tmrValidation = new System.Windows.Forms.Timer(this.components);
             this.ntfReminder = new System.Windows.Forms.NotifyIcon(this.components);
             this.tmrCurrentTime = new System.Windows.Forms.Timer(this.components);
+            this.label29 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgHeaderDivider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1045,6 +1049,10 @@ namespace SleepyTime_2._0
             // 
             // pnlPresetUpcoming
             // 
+            this.pnlPresetUpcoming.Controls.Add(this.comboBox2);
+            this.pnlPresetUpcoming.Controls.Add(this.label31);
+            this.pnlPresetUpcoming.Controls.Add(this.label29);
+            this.pnlPresetUpcoming.Controls.Add(this.checkedListBox1);
             this.pnlPresetUpcoming.Controls.Add(this.comboBox1);
             this.pnlPresetUpcoming.Controls.Add(this.label30);
             this.pnlPresetUpcoming.Controls.Add(this.textBox1);
@@ -1055,6 +1063,25 @@ namespace SleepyTime_2._0
             this.pnlPresetUpcoming.Name = "pnlPresetUpcoming";
             this.pnlPresetUpcoming.Size = new System.Drawing.Size(621, 124);
             this.pnlPresetUpcoming.TabIndex = 32;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.checkedListBox1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkedListBox1.ForeColor = System.Drawing.Color.White;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"});
+            this.checkedListBox1.Location = new System.Drawing.Point(288, 28);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(154, 28);
+            this.checkedListBox1.TabIndex = 45;
             // 
             // comboBox1
             // 
@@ -1116,7 +1143,7 @@ namespace SleepyTime_2._0
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
-            this.label28.Location = new System.Drawing.Point(10, 8);
+            this.label28.Location = new System.Drawing.Point(11, 9);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(35, 16);
             this.label28.TabIndex = 33;
@@ -1422,6 +1449,38 @@ namespace SleepyTime_2._0
             this.tmrCurrentTime.Interval = 1000;
             this.tmrCurrentTime.Tick += new System.EventHandler(this.tmrCurrentTime_Tick);
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label29.Location = new System.Drawing.Point(288, 8);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(35, 16);
+            this.label29.TabIndex = 46;
+            this.label29.Text = "Days";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("JetBrains Mono", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(178)))), ((int)(((byte)(181)))));
+            this.label31.Location = new System.Drawing.Point(451, 9);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(35, 16);
+            this.label31.TabIndex = 47;
+            this.label31.Text = "Time";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(15)))), ((int)(((byte)(28)))));
+            this.comboBox2.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(451, 27);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(160, 29);
+            this.comboBox2.TabIndex = 48;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1582,6 +1641,10 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label29;
     }
 }
 
