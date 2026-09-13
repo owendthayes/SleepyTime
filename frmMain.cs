@@ -183,7 +183,7 @@ namespace SleepyTime_2._0
                 {
                     "purple",
                     "false",
-                    "dark"
+                    "false"
                 });
                 //settingsFile = Path.GetFullPath("Settings.txt");
             }
