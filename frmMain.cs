@@ -1568,6 +1568,7 @@ namespace SleepyTime_2._0
             cmbRemindMe.SelectedIndex = 0;
             cmbPresetTime.SelectedIndex = 0;
             cmbPresetAction.SelectedIndex = 0;
+            cmbPresetRepeat.SelectedIndex = 0;
 
             btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
@@ -1625,6 +1626,22 @@ namespace SleepyTime_2._0
         private void pnlPresetDays_Leave(object sender, EventArgs e)
         {
             //pnlPresetDays.Visible = false;
+        }
+
+        private void cmbPresetRepeat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPresetRepeat.SelectedIndex == 2 || cmbPresetRepeat.SelectedIndex == 3)
+            {
+                btnPresetDaysDropDown.Visible = true;
+                cmbPresetDays.Visible = true;
+                label29.Visible = true;
+            }
+            else
+            {
+                btnPresetDaysDropDown.Visible = false;
+                cmbPresetDays.Visible = false;
+                label29.Visible = false;
+            }
         }
     }
 }
