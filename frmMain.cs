@@ -1595,16 +1595,30 @@ namespace SleepyTime_2._0
             btnHelp.FlatStyle = FlatStyle.Flat;
             btnHelp.FlatAppearance.BorderSize = 0;
 
+            btnPresetDaysDropDown.FlatStyle = FlatStyle.Flat;
+            btnPresetDaysDropDown.FlatAppearance.BorderSize = 0;
+
             btnSidebarCountdown.PerformClick();
         }
         private void cmbPresetDays_Click(object sender, EventArgs e)
         {
-            pnlPresetDays.Visible = true;
+            cmbPresetDays.SelectionLength = 0;
+            pnlPresetDays.Visible = !pnlPresetDays.Visible;
         }
 
         private void listBoxDays_MouseLeave(object sender, EventArgs e)
         {
             pnlPresetDays.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnlPresetDays.Visible = !pnlPresetDays.Visible;
+        }
+
+        private void cmbPresetDays_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
