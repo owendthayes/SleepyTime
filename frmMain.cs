@@ -46,7 +46,7 @@ namespace SleepyTime_2._0
         //APP SETTINGS
         private string settingsFile;
 
-            //COLOUR THEME
+        //COLOUR THEME
         private string accentColour = "purple";
         private Color primaryAccent;
         private Color secondaryAccent;
@@ -99,11 +99,13 @@ namespace SleepyTime_2._0
         private void populateTimesComboBox()
         {
             cmbScheduleTime.Items.Clear();
+            cmbPresetTime.Items.Clear();
 
             for (int minutes = 0; minutes < 24 * 60; minutes += 10)
             {
                 TimeSpan time = TimeSpan.FromMinutes(minutes);
                 cmbScheduleTime.Items.Add(time.ToString(@"hh\:mm"));
+                cmbPresetTime.Items.Add(time.ToString(@"hh\:mm"));
             }
         }
 
@@ -281,7 +283,7 @@ namespace SleepyTime_2._0
             }
             this.BackColor = primaryTheme;
 
-            
+
         }
 
         private void applyAccentColour(Color accentColour, Color secondaryAccent)
@@ -290,14 +292,14 @@ namespace SleepyTime_2._0
             {
                 if (c.ForeColor == Color.FromArgb(140, 71, 203) || c.ForeColor == Color.FromArgb(35, 35, 204) || c.ForeColor == Color.LimeGreen || c.ForeColor == Color.FromArgb(197, 217, 20) || c.ForeColor == Color.FromArgb(222, 13, 13))
                 {
-                    c.ForeColor = primaryAccent;                  
+                    c.ForeColor = primaryAccent;
                 }
 
-                if(c is RoundedButton button && c.Tag != "noColourChange")
+                if (c is RoundedButton button && c.Tag != "noColourChange")
                 {
                     button.BorderColor = primaryAccent;
                 }
-                
+
                 if (c is Label && Text == ":")
                 {
                     c.ForeColor = primaryAccent;
@@ -311,7 +313,7 @@ namespace SleepyTime_2._0
                 if (c is LinkLabel label)
                 {
                     label.LinkColor = primaryAccent;
-                }               
+                }
             }
 
             lblTimeTitle.ForeColor = primaryAccent;
@@ -339,7 +341,7 @@ namespace SleepyTime_2._0
         private void getAccentColour()
         {
             //return accent colours here, lighter darker etc.
-            switch(accentColour)
+            switch (accentColour)
             {
                 case "purple":
                     primaryAccent = Color.FromArgb(140, 71, 203);
@@ -372,7 +374,7 @@ namespace SleepyTime_2._0
         {
             DateTime soonestDT;
             DateTime currentDT;
-            
+
             // only if there are multiple items, do the calculation for the soonest reminder.
             if (scheduledItems.Count > 1)
             {
@@ -489,7 +491,7 @@ namespace SleepyTime_2._0
                     break;
 
                 case "3": // 15 mins
-                    timePeriod = "15 Minutes"; 
+                    timePeriod = "15 Minutes";
                     break;
 
                 case "4": // 30 mins
@@ -562,7 +564,7 @@ namespace SleepyTime_2._0
             if (this.WindowState != FormWindowState.Minimized)
             {
                 using (GraphicsPath roundPath = GetRoundedPath(form.ClientRectangle, radius))
-                using (Pen penBorder = new Pen(borderColour, borderSize)) 
+                using (Pen penBorder = new Pen(borderColour, borderSize))
                 using (Matrix transform = new Matrix())
                 {
                     graph.SmoothingMode = SmoothingMode.AntiAlias;
@@ -669,8 +671,8 @@ namespace SleepyTime_2._0
                     panel.Visible = true;
                     panel.Enabled = true;
                 }
-            }    
-            
+            }
+
         }
 
         private void btnSidebarCountdown_Click(object sender, EventArgs e)
@@ -797,7 +799,7 @@ namespace SleepyTime_2._0
                         tmrCountDown.Start();
                     }
                 }
-            } 
+            }
         }
 
         private void CancelCountdown()
@@ -1120,7 +1122,7 @@ namespace SleepyTime_2._0
             foreach (ScheduleItem item in scheduledItems)
             {
                 Panel row = new Panel();
-                
+
                 row.BackColor = secondaryTheme;
 
                 row.Width = pnlSavedSchedules.Width - 40;
@@ -1231,7 +1233,8 @@ namespace SleepyTime_2._0
                     if (operations.Contains(c.Text))
                     {
                         data[0] = Array.IndexOf(operations, c.Text).ToString();
-                    };
+                    }
+                    ;
 
                     //get the DATE
                     if (DateTime.TryParseExact(
@@ -1242,18 +1245,21 @@ namespace SleepyTime_2._0
                     out DateTime date))
                     {
                         data[1] = date.ToString();
-                    };
+                    }
+                    ;
 
                     //get the TIME
                     if (TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
                     {
                         data[2] = timeDel.ToString();
-                    };
+                    }
+                    ;
 
                     if (reminders.Contains(c.Text))
                     {
                         data[3] = Array.IndexOf(reminders, c.Text).ToString();
-                    };
+                    }
+                    ;
 
                 }
             }
@@ -1261,7 +1267,7 @@ namespace SleepyTime_2._0
             //located the correct target saved item.
             TimeSpan editTime = TimeSpan.Parse(data[2]);
             string formattedTime = editTime.ToString(@"hh\:mm");
-            
+
             editTarget = $"{data[0]}|{data[1]}|{formattedTime}|{data[3]}";
 
             //load the option boxes with the corresponding data.
@@ -1297,7 +1303,8 @@ namespace SleepyTime_2._0
                             if (operations.Contains(c.Text))
                             {
                                 data[0] = Array.IndexOf(operations, c.Text).ToString();
-                            };
+                            }
+                            ;
 
                             //get the DATE
                             if (DateTime.TryParseExact(
@@ -1308,18 +1315,21 @@ namespace SleepyTime_2._0
                             out DateTime date))
                             {
                                 data[1] = date.ToString();
-                            };
+                            }
+                            ;
 
                             //get the TIME
                             if (TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
                             {
                                 data[2] = timeDel.ToString();
-                            };
+                            }
+                            ;
 
                             if (reminders.Contains(c.Text))
                             {
                                 data[3] = Array.IndexOf(reminders, c.Text).ToString();
-                            };
+                            }
+                            ;
 
                         }
                     }
@@ -1443,7 +1453,7 @@ namespace SleepyTime_2._0
                 updateScheduleFile();
                 updateScheduleUI();
             }
-            
+
             else if (btnSaveSchedule.Text == "Update Schedule")
             {
                 string[] data = editTarget.Split('|');
@@ -1493,7 +1503,7 @@ namespace SleepyTime_2._0
                         return;
                     }
                 }
-            } 
+            }
         }
 
         private void tglAOT_CheckedChanged(object sender, EventArgs e)
@@ -1556,6 +1566,8 @@ namespace SleepyTime_2._0
             cmbScheduleTime.SelectedIndex = 0;
             cmbScheduleDate.MinDate = DateTime.Today;
             cmbRemindMe.SelectedIndex = 0;
+            cmbPresetTime.SelectedIndex = 0;
+            cmbPresetAction.SelectedIndex = 0;
 
             btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
@@ -1584,6 +1596,15 @@ namespace SleepyTime_2._0
             btnHelp.FlatAppearance.BorderSize = 0;
 
             btnSidebarCountdown.PerformClick();
+        }
+        private void cmbPresetDays_Click(object sender, EventArgs e)
+        {
+            pnlPresetDays.Visible = true;
+        }
+
+        private void listBoxDays_MouseLeave(object sender, EventArgs e)
+        {
+            pnlPresetDays.Visible = false;
         }
     }
 }
