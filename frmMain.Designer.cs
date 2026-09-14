@@ -136,6 +136,8 @@ namespace SleepyTime_2._0
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
+            label34 = new System.Windows.Forms.Label();
+            cmbPresetRepeat = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1038,8 +1040,8 @@ namespace SleepyTime_2._0
             // 
             // pnlPresets
             // 
-            pnlPresets.Controls.Add(label32);
             pnlPresets.Controls.Add(pnlPresetDays);
+            pnlPresets.Controls.Add(label32);
             pnlPresets.Controls.Add(pnlPresetUpcoming);
             pnlPresets.Controls.Add(label10);
             pnlPresets.Controls.Add(pnlSavedPresets);
@@ -1064,9 +1066,9 @@ namespace SleepyTime_2._0
             pnlPresetDays.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             pnlPresetDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             pnlPresetDays.Controls.Add(listBoxDays);
-            pnlPresetDays.Location = new System.Drawing.Point(318, 91);
+            pnlPresetDays.Location = new System.Drawing.Point(41, 138);
             pnlPresetDays.Name = "pnlPresetDays";
-            pnlPresetDays.Size = new System.Drawing.Size(183, 170);
+            pnlPresetDays.Size = new System.Drawing.Size(183, 171);
             pnlPresetDays.TabIndex = 50;
             pnlPresetDays.Visible = false;
             pnlPresetDays.Leave += pnlPresetDays_Leave;
@@ -1087,6 +1089,8 @@ namespace SleepyTime_2._0
             // 
             // pnlPresetUpcoming
             // 
+            pnlPresetUpcoming.Controls.Add(cmbPresetRepeat);
+            pnlPresetUpcoming.Controls.Add(label34);
             pnlPresetUpcoming.Controls.Add(btnPresetDaysDropDown);
             pnlPresetUpcoming.Controls.Add(cmbPresetDays);
             pnlPresetUpcoming.Controls.Add(cmbPresetTime);
@@ -1109,7 +1113,7 @@ namespace SleepyTime_2._0
             btnPresetDaysDropDown.Cursor = System.Windows.Forms.Cursors.Hand;
             btnPresetDaysDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             btnPresetDaysDropDown.Font = new System.Drawing.Font("Segoe UI", 3.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnPresetDaysDropDown.Location = new System.Drawing.Point(451, 39);
+            btnPresetDaysDropDown.Location = new System.Drawing.Point(173, 91);
             btnPresetDaysDropDown.Name = "btnPresetDaysDropDown";
             btnPresetDaysDropDown.Size = new System.Drawing.Size(19, 29);
             btnPresetDaysDropDown.TabIndex = 50;
@@ -1123,7 +1127,7 @@ namespace SleepyTime_2._0
             cmbPresetDays.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbPresetDays.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
             cmbPresetDays.ForeColor = System.Drawing.Color.White;
-            cmbPresetDays.Location = new System.Drawing.Point(288, 39);
+            cmbPresetDays.Location = new System.Drawing.Point(11, 91);
             cmbPresetDays.Name = "cmbPresetDays";
             cmbPresetDays.ReadOnly = true;
             cmbPresetDays.Size = new System.Drawing.Size(183, 29);
@@ -1143,7 +1147,7 @@ namespace SleepyTime_2._0
             cmbPresetTime.ForeColor = System.Drawing.Color.White;
             cmbPresetTime.FormattingEnabled = true;
             cmbPresetTime.IntegralHeight = false;
-            cmbPresetTime.Location = new System.Drawing.Point(477, 39);
+            cmbPresetTime.Location = new System.Drawing.Point(477, 40);
             cmbPresetTime.MaxDropDownItems = 10;
             cmbPresetTime.Name = "cmbPresetTime";
             cmbPresetTime.Size = new System.Drawing.Size(129, 29);
@@ -1154,7 +1158,7 @@ namespace SleepyTime_2._0
             label31.AutoSize = true;
             label31.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label31.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label31.Location = new System.Drawing.Point(456, 19);
+            label31.Location = new System.Drawing.Point(480, 22);
             label31.Name = "label31";
             label31.Size = new System.Drawing.Size(35, 16);
             label31.TabIndex = 47;
@@ -1165,7 +1169,7 @@ namespace SleepyTime_2._0
             label29.AutoSize = true;
             label29.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label29.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label29.Location = new System.Drawing.Point(288, 18);
+            label29.Location = new System.Drawing.Point(11, 75);
             label29.Name = "label29";
             label29.Size = new System.Drawing.Size(35, 16);
             label29.TabIndex = 46;
@@ -1182,7 +1186,7 @@ namespace SleepyTime_2._0
             cmbPresetAction.FormattingEnabled = true;
             cmbPresetAction.IntegralHeight = false;
             cmbPresetAction.Items.AddRange(new object[] { "Shutdown", "Restart", "Sleep", "Lock" });
-            cmbPresetAction.Location = new System.Drawing.Point(161, 39);
+            cmbPresetAction.Location = new System.Drawing.Point(223, 41);
             cmbPresetAction.Name = "cmbPresetAction";
             cmbPresetAction.Size = new System.Drawing.Size(121, 29);
             cmbPresetAction.TabIndex = 44;
@@ -1192,7 +1196,7 @@ namespace SleepyTime_2._0
             label30.AutoSize = true;
             label30.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label30.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label30.Location = new System.Drawing.Point(161, 19);
+            label30.Location = new System.Drawing.Point(223, 21);
             label30.Name = "label30";
             label30.Size = new System.Drawing.Size(49, 16);
             label30.TabIndex = 43;
@@ -1203,10 +1207,10 @@ namespace SleepyTime_2._0
             textBox1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             textBox1.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
             textBox1.ForeColor = System.Drawing.Color.White;
-            textBox1.Location = new System.Drawing.Point(11, 39);
+            textBox1.Location = new System.Drawing.Point(11, 41);
             textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "e.g. \"Daily Restart\"";
-            textBox1.Size = new System.Drawing.Size(144, 29);
+            textBox1.PlaceholderText = "e.g. \"Daily Reset\"";
+            textBox1.Size = new System.Drawing.Size(206, 29);
             textBox1.TabIndex = 41;
             // 
             // btnPresetCancel
@@ -1230,7 +1234,7 @@ namespace SleepyTime_2._0
             label28.AutoSize = true;
             label28.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label28.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label28.Location = new System.Drawing.Point(11, 19);
+            label28.Location = new System.Drawing.Point(11, 20);
             label28.Name = "label28";
             label28.Size = new System.Drawing.Size(35, 16);
             label28.TabIndex = 33;
@@ -1531,6 +1535,33 @@ namespace SleepyTime_2._0
             tmrCurrentTime.Interval = 1000;
             tmrCurrentTime.Tick += tmrCurrentTime_Tick;
             // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label34.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label34.Location = new System.Drawing.Point(353, 21);
+            label34.Name = "label34";
+            label34.Size = new System.Drawing.Size(49, 16);
+            label34.TabIndex = 34;
+            label34.Text = "Repeat";
+            // 
+            // cmbPresetRepeat
+            // 
+            cmbPresetRepeat.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbPresetRepeat.Cursor = System.Windows.Forms.Cursors.Hand;
+            cmbPresetRepeat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbPresetRepeat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            cmbPresetRepeat.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
+            cmbPresetRepeat.ForeColor = System.Drawing.Color.White;
+            cmbPresetRepeat.FormattingEnabled = true;
+            cmbPresetRepeat.IntegralHeight = false;
+            cmbPresetRepeat.Items.AddRange(new object[] { "Once (Tomorrow)", "Every Day", "Every Week", "Forever" });
+            cmbPresetRepeat.Location = new System.Drawing.Point(350, 41);
+            cmbPresetRepeat.Name = "cmbPresetRepeat";
+            cmbPresetRepeat.Size = new System.Drawing.Size(121, 29);
+            cmbPresetRepeat.TabIndex = 51;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1701,6 +1732,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button btnPresetDaysDropDown;
+        private System.Windows.Forms.ComboBox cmbPresetRepeat;
+        private System.Windows.Forms.Label label34;
     }
 }
 
