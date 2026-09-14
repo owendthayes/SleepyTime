@@ -1602,35 +1602,29 @@ namespace SleepyTime_2._0
         }
         private void cmbPresetDays_Click(object sender, EventArgs e)
         {
-            showHideDropDown();
+            pnlPresetDays.Visible = !pnlPresetDays.Visible;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            showHideDropDown();
+            pnlPresetDays.Visible = !pnlPresetDays.Visible;
         }
 
-        private void showHideDropDown()
-        {
-            pnlPresetDays.Visible = true;
-            this.pnlPresetDays.Select();
-        }
 
         private void listBoxDays_MouseLeave(object sender, EventArgs e)
         {
-            //pnlPresetDays.Visible = false;
-        }
 
+        }
 
 
         private void cmbPresetDays_TextChanged(object sender, EventArgs e)
         {
-
+            cmbPresetDays.SelectedText = "0";
         }
 
         private void pnlPresetDays_Leave(object sender, EventArgs e)
         {
-            pnlPresetDays.Visible = false;
+            //pnlPresetDays.Visible = false;
         }
     }
 }
