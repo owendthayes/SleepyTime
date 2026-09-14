@@ -1069,6 +1069,7 @@ namespace SleepyTime_2._0
             pnlPresetDays.Size = new System.Drawing.Size(183, 170);
             pnlPresetDays.TabIndex = 50;
             pnlPresetDays.Visible = false;
+            pnlPresetDays.Leave += pnlPresetDays_Leave;
             // 
             // listBoxDays
             // 
