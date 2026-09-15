@@ -101,7 +101,7 @@ namespace SleepyTime_2._0
             cmbScheduleTime.Items.Clear();
             cmbPresetTime.Items.Clear();
 
-            for (int minutes = 0; minutes < 24 * 60; minutes += 10)
+            for (int minutes = 0; minutes < 24 * 60; minutes += 5)
             {
                 TimeSpan time = TimeSpan.FromMinutes(minutes);
                 cmbScheduleTime.Items.Add(time.ToString(@"hh\:mm"));
@@ -421,11 +421,10 @@ namespace SleepyTime_2._0
                 soonestDateTime -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(soonest.Reminder)]));
 
                 // once we have the soonest, we just need to trigger it when the time is right.
-                if (DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") == soonestDateTime.ToString("dd/MM/yyyy HH:mm:ss") && soonest.ReminderSent == false)
+                if (DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") == soonestDateTime.ToString("dd/MM/yyyy HH:mm:ss") && soonest.ReminderSent == false && soonest.Reminder != "0")
                 {
                     sendReminderNotification(soonest.Reminder.ToString(), soonest);
                 }
-
 
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
@@ -467,7 +466,7 @@ namespace SleepyTime_2._0
                 //MessageBox.Show($"NOW: {DateTime.Now.Date} {DateTime.Now.ToString("HH:mm:ss")}\nSCHEDULED: {scheduledTime.Date} {item.Time.ToString()}");
 
                 // check if it is time for the notif to send
-                if (DateTime.Now >= scheduledTime)
+                if (DateTime.Now >= scheduledTime && scheduledItems[0].Reminder != "0")
                 {
                     sendReminderNotification(item.Reminder, item);
                 }
@@ -1641,6 +1640,7 @@ namespace SleepyTime_2._0
                 btnPresetDaysDropDown.Visible = false;
                 cmbPresetDays.Visible = false;
                 label29.Visible = false;
+                pnlPresetDays.Visible = false;
             }
         }
     }

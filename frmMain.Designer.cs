@@ -1118,7 +1118,7 @@ namespace SleepyTime_2._0
             cmbPresetRepeat.FormattingEnabled = true;
             cmbPresetRepeat.IntegralHeight = false;
             cmbPresetRepeat.Items.AddRange(new object[] { "Tomorrow", "Every Day", "Every Week", "Forever" });
-            cmbPresetRepeat.Location = new System.Drawing.Point(350, 41);
+            cmbPresetRepeat.Location = new System.Drawing.Point(350, 40);
             cmbPresetRepeat.Name = "cmbPresetRepeat";
             cmbPresetRepeat.Size = new System.Drawing.Size(159, 29);
             cmbPresetRepeat.TabIndex = 51;
@@ -1217,7 +1217,7 @@ namespace SleepyTime_2._0
             cmbPresetAction.FormattingEnabled = true;
             cmbPresetAction.IntegralHeight = false;
             cmbPresetAction.Items.AddRange(new object[] { "Shutdown", "Restart", "Sleep", "Lock" });
-            cmbPresetAction.Location = new System.Drawing.Point(223, 41);
+            cmbPresetAction.Location = new System.Drawing.Point(222, 40);
             cmbPresetAction.Name = "cmbPresetAction";
             cmbPresetAction.Size = new System.Drawing.Size(121, 29);
             cmbPresetAction.TabIndex = 44;
@@ -1238,7 +1238,7 @@ namespace SleepyTime_2._0
             textBox1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             textBox1.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
             textBox1.ForeColor = System.Drawing.Color.White;
-            textBox1.Location = new System.Drawing.Point(11, 41);
+            textBox1.Location = new System.Drawing.Point(10, 40);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "e.g. \"Daily Reset\"";
             textBox1.Size = new System.Drawing.Size(206, 29);
