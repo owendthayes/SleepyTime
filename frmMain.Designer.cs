@@ -109,7 +109,7 @@ namespace SleepyTime_2._0
             label29 = new System.Windows.Forms.Label();
             cmbPresetAction = new System.Windows.Forms.ComboBox();
             label30 = new System.Windows.Forms.Label();
-            textBox1 = new System.Windows.Forms.TextBox();
+            txtPresetName = new System.Windows.Forms.TextBox();
             btnPresetCancel = new RoundedButton();
             label28 = new System.Windows.Forms.Label();
             btnPresetSave = new RoundedButton();
@@ -1098,7 +1098,7 @@ namespace SleepyTime_2._0
             pnlPresetUpcoming.Controls.Add(label29);
             pnlPresetUpcoming.Controls.Add(cmbPresetAction);
             pnlPresetUpcoming.Controls.Add(label30);
-            pnlPresetUpcoming.Controls.Add(textBox1);
+            pnlPresetUpcoming.Controls.Add(txtPresetName);
             pnlPresetUpcoming.Controls.Add(btnPresetCancel);
             pnlPresetUpcoming.Controls.Add(label28);
             pnlPresetUpcoming.Controls.Add(btnPresetSave);
@@ -1233,16 +1233,16 @@ namespace SleepyTime_2._0
             label30.TabIndex = 43;
             label30.Text = "Action";
             // 
-            // textBox1
+            // txtPresetName
             // 
-            textBox1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            textBox1.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
-            textBox1.ForeColor = System.Drawing.Color.White;
-            textBox1.Location = new System.Drawing.Point(10, 40);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "e.g. \"Daily Reset\"";
-            textBox1.Size = new System.Drawing.Size(206, 29);
-            textBox1.TabIndex = 41;
+            txtPresetName.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            txtPresetName.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
+            txtPresetName.ForeColor = System.Drawing.Color.White;
+            txtPresetName.Location = new System.Drawing.Point(10, 40);
+            txtPresetName.Name = "txtPresetName";
+            txtPresetName.PlaceholderText = "e.g. \"Daily Reset\"";
+            txtPresetName.Size = new System.Drawing.Size(206, 29);
+            txtPresetName.TabIndex = 41;
             // 
             // btnPresetCancel
             // 
@@ -1727,7 +1727,7 @@ namespace SleepyTime_2._0
         private RoundedButton btnPresetCancel;
         private System.Windows.Forms.ComboBox cmbPresetAction;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPresetName;
         private System.Windows.Forms.ComboBox cmbPresetTime;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label29;
