@@ -36,6 +36,7 @@ namespace SleepyTime_2._0
 
         //list for populating scheduled items.
         private List<ScheduleItem> scheduledItems = new List<ScheduleItem>();
+        private List<PresetItem> presetItems = new List<PresetItem>();
 
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
@@ -75,7 +76,6 @@ namespace SleepyTime_2._0
             readSettingsFile();
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
             getAccentColour();
-
             applyAccentColour(primaryAccent, secondaryAccent);
 
             readScheduleFile();
@@ -106,6 +106,30 @@ namespace SleepyTime_2._0
                 TimeSpan time = TimeSpan.FromMinutes(minutes);
                 cmbScheduleTime.Items.Add(time.ToString(@"hh\:mm"));
                 cmbPresetTime.Items.Add(time.ToString(@"hh\:mm"));
+            }
+        }
+
+        private void readPresetFile()
+        {
+            if (!File.Exists("Preset.txt"))
+            {
+                File.Create("Preset.txt");
+            }
+
+            string[] lines = File.ReadAllLines("Preset.txt");
+
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                string[] data = line.Split('|');
+
+                if (data.Length != 6)
+                    continue;
+
+                PresetItem item = new PresetItem(data[0], data[1], data[2], data[3], data[4], Convert.ToBoolean(data[5]));
+                presetItems.Add(item);
             }
         }
 
@@ -1642,6 +1666,19 @@ namespace SleepyTime_2._0
                 label29.Visible = false;
                 pnlPresetDays.Visible = false;
             }
+        }
+
+        private void btnPresetSave_Click(object sender, EventArgs e)
+        {
+            //validation here
+
+            //create the new preset item
+
+            //save it to the list
+
+            //write the list to the file
+
+            //update the ui
         }
     }
 }

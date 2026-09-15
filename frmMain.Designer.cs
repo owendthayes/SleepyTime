@@ -1285,6 +1285,7 @@ namespace SleepyTime_2._0
             btnPresetSave.TabIndex = 0;
             btnPresetSave.Text = "Save Preset";
             btnPresetSave.UseVisualStyleBackColor = false;
+            btnPresetSave.Click += btnPresetSave_Click;
             // 
             // label10
             // 
