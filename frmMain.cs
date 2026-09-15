@@ -426,30 +426,15 @@ namespace SleepyTime_2._0
                     sendReminderNotification(soonest.Reminder.ToString(), soonest);
                 }
 
+
+                MessageBox.Show($"{DateTime.Now.Date == soonest.Date} \n {DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString()}");
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
                     //DELETE SOONEST AFTER IT HAS OCCURRED.
                     scheduledItems.Remove(soonest);
                     updateScheduleFile();
                     updateScheduleUI();
-                    switch (soonest.Action)
-                    {
-                        case "0": // SHUTDOWN
-                            Process.Start("Shutdown", "/s");
-                            break;
-
-                        case "1": // RESTART
-                            Process.Start("Shutdown", "/r");
-                            break;
-
-                        case "2": // SLEEP
-                            Application.SetSuspendState(PowerState.Suspend, true, true);
-                            break;
-
-                        case "3": // LOCK
-                            Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                            break;
-                    }
+                    performAction(soonest.Action);
                 }
             }
             //if there is exactly one item, no calculation to be done, just send it for the existing item.
@@ -459,6 +444,16 @@ namespace SleepyTime_2._0
 
                 // get the time the operation will occcur
                 DateTime scheduledTime = item.Date + item.Time;
+
+                //MessageBox.Show($"NOW: {DateTime.Now}\nTHEN: {scheduledTime}");
+                if ((DateTime.Now >= scheduledTime && item.Reminder == "0") || (DateTime.Now >= scheduledTime && item.ReminderSent == true))
+                {
+                    scheduledItems.Remove(item);
+                    updateScheduleFile();
+                    updateScheduleUI();
+                    performAction(item.Action);
+                    return;
+                }
 
                 // get the time the notification should send.
                 scheduledTime -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)]));
@@ -470,6 +465,28 @@ namespace SleepyTime_2._0
                 {
                     sendReminderNotification(item.Reminder, item);
                 }
+            }
+        }
+
+        private void performAction(string action)
+        {
+            switch (action)
+            {
+                case "0": // SHUTDOWN
+                    Process.Start("Shutdown", "/s");
+                    break;
+
+                case "1": // RESTART
+                    Process.Start("Shutdown", "/r");
+                    break;
+
+                case "2": // SLEEP
+                    Application.SetSuspendState(PowerState.Suspend, true, true);
+                    break;
+
+                case "3": // LOCK
+                    Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
+                    break;
             }
         }
 
@@ -511,7 +528,7 @@ namespace SleepyTime_2._0
             ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
 
-            //show the notification for one minute.
+            //show the notification for one minute, not working.
             ntfReminder.ShowBalloonTip(60000);
 
             soonest.ReminderSent = true;
@@ -840,24 +857,7 @@ namespace SleepyTime_2._0
                 countdownEnded = true;
                 btnStartCountdown.Enabled = true;
                 btnStartCountdown.PerformClick();
-                switch (cmbOperation.SelectedIndex.ToString())
-                {
-                    case "0": // SHUTDOWN
-                        Process.Start("Shutdown", "/s");
-                        break;
-
-                    case "1": // RESTART
-                        Process.Start("Shutdown", "/r");
-                        break;
-
-                    case "2": // SLEEP
-                        Application.SetSuspendState(PowerState.Suspend, true, true);
-                        break;
-
-                    case "3": // LOCK
-                        Process.Start(@"C:\WINDOWS\system32\rundll32.exe", "user32.dll,LockWorkStation");
-                        break;
-                }
+                performAction(cmbOperation.SelectedIndex.ToString());
             }
         }
         private void UpdateTimerDisplay()
