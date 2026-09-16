@@ -1735,6 +1735,8 @@ namespace SleepyTime_2._0
 
         private void updatePresetUI()
         {
+            string daysOfWeek = "MTWTFSS";
+
             //get rid of everything from the panel.
             foreach (Control ctr in pnlSavedPresets.Controls.Cast<Control>().ToList())
             {
@@ -1754,11 +1756,24 @@ namespace SleepyTime_2._0
 
             foreach (PresetItem item in presetItems)
             {
+                string selectedDays = "";
+                for (int i = 0; i < 7; i++)
+                {
+                    if (item.Days[i] == 'x')
+                    {
+                        selectedDays += daysOfWeek[i];
+                    }
+                    else
+                    {
+                        selectedDays += "-";
+                    }
+                }
+
                 Panel row = new Panel();
 
                 row.BackColor = secondaryTheme;
 
-                row.Width = pnlSavedPresets.Width - 20;
+                row.Width = pnlSavedPresets.Width - 40;
                 row.Height = 40;
                 row.Location = new Point(10, y);
 
@@ -1800,9 +1815,10 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                 };
 
+                // potentially only do this for when days are selected.
                 Label lblDays = new Label
                 {
-                    Text = item.Days,
+                    Text = selectedDays,
                     Location = new Point(450, 5),
                     AutoSize = true,
                     ForeColor = textColor,
