@@ -100,6 +100,8 @@ namespace SleepyTime_2._0
             listBoxDays = new System.Windows.Forms.CheckedListBox();
             label32 = new System.Windows.Forms.Label();
             pnlPresetUpcoming = new System.Windows.Forms.Panel();
+            label35 = new System.Windows.Forms.Label();
+            tglPresetEnabled = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             cmbPresetRepeat = new System.Windows.Forms.ComboBox();
             label34 = new System.Windows.Forms.Label();
             btnPresetDaysDropDown = new System.Windows.Forms.Button();
@@ -138,8 +140,6 @@ namespace SleepyTime_2._0
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
-            tglPresetEnabled = new SleepyTime_2._0.Custom_Controls.ToggleButton();
-            label35 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1057,9 +1057,9 @@ namespace SleepyTime_2._0
             pnlPresetDays.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             pnlPresetDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             pnlPresetDays.Controls.Add(listBoxDays);
-            pnlPresetDays.Location = new System.Drawing.Point(41, 138);
+            pnlPresetDays.Location = new System.Drawing.Point(124, 143);
             pnlPresetDays.Name = "pnlPresetDays";
-            pnlPresetDays.Size = new System.Drawing.Size(183, 171);
+            pnlPresetDays.Size = new System.Drawing.Size(183, 166);
             pnlPresetDays.TabIndex = 50;
             pnlPresetDays.Visible = false;
             pnlPresetDays.Leave += pnlPresetDays_Leave;
@@ -1111,6 +1111,32 @@ namespace SleepyTime_2._0
             pnlPresetUpcoming.Size = new System.Drawing.Size(621, 124);
             pnlPresetUpcoming.TabIndex = 32;
             // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label35.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label35.Location = new System.Drawing.Point(10, 77);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(56, 16);
+            label35.TabIndex = 53;
+            label35.Text = "Enabled";
+            // 
+            // tglPresetEnabled
+            // 
+            tglPresetEnabled.Checked = true;
+            tglPresetEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            tglPresetEnabled.Location = new System.Drawing.Point(10, 93);
+            tglPresetEnabled.MinimumSize = new System.Drawing.Size(45, 22);
+            tglPresetEnabled.Name = "tglPresetEnabled";
+            tglPresetEnabled.OffBackColor = System.Drawing.Color.Gray;
+            tglPresetEnabled.OffToggleColor = System.Drawing.Color.Gainsboro;
+            tglPresetEnabled.OnBackColor = System.Drawing.Color.Purple;
+            tglPresetEnabled.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            tglPresetEnabled.Size = new System.Drawing.Size(77, 24);
+            tglPresetEnabled.TabIndex = 52;
+            tglPresetEnabled.UseVisualStyleBackColor = true;
+            // 
             // cmbPresetRepeat
             // 
             cmbPresetRepeat.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
@@ -1145,7 +1171,7 @@ namespace SleepyTime_2._0
             btnPresetDaysDropDown.Cursor = System.Windows.Forms.Cursors.Hand;
             btnPresetDaysDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             btnPresetDaysDropDown.Font = new System.Drawing.Font("Segoe UI", 3.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnPresetDaysDropDown.Location = new System.Drawing.Point(173, 91);
+            btnPresetDaysDropDown.Location = new System.Drawing.Point(258, 90);
             btnPresetDaysDropDown.Name = "btnPresetDaysDropDown";
             btnPresetDaysDropDown.Size = new System.Drawing.Size(19, 29);
             btnPresetDaysDropDown.TabIndex = 50;
@@ -1160,7 +1186,7 @@ namespace SleepyTime_2._0
             cmbPresetDays.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbPresetDays.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
             cmbPresetDays.ForeColor = System.Drawing.Color.White;
-            cmbPresetDays.Location = new System.Drawing.Point(11, 91);
+            cmbPresetDays.Location = new System.Drawing.Point(94, 90);
             cmbPresetDays.Name = "cmbPresetDays";
             cmbPresetDays.ReadOnly = true;
             cmbPresetDays.Size = new System.Drawing.Size(183, 29);
@@ -1203,7 +1229,7 @@ namespace SleepyTime_2._0
             label29.AutoSize = true;
             label29.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label29.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label29.Location = new System.Drawing.Point(11, 75);
+            label29.Location = new System.Drawing.Point(94, 74);
             label29.Name = "label29";
             label29.Size = new System.Drawing.Size(35, 16);
             label29.TabIndex = 46;
@@ -1256,7 +1282,7 @@ namespace SleepyTime_2._0
             btnPresetCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPresetCancel.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnPresetCancel.ForeColor = System.Drawing.Color.FromArgb(247, 62, 62);
-            btnPresetCancel.Location = new System.Drawing.Point(451, 87);
+            btnPresetCancel.Location = new System.Drawing.Point(451, 84);
             btnPresetCancel.Name = "btnPresetCancel";
             btnPresetCancel.Size = new System.Drawing.Size(162, 33);
             btnPresetCancel.TabIndex = 37;
@@ -1283,7 +1309,7 @@ namespace SleepyTime_2._0
             btnPresetSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPresetSave.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnPresetSave.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnPresetSave.Location = new System.Drawing.Point(284, 87);
+            btnPresetSave.Location = new System.Drawing.Point(284, 84);
             btnPresetSave.Name = "btnPresetSave";
             btnPresetSave.Size = new System.Drawing.Size(162, 33);
             btnPresetSave.TabIndex = 0;
@@ -1570,31 +1596,6 @@ namespace SleepyTime_2._0
             // 
             tmrCurrentTime.Interval = 1000;
             tmrCurrentTime.Tick += tmrCurrentTime_Tick;
-            // 
-            // tglPresetEnabled
-            // 
-            tglPresetEnabled.Location = new System.Drawing.Point(200, 91);
-            tglPresetEnabled.MinimumSize = new System.Drawing.Size(45, 22);
-            tglPresetEnabled.Name = "tglPresetEnabled";
-            tglPresetEnabled.OffBackColor = System.Drawing.Color.Gray;
-            tglPresetEnabled.OffToggleColor = System.Drawing.Color.Gainsboro;
-            tglPresetEnabled.OnBackColor = System.Drawing.Color.Purple;
-            tglPresetEnabled.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            tglPresetEnabled.Size = new System.Drawing.Size(77, 24);
-            tglPresetEnabled.TabIndex = 52;
-            tglPresetEnabled.UseVisualStyleBackColor = true;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label35.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label35.Location = new System.Drawing.Point(200, 75);
-            label35.Name = "label35";
-            label35.Size = new System.Drawing.Size(56, 16);
-            label35.TabIndex = 53;
-            label35.Text = "Enabled";
-            label35.Visible = false;
             // 
             // frmMain
             // 
