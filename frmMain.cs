@@ -75,6 +75,7 @@ namespace SleepyTime_2._0
             InitializeComponent();
 
             readSettingsFile();
+            readPresetFile();
             //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
             getAccentColour();
             applyAccentColour(primaryAccent, secondaryAccent);
@@ -1677,7 +1678,7 @@ namespace SleepyTime_2._0
             if (!string.IsNullOrEmpty(txtPresetName.Text))
             {
                 name = txtPresetName.Text;
-            }          
+            }
 
 
             //check selected days for repeating
@@ -1712,9 +1713,29 @@ namespace SleepyTime_2._0
             presetItems.Add(newItem);
 
             //write the list to the file
-
+            updatePresetFile();
+            updatePresetUI();
 
             //update the ui
         }
+
+        private void updatePresetFile()
+        {
+            using (StreamWriter sw = new StreamWriter("Preset.txt"))
+            {
+                foreach (PresetItem item in presetItems)
+                {
+                    sw.WriteLine(
+                        $"{item.Name}|{item.Action}|{item.Repeat}|{item.Time}|{item.Days}|{item.Enabled}"
+                        );
+                }
+            }
+        }
+
+        private void updatePresetUI()
+        {
+
+        }
     }
 }
+
