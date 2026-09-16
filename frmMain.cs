@@ -82,6 +82,7 @@ namespace SleepyTime_2._0
 
             readScheduleFile();
             populateTimesComboBox();
+            updatePresetUI();
             updateScheduleUI();
 
             applyDarkMode(mainTheme);
@@ -1715,8 +1716,6 @@ namespace SleepyTime_2._0
             //write the list to the file
             updatePresetFile();
             updatePresetUI();
-
-            //update the ui
         }
 
         private void updatePresetFile()
@@ -1732,9 +1731,22 @@ namespace SleepyTime_2._0
             }
         }
 
+        //CHECK THAT THE SAVED ITEMS ARE BEING READ TO THE LIST PROPERLY!!!
+
         private void updatePresetUI()
         {
+            foreach (Control ctr in pnlSavedPresets.Controls.Cast<Control>().ToList())
+            {
+                if (ctr != lblSavedItemsPresets)
+                {
+                    pnlSavedSchedules.Controls.Remove(ctr);
+                    ctr.Dispose();
+                }
+            }
 
+            // inform the user if there are no items currently saved.
+            lblSavedItemsPresets.Visible = scheduledItems.Count == 0;
+            lblSavedItemsPresets.BringToFront();
         }
     }
 }
