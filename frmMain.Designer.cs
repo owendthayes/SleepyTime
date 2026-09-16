@@ -117,6 +117,7 @@ namespace SleepyTime_2._0
             btnPresetSave = new RoundedButton();
             label10 = new System.Windows.Forms.Label();
             pnlSavedPresets = new System.Windows.Forms.Panel();
+            lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
             tglDarkMode = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             label26 = new System.Windows.Forms.Label();
@@ -140,7 +141,6 @@ namespace SleepyTime_2._0
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
-            lblSavedItemsPresets = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1271,6 +1271,7 @@ namespace SleepyTime_2._0
             txtPresetName.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
             txtPresetName.ForeColor = System.Drawing.Color.White;
             txtPresetName.Location = new System.Drawing.Point(10, 40);
+            txtPresetName.MaxLength = 20;
             txtPresetName.Name = "txtPresetName";
             txtPresetName.PlaceholderText = "e.g. \"Daily Reset\"";
             txtPresetName.Size = new System.Drawing.Size(206, 29);
@@ -1332,11 +1333,24 @@ namespace SleepyTime_2._0
             // 
             // pnlSavedPresets
             // 
+            pnlSavedPresets.AutoScroll = true;
             pnlSavedPresets.Controls.Add(lblSavedItemsPresets);
-            pnlSavedPresets.Location = new System.Drawing.Point(30, 155);
+            pnlSavedPresets.Location = new System.Drawing.Point(9, 155);
             pnlSavedPresets.Name = "pnlSavedPresets";
-            pnlSavedPresets.Size = new System.Drawing.Size(621, 219);
+            pnlSavedPresets.Size = new System.Drawing.Size(652, 219);
             pnlSavedPresets.TabIndex = 31;
+            // 
+            // lblSavedItemsPresets
+            // 
+            lblSavedItemsPresets.AutoSize = true;
+            lblSavedItemsPresets.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            lblSavedItemsPresets.ForeColor = System.Drawing.Color.White;
+            lblSavedItemsPresets.Location = new System.Drawing.Point(235, 99);
+            lblSavedItemsPresets.Name = "lblSavedItemsPresets";
+            lblSavedItemsPresets.Size = new System.Drawing.Size(150, 21);
+            lblSavedItemsPresets.TabIndex = 43;
+            lblSavedItemsPresets.Text = "No saved items";
+            lblSavedItemsPresets.Visible = false;
             // 
             // pnlSettings
             // 
@@ -1599,18 +1613,6 @@ namespace SleepyTime_2._0
             // 
             tmrCurrentTime.Interval = 1000;
             tmrCurrentTime.Tick += tmrCurrentTime_Tick;
-            // 
-            // lblSavedItemsPresets
-            // 
-            lblSavedItemsPresets.AutoSize = true;
-            lblSavedItemsPresets.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            lblSavedItemsPresets.ForeColor = System.Drawing.Color.White;
-            lblSavedItemsPresets.Location = new System.Drawing.Point(235, 99);
-            lblSavedItemsPresets.Name = "lblSavedItemsPresets";
-            lblSavedItemsPresets.Size = new System.Drawing.Size(150, 21);
-            lblSavedItemsPresets.TabIndex = 43;
-            lblSavedItemsPresets.Text = "No saved items";
-            lblSavedItemsPresets.Visible = false;
             // 
             // frmMain
             // 

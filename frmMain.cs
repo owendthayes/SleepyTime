@@ -1735,18 +1735,102 @@ namespace SleepyTime_2._0
 
         private void updatePresetUI()
         {
+            //get rid of everything from the panel.
             foreach (Control ctr in pnlSavedPresets.Controls.Cast<Control>().ToList())
             {
                 if (ctr != lblSavedItemsPresets)
                 {
-                    pnlSavedSchedules.Controls.Remove(ctr);
+                    pnlSavedPresets.Controls.Remove(ctr);
                     ctr.Dispose();
                 }
             }
 
-            // inform the user if there are no items currently saved.
-            lblSavedItemsPresets.Visible = scheduledItems.Count == 0;
+            // if there is nothing currently saved in presets then inform the user.
+            lblSavedItemsPresets.Visible = presetItems.Count == 0;
             lblSavedItemsPresets.BringToFront();
+
+            // add each preset item as a row in the panel.
+            int y = 10;
+
+            foreach (PresetItem item in presetItems)
+            {
+                Panel row = new Panel();
+
+                row.BackColor = secondaryTheme;
+
+                row.Width = pnlSavedPresets.Width - 20;
+                row.Height = 40;
+                row.Location = new Point(10, y);
+
+                //add the controls here
+
+                Label lblName = new Label
+                {
+                    Text = item.Name,
+                    Location = new Point(10, 10),
+                    AutoSize = true,
+                    ForeColor = textColor,
+                    Font = new Font("JetBrains Mono", 12)
+                };
+
+                Label lblAction = new Label
+                {
+                    Text = operations[Convert.ToInt32(item.Action)],
+                    Location = new Point(110, 10),
+                    AutoSize = true,
+                    ForeColor = textColor,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                Label lblRepeat = new Label
+                {
+                    Text = item.Repeat,
+                    Location = new Point(225, 10),
+                    AutoSize = true,
+                    ForeColor = textColor,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                Label lblTime = new Label
+                {
+                    Text = item.Time.ToString(@"hh\:mm"),
+                    Location = new Point(310, 10),
+                    AutoSize = true,
+                    ForeColor = textColor,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                Label lblDays = new Label
+                {
+                    Text = item.Days,
+                    Location = new Point(450, 5),
+                    AutoSize = true,
+                    ForeColor = textColor,
+                    Font = new Font("JetBrains Mono", 12),
+                };
+
+                ToggleButton tglEnabled = new ToggleButton
+                {
+                    Location = new Point(500, 5),
+                    AutoSize = true,
+                    ForeColor = Color.FromArgb(247, 62, 62),
+                    BackColor = primaryTheme,
+                    Font = new Font("JetBrains Mono", 12),
+                    Width = 25,
+                    Height = 25,
+                };
+
+                row.Controls.Add(lblName);
+                row.Controls.Add(lblAction);
+                row.Controls.Add(lblRepeat);
+                row.Controls.Add(lblTime);
+                row.Controls.Add(lblDays);
+                row.Controls.Add(tglEnabled);
+
+                pnlSavedPresets.Controls.Add(row);
+                y += row.Height + 5;
+            }
+
         }
     }
 }
