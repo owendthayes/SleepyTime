@@ -11,11 +11,11 @@ namespace SleepyTime_2._0
         public string Name { get; set; }
         public string Action { get; set; }
         public string Repeat { get; set; }
-        public string Time { get; set; }
+        public TimeSpan Time { get; set; }
         public string Days { get; set; }
         public bool Enabled { get; set; }
 
-        public PresetItem(string name, string action, string repeat, string time, string days, bool enabled)
+        public PresetItem(string name, string action, string repeat, TimeSpan time, string days, bool enabled)
         {
             Name = name;
             Action = action;

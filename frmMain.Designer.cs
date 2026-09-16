@@ -138,6 +138,8 @@ namespace SleepyTime_2._0
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
+            tglPresetEnabled = new SleepyTime_2._0.Custom_Controls.ToggleButton();
+            label35 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1089,6 +1091,8 @@ namespace SleepyTime_2._0
             // 
             // pnlPresetUpcoming
             // 
+            pnlPresetUpcoming.Controls.Add(label35);
+            pnlPresetUpcoming.Controls.Add(tglPresetEnabled);
             pnlPresetUpcoming.Controls.Add(cmbPresetRepeat);
             pnlPresetUpcoming.Controls.Add(label34);
             pnlPresetUpcoming.Controls.Add(btnPresetDaysDropDown);
@@ -1252,7 +1256,7 @@ namespace SleepyTime_2._0
             btnPresetCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPresetCancel.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnPresetCancel.ForeColor = System.Drawing.Color.FromArgb(247, 62, 62);
-            btnPresetCancel.Location = new System.Drawing.Point(451, 83);
+            btnPresetCancel.Location = new System.Drawing.Point(451, 87);
             btnPresetCancel.Name = "btnPresetCancel";
             btnPresetCancel.Size = new System.Drawing.Size(162, 33);
             btnPresetCancel.TabIndex = 37;
@@ -1267,9 +1271,9 @@ namespace SleepyTime_2._0
             label28.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label28.Location = new System.Drawing.Point(11, 20);
             label28.Name = "label28";
-            label28.Size = new System.Drawing.Size(35, 16);
+            label28.Size = new System.Drawing.Size(112, 16);
             label28.TabIndex = 33;
-            label28.Text = "Name";
+            label28.Text = "Name (Optional)";
             // 
             // btnPresetSave
             // 
@@ -1279,7 +1283,7 @@ namespace SleepyTime_2._0
             btnPresetSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPresetSave.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnPresetSave.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnPresetSave.Location = new System.Drawing.Point(283, 83);
+            btnPresetSave.Location = new System.Drawing.Point(284, 87);
             btnPresetSave.Name = "btnPresetSave";
             btnPresetSave.Size = new System.Drawing.Size(162, 33);
             btnPresetSave.TabIndex = 0;
@@ -1567,6 +1571,31 @@ namespace SleepyTime_2._0
             tmrCurrentTime.Interval = 1000;
             tmrCurrentTime.Tick += tmrCurrentTime_Tick;
             // 
+            // tglPresetEnabled
+            // 
+            tglPresetEnabled.Location = new System.Drawing.Point(200, 91);
+            tglPresetEnabled.MinimumSize = new System.Drawing.Size(45, 22);
+            tglPresetEnabled.Name = "tglPresetEnabled";
+            tglPresetEnabled.OffBackColor = System.Drawing.Color.Gray;
+            tglPresetEnabled.OffToggleColor = System.Drawing.Color.Gainsboro;
+            tglPresetEnabled.OnBackColor = System.Drawing.Color.Purple;
+            tglPresetEnabled.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            tglPresetEnabled.Size = new System.Drawing.Size(77, 24);
+            tglPresetEnabled.TabIndex = 52;
+            tglPresetEnabled.UseVisualStyleBackColor = true;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label35.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label35.Location = new System.Drawing.Point(200, 75);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(56, 16);
+            label35.TabIndex = 53;
+            label35.Text = "Enabled";
+            label35.Visible = false;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1739,6 +1768,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Button btnPresetDaysDropDown;
         private System.Windows.Forms.ComboBox cmbPresetRepeat;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private Custom_Controls.ToggleButton tglPresetEnabled;
     }
 }
 

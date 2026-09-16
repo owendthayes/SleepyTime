@@ -13,6 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using SleepyTime_2._0.Custom_Controls;
 using System.IO;
+using System.Diagnostics.Eventing.Reader;
 
 namespace SleepyTime_2._0
 {
@@ -128,7 +129,7 @@ namespace SleepyTime_2._0
                 if (data.Length != 6)
                     continue;
 
-                PresetItem item = new PresetItem(data[0], data[1], data[2], data[3], data[4], Convert.ToBoolean(data[5]));
+                PresetItem item = new PresetItem(data[0], data[1], data[2], TimeSpan.Parse(data[3]), data[4], Convert.ToBoolean(data[5]));
                 presetItems.Add(item);
             }
         }
@@ -1670,13 +1671,48 @@ namespace SleepyTime_2._0
 
         private void btnPresetSave_Click(object sender, EventArgs e)
         {
+            string name = "Unnamed Preset";
+
             //validation here
+            if (!string.IsNullOrEmpty(txtPresetName.Text))
+            {
+                name = txtPresetName.Text;
+            }          
+
+
+            //check selected days for repeating
+            string days = "-------";
+
+            if (cmbPresetRepeat.SelectedIndex == 2 || cmbPresetRepeat.SelectedIndex == 3)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    if (listBoxDays.GetItemChecked(i))
+                    {
+                        days = days.Remove(i, 1).Insert(i, "x");
+                    }
+                }
+            }
+            else //if repeat is set to "tomorrow" or "every day" selecting certain days is not necessary
+            {
+                days = "-------";
+            }
 
             //create the new preset item
+            PresetItem newItem = new PresetItem(
+                name,
+                cmbPresetAction.SelectedIndex.ToString(),
+                cmbPresetRepeat.SelectedIndex.ToString(),
+                TimeSpan.Parse(cmbPresetTime.Text),
+                days,
+                tglPresetEnabled.Checked
+                );
 
             //save it to the list
+            presetItems.Add(newItem);
 
             //write the list to the file
+
 
             //update the ui
         }
