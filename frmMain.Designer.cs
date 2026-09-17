@@ -49,6 +49,7 @@ namespace SleepyTime_2._0
             lblTimeTitle = new System.Windows.Forms.Label();
             imgTimeAnimation = new System.Windows.Forms.PictureBox();
             pnlCountdown = new System.Windows.Forms.Panel();
+            MEMEME = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
             btnClearTimer = new RoundedButton();
@@ -385,6 +386,7 @@ namespace SleepyTime_2._0
             // 
             // pnlCountdown
             // 
+            pnlCountdown.Controls.Add(MEMEME);
             pnlCountdown.Controls.Add(label33);
             pnlCountdown.Controls.Add(label14);
             pnlCountdown.Controls.Add(btnClearTimer);
@@ -416,6 +418,17 @@ namespace SleepyTime_2._0
             pnlCountdown.Size = new System.Drawing.Size(673, 385);
             pnlCountdown.TabIndex = 22;
             pnlCountdown.Paint += pnlCountdown_Paint;
+            // 
+            // MEMEME
+            // 
+            MEMEME.AutoSize = true;
+            MEMEME.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            MEMEME.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            MEMEME.Location = new System.Drawing.Point(355, 6);
+            MEMEME.Name = "MEMEME";
+            MEMEME.Size = new System.Drawing.Size(315, 16);
+            MEMEME.TabIndex = 53;
+            MEMEME.Text = "*SleepyTime must be open for actons to occur";
             // 
             // label33
             // 
@@ -1101,6 +1114,7 @@ namespace SleepyTime_2._0
             listBoxDays.Name = "listBoxDays";
             listBoxDays.Size = new System.Drawing.Size(183, 172);
             listBoxDays.TabIndex = 0;
+            listBoxDays.SelectedIndexChanged += listBoxDays_SelectedIndexChanged;
             listBoxDays.MouseLeave += listBoxDays_MouseLeave;
             // 
             // label39
@@ -1360,6 +1374,7 @@ namespace SleepyTime_2._0
             btnPresetCancel.Tag = "noColourChange";
             btnPresetCancel.Text = "Reset";
             btnPresetCancel.UseVisualStyleBackColor = false;
+            btnPresetCancel.Click += btnPresetCancel_Click;
             // 
             // label28
             // 
@@ -1414,9 +1429,9 @@ namespace SleepyTime_2._0
             // 
             pnlSavedPresets.AutoScroll = true;
             pnlSavedPresets.Controls.Add(lblSavedItemsPresets);
-            pnlSavedPresets.Location = new System.Drawing.Point(9, 162);
+            pnlSavedPresets.Location = new System.Drawing.Point(9, 165);
             pnlSavedPresets.Name = "pnlSavedPresets";
-            pnlSavedPresets.Size = new System.Drawing.Size(652, 212);
+            pnlSavedPresets.Size = new System.Drawing.Size(652, 209);
             pnlSavedPresets.TabIndex = 31;
             // 
             // lblSavedItemsPresets
@@ -1876,6 +1891,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label MEMEME;
     }
 }
 

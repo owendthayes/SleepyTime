@@ -14,6 +14,7 @@ using System.Diagnostics;
 using SleepyTime_2._0.Custom_Controls;
 using System.IO;
 using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics.Tracing;
 
 namespace SleepyTime_2._0
 {
@@ -1646,7 +1647,7 @@ namespace SleepyTime_2._0
 
         private void cmbPresetDays_TextChanged(object sender, EventArgs e)
         {
-            cmbPresetDays.SelectedText = "0";
+
         }
 
         private void pnlPresetDays_Leave(object sender, EventArgs e)
@@ -1695,9 +1696,9 @@ namespace SleepyTime_2._0
                     }
                 }
             }
-            else //if repeat is set to "tomorrow" or "every day" selecting certain days is not necessary
+            else //if repeat is set to "every day" selecting certain days is not necessary
             {
-                days = "-------";
+                days = "xxxxxxx";
             }
 
             //create the new preset item
@@ -1842,19 +1843,19 @@ namespace SleepyTime_2._0
                         dayLabel.ForeColor = primaryAccent;
                     }
 
-                        dayLabel.BackColor = Color.FromArgb(25, 25, 41);
+                    dayLabel.BackColor = Color.FromArgb(25, 25, 41);
 
-                        dayLabel.Font = new Font(
-                            "Jetbrains Mono",
-                            10,
-                            FontStyle.Regular
-                        );
+                    dayLabel.Font = new Font(
+                        "Jetbrains Mono",
+                        10,
+                        FontStyle.Regular
+                    );
 
-                        dayLabel.Tag = i;
+                    dayLabel.Tag = i;
 
-                        flpDays.Controls.Add(dayLabel);
+                    flpDays.Controls.Add(dayLabel);
 
-                    }
+                }
 
                 ToggleButton tglEnabled = new ToggleButton
                 {
@@ -1867,7 +1868,7 @@ namespace SleepyTime_2._0
                     Checked = item.Enabled
                 };
 
-                RoundedButton btnEdit = new RoundedButton
+                RoundedButton btnEditPreset = new RoundedButton
                 {
                     Text = "✎",
                     Location = new Point(510, 5),
@@ -1880,7 +1881,7 @@ namespace SleepyTime_2._0
                     Height = 25
                 };
 
-                RoundedButton btnDelete = new RoundedButton
+                RoundedButton btnDeletePreset = new RoundedButton
                 {
                     Text = "🗑",
                     Location = new Point(560, 5),
@@ -1894,13 +1895,16 @@ namespace SleepyTime_2._0
                     Tag = "noColourChange"
                 };
 
+                btnEditPreset.Click += btnEditPreset_Click;
+                btnDeletePreset.Click += btnDeletePreset_Click;
+
                 row.Controls.Add(lblName);
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblTime);
                 row.Controls.Add(flpDays);
                 row.Controls.Add(tglEnabled);
-                row.Controls.Add(btnEdit);
-                row.Controls.Add(btnDelete);
+                row.Controls.Add(btnEditPreset);
+                row.Controls.Add(btnDeletePreset);
 
                 pnlSavedPresets.Controls.Add(row);
                 y += row.Height + 5;
@@ -1908,9 +1912,49 @@ namespace SleepyTime_2._0
 
         }
 
+
+
         private void label36_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPresetCancel_Click(object sender, EventArgs e)
+        {
+            if (btnPresetCancel.Text == "Reset")
+            {
+                txtPresetName.Text = "";
+                cmbPresetAction.SelectedIndex = 0;
+                cmbPresetRepeat.SelectedIndex = 0;
+                cmbPresetTime.SelectedIndex = 0;
+                tglPresetEnabled.Checked = true;
+                uncheckAll();
+                cmbPresetDays.Text = "None selected";
+            }
+        }
+
+        private void uncheckAll()
+        {
+            for (int i = 0; i < listBoxDays.Items.Count; i++)
+            {
+                listBoxDays.SetItemChecked(i, false);
+            }
+            listBoxDays.SelectedIndex = -1;
+        }
+
+        private void btnEditPreset_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeletePreset_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbPresetDays.Text = $"{listBoxDays.CheckedItems.Count.ToString()} days selected";
         }
     }
 }
