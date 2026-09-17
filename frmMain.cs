@@ -1656,7 +1656,7 @@ namespace SleepyTime_2._0
 
         private void cmbPresetRepeat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbPresetRepeat.SelectedIndex == 2 || cmbPresetRepeat.SelectedIndex == 3)
+            if (cmbPresetRepeat.SelectedIndex == 1)
             {
                 btnPresetDaysDropDown.Visible = true;
                 cmbPresetDays.Visible = true;
@@ -1685,7 +1685,7 @@ namespace SleepyTime_2._0
             //check selected days for repeating
             string days = "-------";
 
-            if (cmbPresetRepeat.SelectedIndex == 2 || cmbPresetRepeat.SelectedIndex == 3)
+            if (cmbPresetRepeat.SelectedIndex == 1)
             {
                 for (int i = 0; i < 7; i++)
                 {
@@ -1782,7 +1782,7 @@ namespace SleepyTime_2._0
                 Label lblName = new Label
                 {
                     Text = item.Name,
-                    Location = new Point(10, 10),
+                    Location = new Point(60, 10),
                     AutoSize = true,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12)
@@ -1791,7 +1791,7 @@ namespace SleepyTime_2._0
                 Label lblAction = new Label
                 {
                     Text = operations[Convert.ToInt32(item.Action)],
-                    Location = new Point(110, 10),
+                    Location = new Point(220, 10),
                     AutoSize = true,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
@@ -1799,8 +1799,8 @@ namespace SleepyTime_2._0
 
                 Label lblRepeat = new Label
                 {
-                    Text = item.Repeat,
-                    Location = new Point(225, 10),
+                    Text = "Every Day",
+                    Location = new Point(320, 10),
                     AutoSize = true,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
@@ -1809,38 +1809,75 @@ namespace SleepyTime_2._0
                 Label lblTime = new Label
                 {
                     Text = item.Time.ToString(@"hh\:mm"),
-                    Location = new Point(310, 10),
+                    Location = new Point(435, 10),
                     AutoSize = true,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
                 };
 
                 // potentially only do this for when days are selected.
-                Label lblDays = new Label
+                FlowLayoutPanel flpDays = new FlowLayoutPanel
                 {
-                    Text = selectedDays,
-                    Location = new Point(450, 5),
+                    Location = new Point(320, 1),
                     AutoSize = true,
-                    ForeColor = textColor,
-                    Font = new Font("JetBrains Mono", 12),
+                    BackColor = Color.FromArgb(25, 25, 41)
                 };
+
+                for (int i = 0; i < 7; i++)
+                {
+                    Label dayLabel = new Label();
+
+                    dayLabel.Text = daysOfWeek[i].ToString();
+                    dayLabel.TextAlign = ContentAlignment.MiddleCenter;
+
+                    dayLabel.Size = new Size(10, 35);
+                    dayLabel.Margin = new Padding(2);
+
+                    if (item.Days[i] == 'x')
+                    {
+                        dayLabel.ForeColor = primaryAccent;
+                    }
+                    else
+                    {
+                        dayLabel.ForeColor = Color.White;
+                    }
+
+                    dayLabel.BackColor = Color.FromArgb(25, 25, 41);
+
+                    dayLabel.Font = new Font(
+                        "Jetbrains Mono",
+                        10,
+                        FontStyle.Regular
+                    );
+
+                    dayLabel.Tag = i;
+
+                    flpDays.Controls.Add(dayLabel);
+                }
 
                 ToggleButton tglEnabled = new ToggleButton
                 {
-                    Location = new Point(500, 5),
+                    Location = new Point(10, 10),
                     AutoSize = true,
-                    ForeColor = Color.FromArgb(247, 62, 62),
-                    BackColor = primaryTheme,
+                    OnBackColor = primaryAccent,
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
+                    Checked = item.Enabled
                 };
 
                 row.Controls.Add(lblName);
                 row.Controls.Add(lblAction);
-                row.Controls.Add(lblRepeat);
                 row.Controls.Add(lblTime);
-                row.Controls.Add(lblDays);
+                if (item.Repeat == "0")
+                {
+                    row.Controls.Add(lblRepeat);
+                }
+                else if (item.Repeat == "1")
+                {
+                    row.Controls.Add(flpDays);
+                }
+                //row.Controls.Add(lblDays);
                 row.Controls.Add(tglEnabled);
 
                 pnlSavedPresets.Controls.Add(row);

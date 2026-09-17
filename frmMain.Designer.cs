@@ -1149,7 +1149,7 @@ namespace SleepyTime_2._0
             cmbPresetRepeat.ForeColor = System.Drawing.Color.White;
             cmbPresetRepeat.FormattingEnabled = true;
             cmbPresetRepeat.IntegralHeight = false;
-            cmbPresetRepeat.Items.AddRange(new object[] { "Tomorrow", "Every Day", "Every Week", "Forever" });
+            cmbPresetRepeat.Items.AddRange(new object[] { "Daily", "Weekly" });
             cmbPresetRepeat.Location = new System.Drawing.Point(350, 40);
             cmbPresetRepeat.Name = "cmbPresetRepeat";
             cmbPresetRepeat.Size = new System.Drawing.Size(159, 29);
@@ -1271,7 +1271,7 @@ namespace SleepyTime_2._0
             txtPresetName.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
             txtPresetName.ForeColor = System.Drawing.Color.White;
             txtPresetName.Location = new System.Drawing.Point(10, 40);
-            txtPresetName.MaxLength = 20;
+            txtPresetName.MaxLength = 15;
             txtPresetName.Name = "txtPresetName";
             txtPresetName.PlaceholderText = "e.g. \"Daily Reset\"";
             txtPresetName.Size = new System.Drawing.Size(206, 29);
