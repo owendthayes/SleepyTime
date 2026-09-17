@@ -1797,15 +1797,6 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                 };
 
-                Label lblRepeat = new Label
-                {
-                    Text = "Every Day",
-                    Location = new Point(320, 10),
-                    AutoSize = true,
-                    ForeColor = textColor,
-                    Font = new Font("JetBrains Mono", 12),
-                };
-
                 Label lblTime = new Label
                 {
                     Text = item.Time.ToString(@"hh\:mm"),
@@ -1820,6 +1811,7 @@ namespace SleepyTime_2._0
                 FlowLayoutPanel flpDays = new FlowLayoutPanel
                 {
                     Location = new Point(320, 1),
+                    Width = 100,
                     AutoSize = true,
                     BackColor = Color.FromArgb(25, 25, 41)
                 };
@@ -1834,26 +1826,35 @@ namespace SleepyTime_2._0
                     dayLabel.Size = new Size(10, 35);
                     dayLabel.Margin = new Padding(2);
 
-                    if (item.Days[i] == 'x')
+                    if (item.Repeat == "1")
                     {
-                        dayLabel.ForeColor = primaryAccent;
+                        if (item.Days[i] == 'x')
+                        {
+                            dayLabel.ForeColor = primaryAccent;
+                        }
+                        else
+                        {
+                            dayLabel.ForeColor = Color.Gray;
+                        }
                     }
                     else
                     {
-                        dayLabel.ForeColor = Color.Gray;
+                        dayLabel.ForeColor = primaryAccent;
                     }
-                    dayLabel.BackColor = Color.FromArgb(25, 25, 41);
 
-                    dayLabel.Font = new Font(
-                        "Jetbrains Mono",
-                        10,
-                        FontStyle.Regular
-                    );
+                        dayLabel.BackColor = Color.FromArgb(25, 25, 41);
 
-                    dayLabel.Tag = i;
+                        dayLabel.Font = new Font(
+                            "Jetbrains Mono",
+                            10,
+                            FontStyle.Regular
+                        );
 
-                    flpDays.Controls.Add(dayLabel);
-                }
+                        dayLabel.Tag = i;
+
+                        flpDays.Controls.Add(dayLabel);
+
+                    }
 
                 ToggleButton tglEnabled = new ToggleButton
                 {
@@ -1896,15 +1897,7 @@ namespace SleepyTime_2._0
                 row.Controls.Add(lblName);
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblTime);
-                if (item.Repeat == "0")
-                {
-                    row.Controls.Add(lblRepeat);
-                }
-                else if (item.Repeat == "1")
-                {
-                    row.Controls.Add(flpDays);
-                }
-                //row.Controls.Add(lblDays);
+                row.Controls.Add(flpDays);
                 row.Controls.Add(tglEnabled);
                 row.Controls.Add(btnEdit);
                 row.Controls.Add(btnDelete);
