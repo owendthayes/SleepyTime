@@ -96,8 +96,13 @@ namespace SleepyTime_2._0
             label12 = new System.Windows.Forms.Label();
             cmbScheduleOperation = new System.Windows.Forms.ComboBox();
             pnlPresets = new System.Windows.Forms.Panel();
+            label40 = new System.Windows.Forms.Label();
             pnlPresetDays = new System.Windows.Forms.Panel();
             listBoxDays = new System.Windows.Forms.CheckedListBox();
+            label39 = new System.Windows.Forms.Label();
+            label37 = new System.Windows.Forms.Label();
+            label36 = new System.Windows.Forms.Label();
+            label41 = new System.Windows.Forms.Label();
             label32 = new System.Windows.Forms.Label();
             pnlPresetUpcoming = new System.Windows.Forms.Panel();
             label35 = new System.Windows.Forms.Label();
@@ -116,6 +121,7 @@ namespace SleepyTime_2._0
             label28 = new System.Windows.Forms.Label();
             btnPresetSave = new RoundedButton();
             label10 = new System.Windows.Forms.Label();
+            label38 = new System.Windows.Forms.Label();
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
@@ -822,55 +828,55 @@ namespace SleepyTime_2._0
             // label27
             // 
             label27.AutoSize = true;
-            label27.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
-            label27.ForeColor = System.Drawing.Color.White;
+            label27.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label27.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label27.Location = new System.Drawing.Point(503, 152);
             label27.Name = "label27";
-            label27.Size = new System.Drawing.Size(112, 14);
+            label27.Size = new System.Drawing.Size(112, 16);
             label27.TabIndex = 41;
             label27.Text = "FURTHER ACTIONS";
             // 
             // label25
             // 
             label25.AutoSize = true;
-            label25.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
-            label25.ForeColor = System.Drawing.Color.White;
+            label25.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label25.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label25.Location = new System.Drawing.Point(365, 152);
             label25.Name = "label25";
-            label25.Size = new System.Drawing.Size(63, 14);
+            label25.Size = new System.Drawing.Size(63, 16);
             label25.TabIndex = 40;
             label25.Text = "REMINDER";
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
-            label24.ForeColor = System.Drawing.Color.White;
+            label24.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label24.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label24.Location = new System.Drawing.Point(276, 152);
             label24.Name = "label24";
-            label24.Size = new System.Drawing.Size(35, 14);
+            label24.Size = new System.Drawing.Size(35, 16);
             label24.TabIndex = 39;
             label24.Text = "TIME";
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
-            label23.ForeColor = System.Drawing.Color.White;
+            label23.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label23.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label23.Location = new System.Drawing.Point(168, 152);
             label23.Name = "label23";
-            label23.Size = new System.Drawing.Size(35, 14);
+            label23.Size = new System.Drawing.Size(35, 16);
             label23.TabIndex = 38;
             label23.Text = "DATE";
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
-            label22.ForeColor = System.Drawing.Color.White;
+            label22.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label22.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label22.Location = new System.Drawing.Point(61, 152);
             label22.Name = "label22";
-            label22.Size = new System.Drawing.Size(49, 14);
+            label22.Size = new System.Drawing.Size(49, 16);
             label22.TabIndex = 37;
             label22.Text = "ACTION";
             // 
@@ -1044,24 +1050,41 @@ namespace SleepyTime_2._0
             // 
             // pnlPresets
             // 
+            pnlPresets.Controls.Add(label40);
             pnlPresets.Controls.Add(pnlPresetDays);
+            pnlPresets.Controls.Add(label39);
+            pnlPresets.Controls.Add(label37);
+            pnlPresets.Controls.Add(label36);
+            pnlPresets.Controls.Add(label41);
             pnlPresets.Controls.Add(label32);
             pnlPresets.Controls.Add(pnlPresetUpcoming);
             pnlPresets.Controls.Add(label10);
+            pnlPresets.Controls.Add(label38);
             pnlPresets.Controls.Add(pnlSavedPresets);
             pnlPresets.Location = new System.Drawing.Point(127, 68);
             pnlPresets.Name = "pnlPresets";
             pnlPresets.Size = new System.Drawing.Size(673, 385);
             pnlPresets.TabIndex = 24;
             // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label40.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label40.Location = new System.Drawing.Point(524, 150);
+            label40.Name = "label40";
+            label40.Size = new System.Drawing.Size(112, 16);
+            label40.TabIndex = 58;
+            label40.Text = "FURTHER ACTIONS";
+            // 
             // pnlPresetDays
             // 
             pnlPresetDays.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             pnlPresetDays.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             pnlPresetDays.Controls.Add(listBoxDays);
-            pnlPresetDays.Location = new System.Drawing.Point(124, 143);
+            pnlPresetDays.Location = new System.Drawing.Point(124, 138);
             pnlPresetDays.Name = "pnlPresetDays";
-            pnlPresetDays.Size = new System.Drawing.Size(183, 166);
+            pnlPresetDays.Size = new System.Drawing.Size(183, 171);
             pnlPresetDays.TabIndex = 50;
             pnlPresetDays.Visible = false;
             pnlPresetDays.Leave += pnlPresetDays_Leave;
@@ -1079,6 +1102,51 @@ namespace SleepyTime_2._0
             listBoxDays.Size = new System.Drawing.Size(183, 172);
             listBoxDays.TabIndex = 0;
             listBoxDays.MouseLeave += listBoxDays_MouseLeave;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label39.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label39.Location = new System.Drawing.Point(451, 150);
+            label39.Name = "label39";
+            label39.Size = new System.Drawing.Size(35, 16);
+            label39.TabIndex = 57;
+            label39.Text = "TIME";
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label37.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label37.Location = new System.Drawing.Point(82, 150);
+            label37.Name = "label37";
+            label37.Size = new System.Drawing.Size(35, 16);
+            label37.TabIndex = 55;
+            label37.Text = "NAME";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label36.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label36.Location = new System.Drawing.Point(20, 150);
+            label36.Name = "label36";
+            label36.Size = new System.Drawing.Size(49, 16);
+            label36.TabIndex = 54;
+            label36.Text = "ON/OFF";
+            label36.Click += label36_Click;
+            // 
+            // label41
+            // 
+            label41.AutoSize = true;
+            label41.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label41.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label41.Location = new System.Drawing.Point(239, 150);
+            label41.Name = "label41";
+            label41.Size = new System.Drawing.Size(49, 16);
+            label41.TabIndex = 59;
+            label41.Text = "ACTION";
             // 
             // label32
             // 
@@ -1149,7 +1217,7 @@ namespace SleepyTime_2._0
             cmbPresetRepeat.ForeColor = System.Drawing.Color.White;
             cmbPresetRepeat.FormattingEnabled = true;
             cmbPresetRepeat.IntegralHeight = false;
-            cmbPresetRepeat.Items.AddRange(new object[] { "Daily", "Weekly" });
+            cmbPresetRepeat.Items.AddRange(new object[] { "Every Day", "Certain Days" });
             cmbPresetRepeat.Location = new System.Drawing.Point(350, 40);
             cmbPresetRepeat.Name = "cmbPresetRepeat";
             cmbPresetRepeat.Size = new System.Drawing.Size(159, 29);
@@ -1331,13 +1399,24 @@ namespace SleepyTime_2._0
             label10.TabIndex = 30;
             label10.Text = "*SleepyTime must be open for actons to occur";
             // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label38.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label38.Location = new System.Drawing.Point(336, 150);
+            label38.Name = "label38";
+            label38.Size = new System.Drawing.Size(49, 16);
+            label38.TabIndex = 56;
+            label38.Text = "REPEAT";
+            // 
             // pnlSavedPresets
             // 
             pnlSavedPresets.AutoScroll = true;
             pnlSavedPresets.Controls.Add(lblSavedItemsPresets);
-            pnlSavedPresets.Location = new System.Drawing.Point(9, 155);
+            pnlSavedPresets.Location = new System.Drawing.Point(9, 162);
             pnlSavedPresets.Name = "pnlSavedPresets";
-            pnlSavedPresets.Size = new System.Drawing.Size(652, 219);
+            pnlSavedPresets.Size = new System.Drawing.Size(652, 212);
             pnlSavedPresets.TabIndex = 31;
             // 
             // lblSavedItemsPresets
@@ -1791,6 +1870,12 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label35;
         private Custom_Controls.ToggleButton tglPresetEnabled;
         private System.Windows.Forms.Label lblSavedItemsPresets;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label41;
     }
 }
 

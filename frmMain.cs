@@ -1811,6 +1811,7 @@ namespace SleepyTime_2._0
                     Text = item.Time.ToString(@"hh\:mm"),
                     Location = new Point(435, 10),
                     AutoSize = true,
+                    Width = 50,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
                 };
@@ -1839,9 +1840,8 @@ namespace SleepyTime_2._0
                     }
                     else
                     {
-                        dayLabel.ForeColor = Color.White;
+                        dayLabel.ForeColor = Color.Gray;
                     }
-
                     dayLabel.BackColor = Color.FromArgb(25, 25, 41);
 
                     dayLabel.Font = new Font(
@@ -1866,6 +1866,33 @@ namespace SleepyTime_2._0
                     Checked = item.Enabled
                 };
 
+                RoundedButton btnEdit = new RoundedButton
+                {
+                    Text = "✎",
+                    Location = new Point(510, 5),
+                    AutoSize = true,
+                    ForeColor = primaryAccent,
+                    BorderColor = primaryAccent,
+                    BackColor = primaryTheme,
+                    Font = new Font("JetBrains Mono", 12),
+                    Width = 25,
+                    Height = 25
+                };
+
+                RoundedButton btnDelete = new RoundedButton
+                {
+                    Text = "🗑",
+                    Location = new Point(560, 5),
+                    AutoSize = true,
+                    ForeColor = Color.FromArgb(247, 62, 62),
+                    BorderColor = Color.FromArgb(247, 62, 62),
+                    BackColor = primaryTheme,
+                    Font = new Font("JetBrains Mono", 12),
+                    Width = 25,
+                    Height = 25,
+                    Tag = "noColourChange"
+                };
+
                 row.Controls.Add(lblName);
                 row.Controls.Add(lblAction);
                 row.Controls.Add(lblTime);
@@ -1879,10 +1906,17 @@ namespace SleepyTime_2._0
                 }
                 //row.Controls.Add(lblDays);
                 row.Controls.Add(tglEnabled);
+                row.Controls.Add(btnEdit);
+                row.Controls.Add(btnDelete);
 
                 pnlSavedPresets.Controls.Add(row);
                 y += row.Height + 5;
             }
+
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
 
         }
     }
