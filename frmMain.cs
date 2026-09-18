@@ -1897,6 +1897,7 @@ namespace SleepyTime_2._0
 
                 btnEditPreset.Click += btnEditPreset_Click;
                 btnDeletePreset.Click += btnDeletePreset_Click;
+                tglEnabled.CheckedChanged += tglEnabled_CheckedChanged;
 
                 row.Controls.Add(lblName);
                 row.Controls.Add(lblAction);
@@ -1944,18 +1945,75 @@ namespace SleepyTime_2._0
 
         private void btnEditPreset_Click(object sender, EventArgs e)
         {
+            //findUpdateTarget(sender);
+            //first find the item we want to edit in the list
 
+            //load the info into the UI
         }
 
         private void btnDeletePreset_Click(object sender, EventArgs e)
         {
+            //findUpdateTarget(sender);
+            //first find the item we want to delete in the list
 
+            //confirm with the user that they want to delete it
+
+            //remove it from the list
+
+            //rewrite the list to the file
+
+            //update the UI
         }
 
         private void listBoxDays_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbPresetDays.Text = $"{listBoxDays.CheckedItems.Count.ToString()} days selected";
         }
+
+        private void tglEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            //findUpdateTarget(sender);
+
+
+
+            //update the "enabled" to match the value
+
+            //rewrite the list to the file
+
+            //update the ui (maybe)
+        }
+
+        //private PresetItem findUpdateTarget(object sender)
+        //{
+        //    //find the corresponding item in the list
+        //    string[] data = new string[4];
+
+        //    RoundedButton clickedButton = (RoundedButton)sender;
+
+        //    Panel parentPanel = (Panel)clickedButton.Parent;
+
+
+        //    foreach (Control c in parentPanel.Controls)
+        //    {
+        //        if (c is Label)
+        //        {
+        //            //get name
+                    
+        //            //get action
+
+        //            //get repeat
+
+        //            //get time
+
+        //            //get days
+
+        //            //get enabled
+        //        }
+        //    }
+
+        //    PresetItem target = new PresetItem();
+        //    return target;
+        //}
     }
 }
 
