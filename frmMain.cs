@@ -276,6 +276,7 @@ namespace SleepyTime_2._0
                     textColor = Color.White;
                     secondaryTextColor = Color.FromArgb(177, 178, 181);
                     imgLogo.Image = Image.FromFile(whiteLogo);
+                    imgAboutLogo.Image = Image.FromFile(whiteLogo);
                     break;
 
                 case "light":
@@ -284,6 +285,7 @@ namespace SleepyTime_2._0
                     textColor = Color.Black;
                     secondaryTextColor = Color.FromArgb(39, 39, 41);
                     imgLogo.Image = Image.FromFile(blackLogo);
+                    imgAboutLogo.Image = Image.FromFile(blackLogo);
                     break;
             }
 
@@ -1968,6 +1970,8 @@ namespace SleepyTime_2._0
             cmbPresetTime.SelectedIndex = cmbPresetTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
             tglPresetEnabled.Checked = target.Enabled;
             //listboxdays.selected = target.days???
+
+            //need to save the edit target here somewhere for use in the "Save" button
         }
 
         private void btnDeletePreset_Click(object sender, EventArgs e)

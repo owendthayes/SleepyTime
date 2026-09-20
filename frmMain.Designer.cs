@@ -138,7 +138,7 @@ namespace SleepyTime_2._0
             linkLabel3 = new System.Windows.Forms.LinkLabel();
             linkLabel2 = new System.Windows.Forms.LinkLabel();
             linkLabel1 = new System.Windows.Forms.LinkLabel();
-            pictureBox3 = new System.Windows.Forms.PictureBox();
+            imgAboutLogo = new System.Windows.Forms.PictureBox();
             label16 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
             btnHelp = new System.Windows.Forms.Button();
@@ -162,7 +162,7 @@ namespace SleepyTime_2._0
             pnlSavedPresets.SuspendLayout();
             pnlSettings.SuspendLayout();
             pnlAbout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgAboutLogo).BeginInit();
             pnlHelp.SuspendLayout();
             SuspendLayout();
             // 
@@ -1556,7 +1556,7 @@ namespace SleepyTime_2._0
             pnlAbout.Controls.Add(linkLabel3);
             pnlAbout.Controls.Add(linkLabel2);
             pnlAbout.Controls.Add(linkLabel1);
-            pnlAbout.Controls.Add(pictureBox3);
+            pnlAbout.Controls.Add(imgAboutLogo);
             pnlAbout.Controls.Add(label16);
             pnlAbout.Controls.Add(label13);
             pnlAbout.Location = new System.Drawing.Point(127, 68);
@@ -1620,16 +1620,16 @@ namespace SleepyTime_2._0
             linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
-            // pictureBox3
+            // imgAboutLogo
             // 
-            pictureBox3.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
-            pictureBox3.Image = Properties.Resources.SleepyTimeImg;
-            pictureBox3.Location = new System.Drawing.Point(168, 20);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new System.Drawing.Size(44, 41);
-            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 28;
-            pictureBox3.TabStop = false;
+            imgAboutLogo.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
+            imgAboutLogo.Image = Properties.Resources.SleepyTimeImg;
+            imgAboutLogo.Location = new System.Drawing.Point(168, 20);
+            imgAboutLogo.Name = "imgAboutLogo";
+            imgAboutLogo.Size = new System.Drawing.Size(44, 41);
+            imgAboutLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            imgAboutLogo.TabIndex = 28;
+            imgAboutLogo.TabStop = false;
             // 
             // label16
             // 
@@ -1766,7 +1766,7 @@ namespace SleepyTime_2._0
             pnlSettings.PerformLayout();
             pnlAbout.ResumeLayout(false);
             pnlAbout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgAboutLogo).EndInit();
             pnlHelp.ResumeLayout(false);
             pnlHelp.PerformLayout();
             ResumeLayout(false);
@@ -1831,7 +1831,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox imgAboutLogo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private RoundedButton btnSaveSettings;
