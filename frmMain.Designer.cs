@@ -1383,9 +1383,9 @@ namespace SleepyTime_2._0
             label28.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             label28.Location = new System.Drawing.Point(11, 20);
             label28.Name = "label28";
-            label28.Size = new System.Drawing.Size(112, 16);
+            label28.Size = new System.Drawing.Size(35, 16);
             label28.TabIndex = 33;
-            label28.Text = "Name (Optional)";
+            label28.Text = "Name";
             // 
             // btnPresetSave
             // 

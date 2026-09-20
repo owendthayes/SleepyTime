@@ -455,7 +455,7 @@ namespace SleepyTime_2._0
                 }
 
 
-                MessageBox.Show($"{DateTime.Now.Date == soonest.Date} \n {DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString()}");
+                //MessageBox.Show($"{DateTime.Now.Date == soonest.Date} \n {DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString()}");
                 if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
                 {
                     //DELETE SOONEST AFTER IT HAS OCCURRED.
@@ -1204,7 +1204,7 @@ namespace SleepyTime_2._0
                     BackColor = primaryTheme,
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
-                    Height = 25
+                    Height = 25,
                 };
 
                 RoundedButton btnDeleteSchedule = new RoundedButton
@@ -1218,7 +1218,7 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Tag = "noColourChange"
+                    Tag = "noColourChange",
                 };
 
                 //if a notification has already sent, dont allow the user to edit the schedule.
@@ -1681,10 +1681,15 @@ namespace SleepyTime_2._0
             {
                 name = txtPresetName.Text;
             }
+            else
+            {
+                MessageBox.Show("Please enter a name for your preset action");
+                return;
+            }
 
 
-            //check selected days for repeating
-            string days = "-------";
+                //check selected days for repeating
+                string days = "-------";
 
             if (cmbPresetRepeat.SelectedIndex == 1)
             {
@@ -1814,7 +1819,7 @@ namespace SleepyTime_2._0
                     Location = new Point(320, 1),
                     Width = 100,
                     AutoSize = true,
-                    BackColor = Color.FromArgb(25, 25, 41)
+                    BackColor = secondaryTheme
                 };
 
                 for (int i = 0; i < 7; i++)
@@ -1843,7 +1848,7 @@ namespace SleepyTime_2._0
                         dayLabel.ForeColor = primaryAccent;
                     }
 
-                    dayLabel.BackColor = Color.FromArgb(25, 25, 41);
+                    dayLabel.BackColor = secondaryTheme;
 
                     dayLabel.Font = new Font(
                         "Jetbrains Mono",
@@ -1865,7 +1870,8 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Checked = item.Enabled
+                    Checked = item.Enabled,
+                    Tag = item
                 };
 
                 RoundedButton btnEditPreset = new RoundedButton
@@ -1878,7 +1884,8 @@ namespace SleepyTime_2._0
                     BackColor = primaryTheme,
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
-                    Height = 25
+                    Height = 25,
+                    Tag = item
                 };
 
                 RoundedButton btnDeletePreset = new RoundedButton
@@ -1892,7 +1899,7 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Tag = "noColourChange"
+                    Tag = (item, "noColourChange")
                 };
 
                 btnEditPreset.Click += btnEditPreset_Click;
@@ -1972,48 +1979,22 @@ namespace SleepyTime_2._0
 
         private void tglEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            //findUpdateTarget(sender);
+            ToggleButton btn = (ToggleButton)sender;
 
+            PresetItem target = btn.Tag as PresetItem;
 
+            foreach (PresetItem item in presetItems)
+            {
+                if (item.Name == target.Name)
+                {
+                    item.Enabled = btn.Checked;
+                    break;
+                }
+            }
+            //rewrite the list to the file, ui update not necessary as this is essentially already handled by the toggle button.
+            updatePresetFile();
 
-            //update the "enabled" to match the value
-
-            //rewrite the list to the file
-
-            //update the ui (maybe)
         }
-
-        //private PresetItem findUpdateTarget(object sender)
-        //{
-        //    //find the corresponding item in the list
-        //    string[] data = new string[4];
-
-        //    RoundedButton clickedButton = (RoundedButton)sender;
-
-        //    Panel parentPanel = (Panel)clickedButton.Parent;
-
-
-        //    foreach (Control c in parentPanel.Controls)
-        //    {
-        //        if (c is Label)
-        //        {
-        //            //get name
-                    
-        //            //get action
-
-        //            //get repeat
-
-        //            //get time
-
-        //            //get days
-
-        //            //get enabled
-        //        }
-        //    }
-
-        //    PresetItem target = new PresetItem();
-        //    return target;
-        //}
     }
 }
 
