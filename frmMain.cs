@@ -2011,21 +2011,24 @@ namespace SleepyTime_2._0
 
             cmbPresetDays.Text = $"{xCount} days selected";
 
+            //this will be used in the save button function.
             presetEditTarget = target;
         }
 
         private void btnDeletePreset_Click(object sender, EventArgs e)
         {
-            //findUpdateTarget(sender);
-            //first find the item we want to delete in the list
+            RoundedButton btn = (RoundedButton)sender;
+            PresetItem target = btn.Tag as PresetItem;
 
-            //confirm with the user that they want to delete it
-
-            //remove it from the list
-
-            //rewrite the list to the file
-
-            //update the UI
+            DialogResult exitBox = MessageBox.Show($"Are you sure you want to delete preset:\n{target.Name}", "Delete", MessageBoxButtons.YesNo);
+            {
+                if (exitBox == DialogResult.Yes)
+                {
+                    presetItems.Remove(target);
+                    updatePresetFile();
+                    updatePresetUI();
+                }
+            }
         }
 
         private void listBoxDays_SelectedIndexChanged(object sender, EventArgs e)
@@ -2036,7 +2039,6 @@ namespace SleepyTime_2._0
         private void tglEnabled_CheckedChanged(object sender, EventArgs e)
         {
             ToggleButton btn = (ToggleButton)sender;
-
             PresetItem target = btn.Tag as PresetItem;
 
             foreach (PresetItem item in presetItems)
