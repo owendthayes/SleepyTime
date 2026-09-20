@@ -66,6 +66,7 @@ namespace SleepyTime_2._0
         private bool formAOT = false;
 
         string editTarget;
+        PresetItem presetEditTarget;
 
         private string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
         private string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
@@ -1718,8 +1719,20 @@ namespace SleepyTime_2._0
                 tglPresetEnabled.Checked
                 );
 
-            //save it to the list
-            presetItems.Add(newItem);
+            //decide if we are editing an existing item or creating a new one.
+            if (btnPresetSave.Text == "Save Preset")
+            {
+                //save it to the list
+                presetItems.Add(newItem);
+            }
+            else if (btnPresetSave.Text == "Update")
+            {
+                presetItems[presetItems.IndexOf(presetEditTarget)] = newItem;
+                pnlSavedPresets.Enabled = true;
+                btnPresetSave.Text = "Save Preset";
+                btnPresetCancel.Text = "Reset";
+                btnPresetCancel.PerformClick();
+            }
 
             //write the list to the file
             updatePresetFile();
@@ -1931,15 +1944,21 @@ namespace SleepyTime_2._0
 
         private void btnPresetCancel_Click(object sender, EventArgs e)
         {
-            if (btnPresetCancel.Text == "Reset")
+
+            txtPresetName.Text = "";
+            cmbPresetAction.SelectedIndex = 0;
+            cmbPresetRepeat.SelectedIndex = 0;
+            cmbPresetTime.SelectedIndex = 0;
+            tglPresetEnabled.Checked = true;
+            uncheckAll();
+            cmbPresetDays.Text = "None selected";
+
+            if (btnPresetCancel.Text == "Cancel")
             {
-                txtPresetName.Text = "";
-                cmbPresetAction.SelectedIndex = 0;
-                cmbPresetRepeat.SelectedIndex = 0;
-                cmbPresetTime.SelectedIndex = 0;
-                tglPresetEnabled.Checked = true;
-                uncheckAll();
-                cmbPresetDays.Text = "None selected";
+                pnlSavedPresets.Enabled = true;
+                btnPresetSave.Text = "Save Preset";
+                btnPresetCancel.Text = "Reset";
+                btnPresetCancel.PerformClick();
             }
         }
 
@@ -1954,6 +1973,8 @@ namespace SleepyTime_2._0
 
         private void btnEditPreset_Click(object sender, EventArgs e)
         {
+            int xCount = 0;
+
             //get the target
             RoundedButton btn = (RoundedButton)sender;
             PresetItem target = btn.Tag as PresetItem;
@@ -1969,9 +1990,23 @@ namespace SleepyTime_2._0
             cmbPresetRepeat.SelectedIndex = Convert.ToInt32(target.Repeat);
             cmbPresetTime.SelectedIndex = cmbPresetTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
             tglPresetEnabled.Checked = target.Enabled;
-            //listboxdays.selected = target.days???
+            
+            for (int i = 0; i < 7; i++)
+            {
+                if (target.Days[i] == 'x')
+                {
+                    listBoxDays.SetItemChecked(i, true);
+                    xCount++;
+                }
+                else
+                {
+                    listBoxDays.SetItemChecked(i, false);
+                }
+            }
 
-            //need to save the edit target here somewhere for use in the "Save" button
+            cmbPresetDays.Text = $"{xCount} days selected";
+
+            presetEditTarget = target;
         }
 
         private void btnDeletePreset_Click(object sender, EventArgs e)
