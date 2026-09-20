@@ -148,6 +148,7 @@ namespace SleepyTime_2._0
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
+            lblBugReport = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1708,6 +1709,18 @@ namespace SleepyTime_2._0
             tmrCurrentTime.Interval = 1000;
             tmrCurrentTime.Tick += tmrCurrentTime_Tick;
             // 
+            // lblBugReport
+            // 
+            lblBugReport.AutoSize = true;
+            lblBugReport.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            lblBugReport.Location = new System.Drawing.Point(0, 341);
+            lblBugReport.Name = "lblBugReport";
+            lblBugReport.Size = new System.Drawing.Size(91, 16);
+            lblBugReport.TabIndex = 28;
+            lblBugReport.TabStop = true;
+            lblBugReport.Text = "Report a Bug";
+            lblBugReport.LinkClicked += lblBugReport_LinkClicked;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1725,6 +1738,7 @@ namespace SleepyTime_2._0
             Controls.Add(lblTitle);
             Controls.Add(imgHeaderDivider);
             Controls.Add(pictureBox2);
+            Controls.Add(lblBugReport);
             Controls.Add(btnSidebarCountdown);
             Controls.Add(btnSidebarSchedule);
             Controls.Add(btnSideBarPresets);
@@ -1892,6 +1906,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label MEMEME;
+        private System.Windows.Forms.LinkLabel lblBugReport;
     }
 }
 

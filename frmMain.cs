@@ -1693,8 +1693,8 @@ namespace SleepyTime_2._0
             }
 
 
-                //check selected days for repeating
-                string days = "-------";
+            //check selected days for repeating
+            string days = "-------";
 
             if (cmbPresetRepeat.SelectedIndex == 1)
             {
@@ -1995,7 +1995,7 @@ namespace SleepyTime_2._0
             cmbPresetRepeat.SelectedIndex = Convert.ToInt32(target.Repeat);
             cmbPresetTime.SelectedIndex = cmbPresetTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
             tglPresetEnabled.Checked = target.Enabled;
-            
+
             for (int i = 0; i < 7; i++)
             {
                 if (target.Days[i] == 'x')
@@ -2052,6 +2052,11 @@ namespace SleepyTime_2._0
             //rewrite the list to the file, ui update not necessary as this is essentially already handled by the toggle button.
             updatePresetFile();
 
+        }
+
+        private void lblBugReport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://forms.gle/haAHduytqaXaEShFA");
         }
     }
 }
