@@ -326,7 +326,7 @@ namespace SleepyTime_2._0
                     c.ForeColor = primaryAccent;
                 }
 
-                if (c is RoundedButton button && c.Tag != "noColourChange")
+                if (c is RoundedButton button && c.Tag != "noColourChange" && c.ForeColor != Color.FromArgb(247, 62, 62))
                 {
                     button.BorderColor = primaryAccent;
                 }
@@ -1208,6 +1208,7 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
+                    Cursor = Cursors.Hand
                 };
 
                 RoundedButton btnDeleteSchedule = new RoundedButton
@@ -1222,6 +1223,7 @@ namespace SleepyTime_2._0
                     Width = 25,
                     Height = 25,
                     Tag = "noColourChange",
+                    Cursor = Cursors.Hand
                 };
 
                 //if a notification has already sent, dont allow the user to edit the schedule.
@@ -1886,7 +1888,8 @@ namespace SleepyTime_2._0
                     Width = 25,
                     Height = 25,
                     Checked = item.Enabled,
-                    Tag = item
+                    Tag = item,
+                    Cursor = Cursors.Hand
                 };
 
                 RoundedButton btnEditPreset = new RoundedButton
@@ -1900,7 +1903,8 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Tag = item
+                    Tag = item,
+                    Cursor = Cursors.Hand
                 };
 
                 RoundedButton btnDeletePreset = new RoundedButton
@@ -1914,7 +1918,8 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Tag = (item, "noColourChange")
+                    Tag = item,
+                    Cursor = Cursors.Hand
                 };
 
                 btnEditPreset.Click += btnEditPreset_Click;
