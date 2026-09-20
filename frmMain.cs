@@ -1952,10 +1952,22 @@ namespace SleepyTime_2._0
 
         private void btnEditPreset_Click(object sender, EventArgs e)
         {
-            //findUpdateTarget(sender);
-            //first find the item we want to edit in the list
+            //get the target
+            RoundedButton btn = (RoundedButton)sender;
+            PresetItem target = btn.Tag as PresetItem;
+
+            //disable and update UI elements to allow for saving later.
+            pnlSavedPresets.Enabled = false;
+            btnPresetSave.Text = "Update";
+            btnPresetCancel.Text = "Cancel";
 
             //load the info into the UI
+            txtPresetName.Text = target.Name;
+            cmbPresetAction.SelectedIndex = Convert.ToInt32(target.Action);
+            cmbPresetRepeat.SelectedIndex = Convert.ToInt32(target.Repeat);
+            cmbPresetTime.SelectedIndex = cmbPresetTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
+            tglPresetEnabled.Checked = target.Enabled;
+            //listboxdays.selected = target.days???
         }
 
         private void btnDeletePreset_Click(object sender, EventArgs e)
