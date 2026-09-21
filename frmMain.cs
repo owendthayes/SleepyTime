@@ -65,7 +65,7 @@ namespace SleepyTime_2._0
         //ALWAYS ON TOP
         private bool formAOT = false;
 
-        string editTarget;
+        ScheduleItem scheduleEditTarget;
         PresetItem presetEditTarget;
 
         private string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
@@ -1208,7 +1208,8 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Cursor = Cursors.Hand
+                    Cursor = Cursors.Hand,
+                    Tag = item
                 };
 
                 RoundedButton btnDeleteSchedule = new RoundedButton
@@ -1222,7 +1223,7 @@ namespace SleepyTime_2._0
                     Font = new Font("JetBrains Mono", 12),
                     Width = 25,
                     Height = 25,
-                    Tag = "noColourChange",
+                    Tag = item,
                     Cursor = Cursors.Hand
                 };
 
@@ -1252,68 +1253,27 @@ namespace SleepyTime_2._0
 
         private void btnEditSchedule_Click(object sender, EventArgs e)
         {
-            string[] data = new string[4];
+            //get the target
+            RoundedButton btn = (RoundedButton)sender;
+            ScheduleItem target = btn.Tag as ScheduleItem;
 
-            RoundedButton clickedButton = (RoundedButton)sender;
-
-            Panel parentPanel = (Panel)clickedButton.Parent;
-
-            foreach (Control c in parentPanel.Controls)
-            {
-                if (c is Label)
-                {
-                    if (operations.Contains(c.Text))
-                    {
-                        data[0] = Array.IndexOf(operations, c.Text).ToString();
-                    }
-                    ;
-
-                    //get the DATE
-                    if (DateTime.TryParseExact(
-                    c.Text,
-                    "dd/MM/yyyy",
-                    null,
-                    System.Globalization.DateTimeStyles.None,
-                    out DateTime date))
-                    {
-                        data[1] = date.ToString();
-                    }
-                    ;
-
-                    //get the TIME
-                    if (TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
-                    {
-                        data[2] = timeDel.ToString();
-                    }
-                    ;
-
-                    if (reminders.Contains(c.Text))
-                    {
-                        data[3] = Array.IndexOf(reminders, c.Text).ToString();
-                    }
-                    ;
-
-                }
-            }
-
-            //located the correct target saved item.
-            TimeSpan editTime = TimeSpan.Parse(data[2]);
-            string formattedTime = editTime.ToString(@"hh\:mm");
-
-            editTarget = $"{data[0]}|{data[1]}|{formattedTime}|{data[3]}";
+            //disable and update UI elements to allow for saving later.
+            pnlSavedSchedules.Enabled = false;
+            btnSaveSchedule.Text = "Update Schedule";
+            btnClearSchedule.Text = "Cancel";
 
             //load the option boxes with the corresponding data.
-            cmbScheduleOperation.SelectedIndex = Convert.ToInt32(data[0]);
-            cmbScheduleDate.Value = DateTime.ParseExact(data[1], "dd/MM/yyyy HH:mm:ss", null);
-            cmbScheduleTime.SelectedIndex = cmbScheduleTime.Items.IndexOf(formattedTime);
-            cmbRemindMe.SelectedIndex = Convert.ToInt32(data[3]);
-
-            //use edit target to store the old schedule, create a new saved item and overwrite the old one with the new one in the list before writing to file again.
+            cmbScheduleOperation.SelectedIndex = Convert.ToInt32(target.Action);
+            cmbScheduleDate.Value = target.Date;
+            cmbScheduleTime.SelectedIndex = cmbScheduleTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
+            cmbRemindMe.SelectedIndex = Convert.ToInt32(cmbRemindMe.Items.IndexOf(target.Reminder));
 
             pnlSavedSchedules.Enabled = false;
 
             btnClearSchedule.Text = "Cancel";
             btnSaveSchedule.Text = "Update Schedule";
+
+            scheduleEditTarget = target;
         }
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
