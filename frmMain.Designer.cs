@@ -59,7 +59,7 @@ namespace SleepyTime_2._0
             btnQuick30 = new RoundedButton();
             btnQuick15 = new RoundedButton();
             lblShowHideQuick = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
+            lblAdjustTimer = new System.Windows.Forms.Label();
             btnAdd5Min = new RoundedButton();
             lblShutdownTime = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
@@ -126,6 +126,8 @@ namespace SleepyTime_2._0
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
+            label42 = new System.Windows.Forms.Label();
+            cmbCountdownLayout = new System.Windows.Forms.ComboBox();
             tglDarkMode = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             label26 = new System.Windows.Forms.Label();
             tglAOT = new SleepyTime_2._0.Custom_Controls.ToggleButton();
@@ -398,7 +400,7 @@ namespace SleepyTime_2._0
             pnlCountdown.Controls.Add(btnQuick30);
             pnlCountdown.Controls.Add(btnQuick15);
             pnlCountdown.Controls.Add(lblShowHideQuick);
-            pnlCountdown.Controls.Add(label9);
+            pnlCountdown.Controls.Add(lblAdjustTimer);
             pnlCountdown.Controls.Add(btnAdd5Min);
             pnlCountdown.Controls.Add(lblShutdownTime);
             pnlCountdown.Controls.Add(label8);
@@ -569,16 +571,16 @@ namespace SleepyTime_2._0
             lblShowHideQuick.Text = "Quick Timers ▼";
             lblShowHideQuick.Click += lblShowHideQuick_Click;
             // 
-            // label9
+            // lblAdjustTimer
             // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label9.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label9.Location = new System.Drawing.Point(80, 244);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(91, 16);
-            label9.TabIndex = 20;
-            label9.Text = "Adjust Timer";
+            lblAdjustTimer.AutoSize = true;
+            lblAdjustTimer.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            lblAdjustTimer.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            lblAdjustTimer.Location = new System.Drawing.Point(80, 244);
+            lblAdjustTimer.Name = "lblAdjustTimer";
+            lblAdjustTimer.Size = new System.Drawing.Size(91, 16);
+            lblAdjustTimer.TabIndex = 20;
+            lblAdjustTimer.Text = "Adjust Timer";
             // 
             // btnAdd5Min
             // 
@@ -1450,6 +1452,8 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            pnlSettings.Controls.Add(label42);
+            pnlSettings.Controls.Add(cmbCountdownLayout);
             pnlSettings.Controls.Add(tglDarkMode);
             pnlSettings.Controls.Add(label26);
             pnlSettings.Controls.Add(tglAOT);
@@ -1462,16 +1466,41 @@ namespace SleepyTime_2._0
             pnlSettings.Size = new System.Drawing.Size(673, 385);
             pnlSettings.TabIndex = 25;
             // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            label42.ForeColor = System.Drawing.Color.White;
+            label42.Location = new System.Drawing.Point(27, 148);
+            label42.Name = "label42";
+            label42.Size = new System.Drawing.Size(170, 21);
+            label42.TabIndex = 25;
+            label42.Text = "Countdown Layout";
+            // 
+            // cmbCountdownLayout
+            // 
+            cmbCountdownLayout.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbCountdownLayout.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbCountdownLayout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            cmbCountdownLayout.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            cmbCountdownLayout.ForeColor = System.Drawing.Color.White;
+            cmbCountdownLayout.FormattingEnabled = true;
+            cmbCountdownLayout.Items.AddRange(new object[] { "Functional", "Minimal" });
+            cmbCountdownLayout.Location = new System.Drawing.Point(204, 143);
+            cmbCountdownLayout.Name = "cmbCountdownLayout";
+            cmbCountdownLayout.Size = new System.Drawing.Size(121, 29);
+            cmbCountdownLayout.TabIndex = 24;
+            // 
             // tglDarkMode
             // 
-            tglDarkMode.Location = new System.Drawing.Point(229, 105);
+            tglDarkMode.Location = new System.Drawing.Point(207, 102);
             tglDarkMode.MinimumSize = new System.Drawing.Size(45, 22);
             tglDarkMode.Name = "tglDarkMode";
             tglDarkMode.OffBackColor = System.Drawing.Color.Gray;
             tglDarkMode.OffToggleColor = System.Drawing.Color.Gainsboro;
             tglDarkMode.OnBackColor = System.Drawing.Color.Purple;
             tglDarkMode.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            tglDarkMode.Size = new System.Drawing.Size(74, 22);
+            tglDarkMode.Size = new System.Drawing.Size(118, 22);
             tglDarkMode.TabIndex = 23;
             tglDarkMode.UseVisualStyleBackColor = true;
             // 
@@ -1480,7 +1509,7 @@ namespace SleepyTime_2._0
             label26.AutoSize = true;
             label26.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label26.ForeColor = System.Drawing.Color.White;
-            label26.Location = new System.Drawing.Point(30, 104);
+            label26.Location = new System.Drawing.Point(25, 104);
             label26.Name = "label26";
             label26.Size = new System.Drawing.Size(170, 21);
             label26.TabIndex = 22;
@@ -1488,14 +1517,14 @@ namespace SleepyTime_2._0
             // 
             // tglAOT
             // 
-            tglAOT.Location = new System.Drawing.Point(229, 69);
+            tglAOT.Location = new System.Drawing.Point(207, 62);
             tglAOT.MinimumSize = new System.Drawing.Size(45, 22);
             tglAOT.Name = "tglAOT";
             tglAOT.OffBackColor = System.Drawing.Color.Gray;
             tglAOT.OffToggleColor = System.Drawing.Color.Gainsboro;
             tglAOT.OnBackColor = System.Drawing.Color.Purple;
             tglAOT.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            tglAOT.Size = new System.Drawing.Size(74, 22);
+            tglAOT.Size = new System.Drawing.Size(118, 22);
             tglAOT.TabIndex = 21;
             tglAOT.UseVisualStyleBackColor = true;
             tglAOT.CheckedChanged += tglAOT_CheckedChanged;
@@ -1505,7 +1534,7 @@ namespace SleepyTime_2._0
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label17.ForeColor = System.Drawing.Color.White;
-            label17.Location = new System.Drawing.Point(30, 71);
+            label17.Location = new System.Drawing.Point(23, 65);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(140, 21);
             label17.TabIndex = 20;
@@ -1536,7 +1565,7 @@ namespace SleepyTime_2._0
             cmbAccent.ForeColor = System.Drawing.Color.White;
             cmbAccent.FormattingEnabled = true;
             cmbAccent.Items.AddRange(new object[] { "Purple", "Blue", "Green", "Yellow", "Red" });
-            cmbAccent.Location = new System.Drawing.Point(177, 22);
+            cmbAccent.Location = new System.Drawing.Point(204, 22);
             cmbAccent.Name = "cmbAccent";
             cmbAccent.Size = new System.Drawing.Size(121, 29);
             cmbAccent.TabIndex = 18;
@@ -1750,10 +1779,10 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlSettings);
             Controls.Add(pnlPresets);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlCountdown);
-            Controls.Add(pnlSettings);
             Controls.Add(pnlAbout);
             Controls.Add(pnlHelp);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1827,7 +1856,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ComboBox cmbOperation;
         private System.Windows.Forms.Label lblShutdownTime;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblAdjustTimer;
         private RoundedButton btnAdd5Min;
         private System.Windows.Forms.Panel pnlSchedule;
         private System.Windows.Forms.Panel pnlPresets;
@@ -1913,6 +1942,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label MEMEME;
         private System.Windows.Forms.LinkLabel lblBugReport;
         private System.Windows.Forms.Timer tmrPreset;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.ComboBox cmbCountdownLayout;
     }
 }
 

@@ -59,6 +59,8 @@ namespace SleepyTime_2._0
         private Color textColor = Color.Black;
         private Color secondaryTextColor = Color.FromArgb(177, 178, 181);
 
+        private string countDownLayout = "";
+
         Color primaryTheme;
         Color secondaryTheme;
 
@@ -87,8 +89,9 @@ namespace SleepyTime_2._0
             //apply data from saved files.
             getAccentColour();
             applyAccentColour(primaryAccent, secondaryAccent);
-
             applyDarkMode(mainTheme);
+            applyCountDownLayout();
+
             updatePresetUI();
             updateScheduleUI();
 
@@ -220,7 +223,8 @@ namespace SleepyTime_2._0
                 {
                     "purple",
                     "false",
-                    "false"
+                    "false",
+                    "functional"
                 });
                 //settingsFile = Path.GetFullPath("Settings.txt");
             }
@@ -265,6 +269,20 @@ namespace SleepyTime_2._0
                     mainTheme = "dark";
                     break;
             }
+
+            countDownLayout = settings[3];
+            switch (settings[3])
+            {
+                case "functional":
+                    cmbCountdownLayout.SelectedIndex = 0;
+                    break;
+
+                case "minimal":
+                    cmbCountdownLayout.SelectedIndex = 1;
+                    break;
+            }
+            applyCountDownLayout();
+            
 
             applyDarkMode(mainTheme);
         }
@@ -1076,13 +1094,59 @@ namespace SleepyTime_2._0
 
             applyDarkMode(mainTheme);
 
+            string layout = "";
+            switch(cmbCountdownLayout.SelectedIndex)
+            {
+                case 0:
+                    countDownLayout = "functional";
+                    break;
+
+                case 1:
+                    countDownLayout = "minimal";
+                    break;
+            }
+            applyCountDownLayout();
+
             //save settings
             File.WriteAllLines("Settings.txt", new[]
             {
                 accentColour,
                 tglAOT.Checked.ToString(),
-                tglDarkMode.Checked.ToString()
+                tglDarkMode.Checked.ToString(),
+                countDownLayout
             });
+        }
+
+        private void applyCountDownLayout()
+        {
+            if (countDownLayout == "minimal")
+            {
+                btnAdd5Min.Visible = false;
+                btnAdd15Min.Visible = false;
+                btnAdd30Min.Visible = false;
+                btnAdd1Hr.Visible = false;
+                btnQuick15.Visible = false;
+                btnQuick30.Visible = false;
+                btnQuick1.Visible = false;
+                btnQuick2.Visible = false;
+                btnMoreQuick.Visible = false;
+                lblAdjustTimer.Visible = false;
+                lblShowHideQuick.Visible = false;
+            }
+            else
+            {
+                btnAdd5Min.Visible = true;
+                btnAdd15Min.Visible = true;
+                btnAdd30Min.Visible = true;
+                btnAdd1Hr.Visible = true;
+                btnQuick15.Visible = true;
+                btnQuick30.Visible = true;
+                btnQuick1.Visible = true;
+                btnQuick2.Visible = true;
+                btnMoreQuick.Visible = true;
+                lblAdjustTimer.Visible = true;
+                lblShowHideQuick.Visible = true;
+            }
         }
 
         private void btnClearSchedule_Click(object sender, EventArgs e)
