@@ -135,10 +135,10 @@ namespace SleepyTime_2._0
 
                 string[] data = line.Split('|');
 
-                if (data.Length != 6)
+                if (data.Length != 7)
                     continue;
 
-                PresetItem item = new PresetItem(data[0], data[1], data[2], TimeSpan.Parse(data[3]), data[4], Convert.ToBoolean(data[5]));
+                PresetItem item = new PresetItem(data[0], data[1], data[2], TimeSpan.Parse(data[3]), data[4], Convert.ToBoolean(data[5]), DateTime.Parse(data[6]));
                 presetItems.Add(item);
             }
         }
@@ -1584,7 +1584,8 @@ namespace SleepyTime_2._0
                 cmbPresetRepeat.SelectedIndex.ToString(),
                 TimeSpan.Parse(cmbPresetTime.Text),
                 days,
-                tglPresetEnabled.Checked
+                tglPresetEnabled.Checked,
+                DateTime.MaxValue
                 );
 
             //decide if we are editing an existing item or creating a new one.
@@ -1616,7 +1617,7 @@ namespace SleepyTime_2._0
                 foreach (PresetItem item in presetItems)
                 {
                     sw.WriteLine(
-                        $"{item.Name}|{item.Action}|{item.Repeat}|{item.Time}|{item.Days}|{item.Enabled}"
+                        $"{item.Name}|{item.Action}|{item.Repeat}|{item.Time}|{item.Days}|{item.Enabled}|{item.LastRun}"
                         );
                 }
             }
@@ -1930,6 +1931,7 @@ namespace SleepyTime_2._0
         private void tmrPreset_Tick(object sender, EventArgs e)
         {
             List<string> selectedDays = new List<string>();
+            DateTime now = DateTime.Now;
 
             //check through all ENABLED preset items.
             foreach (PresetItem item in presetItems)
@@ -1949,9 +1951,11 @@ namespace SleepyTime_2._0
                 }
 
                 // check if the current date and time match the preset item, if they do the perform the action.
-                if (selectedDays.Contains(DateTime.Now.DayOfWeek.ToString()) && item.Time.ToString(@"hh\:mm") == DateTime.Now.TimeOfDay.ToString(@"hh\:mm"))
+                if (selectedDays.Contains(now.DayOfWeek.ToString()) && item.Time.ToString(@"hh\:mm") == now.TimeOfDay.ToString(@"hh\:mm") && item.LastRun.Date.Date != now.Date.Date)
                 {
                     performAction(item.Action);
+                    item.LastRun = now;
+                    updatePresetFile();
                 }
             }
         }

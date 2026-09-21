@@ -14,8 +14,9 @@ namespace SleepyTime_2._0
         public TimeSpan Time { get; set; }
         public string Days { get; set; }
         public bool Enabled { get; set; }
+        public DateTime LastRun { get; set; }
 
-        public PresetItem(string name, string action, string repeat, TimeSpan time, string days, bool enabled)
+        public PresetItem(string name, string action, string repeat, TimeSpan time, string days, bool enabled, DateTime lastRun)
         {
             Name = name;
             Action = action;
@@ -23,11 +24,12 @@ namespace SleepyTime_2._0
             Time = time;
             Days = days;
             Enabled = enabled;
+            LastRun = lastRun;
         }
 
         public string toString()
         {
-            return $"{Name}|{Action}|{Repeat}|{Time}|{Days}|{Enabled}";
+            return $"{Name}|{Action}|{Repeat}|{Time}|{Days}|{Enabled}|{LastRun}";
         }
     }
 }
