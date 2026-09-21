@@ -1602,6 +1602,12 @@ namespace SleepyTime_2._0
                     MessageBox.Show($"This preset already exists under the name: {item.Name}");
                     return;
                 }
+                else if (cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")) &&
+                    selectedDays.SequenceEqual(itemDays))
+                {
+                    MessageBox.Show("You already have a preset action occuring on these days at this time");
+                    return;
+                }
             }
 
             
