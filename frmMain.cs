@@ -76,19 +76,20 @@ namespace SleepyTime_2._0
         {
             InitializeComponent();
 
+            //read data into lists from settings, presets and schedules.
             readSettingsFile();
             readPresetFile();
-            //LOAD IN THE ACCENT COLOUR FROM A FILE OR SOMETHING!!!
+            readScheduleFile();
+
+            //apply data from saved files.
             getAccentColour();
             applyAccentColour(primaryAccent, secondaryAccent);
 
-            readScheduleFile();
-            populateTimesComboBox();
+            applyDarkMode(mainTheme);
             updatePresetUI();
             updateScheduleUI();
 
-            applyDarkMode(mainTheme);
-
+            populateTimesComboBox();
 
             //further options for rounded form borders
             this.FormBorderStyle = FormBorderStyle.None;
@@ -101,6 +102,7 @@ namespace SleepyTime_2._0
             tmrCurrentTime.Start();
         }
 
+        //add times from 00:00 to 23:55, in increments of 5 minutes to combo boxes for saving presets or schedules.
         private void populateTimesComboBox()
         {
             cmbScheduleTime.Items.Clear();
@@ -415,7 +417,7 @@ namespace SleepyTime_2._0
 
             foreach (ScheduleItem sI in scheduledItems)
             {
-                if (sI.Reminder == "0")
+                if (sI.Reminder == "0" || Convert.ToBoolean(sI.ReminderSent) == true)
                 {
                     continue;
                 }
@@ -438,6 +440,7 @@ namespace SleepyTime_2._0
             {
                 sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
                 scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
+                updateScheduleFile();
             }
 
             //find the soonest time that a scheduled item will happen
