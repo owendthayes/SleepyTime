@@ -1266,7 +1266,7 @@ namespace SleepyTime_2._0
             cmbScheduleOperation.SelectedIndex = Convert.ToInt32(target.Action);
             cmbScheduleDate.Value = target.Date;
             cmbScheduleTime.SelectedIndex = cmbScheduleTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
-            cmbRemindMe.SelectedIndex = Convert.ToInt32(cmbRemindMe.Items.IndexOf(target.Reminder));
+            cmbRemindMe.SelectedIndex = Convert.ToInt32(target.Reminder);
 
             pnlSavedSchedules.Enabled = false;
 
@@ -1278,69 +1278,23 @@ namespace SleepyTime_2._0
 
         private void btnDeleteSchedule_Click(object sender, EventArgs e)
         {
-            string[] data = new string[4];
+            RoundedButton btn = (RoundedButton)sender;
+            ScheduleItem target = btn.Tag as ScheduleItem;
 
             DialogResult exitBox = MessageBox.Show("Delete this Action?", "Delete", MessageBoxButtons.YesNo);
-            {
-                if (exitBox == DialogResult.Yes)
+            {               
+                foreach (ScheduleItem sI in scheduledItems)
                 {
-                    RoundedButton clickedButton = (RoundedButton)sender;
-
-                    Panel parentPanel = (Panel)clickedButton.Parent;
-
-                    foreach (Control c in parentPanel.Controls)
+                    //DEBUGGING testing deletion
+                    //MessageBox.Show($"TARGET - {deletionTarget}\nCURRENT - {sI.toString()}\nMATCH - {sI.toString().Equals(deletionTarget)}");
+                    if (sI == target)
                     {
-                        if (c is Label)
-                        {
-                            if (operations.Contains(c.Text))
-                            {
-                                data[0] = Array.IndexOf(operations, c.Text).ToString();
-                            }
-                            ;
-
-                            //get the DATE
-                            if (DateTime.TryParseExact(
-                            c.Text,
-                            "dd/MM/yyyy",
-                            null,
-                            System.Globalization.DateTimeStyles.None,
-                            out DateTime date))
-                            {
-                                data[1] = date.ToString();
-                            }
-                            ;
-
-                            //get the TIME
-                            if (TimeSpan.TryParse(c.Text, out TimeSpan timeDel))
-                            {
-                                data[2] = timeDel.ToString();
-                            }
-                            ;
-
-                            if (reminders.Contains(c.Text))
-                            {
-                                data[3] = Array.IndexOf(reminders, c.Text).ToString();
-                            }
-                            ;
-
-                        }
+                        scheduledItems.Remove(sI);
+                        updateScheduleFile();
+                        updateScheduleUI();
+                        return;
                     }
-
-                    string deletionTarget = $"{data[0]}|{data[1]}|{data[2]}|{data[3]}";
-
-                    foreach (ScheduleItem sI in scheduledItems)
-                    {
-                        //DEBUGGING testing deletion
-                        //MessageBox.Show($"TARGET - {deletionTarget}\nCURRENT - {sI.toString()}\nMATCH - {sI.toString().Equals(deletionTarget)}");
-                        if (sI.toString().Equals(deletionTarget))
-                        {
-                            scheduledItems.Remove(sI);
-                            updateScheduleFile();
-                            updateScheduleUI();
-                            return;
-                        }
-                    }
-                }
+                }               
             }
         }
 
@@ -1369,7 +1323,6 @@ namespace SleepyTime_2._0
             // check that the chosen reminder time has not already passed.
             TimeSpan proposedReminderTime = TimeSpan.Parse(cmbScheduleTime.Text).Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[cmbRemindMe.SelectedIndex])));
             DateTime proposedReminderDate = validDate + proposedReminderTime;
-
 
 
             foreach (ScheduleItem item in scheduledItems)
@@ -1448,26 +1401,9 @@ namespace SleepyTime_2._0
 
             else if (btnSaveSchedule.Text == "Update Schedule")
             {
-                string[] data = editTarget.Split('|');
-                //update the item instead of creating a new one
-
-                //first find the current item in the list and update it. use edittarget??
-                //MessageBox.Show(editTarget);
-                ScheduleItem target = new ScheduleItem(
-                   data[0],
-                   DateTime.ParseExact(data[1], "dd/MM/yyyy HH:mm:ss", null),
-                   TimeSpan.Parse(data[2]),
-                   data[3],
-                   false
-                   );
-
                 foreach (ScheduleItem item in scheduledItems)
                 {
-                    //MessageBox.Show($"Current Item: {item.toString()}\nTarget Item: {target.toString()}");
-                    if (item.Action == target.Action
-                        && item.Date == target.Date
-                        && item.Time == target.Time
-                        && item.Reminder == target.Reminder)
+                    if (item == scheduleEditTarget)
                     {
                         //read the values on the form into a new ScheduleItem
                         ScheduleItem updated = new ScheduleItem(
@@ -1477,8 +1413,6 @@ namespace SleepyTime_2._0
                             cmbRemindMe.SelectedIndex.ToString(),
                             item.ReminderSent
                             );
-
-                        //MessageBox.Show(updated.toString());
 
                         //add the new ScheduleItem to the list
                         scheduledItems[scheduledItems.IndexOf(item)] = updated;
