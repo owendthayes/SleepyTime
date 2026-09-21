@@ -434,7 +434,7 @@ namespace SleepyTime_2._0
             //MessageBox.Show($"NOW: {DateTime.Now.ToString(@"dd/MM/yyyy HH:mm")}\nREMINDER: {soonestReminder.ToString(@"dd/MM/yyyy HH:mm")}");
 
             //if the time now matches the reminder time then send the reminder.
-            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm"))
+            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm") && Convert.ToBoolean(soonestItemReminder.Reminder) == false)
             {
                 sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
                 scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
