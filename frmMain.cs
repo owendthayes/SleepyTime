@@ -15,6 +15,7 @@ using SleepyTime_2._0.Custom_Controls;
 using System.IO;
 using System.Diagnostics.Eventing.Reader;
 using System.Diagnostics.Tracing;
+using System.Runtime.CompilerServices;
 
 namespace SleepyTime_2._0
 {
@@ -71,6 +72,7 @@ namespace SleepyTime_2._0
         private string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
         private string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
         private string[] reminderMins = { "0", "5", "10", "15", "30", "60", "120" };
+        private string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         public frmMain()
         {
@@ -97,7 +99,8 @@ namespace SleepyTime_2._0
 
             lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
 
-            tmrMain.Start();
+            tmrSchedule.Start();
+            tmrPreset.Start();
             tmrValidation.Start();
             tmrCurrentTime.Start();
         }
@@ -403,7 +406,7 @@ namespace SleepyTime_2._0
             }
         }
 
-        private void tmrMain_Tick(object sender, EventArgs e)
+        private void tmrSchedule_Tick(object sender, EventArgs e)
         {
             //if there are no saved scheduled items, dont run this.
             if (scheduledItems.Count < 1)
@@ -458,7 +461,7 @@ namespace SleepyTime_2._0
                     soonestItemAction = sI;
                 }
             }
-            
+
             //if the time matches the scheduled time then perform the action
             if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestAction.ToString(@"dd/MM/yyyy HH:mm"))
             {
@@ -1251,7 +1254,7 @@ namespace SleepyTime_2._0
             ScheduleItem target = btn.Tag as ScheduleItem;
 
             DialogResult exitBox = MessageBox.Show("Delete this Action?", "Delete", MessageBoxButtons.YesNo);
-            {               
+            {
                 foreach (ScheduleItem sI in scheduledItems)
                 {
                     //DEBUGGING testing deletion
@@ -1263,7 +1266,7 @@ namespace SleepyTime_2._0
                         updateScheduleUI();
                         return;
                     }
-                }               
+                }
             }
         }
 
@@ -1602,6 +1605,8 @@ namespace SleepyTime_2._0
             //write the list to the file
             updatePresetFile();
             updatePresetUI();
+
+            btnPresetCancel.PerformClick();
         }
 
         private void updatePresetFile()
@@ -1920,6 +1925,35 @@ namespace SleepyTime_2._0
         private void lblBugReport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OpenLink("https://forms.gle/haAHduytqaXaEShFA");
+        }
+
+        private void tmrPreset_Tick(object sender, EventArgs e)
+        {
+            List<string> selectedDays = new List<string>();
+
+            //check through all ENABLED preset items.
+            foreach (PresetItem item in presetItems)
+            {
+                if (Convert.ToBoolean(item.Enabled == false))
+                {
+                    continue;
+                }
+
+                //check which days are selected for this item
+                for (int i = 0; i < 7; i++)
+                {
+                    if (item.Days[i] == 'x')
+                    {
+                        selectedDays.Add(dayOfWeek[i]);
+                    }
+                }
+
+                // check if the current date and time match the preset item, if they do the perform the action.
+                if (selectedDays.Contains(DateTime.Now.DayOfWeek.ToString()) && item.Time.ToString(@"hh\:mm") == DateTime.Now.TimeOfDay.ToString(@"hh\:mm"))
+                {
+                    performAction(item.Action);
+                }
+            }
         }
     }
 }

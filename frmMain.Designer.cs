@@ -33,7 +33,7 @@ namespace SleepyTime_2._0
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             imgHeaderDivider = new System.Windows.Forms.PictureBox();
             lblCurrentTime = new System.Windows.Forms.Label();
-            tmrMain = new System.Windows.Forms.Timer(components);
+            tmrSchedule = new System.Windows.Forms.Timer(components);
             lblTitle = new System.Windows.Forms.Label();
             imgLogo = new System.Windows.Forms.PictureBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -96,7 +96,6 @@ namespace SleepyTime_2._0
             label18 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             cmbScheduleOperation = new System.Windows.Forms.ComboBox();
-            roundedButton2 = new RoundedButton();
             pnlPresets = new System.Windows.Forms.Panel();
             label40 = new System.Windows.Forms.Label();
             pnlPresetDays = new System.Windows.Forms.Panel();
@@ -126,7 +125,6 @@ namespace SleepyTime_2._0
             label38 = new System.Windows.Forms.Label();
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
-            roundedButton1 = new RoundedButton();
             pnlSettings = new System.Windows.Forms.Panel();
             tglDarkMode = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             label26 = new System.Windows.Forms.Label();
@@ -151,6 +149,7 @@ namespace SleepyTime_2._0
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
             lblBugReport = new System.Windows.Forms.LinkLabel();
+            tmrPreset = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -190,9 +189,9 @@ namespace SleepyTime_2._0
             lblCurrentTime.TabIndex = 3;
             lblCurrentTime.Text = "HH:MM";
             // 
-            // tmrMain
+            // tmrSchedule
             // 
-            tmrMain.Tick += tmrMain_Tick;
+            tmrSchedule.Tick += tmrSchedule_Tick;
             // 
             // lblTitle
             // 
@@ -825,7 +824,6 @@ namespace SleepyTime_2._0
             pnlSchedule.Controls.Add(label18);
             pnlSchedule.Controls.Add(label12);
             pnlSchedule.Controls.Add(cmbScheduleOperation);
-            pnlSchedule.Controls.Add(roundedButton2);
             pnlSchedule.Location = new System.Drawing.Point(127, 68);
             pnlSchedule.Name = "pnlSchedule";
             pnlSchedule.Size = new System.Drawing.Size(673, 385);
@@ -1065,21 +1063,6 @@ namespace SleepyTime_2._0
             cmbScheduleOperation.Size = new System.Drawing.Size(129, 29);
             cmbScheduleOperation.TabIndex = 17;
             // 
-            // roundedButton2
-            // 
-            roundedButton2.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
-            roundedButton2.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            roundedButton2.Enabled = false;
-            roundedButton2.FlatAppearance.BorderSize = 0;
-            roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            roundedButton2.ForeColor = System.Drawing.Color.White;
-            roundedButton2.Location = new System.Drawing.Point(37, 160);
-            roundedButton2.Name = "roundedButton2";
-            roundedButton2.Size = new System.Drawing.Size(611, 213);
-            roundedButton2.TabIndex = 61;
-            roundedButton2.Text = "roundedButton2";
-            roundedButton2.UseVisualStyleBackColor = false;
-            // 
             // pnlPresets
             // 
             pnlPresets.Controls.Add(label40);
@@ -1093,7 +1076,6 @@ namespace SleepyTime_2._0
             pnlPresets.Controls.Add(label10);
             pnlPresets.Controls.Add(label38);
             pnlPresets.Controls.Add(pnlSavedPresets);
-            pnlPresets.Controls.Add(roundedButton1);
             pnlPresets.Location = new System.Drawing.Point(127, 68);
             pnlPresets.Name = "pnlPresets";
             pnlPresets.Size = new System.Drawing.Size(673, 385);
@@ -1466,21 +1448,6 @@ namespace SleepyTime_2._0
             lblSavedItemsPresets.Text = "No saved items";
             lblSavedItemsPresets.Visible = false;
             // 
-            // roundedButton1
-            // 
-            roundedButton1.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
-            roundedButton1.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            roundedButton1.Enabled = false;
-            roundedButton1.FlatAppearance.BorderSize = 0;
-            roundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            roundedButton1.ForeColor = System.Drawing.Color.White;
-            roundedButton1.Location = new System.Drawing.Point(5, 157);
-            roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new System.Drawing.Size(663, 219);
-            roundedButton1.TabIndex = 60;
-            roundedButton1.Text = "roundedButton1";
-            roundedButton1.UseVisualStyleBackColor = false;
-            // 
             // pnlSettings
             // 
             pnlSettings.Controls.Add(tglDarkMode);
@@ -1755,6 +1722,10 @@ namespace SleepyTime_2._0
             lblBugReport.Text = "Report a Bug";
             lblBugReport.LinkClicked += lblBugReport_LinkClicked;
             // 
+            // tmrPreset
+            // 
+            tmrPreset.Tick += tmrPreset_Tick;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1825,7 +1796,7 @@ namespace SleepyTime_2._0
         #endregion
         private System.Windows.Forms.PictureBox imgHeaderDivider;
         private System.Windows.Forms.Label lblCurrentTime;
-        private System.Windows.Forms.Timer tmrMain;
+        private System.Windows.Forms.Timer tmrSchedule;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1941,8 +1912,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label MEMEME;
         private System.Windows.Forms.LinkLabel lblBugReport;
-        private RoundedButton roundedButton1;
-        private RoundedButton roundedButton2;
+        private System.Windows.Forms.Timer tmrPreset;
     }
 }
 
