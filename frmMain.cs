@@ -403,99 +403,66 @@ namespace SleepyTime_2._0
 
         private void tmrMain_Tick(object sender, EventArgs e)
         {
-            DateTime soonestDT;
-            DateTime currentDT;
-
-            // only if there are multiple items, do the calculation for the soonest reminder.
-            if (scheduledItems.Count > 1)
+            //if there are no saved scheduled items, dont run this.
+            if (scheduledItems.Count < 1)
             {
-                ScheduleItem soonest = null;
+                return;
+            }
 
-                // find the first scheduled item that has a reminder
-                foreach (ScheduleItem sch in scheduledItems)
+            //find the soonest time that a reminder should trigger
+            DateTime soonestReminder = DateTime.MaxValue;
+            ScheduleItem soonestItemReminder = null;
+
+            foreach (ScheduleItem sI in scheduledItems)
+            {
+                if (sI.Reminder == "0")
                 {
-                    if (sch.Reminder != "0")
-                    {
-                        soonest = sch;
-                        break;
-                    }
+                    continue;
                 }
 
-                // if none of the saved items have reminders, dont run anything else
-                if (soonest == null)
+                //calculate what time the reminder should trigger
+                DateTime reminderTime = sI.Date.Date + sI.Time - TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(sI.Reminder)]));
+
+                //if this reminder is the soonest, then update "soonestReminder"
+                if (reminderTime < soonestReminder)
                 {
-                    return;
-                }
-
-                //caluclate the soonest reminder
-                foreach (ScheduleItem item in scheduledItems)
-                {
-                    if (item.Reminder != "0" && item != soonest)
-                    {
-                        // get the specific date and time of the operation
-                        soonestDT = soonest.Date.Date + soonest.Time;
-                        currentDT = item.Date.Date + item.Time;
-
-                        // get the time that the reminder should be triggered
-                        soonestDT -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(soonest.Reminder)]));
-                        currentDT -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)]));
-
-                        // if current is sooner than soonest, it becomes soonest.                   
-                        if (currentDT < soonestDT)
-                        {
-                            soonest = item;
-                        }
-                    }
-                }
-
-                DateTime soonestDateTime = soonest.Date.Date + soonest.Time;
-                soonestDateTime -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(soonest.Reminder)]));
-
-                // once we have the soonest, we just need to trigger it when the time is right.
-                if (DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") == soonestDateTime.ToString("dd/MM/yyyy HH:mm:ss") && soonest.ReminderSent == false && soonest.Reminder != "0")
-                {
-                    sendReminderNotification(soonest.Reminder.ToString(), soonest);
-                }
-
-
-                //MessageBox.Show($"{DateTime.Now.Date == soonest.Date} \n {DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString()}");
-                if (DateTime.Now.Date == soonest.Date && DateTime.Now.ToString("HH:mm:ss") == soonest.Time.ToString())
-                {
-                    //DELETE SOONEST AFTER IT HAS OCCURRED.
-                    scheduledItems.Remove(soonest);
-                    updateScheduleFile();
-                    updateScheduleUI();
-                    performAction(soonest.Action);
+                    soonestReminder = reminderTime;
+                    soonestItemReminder = sI;
                 }
             }
-            //if there is exactly one item, no calculation to be done, just send it for the existing item.
-            else if (scheduledItems.Count == 1 && scheduledItems[0].ReminderSent == false)
+
+            //MessageBox.Show($"NOW: {DateTime.Now.ToString(@"dd/MM/yyyy HH:mm")}\nREMINDER: {soonestReminder.ToString(@"dd/MM/yyyy HH:mm")}");
+
+            //if the time now matches the reminder time then send the reminder.
+            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm"))
             {
-                ScheduleItem item = scheduledItems[0];
+                sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
+                scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
+            }
 
-                // get the time the operation will occcur
-                DateTime scheduledTime = item.Date + item.Time;
+            //find the soonest time that a scheduled item will happen
+            DateTime soonestAction = DateTime.MaxValue;
+            ScheduleItem soonestItemAction = null;
 
-                //MessageBox.Show($"NOW: {DateTime.Now}\nTHEN: {scheduledTime}");
-                if ((DateTime.Now >= scheduledTime && item.Reminder == "0") || (DateTime.Now >= scheduledTime && item.ReminderSent == true))
+            foreach (ScheduleItem sI in scheduledItems)
+            {
+                //calculate what time the action should occur
+                DateTime actionTime = sI.Date.Date + sI.Time;
+
+                if (actionTime < soonestAction)
                 {
-                    scheduledItems.Remove(item);
-                    updateScheduleFile();
-                    updateScheduleUI();
-                    performAction(item.Action);
-                    return;
+                    soonestAction = actionTime;
+                    soonestItemAction = sI;
                 }
-
-                // get the time the notification should send.
-                scheduledTime -= TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)]));
-
-                //MessageBox.Show($"NOW: {DateTime.Now.Date} {DateTime.Now.ToString("HH:mm:ss")}\nSCHEDULED: {scheduledTime.Date} {item.Time.ToString()}");
-
-                // check if it is time for the notif to send
-                if (DateTime.Now >= scheduledTime && scheduledItems[0].Reminder != "0")
-                {
-                    sendReminderNotification(item.Reminder, item);
-                }
+            }
+            
+            //if the time matches the scheduled time then perform the action
+            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestAction.ToString(@"dd/MM/yyyy HH:mm"))
+            {
+                performAction(soonestItemAction.Action);
+                scheduledItems.Remove(soonestItemAction);
+                updateScheduleFile();
+                updateScheduleUI();
             }
         }
 
@@ -562,7 +529,6 @@ namespace SleepyTime_2._0
             //show the notification for one minute, not working.
             ntfReminder.ShowBalloonTip(60000);
 
-            soonest.ReminderSent = true;
             updateScheduleFile();
             updateScheduleUI();
         }
