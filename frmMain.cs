@@ -16,6 +16,7 @@ using System.IO;
 using System.Diagnostics.Eventing.Reader;
 using System.Diagnostics.Tracing;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms.VisualStyles;
 
 namespace SleepyTime_2._0
 {
@@ -1558,6 +1559,53 @@ namespace SleepyTime_2._0
                 return;
             }
 
+            foreach (PresetItem item in presetItems)
+            {
+                List<string> itemDays = new List<string>();
+                List<string> selectedDays = new List<string>();
+
+                for (int i = 0; i < 7; i++)
+                {
+                    if (item.Days[i] == 'x')
+                    {
+                        itemDays.Add(dayOfWeek[i]);                         
+                    }
+                }
+
+                //if every day is selected, add every day, if not add only selected.
+                if (cmbPresetRepeat.SelectedIndex == 0)
+                {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        selectedDays.Add(dayOfWeek[i]);
+                    }
+                }
+                else
+                {
+                    foreach (var selectedDay in listBoxDays.SelectedItems)
+                    {
+                        selectedDays.Add(selectedDay.ToString());
+                    }
+                }
+
+                if (txtPresetName.Text == item.Name)
+                {
+                    MessageBox.Show("You already have a preset with this name, please choose another name");
+                    return;
+                }
+                else if (cmbPresetAction.SelectedIndex == Convert.ToInt32(item.Action) &&
+                    cmbPresetRepeat.SelectedIndex == Convert.ToInt32(item.Repeat) &&
+                    cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")) &&
+                    selectedDays.SequenceEqual(itemDays)
+                    )
+                {
+                    MessageBox.Show($"This preset already exists under the name: {item.Name}");
+                    return;
+                }
+            }
+
+            
+
 
             //check selected days for repeating
             string days = "-------";
@@ -1713,7 +1761,7 @@ namespace SleepyTime_2._0
                     Label dayLabel = new Label();
 
                     dayLabel.Text = daysOfWeek[i].ToString();
-                    dayLabel.TextAlign = ContentAlignment.MiddleCenter;
+                    dayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
                     dayLabel.Size = new Size(10, 35);
                     dayLabel.Margin = new Padding(2);
