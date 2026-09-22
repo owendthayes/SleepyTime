@@ -2079,6 +2079,11 @@ namespace SleepyTime_2._0
         {
 
         }
+
+        private void btnDonate_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://ko-fi.com/smellslikesmoke#checkoutModal");
+        }
     }
 }
 

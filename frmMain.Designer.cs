@@ -158,6 +158,7 @@ namespace SleepyTime_2._0
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
+            btnDonate = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -176,6 +177,7 @@ namespace SleepyTime_2._0
             pnlAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).BeginInit();
             pnlHelp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnDonate).BeginInit();
             SuspendLayout();
             // 
             // imgHeaderDivider
@@ -1657,6 +1659,7 @@ namespace SleepyTime_2._0
             // 
             // pnlAbout
             // 
+            pnlAbout.Controls.Add(btnDonate);
             pnlAbout.Controls.Add(linkLabel4);
             pnlAbout.Controls.Add(linkLabel3);
             pnlAbout.Controls.Add(linkLabel2);
@@ -1829,6 +1832,18 @@ namespace SleepyTime_2._0
             // 
             tmrPreset.Tick += tmrPreset_Tick;
             // 
+            // btnDonate
+            // 
+            btnDonate.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnDonate.Image = Properties.Resources.SupportButton;
+            btnDonate.Location = new System.Drawing.Point(467, 328);
+            btnDonate.Name = "btnDonate";
+            btnDonate.Size = new System.Drawing.Size(194, 43);
+            btnDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            btnDonate.TabIndex = 33;
+            btnDonate.TabStop = false;
+            btnDonate.Click += btnDonate_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1853,11 +1868,11 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlAbout);
             Controls.Add(pnlSettings);
             Controls.Add(pnlCountdown);
             Controls.Add(pnlPresets);
             Controls.Add(pnlSchedule);
-            Controls.Add(pnlAbout);
             Controls.Add(pnlHelp);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
@@ -1895,6 +1910,7 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).EndInit();
             pnlHelp.ResumeLayout(false);
             pnlHelp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnDonate).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -2028,6 +2044,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.PictureBox btnDonate;
     }
 }
 
