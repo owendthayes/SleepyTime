@@ -128,6 +128,10 @@ namespace SleepyTime_2._0
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
+            label45 = new System.Windows.Forms.Label();
+            label44 = new System.Windows.Forms.Label();
+            label43 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
             label42 = new System.Windows.Forms.Label();
             cmbCountdownLayout = new System.Windows.Forms.ComboBox();
             tglDarkMode = new SleepyTime_2._0.Custom_Controls.ToggleButton();
@@ -1472,6 +1476,10 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            pnlSettings.Controls.Add(label45);
+            pnlSettings.Controls.Add(label44);
+            pnlSettings.Controls.Add(label43);
+            pnlSettings.Controls.Add(label9);
             pnlSettings.Controls.Add(label42);
             pnlSettings.Controls.Add(cmbCountdownLayout);
             pnlSettings.Controls.Add(tglDarkMode);
@@ -1486,16 +1494,62 @@ namespace SleepyTime_2._0
             pnlSettings.Size = new System.Drawing.Size(673, 385);
             pnlSettings.TabIndex = 25;
             // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            label45.ForeColor = System.Drawing.Color.White;
+            label45.Location = new System.Drawing.Point(196, 285);
+            label45.Name = "label45";
+            label45.Size = new System.Drawing.Size(150, 21);
+            label45.TabIndex = 56;
+            label45.Text = "Exit Behaviour";
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            label44.ForeColor = System.Drawing.Color.White;
+            label44.Location = new System.Drawing.Point(197, 249);
+            label44.Name = "label44";
+            label44.Size = new System.Drawing.Size(170, 21);
+            label44.TabIndex = 55;
+            label44.Text = "Open on Start-up";
+            label44.Click += label44_Click;
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            label43.ForeColor = System.Drawing.Color.White;
+            label43.Location = new System.Drawing.Point(124, 181);
+            label43.Name = "label43";
+            label43.Size = new System.Drawing.Size(140, 21);
+            label43.TabIndex = 54;
+            label43.Text = "App Behaviour";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            label9.ForeColor = System.Drawing.Color.White;
+            label9.Location = new System.Drawing.Point(124, 26);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(100, 21);
+            label9.TabIndex = 53;
+            label9.Text = "Aesthetic";
+            // 
             // label42
             // 
             label42.AutoSize = true;
             label42.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label42.ForeColor = System.Drawing.Color.White;
-            label42.Location = new System.Drawing.Point(27, 148);
+            label42.Location = new System.Drawing.Point(196, 130);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(170, 21);
             label42.TabIndex = 25;
             label42.Text = "Countdown Layout";
+            label42.Click += label42_Click;
             // 
             // cmbCountdownLayout
             // 
@@ -1506,21 +1560,21 @@ namespace SleepyTime_2._0
             cmbCountdownLayout.ForeColor = System.Drawing.Color.White;
             cmbCountdownLayout.FormattingEnabled = true;
             cmbCountdownLayout.Items.AddRange(new object[] { "Functional", "Minimal" });
-            cmbCountdownLayout.Location = new System.Drawing.Point(204, 143);
+            cmbCountdownLayout.Location = new System.Drawing.Point(369, 127);
             cmbCountdownLayout.Name = "cmbCountdownLayout";
-            cmbCountdownLayout.Size = new System.Drawing.Size(121, 29);
+            cmbCountdownLayout.Size = new System.Drawing.Size(128, 29);
             cmbCountdownLayout.TabIndex = 24;
             // 
             // tglDarkMode
             // 
-            tglDarkMode.Location = new System.Drawing.Point(207, 102);
+            tglDarkMode.Location = new System.Drawing.Point(431, 94);
             tglDarkMode.MinimumSize = new System.Drawing.Size(45, 22);
             tglDarkMode.Name = "tglDarkMode";
             tglDarkMode.OffBackColor = System.Drawing.Color.Gray;
             tglDarkMode.OffToggleColor = System.Drawing.Color.Gainsboro;
             tglDarkMode.OnBackColor = System.Drawing.Color.Purple;
             tglDarkMode.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            tglDarkMode.Size = new System.Drawing.Size(118, 22);
+            tglDarkMode.Size = new System.Drawing.Size(67, 22);
             tglDarkMode.TabIndex = 23;
             tglDarkMode.UseVisualStyleBackColor = true;
             // 
@@ -1529,22 +1583,22 @@ namespace SleepyTime_2._0
             label26.AutoSize = true;
             label26.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label26.ForeColor = System.Drawing.Color.White;
-            label26.Location = new System.Drawing.Point(25, 104);
+            label26.Location = new System.Drawing.Point(196, 94);
             label26.Name = "label26";
-            label26.Size = new System.Drawing.Size(170, 21);
+            label26.Size = new System.Drawing.Size(100, 21);
             label26.TabIndex = 22;
-            label26.Text = "Toggle Dark Mode";
+            label26.Text = "Dark Mode";
             // 
             // tglAOT
             // 
-            tglAOT.Location = new System.Drawing.Point(207, 62);
+            tglAOT.Location = new System.Drawing.Point(430, 210);
             tglAOT.MinimumSize = new System.Drawing.Size(45, 22);
             tglAOT.Name = "tglAOT";
             tglAOT.OffBackColor = System.Drawing.Color.Gray;
             tglAOT.OffToggleColor = System.Drawing.Color.Gainsboro;
             tglAOT.OnBackColor = System.Drawing.Color.Purple;
             tglAOT.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            tglAOT.Size = new System.Drawing.Size(118, 22);
+            tglAOT.Size = new System.Drawing.Size(67, 22);
             tglAOT.TabIndex = 21;
             tglAOT.UseVisualStyleBackColor = true;
             tglAOT.CheckedChanged += tglAOT_CheckedChanged;
@@ -1554,7 +1608,7 @@ namespace SleepyTime_2._0
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label17.ForeColor = System.Drawing.Color.White;
-            label17.Location = new System.Drawing.Point(23, 65);
+            label17.Location = new System.Drawing.Point(197, 211);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(140, 21);
             label17.TabIndex = 20;
@@ -1568,7 +1622,7 @@ namespace SleepyTime_2._0
             btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaveSettings.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnSaveSettings.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnSaveSettings.Location = new System.Drawing.Point(511, 329);
+            btnSaveSettings.Location = new System.Drawing.Point(245, 322);
             btnSaveSettings.Name = "btnSaveSettings";
             btnSaveSettings.Size = new System.Drawing.Size(150, 40);
             btnSaveSettings.TabIndex = 19;
@@ -1585,9 +1639,9 @@ namespace SleepyTime_2._0
             cmbAccent.ForeColor = System.Drawing.Color.White;
             cmbAccent.FormattingEnabled = true;
             cmbAccent.Items.AddRange(new object[] { "Purple", "Blue", "Green", "Yellow", "Red" });
-            cmbAccent.Location = new System.Drawing.Point(204, 22);
+            cmbAccent.Location = new System.Drawing.Point(349, 52);
             cmbAccent.Name = "cmbAccent";
-            cmbAccent.Size = new System.Drawing.Size(121, 29);
+            cmbAccent.Size = new System.Drawing.Size(148, 29);
             cmbAccent.TabIndex = 18;
             // 
             // label11
@@ -1595,7 +1649,7 @@ namespace SleepyTime_2._0
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label11.ForeColor = System.Drawing.Color.White;
-            label11.Location = new System.Drawing.Point(25, 25);
+            label11.Location = new System.Drawing.Point(193, 57);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(140, 21);
             label11.TabIndex = 17;
@@ -1799,8 +1853,8 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlCountdown);
             Controls.Add(pnlSettings);
+            Controls.Add(pnlCountdown);
             Controls.Add(pnlPresets);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlAbout);
@@ -1970,6 +2024,10 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ComboBox cmbCountdownLayout;
         private System.Windows.Forms.Panel pnlCountdownExtras;
         private System.Windows.Forms.Panel pnlCountdownControls;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label44;
     }
 }
 

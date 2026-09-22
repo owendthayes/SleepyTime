@@ -282,7 +282,7 @@ namespace SleepyTime_2._0
                     break;
             }
             applyCountDownLayout();
-            
+
 
             applyDarkMode(mainTheme);
         }
@@ -345,7 +345,7 @@ namespace SleepyTime_2._0
         {
             foreach (Control c in GetAllControls(this))
             {
-                if(c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
+                if (c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
                     c.ForeColor == Color.FromArgb(35, 35, 204) || //blue
                     c.ForeColor == Color.FromArgb(70, 170, 105) || //green
                     c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
@@ -420,7 +420,7 @@ namespace SleepyTime_2._0
 
                 case "yellow":
                     primaryAccent = Color.FromArgb(215, 180, 65);
-                    secondaryAccent = Color.FromArgb(145, 115, 25); 
+                    secondaryAccent = Color.FromArgb(145, 115, 25);
                     break;
 
                 case "red":
@@ -1099,7 +1099,7 @@ namespace SleepyTime_2._0
 
             applyDarkMode(mainTheme);
 
-            switch(cmbCountdownLayout.SelectedIndex)
+            switch (cmbCountdownLayout.SelectedIndex)
             {
                 case 0:
                     countDownLayout = "functional";
@@ -1624,7 +1624,7 @@ namespace SleepyTime_2._0
                 {
                     if (item.Days[i] == 'x')
                     {
-                        itemDays.Add(dayOfWeek[i]);                         
+                        itemDays.Add(dayOfWeek[i]);
                     }
                 }
 
@@ -1666,7 +1666,7 @@ namespace SleepyTime_2._0
                 }
             }
 
-            
+
 
 
             //check selected days for repeating
@@ -2068,6 +2068,16 @@ namespace SleepyTime_2._0
                     updatePresetFile();
                 }
             }
+        }
+
+        private void label42_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
