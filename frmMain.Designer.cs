@@ -52,30 +52,32 @@ namespace SleepyTime_2._0
             MEMEME = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
-            btnClearTimer = new RoundedButton();
-            btnMoreQuick = new RoundedButton();
-            btnQuick2 = new RoundedButton();
-            btnQuick1 = new RoundedButton();
-            btnQuick30 = new RoundedButton();
-            btnQuick15 = new RoundedButton();
-            lblShowHideQuick = new System.Windows.Forms.Label();
+            pnlCountdownExtras = new System.Windows.Forms.Panel();
             lblAdjustTimer = new System.Windows.Forms.Label();
             btnAdd5Min = new RoundedButton();
-            lblShutdownTime = new System.Windows.Forms.Label();
+            btnAdd15Min = new RoundedButton();
+            btnAdd30Min = new RoundedButton();
+            btnMoreQuick = new RoundedButton();
+            btnAdd1Hr = new RoundedButton();
+            btnQuick2 = new RoundedButton();
+            lblShowHideQuick = new System.Windows.Forms.Label();
+            btnQuick1 = new RoundedButton();
+            btnQuick15 = new RoundedButton();
+            btnQuick30 = new RoundedButton();
+            pnlCountdownControls = new System.Windows.Forms.Panel();
+            txtHours = new System.Windows.Forms.TextBox();
             label8 = new System.Windows.Forms.Label();
             cmbOperation = new System.Windows.Forms.ComboBox();
             btnStartCountdown = new RoundedButton();
-            btnAdd1Hr = new RoundedButton();
-            btnAdd30Min = new RoundedButton();
-            btnAdd15Min = new RoundedButton();
-            txtSeconds = new System.Windows.Forms.TextBox();
-            txtHours = new System.Windows.Forms.TextBox();
-            txtMinutes = new System.Windows.Forms.TextBox();
-            label7 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
+            lblShutdownTime = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            txtSeconds = new System.Windows.Forms.TextBox();
+            btnClearTimer = new RoundedButton();
+            txtMinutes = new System.Windows.Forms.TextBox();
             label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             pnlSchedule = new System.Windows.Forms.Panel();
             label2 = new System.Windows.Forms.Label();
             label27 = new System.Windows.Forms.Label();
@@ -158,6 +160,8 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgTimeAnimation).BeginInit();
             pnlCountdown.SuspendLayout();
+            pnlCountdownExtras.SuspendLayout();
+            pnlCountdownControls.SuspendLayout();
             pnlSchedule.SuspendLayout();
             pnlSavedSchedules.SuspendLayout();
             pnlPresets.SuspendLayout();
@@ -370,7 +374,7 @@ namespace SleepyTime_2._0
             // 
             lblTimeTitle.AutoSize = true;
             lblTimeTitle.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            lblTimeTitle.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            lblTimeTitle.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             lblTimeTitle.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
             lblTimeTitle.Location = new System.Drawing.Point(19, 377);
             lblTimeTitle.Name = "lblTimeTitle";
@@ -393,30 +397,8 @@ namespace SleepyTime_2._0
             pnlCountdown.Controls.Add(MEMEME);
             pnlCountdown.Controls.Add(label33);
             pnlCountdown.Controls.Add(label14);
-            pnlCountdown.Controls.Add(btnClearTimer);
-            pnlCountdown.Controls.Add(btnMoreQuick);
-            pnlCountdown.Controls.Add(btnQuick2);
-            pnlCountdown.Controls.Add(btnQuick1);
-            pnlCountdown.Controls.Add(btnQuick30);
-            pnlCountdown.Controls.Add(btnQuick15);
-            pnlCountdown.Controls.Add(lblShowHideQuick);
-            pnlCountdown.Controls.Add(lblAdjustTimer);
-            pnlCountdown.Controls.Add(btnAdd5Min);
-            pnlCountdown.Controls.Add(lblShutdownTime);
-            pnlCountdown.Controls.Add(label8);
-            pnlCountdown.Controls.Add(cmbOperation);
-            pnlCountdown.Controls.Add(btnStartCountdown);
-            pnlCountdown.Controls.Add(btnAdd1Hr);
-            pnlCountdown.Controls.Add(btnAdd30Min);
-            pnlCountdown.Controls.Add(btnAdd15Min);
-            pnlCountdown.Controls.Add(txtSeconds);
-            pnlCountdown.Controls.Add(txtHours);
-            pnlCountdown.Controls.Add(txtMinutes);
-            pnlCountdown.Controls.Add(label7);
-            pnlCountdown.Controls.Add(label6);
-            pnlCountdown.Controls.Add(label5);
-            pnlCountdown.Controls.Add(label4);
-            pnlCountdown.Controls.Add(label3);
+            pnlCountdown.Controls.Add(pnlCountdownExtras);
+            pnlCountdown.Controls.Add(pnlCountdownControls);
             pnlCountdown.Location = new System.Drawing.Point(127, 68);
             pnlCountdown.Name = "pnlCountdown";
             pnlCountdown.Size = new System.Drawing.Size(673, 385);
@@ -456,127 +438,30 @@ namespace SleepyTime_2._0
             label14.TabIndex = 29;
             label14.Text = "*SleepyTime must be open for actons to occur";
             // 
-            // btnClearTimer
+            // pnlCountdownExtras
             // 
-            btnClearTimer.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnClearTimer.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnClearTimer.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnClearTimer.FlatAppearance.BorderSize = 0;
-            btnClearTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnClearTimer.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
-            btnClearTimer.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnClearTimer.Location = new System.Drawing.Point(451, 82);
-            btnClearTimer.Name = "btnClearTimer";
-            btnClearTimer.Size = new System.Drawing.Size(50, 31);
-            btnClearTimer.TabIndex = 27;
-            btnClearTimer.Text = "CLR";
-            btnClearTimer.UseVisualStyleBackColor = false;
-            btnClearTimer.Click += btnClearTimer_Click;
-            // 
-            // btnMoreQuick
-            // 
-            btnMoreQuick.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnMoreQuick.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnMoreQuick.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnMoreQuick.FlatAppearance.BorderSize = 0;
-            btnMoreQuick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnMoreQuick.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Bold);
-            btnMoreQuick.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnMoreQuick.Location = new System.Drawing.Point(532, 331);
-            btnMoreQuick.Name = "btnMoreQuick";
-            btnMoreQuick.Size = new System.Drawing.Size(41, 31);
-            btnMoreQuick.TabIndex = 26;
-            btnMoreQuick.Text = "⋯";
-            btnMoreQuick.UseVisualStyleBackColor = false;
-            btnMoreQuick.Click += btnSideBarPresets_Click;
-            // 
-            // btnQuick2
-            // 
-            btnQuick2.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnQuick2.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnQuick2.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnQuick2.FlatAppearance.BorderSize = 0;
-            btnQuick2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnQuick2.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnQuick2.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnQuick2.Location = new System.Drawing.Point(418, 331);
-            btnQuick2.Name = "btnQuick2";
-            btnQuick2.Size = new System.Drawing.Size(108, 31);
-            btnQuick2.TabIndex = 25;
-            btnQuick2.Text = "2 Hr";
-            btnQuick2.UseVisualStyleBackColor = false;
-            btnQuick2.Click += btnQuick2_Click;
-            // 
-            // btnQuick1
-            // 
-            btnQuick1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnQuick1.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnQuick1.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnQuick1.FlatAppearance.BorderSize = 0;
-            btnQuick1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnQuick1.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnQuick1.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnQuick1.Location = new System.Drawing.Point(304, 331);
-            btnQuick1.Name = "btnQuick1";
-            btnQuick1.Size = new System.Drawing.Size(108, 31);
-            btnQuick1.TabIndex = 24;
-            btnQuick1.Text = "1 Hr";
-            btnQuick1.UseVisualStyleBackColor = false;
-            btnQuick1.Click += btnQuick1_Click;
-            // 
-            // btnQuick30
-            // 
-            btnQuick30.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnQuick30.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnQuick30.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnQuick30.FlatAppearance.BorderSize = 0;
-            btnQuick30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnQuick30.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnQuick30.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnQuick30.Location = new System.Drawing.Point(190, 331);
-            btnQuick30.Name = "btnQuick30";
-            btnQuick30.Size = new System.Drawing.Size(108, 31);
-            btnQuick30.TabIndex = 23;
-            btnQuick30.Text = "30 Mins";
-            btnQuick30.UseVisualStyleBackColor = false;
-            btnQuick30.Click += btnQuick30_Click;
-            // 
-            // btnQuick15
-            // 
-            btnQuick15.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnQuick15.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnQuick15.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnQuick15.FlatAppearance.BorderSize = 0;
-            btnQuick15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnQuick15.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnQuick15.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnQuick15.Location = new System.Drawing.Point(80, 331);
-            btnQuick15.Name = "btnQuick15";
-            btnQuick15.Size = new System.Drawing.Size(108, 31);
-            btnQuick15.TabIndex = 22;
-            btnQuick15.Text = "15 Mins";
-            btnQuick15.UseVisualStyleBackColor = false;
-            btnQuick15.Click += btnQuick15_Click;
-            // 
-            // lblShowHideQuick
-            // 
-            lblShowHideQuick.AutoSize = true;
-            lblShowHideQuick.Cursor = System.Windows.Forms.Cursors.Hand;
-            lblShowHideQuick.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            lblShowHideQuick.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            lblShowHideQuick.Location = new System.Drawing.Point(80, 312);
-            lblShowHideQuick.Name = "lblShowHideQuick";
-            lblShowHideQuick.Size = new System.Drawing.Size(105, 16);
-            lblShowHideQuick.TabIndex = 21;
-            lblShowHideQuick.Text = "Quick Timers ▼";
-            lblShowHideQuick.Click += lblShowHideQuick_Click;
+            pnlCountdownExtras.Controls.Add(lblAdjustTimer);
+            pnlCountdownExtras.Controls.Add(btnAdd5Min);
+            pnlCountdownExtras.Controls.Add(btnAdd15Min);
+            pnlCountdownExtras.Controls.Add(btnAdd30Min);
+            pnlCountdownExtras.Controls.Add(btnMoreQuick);
+            pnlCountdownExtras.Controls.Add(btnAdd1Hr);
+            pnlCountdownExtras.Controls.Add(btnQuick2);
+            pnlCountdownExtras.Controls.Add(lblShowHideQuick);
+            pnlCountdownExtras.Controls.Add(btnQuick1);
+            pnlCountdownExtras.Controls.Add(btnQuick15);
+            pnlCountdownExtras.Controls.Add(btnQuick30);
+            pnlCountdownExtras.Location = new System.Drawing.Point(30, 240);
+            pnlCountdownExtras.Name = "pnlCountdownExtras";
+            pnlCountdownExtras.Size = new System.Drawing.Size(616, 134);
+            pnlCountdownExtras.TabIndex = 55;
             // 
             // lblAdjustTimer
             // 
             lblAdjustTimer.AutoSize = true;
             lblAdjustTimer.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             lblAdjustTimer.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            lblAdjustTimer.Location = new System.Drawing.Point(80, 244);
+            lblAdjustTimer.Location = new System.Drawing.Point(50, 5);
             lblAdjustTimer.Name = "lblAdjustTimer";
             lblAdjustTimer.Size = new System.Drawing.Size(91, 16);
             lblAdjustTimer.TabIndex = 20;
@@ -591,7 +476,7 @@ namespace SleepyTime_2._0
             btnAdd5Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAdd5Min.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnAdd5Min.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnAdd5Min.Location = new System.Drawing.Point(78, 264);
+            btnAdd5Min.Location = new System.Drawing.Point(46, 24);
             btnAdd5Min.Name = "btnAdd5Min";
             btnAdd5Min.Size = new System.Drawing.Size(119, 31);
             btnAdd5Min.TabIndex = 19;
@@ -599,23 +484,197 @@ namespace SleepyTime_2._0
             btnAdd5Min.UseVisualStyleBackColor = false;
             btnAdd5Min.Click += btnAdd5Min_Click;
             // 
-            // lblShutdownTime
+            // btnAdd15Min
             // 
-            lblShutdownTime.AutoSize = true;
-            lblShutdownTime.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            lblShutdownTime.ForeColor = System.Drawing.Color.White;
-            lblShutdownTime.Location = new System.Drawing.Point(450, 50);
-            lblShutdownTime.Name = "lblShutdownTime";
-            lblShutdownTime.Size = new System.Drawing.Size(40, 21);
-            lblShutdownTime.TabIndex = 18;
-            lblShutdownTime.Text = "in:";
+            btnAdd15Min.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnAdd15Min.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnAdd15Min.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAdd15Min.FlatAppearance.BorderSize = 0;
+            btnAdd15Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAdd15Min.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnAdd15Min.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnAdd15Min.Location = new System.Drawing.Point(173, 24);
+            btnAdd15Min.Name = "btnAdd15Min";
+            btnAdd15Min.Size = new System.Drawing.Size(119, 31);
+            btnAdd15Min.TabIndex = 12;
+            btnAdd15Min.Text = "+15 Min";
+            btnAdd15Min.UseVisualStyleBackColor = false;
+            btnAdd15Min.Click += btnAdd15Min_Click;
+            // 
+            // btnAdd30Min
+            // 
+            btnAdd30Min.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnAdd30Min.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnAdd30Min.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAdd30Min.FlatAppearance.BorderSize = 0;
+            btnAdd30Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAdd30Min.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnAdd30Min.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnAdd30Min.Location = new System.Drawing.Point(298, 24);
+            btnAdd30Min.Name = "btnAdd30Min";
+            btnAdd30Min.Size = new System.Drawing.Size(119, 31);
+            btnAdd30Min.TabIndex = 13;
+            btnAdd30Min.Text = "+30 Min";
+            btnAdd30Min.UseVisualStyleBackColor = false;
+            btnAdd30Min.Click += btnAdd30Min_Click;
+            // 
+            // btnMoreQuick
+            // 
+            btnMoreQuick.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnMoreQuick.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnMoreQuick.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnMoreQuick.FlatAppearance.BorderSize = 0;
+            btnMoreQuick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMoreQuick.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Bold);
+            btnMoreQuick.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnMoreQuick.Location = new System.Drawing.Point(502, 89);
+            btnMoreQuick.Name = "btnMoreQuick";
+            btnMoreQuick.Size = new System.Drawing.Size(41, 31);
+            btnMoreQuick.TabIndex = 26;
+            btnMoreQuick.Text = "⋯";
+            btnMoreQuick.UseVisualStyleBackColor = false;
+            btnMoreQuick.Click += btnSideBarPresets_Click;
+            // 
+            // btnAdd1Hr
+            // 
+            btnAdd1Hr.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnAdd1Hr.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnAdd1Hr.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAdd1Hr.FlatAppearance.BorderSize = 0;
+            btnAdd1Hr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAdd1Hr.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnAdd1Hr.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnAdd1Hr.Location = new System.Drawing.Point(420, 24);
+            btnAdd1Hr.Name = "btnAdd1Hr";
+            btnAdd1Hr.Size = new System.Drawing.Size(119, 31);
+            btnAdd1Hr.TabIndex = 14;
+            btnAdd1Hr.Text = "+1 Hr";
+            btnAdd1Hr.UseVisualStyleBackColor = false;
+            btnAdd1Hr.Click += btnAdd1Hr_Click;
+            // 
+            // btnQuick2
+            // 
+            btnQuick2.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuick2.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnQuick2.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnQuick2.FlatAppearance.BorderSize = 0;
+            btnQuick2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuick2.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnQuick2.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnQuick2.Location = new System.Drawing.Point(388, 91);
+            btnQuick2.Name = "btnQuick2";
+            btnQuick2.Size = new System.Drawing.Size(108, 31);
+            btnQuick2.TabIndex = 25;
+            btnQuick2.Text = "2 Hr";
+            btnQuick2.UseVisualStyleBackColor = false;
+            btnQuick2.Click += btnQuick2_Click;
+            // 
+            // lblShowHideQuick
+            // 
+            lblShowHideQuick.AutoSize = true;
+            lblShowHideQuick.Cursor = System.Windows.Forms.Cursors.Hand;
+            lblShowHideQuick.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            lblShowHideQuick.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            lblShowHideQuick.Location = new System.Drawing.Point(50, 72);
+            lblShowHideQuick.Name = "lblShowHideQuick";
+            lblShowHideQuick.Size = new System.Drawing.Size(105, 16);
+            lblShowHideQuick.TabIndex = 21;
+            lblShowHideQuick.Text = "Quick Timers ▼";
+            lblShowHideQuick.Click += lblShowHideQuick_Click;
+            // 
+            // btnQuick1
+            // 
+            btnQuick1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuick1.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnQuick1.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnQuick1.FlatAppearance.BorderSize = 0;
+            btnQuick1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuick1.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnQuick1.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnQuick1.Location = new System.Drawing.Point(275, 91);
+            btnQuick1.Name = "btnQuick1";
+            btnQuick1.Size = new System.Drawing.Size(108, 31);
+            btnQuick1.TabIndex = 24;
+            btnQuick1.Text = "1 Hr";
+            btnQuick1.UseVisualStyleBackColor = false;
+            btnQuick1.Click += btnQuick1_Click;
+            // 
+            // btnQuick15
+            // 
+            btnQuick15.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuick15.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnQuick15.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnQuick15.FlatAppearance.BorderSize = 0;
+            btnQuick15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuick15.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnQuick15.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnQuick15.Location = new System.Drawing.Point(47, 91);
+            btnQuick15.Name = "btnQuick15";
+            btnQuick15.Size = new System.Drawing.Size(108, 31);
+            btnQuick15.TabIndex = 22;
+            btnQuick15.Text = "15 Mins";
+            btnQuick15.UseVisualStyleBackColor = false;
+            btnQuick15.Click += btnQuick15_Click;
+            // 
+            // btnQuick30
+            // 
+            btnQuick30.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuick30.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnQuick30.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnQuick30.FlatAppearance.BorderSize = 0;
+            btnQuick30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuick30.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            btnQuick30.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnQuick30.Location = new System.Drawing.Point(161, 91);
+            btnQuick30.Name = "btnQuick30";
+            btnQuick30.Size = new System.Drawing.Size(108, 31);
+            btnQuick30.TabIndex = 23;
+            btnQuick30.Text = "30 Mins";
+            btnQuick30.UseVisualStyleBackColor = false;
+            btnQuick30.Click += btnQuick30_Click;
+            // 
+            // pnlCountdownControls
+            // 
+            pnlCountdownControls.Controls.Add(txtHours);
+            pnlCountdownControls.Controls.Add(label8);
+            pnlCountdownControls.Controls.Add(cmbOperation);
+            pnlCountdownControls.Controls.Add(btnStartCountdown);
+            pnlCountdownControls.Controls.Add(lblShutdownTime);
+            pnlCountdownControls.Controls.Add(label5);
+            pnlCountdownControls.Controls.Add(label6);
+            pnlCountdownControls.Controls.Add(label7);
+            pnlCountdownControls.Controls.Add(txtSeconds);
+            pnlCountdownControls.Controls.Add(btnClearTimer);
+            pnlCountdownControls.Controls.Add(txtMinutes);
+            pnlCountdownControls.Controls.Add(label3);
+            pnlCountdownControls.Controls.Add(label4);
+            pnlCountdownControls.Location = new System.Drawing.Point(27, 33);
+            pnlCountdownControls.Name = "pnlCountdownControls";
+            pnlCountdownControls.Size = new System.Drawing.Size(616, 204);
+            pnlCountdownControls.TabIndex = 54;
+            // 
+            // txtHours
+            // 
+            txtHours.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
+            txtHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtHours.Font = new System.Drawing.Font("JetBrains Mono", 36F);
+            txtHours.ForeColor = System.Drawing.Color.White;
+            txtHours.Location = new System.Drawing.Point(174, 52);
+            txtHours.MaxLength = 2;
+            txtHours.Name = "txtHours";
+            txtHours.Size = new System.Drawing.Size(61, 64);
+            txtHours.TabIndex = 0;
+            txtHours.Text = "00";
+            txtHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            txtHours.KeyPress += NumbersOnly;
+            txtHours.Leave += NotEmpty;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             label8.ForeColor = System.Drawing.Color.White;
-            label8.Location = new System.Drawing.Point(147, 50);
+            label8.Location = new System.Drawing.Point(118, 19);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(170, 21);
             label8.TabIndex = 17;
@@ -630,7 +689,7 @@ namespace SleepyTime_2._0
             cmbOperation.ForeColor = System.Drawing.Color.White;
             cmbOperation.FormattingEnabled = true;
             cmbOperation.Items.AddRange(new object[] { "Shutdown", "Restart", "Sleep", "Lock" });
-            cmbOperation.Location = new System.Drawing.Point(321, 47);
+            cmbOperation.Location = new System.Drawing.Point(294, 13);
             cmbOperation.Name = "cmbOperation";
             cmbOperation.Size = new System.Drawing.Size(121, 29);
             cmbOperation.TabIndex = 16;
@@ -644,7 +703,7 @@ namespace SleepyTime_2._0
             btnStartCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnStartCountdown.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             btnStartCountdown.ForeColor = System.Drawing.Color.FromArgb(141, 74, 205);
-            btnStartCountdown.Location = new System.Drawing.Point(73, 181);
+            btnStartCountdown.Location = new System.Drawing.Point(46, 139);
             btnStartCountdown.Name = "btnStartCountdown";
             btnStartCountdown.Size = new System.Drawing.Size(493, 47);
             btnStartCountdown.TabIndex = 15;
@@ -652,56 +711,49 @@ namespace SleepyTime_2._0
             btnStartCountdown.UseVisualStyleBackColor = false;
             btnStartCountdown.Click += btnStartCountdown_Click;
             // 
-            // btnAdd1Hr
+            // lblShutdownTime
             // 
-            btnAdd1Hr.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnAdd1Hr.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnAdd1Hr.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAdd1Hr.FlatAppearance.BorderSize = 0;
-            btnAdd1Hr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAdd1Hr.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnAdd1Hr.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnAdd1Hr.Location = new System.Drawing.Point(451, 264);
-            btnAdd1Hr.Name = "btnAdd1Hr";
-            btnAdd1Hr.Size = new System.Drawing.Size(119, 31);
-            btnAdd1Hr.TabIndex = 14;
-            btnAdd1Hr.Text = "+1 Hr";
-            btnAdd1Hr.UseVisualStyleBackColor = false;
-            btnAdd1Hr.Click += btnAdd1Hr_Click;
+            lblShutdownTime.AutoSize = true;
+            lblShutdownTime.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            lblShutdownTime.ForeColor = System.Drawing.Color.White;
+            lblShutdownTime.Location = new System.Drawing.Point(424, 19);
+            lblShutdownTime.Name = "lblShutdownTime";
+            lblShutdownTime.Size = new System.Drawing.Size(40, 21);
+            lblShutdownTime.TabIndex = 18;
+            lblShutdownTime.Text = "in:";
             // 
-            // btnAdd30Min
+            // label5
             // 
-            btnAdd30Min.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnAdd30Min.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnAdd30Min.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAdd30Min.FlatAppearance.BorderSize = 0;
-            btnAdd30Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAdd30Min.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnAdd30Min.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnAdd30Min.Location = new System.Drawing.Point(328, 264);
-            btnAdd30Min.Name = "btnAdd30Min";
-            btnAdd30Min.Size = new System.Drawing.Size(119, 31);
-            btnAdd30Min.TabIndex = 13;
-            btnAdd30Min.Text = "+30 Min";
-            btnAdd30Min.UseVisualStyleBackColor = false;
-            btnAdd30Min.Click += btnAdd30Min_Click;
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label5.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label5.Location = new System.Drawing.Point(182, 113);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(42, 16);
+            label5.TabIndex = 5;
+            label5.Text = "HOURS";
             // 
-            // btnAdd15Min
+            // label6
             // 
-            btnAdd15Min.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnAdd15Min.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
-            btnAdd15Min.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAdd15Min.FlatAppearance.BorderSize = 0;
-            btnAdd15Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAdd15Min.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            btnAdd15Min.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnAdd15Min.Location = new System.Drawing.Point(203, 264);
-            btnAdd15Min.Name = "btnAdd15Min";
-            btnAdd15Min.Size = new System.Drawing.Size(119, 31);
-            btnAdd15Min.TabIndex = 12;
-            btnAdd15Min.Text = "+15 Min";
-            btnAdd15Min.UseVisualStyleBackColor = false;
-            btnAdd15Min.Click += btnAdd15Min_Click;
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label6.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label6.Location = new System.Drawing.Point(270, 113);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(56, 16);
+            label6.TabIndex = 6;
+            label6.Text = "MINUTES";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label7.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label7.Location = new System.Drawing.Point(353, 113);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(56, 16);
+            label7.TabIndex = 7;
+            label7.Text = "SECONDS";
             // 
             // txtSeconds
             // 
@@ -709,7 +761,7 @@ namespace SleepyTime_2._0
             txtSeconds.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtSeconds.Font = new System.Drawing.Font("JetBrains Mono", 36F);
             txtSeconds.ForeColor = System.Drawing.Color.White;
-            txtSeconds.Location = new System.Drawing.Point(384, 82);
+            txtSeconds.Location = new System.Drawing.Point(352, 52);
             txtSeconds.MaxLength = 2;
             txtSeconds.Name = "txtSeconds";
             txtSeconds.Size = new System.Drawing.Size(61, 64);
@@ -719,21 +771,22 @@ namespace SleepyTime_2._0
             txtSeconds.KeyPress += NumbersOnly;
             txtSeconds.Leave += NotEmpty;
             // 
-            // txtHours
+            // btnClearTimer
             // 
-            txtHours.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
-            txtHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txtHours.Font = new System.Drawing.Font("JetBrains Mono", 36F);
-            txtHours.ForeColor = System.Drawing.Color.White;
-            txtHours.Location = new System.Drawing.Point(204, 81);
-            txtHours.MaxLength = 2;
-            txtHours.Name = "txtHours";
-            txtHours.Size = new System.Drawing.Size(61, 64);
-            txtHours.TabIndex = 0;
-            txtHours.Text = "00";
-            txtHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            txtHours.KeyPress += NumbersOnly;
-            txtHours.Leave += NotEmpty;
+            btnClearTimer.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnClearTimer.BorderColor = System.Drawing.Color.FromArgb(31, 30, 47);
+            btnClearTimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnClearTimer.FlatAppearance.BorderSize = 0;
+            btnClearTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnClearTimer.Font = new System.Drawing.Font("JetBrains Mono", 8.25F);
+            btnClearTimer.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnClearTimer.Location = new System.Drawing.Point(423, 54);
+            btnClearTimer.Name = "btnClearTimer";
+            btnClearTimer.Size = new System.Drawing.Size(50, 31);
+            btnClearTimer.TabIndex = 27;
+            btnClearTimer.Text = "CLR";
+            btnClearTimer.UseVisualStyleBackColor = false;
+            btnClearTimer.Click += btnClearTimer_Click;
             // 
             // txtMinutes
             // 
@@ -741,7 +794,7 @@ namespace SleepyTime_2._0
             txtMinutes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtMinutes.Font = new System.Drawing.Font("JetBrains Mono", 36F);
             txtMinutes.ForeColor = System.Drawing.Color.White;
-            txtMinutes.Location = new System.Drawing.Point(294, 82);
+            txtMinutes.Location = new System.Drawing.Point(266, 52);
             txtMinutes.MaxLength = 2;
             txtMinutes.Name = "txtMinutes";
             txtMinutes.Size = new System.Drawing.Size(61, 64);
@@ -751,60 +804,27 @@ namespace SleepyTime_2._0
             txtMinutes.KeyPress += NumbersOnly;
             txtMinutes.Leave += NotEmpty;
             // 
-            // label7
+            // label3
             // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label7.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label7.Location = new System.Drawing.Point(386, 146);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(56, 16);
-            label7.TabIndex = 7;
-            label7.Text = "SECONDS";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label6.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label6.Location = new System.Drawing.Point(294, 146);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(56, 16);
-            label6.TabIndex = 6;
-            label6.Text = "MINUTES";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label5.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label5.Location = new System.Drawing.Point(213, 146);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(42, 16);
-            label5.TabIndex = 5;
-            label5.Text = "HOURS";
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("JetBrains Mono", 36F);
+            label3.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            label3.Location = new System.Drawing.Point(224, 50);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(56, 63);
+            label3.TabIndex = 3;
+            label3.Text = ":";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("JetBrains Mono", 36F);
             label4.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            label4.Location = new System.Drawing.Point(342, 82);
+            label4.Location = new System.Drawing.Point(313, 48);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(56, 63);
             label4.TabIndex = 4;
             label4.Text = ":";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("JetBrains Mono", 36F);
-            label3.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            label3.Location = new System.Drawing.Point(252, 82);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(56, 63);
-            label3.TabIndex = 3;
-            label3.Text = ":";
             // 
             // pnlSchedule
             // 
@@ -1742,7 +1762,7 @@ namespace SleepyTime_2._0
             // lblBugReport
             // 
             lblBugReport.AutoSize = true;
-            lblBugReport.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            lblBugReport.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             lblBugReport.Location = new System.Drawing.Point(0, 341);
             lblBugReport.Name = "lblBugReport";
             lblBugReport.Size = new System.Drawing.Size(91, 16);
@@ -1779,10 +1799,10 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlCountdown);
             Controls.Add(pnlSettings);
             Controls.Add(pnlPresets);
             Controls.Add(pnlSchedule);
-            Controls.Add(pnlCountdown);
             Controls.Add(pnlAbout);
             Controls.Add(pnlHelp);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1799,6 +1819,10 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)imgTimeAnimation).EndInit();
             pnlCountdown.ResumeLayout(false);
             pnlCountdown.PerformLayout();
+            pnlCountdownExtras.ResumeLayout(false);
+            pnlCountdownExtras.PerformLayout();
+            pnlCountdownControls.ResumeLayout(false);
+            pnlCountdownControls.PerformLayout();
             pnlSchedule.ResumeLayout(false);
             pnlSchedule.PerformLayout();
             pnlSavedSchedules.ResumeLayout(false);
@@ -1944,6 +1968,8 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Timer tmrPreset;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox cmbCountdownLayout;
+        private System.Windows.Forms.Panel pnlCountdownExtras;
+        private System.Windows.Forms.Panel pnlCountdownControls;
     }
 }
 

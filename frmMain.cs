@@ -306,7 +306,7 @@ namespace SleepyTime_2._0
 
                 case "light":
                     primaryTheme = Color.FromArgb(245, 245, 250);
-                    secondaryTheme = Color.FromArgb(211, 211, 230);
+                    secondaryTheme = Color.FromArgb(225, 225, 235);
                     textColor = Color.Black;
                     secondaryTextColor = Color.FromArgb(39, 39, 41);
                     imgLogo.Image = Image.FromFile(blackLogo);
@@ -326,7 +326,7 @@ namespace SleepyTime_2._0
                     c.BackColor = primaryTheme;
                 }
 
-                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(211, 211, 230))
+                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(225, 225, 235))
                 {
                     c.BackColor = secondaryTheme;
                 }
@@ -345,7 +345,12 @@ namespace SleepyTime_2._0
         {
             foreach (Control c in GetAllControls(this))
             {
-                if (c.ForeColor == Color.FromArgb(140, 71, 203) || c.ForeColor == Color.FromArgb(35, 35, 204) || c.ForeColor == Color.LimeGreen || c.ForeColor == Color.FromArgb(197, 217, 20) || c.ForeColor == Color.FromArgb(222, 13, 13))
+                if(c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
+                    c.ForeColor == Color.FromArgb(35, 35, 204) || //blue
+                    c.ForeColor == Color.FromArgb(70, 170, 105) || //green
+                    c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
+                    c.ForeColor == Color.FromArgb(222, 13, 13) //red
+                    )
                 {
                     c.ForeColor = primaryAccent;
                 }
@@ -409,13 +414,13 @@ namespace SleepyTime_2._0
                     break;
 
                 case "green":
-                    primaryAccent = Color.LimeGreen;
-                    secondaryAccent = Color.FromArgb(29, 107, 29);
+                    primaryAccent = Color.FromArgb(70, 170, 105);
+                    secondaryAccent = Color.FromArgb(35, 105, 65);
                     break;
 
                 case "yellow":
-                    primaryAccent = Color.FromArgb(197, 217, 20);
-                    secondaryAccent = Color.FromArgb(115, 125, 31);
+                    primaryAccent = Color.FromArgb(215, 180, 65);
+                    secondaryAccent = Color.FromArgb(145, 115, 25); 
                     break;
 
                 case "red":
@@ -1094,7 +1099,6 @@ namespace SleepyTime_2._0
 
             applyDarkMode(mainTheme);
 
-            string layout = "";
             switch(cmbCountdownLayout.SelectedIndex)
             {
                 case 0:
@@ -1119,34 +1123,22 @@ namespace SleepyTime_2._0
 
         private void applyCountDownLayout()
         {
+            int x = 0;
+            int y = 0;
             if (countDownLayout == "minimal")
             {
-                btnAdd5Min.Visible = false;
-                btnAdd15Min.Visible = false;
-                btnAdd30Min.Visible = false;
-                btnAdd1Hr.Visible = false;
-                btnQuick15.Visible = false;
-                btnQuick30.Visible = false;
-                btnQuick1.Visible = false;
-                btnQuick2.Visible = false;
-                btnMoreQuick.Visible = false;
-                lblAdjustTimer.Visible = false;
-                lblShowHideQuick.Visible = false;
+                pnlCountdownExtras.Visible = false;
+                x = 27;
+                y = 91;
             }
             else
             {
-                btnAdd5Min.Visible = true;
-                btnAdd15Min.Visible = true;
-                btnAdd30Min.Visible = true;
-                btnAdd1Hr.Visible = true;
-                btnQuick15.Visible = true;
-                btnQuick30.Visible = true;
-                btnQuick1.Visible = true;
-                btnQuick2.Visible = true;
-                btnMoreQuick.Visible = true;
-                lblAdjustTimer.Visible = true;
-                lblShowHideQuick.Visible = true;
+                pnlCountdownExtras.Visible = true;
+                x = 27;
+                y = 33;
             }
+
+            this.pnlCountdownControls.Location = new Point(x, y);
         }
 
         private void btnClearSchedule_Click(object sender, EventArgs e)
