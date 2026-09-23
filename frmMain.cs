@@ -2089,6 +2089,106 @@ namespace SleepyTime_2._0
         {
 
         }
+
+        private void openHelp(string menu)
+        {
+            btnHelp.PerformClick();
+
+            switch (menu)
+            {
+                case "Countdown":
+                    btnHelpCountdown.PerformClick();
+                    break;
+
+                case "Schedule":
+                    btnHelpSchedule.PerformClick();
+                    break;
+
+                case "Presets":
+                    btnHelpPresets.PerformClick();
+                    break;
+
+                case "Settings":
+                    btnHelpSettings.PerformClick();
+                    break;
+            }
+        }
+
+        private void btnQuickHelpPresets_Click(object sender, EventArgs e)
+        {
+            openHelp("Presets");
+        }
+
+        private void btnQuickHelpSettings_Click(object sender, EventArgs e)
+        {
+            openHelp("Settings");
+        }
+
+        private void btnQuickHelpSchedule_Click(object sender, EventArgs e)
+        {
+            openHelp("Schedule");
+        }
+
+        private void btnQuickHelpCountdown_Click(object sender, EventArgs e)
+        {
+            openHelp("Countdown");
+        }
+
+        private void loadHelp(string helpType)
+        {
+            switch (helpType)
+            {
+                case "Countdown":
+                    //change help image
+                    //change help text
+                    break;
+
+                case "Schedule":
+                    //change help image
+                    //change help text
+                    break;
+
+                case "Presets":
+                    //change help image
+                    //change help text
+                    break;
+
+                case "Settings":
+                    //change help image
+                    //change help text
+                    break;
+
+                case "Other":
+                    //change help image
+                    //change help text
+                    break;
+            }
+        }
+
+        private void btnHelpCountdown_Click(object sender, EventArgs e)
+        {
+            loadHelp("Countdown");
+        }
+
+        private void btnHelpSchedule_Click(object sender, EventArgs e)
+        {
+            loadHelp("Schedule");
+        }
+
+        private void btnHelpPresets_Click(object sender, EventArgs e)
+        {
+            loadHelp("Presets");
+        }
+
+        private void btnHelpSettings_Click(object sender, EventArgs e)
+        {
+            loadHelp("Settings");
+        }
+
+        private void btnHelpOther_Click(object sender, EventArgs e)
+        {
+            loadHelp("Other");
+        }
     }
 }
 
