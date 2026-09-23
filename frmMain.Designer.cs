@@ -49,6 +49,7 @@ namespace SleepyTime_2._0
             lblTimeTitle = new System.Windows.Forms.Label();
             imgTimeAnimation = new System.Windows.Forms.PictureBox();
             pnlCountdown = new System.Windows.Forms.Panel();
+            btnQuickHelpCountdown = new RoundedButton();
             MEMEME = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
@@ -79,6 +80,7 @@ namespace SleepyTime_2._0
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             pnlSchedule = new System.Windows.Forms.Panel();
+            btnQuickHelpSchedule = new RoundedButton();
             label2 = new System.Windows.Forms.Label();
             label27 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
@@ -99,6 +101,7 @@ namespace SleepyTime_2._0
             label12 = new System.Windows.Forms.Label();
             cmbScheduleOperation = new System.Windows.Forms.ComboBox();
             pnlPresets = new System.Windows.Forms.Panel();
+            btnQuickHelpPresets = new RoundedButton();
             label40 = new System.Windows.Forms.Label();
             pnlPresetDays = new System.Windows.Forms.Panel();
             listBoxDays = new System.Windows.Forms.CheckedListBox();
@@ -128,6 +131,7 @@ namespace SleepyTime_2._0
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
+            btnQuickHelpSettings = new RoundedButton();
             label45 = new System.Windows.Forms.Label();
             label44 = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
@@ -142,6 +146,7 @@ namespace SleepyTime_2._0
             cmbAccent = new System.Windows.Forms.ComboBox();
             label11 = new System.Windows.Forms.Label();
             pnlAbout = new System.Windows.Forms.Panel();
+            btnDonate = new System.Windows.Forms.PictureBox();
             linkLabel4 = new System.Windows.Forms.LinkLabel();
             linkLabel3 = new System.Windows.Forms.LinkLabel();
             linkLabel2 = new System.Windows.Forms.LinkLabel();
@@ -151,14 +156,21 @@ namespace SleepyTime_2._0
             label13 = new System.Windows.Forms.Label();
             btnHelp = new System.Windows.Forms.Button();
             pnlHelp = new System.Windows.Forms.Panel();
-            label15 = new System.Windows.Forms.Label();
+            richTextBox1 = new System.Windows.Forms.RichTextBox();
+            lblHelpTitle = new System.Windows.Forms.Label();
+            pictureBox3 = new System.Windows.Forms.PictureBox();
+            roundedButton5 = new RoundedButton();
+            roundedButton4 = new RoundedButton();
+            roundedButton3 = new RoundedButton();
+            roundedButton2 = new RoundedButton();
+            lblHelp = new System.Windows.Forms.Label();
+            roundedButton1 = new RoundedButton();
             tmrCountDown = new System.Windows.Forms.Timer(components);
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
-            btnDonate = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -175,9 +187,10 @@ namespace SleepyTime_2._0
             pnlSavedPresets.SuspendLayout();
             pnlSettings.SuspendLayout();
             pnlAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnDonate).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).BeginInit();
             pnlHelp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)btnDonate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // imgHeaderDivider
@@ -400,6 +413,7 @@ namespace SleepyTime_2._0
             // 
             // pnlCountdown
             // 
+            pnlCountdown.Controls.Add(btnQuickHelpCountdown);
             pnlCountdown.Controls.Add(MEMEME);
             pnlCountdown.Controls.Add(label33);
             pnlCountdown.Controls.Add(label14);
@@ -410,6 +424,21 @@ namespace SleepyTime_2._0
             pnlCountdown.Size = new System.Drawing.Size(673, 385);
             pnlCountdown.TabIndex = 22;
             pnlCountdown.Paint += pnlCountdown_Paint;
+            // 
+            // btnQuickHelpCountdown
+            // 
+            btnQuickHelpCountdown.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuickHelpCountdown.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpCountdown.FlatAppearance.BorderSize = 0;
+            btnQuickHelpCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickHelpCountdown.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuickHelpCountdown.ForeColor = System.Drawing.Color.White;
+            btnQuickHelpCountdown.Location = new System.Drawing.Point(586, 26);
+            btnQuickHelpCountdown.Name = "btnQuickHelpCountdown";
+            btnQuickHelpCountdown.Size = new System.Drawing.Size(63, 33);
+            btnQuickHelpCountdown.TabIndex = 0;
+            btnQuickHelpCountdown.Text = "Help";
+            btnQuickHelpCountdown.UseVisualStyleBackColor = false;
             // 
             // MEMEME
             // 
@@ -834,6 +863,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSchedule
             // 
+            pnlSchedule.Controls.Add(btnQuickHelpSchedule);
             pnlSchedule.Controls.Add(label2);
             pnlSchedule.Controls.Add(label27);
             pnlSchedule.Controls.Add(label25);
@@ -856,6 +886,21 @@ namespace SleepyTime_2._0
             pnlSchedule.Name = "pnlSchedule";
             pnlSchedule.Size = new System.Drawing.Size(673, 385);
             pnlSchedule.TabIndex = 23;
+            // 
+            // btnQuickHelpSchedule
+            // 
+            btnQuickHelpSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuickHelpSchedule.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpSchedule.FlatAppearance.BorderSize = 0;
+            btnQuickHelpSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickHelpSchedule.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuickHelpSchedule.ForeColor = System.Drawing.Color.White;
+            btnQuickHelpSchedule.Location = new System.Drawing.Point(586, 26);
+            btnQuickHelpSchedule.Name = "btnQuickHelpSchedule";
+            btnQuickHelpSchedule.Size = new System.Drawing.Size(63, 33);
+            btnQuickHelpSchedule.TabIndex = 61;
+            btnQuickHelpSchedule.Text = "Help";
+            btnQuickHelpSchedule.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -1093,6 +1138,7 @@ namespace SleepyTime_2._0
             // 
             // pnlPresets
             // 
+            pnlPresets.Controls.Add(btnQuickHelpPresets);
             pnlPresets.Controls.Add(label40);
             pnlPresets.Controls.Add(pnlPresetDays);
             pnlPresets.Controls.Add(label39);
@@ -1108,6 +1154,21 @@ namespace SleepyTime_2._0
             pnlPresets.Name = "pnlPresets";
             pnlPresets.Size = new System.Drawing.Size(673, 385);
             pnlPresets.TabIndex = 24;
+            // 
+            // btnQuickHelpPresets
+            // 
+            btnQuickHelpPresets.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuickHelpPresets.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpPresets.FlatAppearance.BorderSize = 0;
+            btnQuickHelpPresets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickHelpPresets.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuickHelpPresets.ForeColor = System.Drawing.Color.White;
+            btnQuickHelpPresets.Location = new System.Drawing.Point(586, 26);
+            btnQuickHelpPresets.Name = "btnQuickHelpPresets";
+            btnQuickHelpPresets.Size = new System.Drawing.Size(63, 33);
+            btnQuickHelpPresets.TabIndex = 60;
+            btnQuickHelpPresets.Text = "Help";
+            btnQuickHelpPresets.UseVisualStyleBackColor = false;
             // 
             // label40
             // 
@@ -1478,6 +1539,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            pnlSettings.Controls.Add(btnQuickHelpSettings);
             pnlSettings.Controls.Add(label45);
             pnlSettings.Controls.Add(label44);
             pnlSettings.Controls.Add(label43);
@@ -1495,6 +1557,21 @@ namespace SleepyTime_2._0
             pnlSettings.Name = "pnlSettings";
             pnlSettings.Size = new System.Drawing.Size(673, 385);
             pnlSettings.TabIndex = 25;
+            // 
+            // btnQuickHelpSettings
+            // 
+            btnQuickHelpSettings.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            btnQuickHelpSettings.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpSettings.FlatAppearance.BorderSize = 0;
+            btnQuickHelpSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickHelpSettings.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuickHelpSettings.ForeColor = System.Drawing.Color.White;
+            btnQuickHelpSettings.Location = new System.Drawing.Point(586, 26);
+            btnQuickHelpSettings.Name = "btnQuickHelpSettings";
+            btnQuickHelpSettings.Size = new System.Drawing.Size(63, 33);
+            btnQuickHelpSettings.TabIndex = 62;
+            btnQuickHelpSettings.Text = "Help";
+            btnQuickHelpSettings.UseVisualStyleBackColor = false;
             // 
             // label45
             // 
@@ -1672,6 +1749,18 @@ namespace SleepyTime_2._0
             pnlAbout.Size = new System.Drawing.Size(673, 385);
             pnlAbout.TabIndex = 26;
             // 
+            // btnDonate
+            // 
+            btnDonate.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnDonate.Image = Properties.Resources.SupportButton;
+            btnDonate.Location = new System.Drawing.Point(467, 328);
+            btnDonate.Name = "btnDonate";
+            btnDonate.Size = new System.Drawing.Size(194, 43);
+            btnDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            btnDonate.TabIndex = 33;
+            btnDonate.TabStop = false;
+            btnDonate.Click += btnDonate_Click;
+            // 
             // linkLabel4
             // 
             linkLabel4.AutoSize = true;
@@ -1779,22 +1868,141 @@ namespace SleepyTime_2._0
             // 
             // pnlHelp
             // 
-            pnlHelp.Controls.Add(label15);
+            pnlHelp.Controls.Add(richTextBox1);
+            pnlHelp.Controls.Add(lblHelpTitle);
+            pnlHelp.Controls.Add(pictureBox3);
+            pnlHelp.Controls.Add(roundedButton5);
+            pnlHelp.Controls.Add(roundedButton4);
+            pnlHelp.Controls.Add(roundedButton3);
+            pnlHelp.Controls.Add(roundedButton2);
+            pnlHelp.Controls.Add(lblHelp);
+            pnlHelp.Controls.Add(roundedButton1);
             pnlHelp.Location = new System.Drawing.Point(127, 68);
             pnlHelp.Name = "pnlHelp";
             pnlHelp.Size = new System.Drawing.Size(673, 385);
             pnlHelp.TabIndex = 24;
             // 
-            // label15
+            // richTextBox1
             // 
-            label15.AutoSize = true;
-            label15.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            label15.ForeColor = System.Drawing.Color.White;
-            label15.Location = new System.Drawing.Point(283, 178);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(50, 21);
-            label15.TabIndex = 17;
-            label15.Text = "HELP";
+            richTextBox1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            richTextBox1.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            richTextBox1.ForeColor = System.Drawing.Color.White;
+            richTextBox1.Location = new System.Drawing.Point(241, 275);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new System.Drawing.Size(383, 96);
+            richTextBox1.TabIndex = 38;
+            richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
+            // 
+            // lblHelpTitle
+            // 
+            lblHelpTitle.AutoSize = true;
+            lblHelpTitle.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            lblHelpTitle.ForeColor = System.Drawing.Color.White;
+            lblHelpTitle.Location = new System.Drawing.Point(239, 26);
+            lblHelpTitle.Name = "lblHelpTitle";
+            lblHelpTitle.Size = new System.Drawing.Size(120, 21);
+            lblHelpTitle.TabIndex = 37;
+            lblHelpTitle.Text = "Lorem Ipsum";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pictureBox3.Image = Properties.Resources.CountdownScreen;
+            pictureBox3.Location = new System.Drawing.Point(239, 52);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(385, 212);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 36;
+            pictureBox3.TabStop = false;
+            // 
+            // roundedButton5
+            // 
+            roundedButton5.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            roundedButton5.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton5.FlatAppearance.BorderSize = 0;
+            roundedButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            roundedButton5.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            roundedButton5.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton5.Location = new System.Drawing.Point(45, 266);
+            roundedButton5.Name = "roundedButton5";
+            roundedButton5.Size = new System.Drawing.Size(150, 40);
+            roundedButton5.TabIndex = 35;
+            roundedButton5.Text = "Other";
+            roundedButton5.UseVisualStyleBackColor = false;
+            // 
+            // roundedButton4
+            // 
+            roundedButton4.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            roundedButton4.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton4.FlatAppearance.BorderSize = 0;
+            roundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            roundedButton4.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            roundedButton4.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton4.Location = new System.Drawing.Point(45, 219);
+            roundedButton4.Name = "roundedButton4";
+            roundedButton4.Size = new System.Drawing.Size(150, 40);
+            roundedButton4.TabIndex = 34;
+            roundedButton4.Text = "Settings";
+            roundedButton4.UseVisualStyleBackColor = false;
+            // 
+            // roundedButton3
+            // 
+            roundedButton3.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            roundedButton3.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton3.FlatAppearance.BorderSize = 0;
+            roundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            roundedButton3.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            roundedButton3.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton3.Location = new System.Drawing.Point(44, 172);
+            roundedButton3.Name = "roundedButton3";
+            roundedButton3.Size = new System.Drawing.Size(150, 40);
+            roundedButton3.TabIndex = 33;
+            roundedButton3.Text = "Presets";
+            roundedButton3.UseVisualStyleBackColor = false;
+            // 
+            // roundedButton2
+            // 
+            roundedButton2.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            roundedButton2.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton2.FlatAppearance.BorderSize = 0;
+            roundedButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            roundedButton2.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            roundedButton2.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton2.Location = new System.Drawing.Point(45, 124);
+            roundedButton2.Name = "roundedButton2";
+            roundedButton2.Size = new System.Drawing.Size(150, 40);
+            roundedButton2.TabIndex = 32;
+            roundedButton2.Text = "Schedule";
+            roundedButton2.UseVisualStyleBackColor = false;
+            // 
+            // lblHelp
+            // 
+            lblHelp.AutoSize = true;
+            lblHelp.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            lblHelp.ForeColor = System.Drawing.Color.White;
+            lblHelp.Location = new System.Drawing.Point(9, 9);
+            lblHelp.Name = "lblHelp";
+            lblHelp.Size = new System.Drawing.Size(220, 21);
+            lblHelp.TabIndex = 31;
+            lblHelp.Text = "Help with SleepyTime:";
+            // 
+            // roundedButton1
+            // 
+            roundedButton1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            roundedButton1.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton1.FlatAppearance.BorderSize = 0;
+            roundedButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            roundedButton1.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            roundedButton1.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            roundedButton1.Location = new System.Drawing.Point(45, 78);
+            roundedButton1.Name = "roundedButton1";
+            roundedButton1.Size = new System.Drawing.Size(150, 40);
+            roundedButton1.TabIndex = 0;
+            roundedButton1.Text = "Countdown";
+            roundedButton1.UseVisualStyleBackColor = false;
             // 
             // tmrCountDown
             // 
@@ -1832,18 +2040,6 @@ namespace SleepyTime_2._0
             // 
             tmrPreset.Tick += tmrPreset_Tick;
             // 
-            // btnDonate
-            // 
-            btnDonate.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnDonate.Image = Properties.Resources.SupportButton;
-            btnDonate.Location = new System.Drawing.Point(467, 328);
-            btnDonate.Name = "btnDonate";
-            btnDonate.Size = new System.Drawing.Size(194, 43);
-            btnDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            btnDonate.TabIndex = 33;
-            btnDonate.TabStop = false;
-            btnDonate.Click += btnDonate_Click;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1868,12 +2064,12 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlAbout);
-            Controls.Add(pnlSettings);
-            Controls.Add(pnlCountdown);
-            Controls.Add(pnlPresets);
-            Controls.Add(pnlSchedule);
             Controls.Add(pnlHelp);
+            Controls.Add(pnlSettings);
+            Controls.Add(pnlSchedule);
+            Controls.Add(pnlPresets);
+            Controls.Add(pnlCountdown);
+            Controls.Add(pnlAbout);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "frmMain";
@@ -1907,10 +2103,11 @@ namespace SleepyTime_2._0
             pnlSettings.PerformLayout();
             pnlAbout.ResumeLayout(false);
             pnlAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnDonate).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).EndInit();
             pnlHelp.ResumeLayout(false);
             pnlHelp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)btnDonate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -1966,7 +2163,6 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label lblShowHideQuick;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Panel pnlHelp;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Timer tmrCountDown;
         private System.Windows.Forms.Timer tmrValidation;
         private RoundedButton btnClearTimer;
@@ -2045,6 +2241,19 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.PictureBox btnDonate;
+        private RoundedButton btnQuickHelpCountdown;
+        private RoundedButton btnQuickHelpPresets;
+        private RoundedButton btnQuickHelpSchedule;
+        private RoundedButton btnQuickHelpSettings;
+        private RoundedButton roundedButton4;
+        private RoundedButton roundedButton3;
+        private RoundedButton roundedButton2;
+        private System.Windows.Forms.Label lblHelp;
+        private RoundedButton roundedButton1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private RoundedButton roundedButton5;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label lblHelpTitle;
     }
 }
 

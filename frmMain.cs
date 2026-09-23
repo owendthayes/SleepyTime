@@ -2084,6 +2084,11 @@ namespace SleepyTime_2._0
         {
             OpenLink("https://ko-fi.com/smellslikesmoke#checkoutModal");
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
