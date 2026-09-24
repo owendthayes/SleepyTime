@@ -176,6 +176,7 @@ namespace SleepyTime_2._0
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
             btnMinToTray = new System.Windows.Forms.Button();
+            lmaoToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -2015,44 +2016,44 @@ namespace SleepyTime_2._0
             // 
             // cmsTrayMenu
             // 
-            cmsTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { countdownToolStripMenuItem, scheduleToolStripMenuItem, presetsToolStripMenuItem, settingsToolStripMenuItem, closeSleepyTimeToolStripMenuItem });
+            cmsTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { countdownToolStripMenuItem, scheduleToolStripMenuItem, presetsToolStripMenuItem, settingsToolStripMenuItem, lmaoToolStripMenuItem, closeSleepyTimeToolStripMenuItem });
             cmsTrayMenu.Name = "cmsTrayMenu";
-            cmsTrayMenu.Size = new System.Drawing.Size(168, 114);
+            cmsTrayMenu.Size = new System.Drawing.Size(181, 142);
             cmsTrayMenu.Text = "SleepyTime";
             cmsTrayMenu.Opening += cmsTrayMenu_Opening;
             // 
             // countdownToolStripMenuItem
             // 
             countdownToolStripMenuItem.Name = "countdownToolStripMenuItem";
-            countdownToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            countdownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             countdownToolStripMenuItem.Text = "Countdown";
             countdownToolStripMenuItem.Click += countdownToolStripMenuItem_Click;
             // 
             // scheduleToolStripMenuItem
             // 
             scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            scheduleToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            scheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             scheduleToolStripMenuItem.Text = "Schedule";
             scheduleToolStripMenuItem.Click += scheduleToolStripMenuItem_Click;
             // 
             // presetsToolStripMenuItem
             // 
             presetsToolStripMenuItem.Name = "presetsToolStripMenuItem";
-            presetsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            presetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             presetsToolStripMenuItem.Text = "Presets";
             presetsToolStripMenuItem.Click += presetsToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             settingsToolStripMenuItem.Text = "Settings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // closeSleepyTimeToolStripMenuItem
             // 
             closeSleepyTimeToolStripMenuItem.Name = "closeSleepyTimeToolStripMenuItem";
-            closeSleepyTimeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            closeSleepyTimeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             closeSleepyTimeToolStripMenuItem.Text = "Close SleepyTime";
             closeSleepyTimeToolStripMenuItem.Click += closeSleepyTimeToolStripMenuItem_Click;
             // 
@@ -2091,6 +2092,11 @@ namespace SleepyTime_2._0
             btnMinToTray.Text = "↓";
             btnMinToTray.UseVisualStyleBackColor = false;
             btnMinToTray.Click += btnMinToTray_Click;
+            // 
+            // lmaoToolStripMenuItem
+            // 
+            lmaoToolStripMenuItem.Name = "lmaoToolStripMenuItem";
+            lmaoToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // frmMain
             // 
@@ -2314,6 +2320,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeSleepyTimeToolStripMenuItem;
         private System.Windows.Forms.Button btnMinToTray;
+        private System.Windows.Forms.ToolStripSeparator lmaoToolStripMenuItem;
     }
 }
 
