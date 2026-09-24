@@ -6,6 +6,7 @@
     <RootNamespace>SleepyTime_2._0</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>Resources\SleepyTimeIcon.ico</ApplicationIcon>
+    <AssemblyName>SleepyTime</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

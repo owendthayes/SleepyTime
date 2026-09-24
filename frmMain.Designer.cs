@@ -167,9 +167,16 @@ namespace SleepyTime_2._0
             tmrCountDown = new System.Windows.Forms.Timer(components);
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
+            cmsTrayMenu = new System.Windows.Forms.ContextMenuStrip(components);
+            countdownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            presetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            closeSleepyTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
+            btnMinToTray = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -190,6 +197,7 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).BeginInit();
             pnlHelp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgHelpImage).BeginInit();
+            cmsTrayMenu.SuspendLayout();
             SuspendLayout();
             // 
             // imgHeaderDivider
@@ -261,7 +269,7 @@ namespace SleepyTime_2._0
             btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnMinimize.Font = new System.Drawing.Font("JetBrains Mono", 14.25F);
             btnMinimize.ForeColor = System.Drawing.Color.White;
-            btnMinimize.Location = new System.Drawing.Point(672, 0);
+            btnMinimize.Location = new System.Drawing.Point(608, 0);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new System.Drawing.Size(65, 37);
             btnMinimize.TabIndex = 12;
@@ -2011,9 +2019,55 @@ namespace SleepyTime_2._0
             // 
             // ntfReminder
             // 
-            ntfReminder.Text = "notifyIcon1";
+            ntfReminder.BalloonTipTitle = "SleepyTime";
+            ntfReminder.ContextMenuStrip = cmsTrayMenu;
+            ntfReminder.Icon = (System.Drawing.Icon)resources.GetObject("ntfReminder.Icon");
+            ntfReminder.Text = "SleepyTme";
             ntfReminder.Visible = true;
             ntfReminder.BalloonTipClicked += ntfReminder_BalloonTipClicked;
+            // 
+            // cmsTrayMenu
+            // 
+            cmsTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { countdownToolStripMenuItem, scheduleToolStripMenuItem, presetsToolStripMenuItem, settingsToolStripMenuItem, closeSleepyTimeToolStripMenuItem });
+            cmsTrayMenu.Name = "cmsTrayMenu";
+            cmsTrayMenu.Size = new System.Drawing.Size(168, 114);
+            cmsTrayMenu.Text = "SleepyTime";
+            cmsTrayMenu.Opening += cmsTrayMenu_Opening;
+            // 
+            // countdownToolStripMenuItem
+            // 
+            countdownToolStripMenuItem.Name = "countdownToolStripMenuItem";
+            countdownToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            countdownToolStripMenuItem.Text = "Countdown";
+            countdownToolStripMenuItem.Click += countdownToolStripMenuItem_Click;
+            // 
+            // scheduleToolStripMenuItem
+            // 
+            scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
+            scheduleToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            scheduleToolStripMenuItem.Text = "Schedule";
+            scheduleToolStripMenuItem.Click += scheduleToolStripMenuItem_Click;
+            // 
+            // presetsToolStripMenuItem
+            // 
+            presetsToolStripMenuItem.Name = "presetsToolStripMenuItem";
+            presetsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            presetsToolStripMenuItem.Text = "Presets";
+            presetsToolStripMenuItem.Click += presetsToolStripMenuItem_Click;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            settingsToolStripMenuItem.Text = "Settings";
+            settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+            // 
+            // closeSleepyTimeToolStripMenuItem
+            // 
+            closeSleepyTimeToolStripMenuItem.Name = "closeSleepyTimeToolStripMenuItem";
+            closeSleepyTimeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            closeSleepyTimeToolStripMenuItem.Text = "Close SleepyTime";
+            closeSleepyTimeToolStripMenuItem.Click += closeSleepyTimeToolStripMenuItem_Click;
             // 
             // tmrCurrentTime
             // 
@@ -2036,12 +2090,28 @@ namespace SleepyTime_2._0
             // 
             tmrPreset.Tick += tmrPreset_Tick;
             // 
+            // btnMinToTray
+            // 
+            btnMinToTray.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
+            btnMinToTray.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnMinToTray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMinToTray.Font = new System.Drawing.Font("JetBrains Mono", 14.25F);
+            btnMinToTray.ForeColor = System.Drawing.Color.White;
+            btnMinToTray.Location = new System.Drawing.Point(672, 0);
+            btnMinToTray.Name = "btnMinToTray";
+            btnMinToTray.Size = new System.Drawing.Size(65, 37);
+            btnMinToTray.TabIndex = 29;
+            btnMinToTray.Text = "↓";
+            btnMinToTray.UseVisualStyleBackColor = false;
+            btnMinToTray.Click += btnMinToTray_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             ClientSize = new System.Drawing.Size(797, 454);
+            Controls.Add(btnMinToTray);
             Controls.Add(imgTimeAnimation);
             Controls.Add(lblTimeTitle);
             Controls.Add(label1);
@@ -2073,6 +2143,7 @@ namespace SleepyTime_2._0
             Text = "SleepyTime";
             Load += frmMain_Load;
             Paint += frmMain_Paint;
+            Resize += frmMain_Resize;
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -2104,6 +2175,7 @@ namespace SleepyTime_2._0
             pnlHelp.ResumeLayout(false);
             pnlHelp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)imgHelpImage).EndInit();
+            cmsTrayMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -2249,6 +2321,13 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.PictureBox imgHelpImage;
         private RoundedButton btnHelpOther;
         private System.Windows.Forms.RichTextBox txtHelpInfo;
+        private System.Windows.Forms.ContextMenuStrip cmsTrayMenu;
+        private System.Windows.Forms.ToolStripMenuItem countdownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scheduleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem presetsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeSleepyTimeToolStripMenuItem;
+        private System.Windows.Forms.Button btnMinToTray;
     }
 }
 

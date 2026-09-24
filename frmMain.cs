@@ -663,7 +663,7 @@ namespace SleepyTime_2._0
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?\n\nScheduled actions will not occur when SleepyTime is closed.", "Close SleepyTime", MessageBoxButtons.YesNo);
+            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?\n\nIt is recommended that you instead Minimize to Tray\nScheduled actions will not occur when SleepyTime is closed.", "Close SleepyTime", MessageBoxButtons.YesNo);
             {
                 if (exitBox == DialogResult.Yes)
                 {
@@ -803,7 +803,7 @@ namespace SleepyTime_2._0
 
                     txtHours.ReadOnly = true;
                     txtMinutes.ReadOnly = true;
-                    txtSeconds.ReadOnly = true;                    
+                    txtSeconds.ReadOnly = true;
 
                     btnQuick1.Enabled = false;
                     btnQuick2.Enabled = false;
@@ -1505,6 +1505,7 @@ namespace SleepyTime_2._0
         private void ntfReminder_BalloonTipClicked(object sender, EventArgs e)
         {
             //open sleepytime again.
+            this.Show();
             this.WindowState = FormWindowState.Normal;
         }
 
@@ -1531,6 +1532,9 @@ namespace SleepyTime_2._0
 
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.FlatAppearance.BorderSize = 0;
+
+            btnMinToTray.FlatStyle = FlatStyle.Flat;
+            btnMinToTray.FlatAppearance.BorderSize = 0;
 
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.FlatAppearance.BorderSize = 0;
@@ -2160,7 +2164,7 @@ namespace SleepyTime_2._0
                         "You can cancel the timer by selecting the \"Cancel Countdown\" button. Additionally, the timer can be cleared using the \"CLR\" button.\n\n" +
                         "There are quick timers for 15 minutes, 30 minutes, 1 hour and 2 hours. To save you having to manually type in these times.\n\n" +
                         "Finally, you can change the layout of this menu in the settings menu, functional view will be the same as in the image above," +
-                        " minimal view will remove the quick timers and quick actions, decluttering the menu.";                    
+                        " minimal view will remove the quick timers and quick actions, decluttering the menu.";
                     break;
 
                 case "Schedule":
@@ -2236,6 +2240,69 @@ namespace SleepyTime_2._0
         private void btnHelpOther_Click(object sender, EventArgs e)
         {
             loadHelp("Other");
+        }
+
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            if (this.Visible == false)
+            {
+                ntfReminder.Visible = true;
+            }
+            else
+            {
+                ntfReminder.Visible = false;
+            }
+        }
+
+        private void btnMinToTray_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
+            ntfReminder.Text = "Some Text";
+            ntfReminder.BalloonTipTitle = "SleepyTime has been Minimized to the System Tray";
+            ntfReminder.BalloonTipText = "Click to open SleepyTime";
+            ntfReminder.Visible = true;
+            ntfReminder.ShowBalloonTip(60000);
+        }
+
+        private void countdownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSidebarCountdown.PerformClick();
+        }
+
+        private void scheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSidebarSchedule.PerformClick();
+        }
+
+        private void presetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSideBarPresets.PerformClick();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSideBarSettings.PerformClick();
+        }
+
+        private void cmsTrayMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void closeSleepyTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?\n\nScheduled actions will not occur when SleepyTime is closed.", "Close SleepyTime", MessageBoxButtons.YesNo);
+            {
+                if (exitBox == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }
