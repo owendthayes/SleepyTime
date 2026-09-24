@@ -803,7 +803,7 @@ namespace SleepyTime_2._0
 
                     txtHours.ReadOnly = true;
                     txtMinutes.ReadOnly = true;
-                    txtSeconds.ReadOnly = true;
+                    txtSeconds.ReadOnly = true;                    
 
                     btnQuick1.Enabled = false;
                     btnQuick2.Enabled = false;
@@ -1524,6 +1524,7 @@ namespace SleepyTime_2._0
             cmbPresetTime.SelectedIndex = 0;
             cmbPresetAction.SelectedIndex = 0;
             cmbPresetRepeat.SelectedIndex = 0;
+            txtHelpInfo.ReadOnly = true;
 
             btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
@@ -2136,30 +2137,45 @@ namespace SleepyTime_2._0
 
         private void loadHelp(string helpType)
         {
+            string countdownImage = Path.GetFullPath("Resources\\CountdownScreen.png");
+            string scheduleImage = Path.GetFullPath("Resources\\ScheduleScreen.png");
+            string presetsImage = Path.GetFullPath("Resources\\PresetScreen.png");
+            string settingsImage = Path.GetFullPath("Resources\\SettingsScreen.png");
+            string otherImage = Path.GetFullPath("Resources\\SleepyTimeImgBlack.png");
+
             switch (helpType)
             {
                 case "Countdown":
                     //change help image
+                    imgHelpImage.Image = Image.FromFile(countdownImage);
+
                     //change help text
                     break;
 
                 case "Schedule":
                     //change help image
+                    imgHelpImage.Image = Image.FromFile(scheduleImage);
+
                     //change help text
                     break;
 
                 case "Presets":
                     //change help image
+                    imgHelpImage.Image = Image.FromFile(presetsImage);
+
                     //change help text
                     break;
 
                 case "Settings":
                     //change help image
+                    imgHelpImage.Image = Image.FromFile(settingsImage);
+
                     //change help text
                     break;
 
                 case "Other":
                     //change help image
+                    imgHelpImage.Image = Image.FromFile(otherImage);
                     //change help text
                     break;
             }
