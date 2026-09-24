@@ -881,6 +881,8 @@ namespace SleepyTime_2._0
             else
             {
                 tmrCountDown.Stop();
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
                 countdownEnded = true;
                 btnStartCountdown.Enabled = true;
                 btnStartCountdown.PerformClick();
@@ -1507,6 +1509,9 @@ namespace SleepyTime_2._0
             //open sleepytime again.
             this.Show();
             this.WindowState = FormWindowState.Normal;
+
+            //open it in the centre of the screen again.
+            this.CenterToScreen();
         }
 
         private void tmrCurrentTime_Tick(object sender, EventArgs e)
