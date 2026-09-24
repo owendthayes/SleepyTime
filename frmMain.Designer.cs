@@ -170,13 +170,14 @@ namespace SleepyTime_2._0
             countdownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             presetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            lmaoToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            lOLToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             closeSleepyTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             tmrCurrentTime = new System.Windows.Forms.Timer(components);
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
             btnMinToTray = new System.Windows.Forms.Button();
-            lmaoToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1909,15 +1910,16 @@ namespace SleepyTime_2._0
             // 
             btnHelpOther.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnHelpOther.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpOther.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpOther.FlatAppearance.BorderSize = 0;
             btnHelpOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpOther.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnHelpOther.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpOther.Location = new System.Drawing.Point(9, 181);
+            btnHelpOther.Location = new System.Drawing.Point(14, 41);
             btnHelpOther.Name = "btnHelpOther";
             btnHelpOther.Size = new System.Drawing.Size(215, 28);
             btnHelpOther.TabIndex = 35;
-            btnHelpOther.Text = "Other";
+            btnHelpOther.Text = "General";
             btnHelpOther.UseVisualStyleBackColor = false;
             btnHelpOther.Click += btnHelpOther_Click;
             // 
@@ -1925,11 +1927,12 @@ namespace SleepyTime_2._0
             // 
             btnHelpSettings.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnHelpSettings.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpSettings.FlatAppearance.BorderSize = 0;
             btnHelpSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpSettings.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnHelpSettings.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpSettings.Location = new System.Drawing.Point(9, 145);
+            btnHelpSettings.Location = new System.Drawing.Point(14, 175);
             btnHelpSettings.Name = "btnHelpSettings";
             btnHelpSettings.Size = new System.Drawing.Size(215, 28);
             btnHelpSettings.TabIndex = 34;
@@ -1941,11 +1944,12 @@ namespace SleepyTime_2._0
             // 
             btnHelpPresets.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnHelpPresets.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpPresets.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpPresets.FlatAppearance.BorderSize = 0;
             btnHelpPresets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpPresets.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnHelpPresets.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpPresets.Location = new System.Drawing.Point(9, 111);
+            btnHelpPresets.Location = new System.Drawing.Point(14, 141);
             btnHelpPresets.Name = "btnHelpPresets";
             btnHelpPresets.Size = new System.Drawing.Size(215, 28);
             btnHelpPresets.TabIndex = 33;
@@ -1957,11 +1961,12 @@ namespace SleepyTime_2._0
             // 
             btnHelpSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnHelpSchedule.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpSchedule.FlatAppearance.BorderSize = 0;
             btnHelpSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpSchedule.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnHelpSchedule.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpSchedule.Location = new System.Drawing.Point(9, 77);
+            btnHelpSchedule.Location = new System.Drawing.Point(14, 107);
             btnHelpSchedule.Name = "btnHelpSchedule";
             btnHelpSchedule.Size = new System.Drawing.Size(215, 28);
             btnHelpSchedule.TabIndex = 32;
@@ -1984,11 +1989,12 @@ namespace SleepyTime_2._0
             // 
             btnHelpCountdown.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnHelpCountdown.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpCountdown.FlatAppearance.BorderSize = 0;
             btnHelpCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpCountdown.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnHelpCountdown.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpCountdown.Location = new System.Drawing.Point(9, 45);
+            btnHelpCountdown.Location = new System.Drawing.Point(14, 75);
             btnHelpCountdown.Name = "btnHelpCountdown";
             btnHelpCountdown.Size = new System.Drawing.Size(215, 28);
             btnHelpCountdown.TabIndex = 0;
@@ -2016,44 +2022,54 @@ namespace SleepyTime_2._0
             // 
             // cmsTrayMenu
             // 
-            cmsTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { countdownToolStripMenuItem, scheduleToolStripMenuItem, presetsToolStripMenuItem, settingsToolStripMenuItem, lmaoToolStripMenuItem, closeSleepyTimeToolStripMenuItem });
+            cmsTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { countdownToolStripMenuItem, scheduleToolStripMenuItem, presetsToolStripMenuItem, lmaoToolStripMenuItem, settingsToolStripMenuItem, lOLToolStripMenuItem, closeSleepyTimeToolStripMenuItem });
             cmsTrayMenu.Name = "cmsTrayMenu";
-            cmsTrayMenu.Size = new System.Drawing.Size(181, 142);
+            cmsTrayMenu.Size = new System.Drawing.Size(168, 126);
             cmsTrayMenu.Text = "SleepyTime";
             cmsTrayMenu.Opening += cmsTrayMenu_Opening;
             // 
             // countdownToolStripMenuItem
             // 
             countdownToolStripMenuItem.Name = "countdownToolStripMenuItem";
-            countdownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            countdownToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             countdownToolStripMenuItem.Text = "Countdown";
             countdownToolStripMenuItem.Click += countdownToolStripMenuItem_Click;
             // 
             // scheduleToolStripMenuItem
             // 
             scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            scheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            scheduleToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             scheduleToolStripMenuItem.Text = "Schedule";
             scheduleToolStripMenuItem.Click += scheduleToolStripMenuItem_Click;
             // 
             // presetsToolStripMenuItem
             // 
             presetsToolStripMenuItem.Name = "presetsToolStripMenuItem";
-            presetsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            presetsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             presetsToolStripMenuItem.Text = "Presets";
             presetsToolStripMenuItem.Click += presetsToolStripMenuItem_Click;
+            // 
+            // lmaoToolStripMenuItem
+            // 
+            lmaoToolStripMenuItem.Name = "lmaoToolStripMenuItem";
+            lmaoToolStripMenuItem.Size = new System.Drawing.Size(164, 6);
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            settingsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             settingsToolStripMenuItem.Text = "Settings";
             settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
+            // 
+            // lOLToolStripMenuItem
+            // 
+            lOLToolStripMenuItem.Name = "lOLToolStripMenuItem";
+            lOLToolStripMenuItem.Size = new System.Drawing.Size(164, 6);
             // 
             // closeSleepyTimeToolStripMenuItem
             // 
             closeSleepyTimeToolStripMenuItem.Name = "closeSleepyTimeToolStripMenuItem";
-            closeSleepyTimeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            closeSleepyTimeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             closeSleepyTimeToolStripMenuItem.Text = "Close SleepyTime";
             closeSleepyTimeToolStripMenuItem.Click += closeSleepyTimeToolStripMenuItem_Click;
             // 
@@ -2083,7 +2099,7 @@ namespace SleepyTime_2._0
             btnMinToTray.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             btnMinToTray.Cursor = System.Windows.Forms.Cursors.Hand;
             btnMinToTray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnMinToTray.Font = new System.Drawing.Font("JetBrains Mono", 14.25F);
+            btnMinToTray.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnMinToTray.ForeColor = System.Drawing.Color.White;
             btnMinToTray.Location = new System.Drawing.Point(672, 0);
             btnMinToTray.Name = "btnMinToTray";
@@ -2092,11 +2108,8 @@ namespace SleepyTime_2._0
             btnMinToTray.Text = "↓";
             btnMinToTray.UseVisualStyleBackColor = false;
             btnMinToTray.Click += btnMinToTray_Click;
-            // 
-            // lmaoToolStripMenuItem
-            // 
-            lmaoToolStripMenuItem.Name = "lmaoToolStripMenuItem";
-            lmaoToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            btnMinToTray.MouseEnter += btnMinToTray_MouseEnter;
+            btnMinToTray.MouseLeave += btnMinToTray_MouseLeave;
             // 
             // frmMain
             // 
@@ -2123,8 +2136,8 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlSettings);
             Controls.Add(pnlHelp);
+            Controls.Add(pnlSettings);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlPresets);
             Controls.Add(pnlCountdown);
@@ -2321,6 +2334,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ToolStripMenuItem closeSleepyTimeToolStripMenuItem;
         private System.Windows.Forms.Button btnMinToTray;
         private System.Windows.Forms.ToolStripSeparator lmaoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator lOLToolStripMenuItem;
     }
 }
 

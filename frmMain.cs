@@ -1535,7 +1535,7 @@ namespace SleepyTime_2._0
             cmbPresetAction.SelectedIndex = 0;
             cmbPresetRepeat.SelectedIndex = 0;
             txtHelpInfo.ReadOnly = true;
-            btnHelpCountdown.PerformClick();
+            btnHelpOther.PerformClick();
 
             btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
@@ -2155,7 +2155,7 @@ namespace SleepyTime_2._0
             string scheduleImage = Path.GetFullPath("Resources\\ScheduleScreen.png");
             string presetsImage = Path.GetFullPath("Resources\\PresetScreen.png");
             string settingsImage = Path.GetFullPath("Resources\\SettingsScreen.png");
-            string otherImage = Path.GetFullPath("Resources\\SleepyTimeImgBlack.png");
+            string otherImage = Path.GetFullPath("Resources\\SleepyTime.png");
 
             txtHelpInfo.Clear();
 
@@ -2221,7 +2221,11 @@ namespace SleepyTime_2._0
                     imgHelpImage.Image = Image.FromFile(otherImage);
 
                     //change help text
-                    txtHelpInfo.Text = "TBD";
+                    txtHelpInfo.Text = "General Information\n\n" +
+                        "Using the \"x\", \"-\" and \"↓\" you can close, minimise and minimise SleepyTime to the system tray respectively.\n\n" +
+                        "SleepyTime must be open in some form for actions to be able to occur, therefore it is recommend to minimise it to the system tray when not in immediate use.\n\n" +
+                        " This will ensure that scheduled and preset actions will still happen when they are supposed to.\n\n" +
+                        "If you experience any bugs while using SleepyTime please be sure to report them using the \"Report a bug\" link below the \"Help\" button on the sidebar.";
                     break;
             }
         }
@@ -2267,7 +2271,7 @@ namespace SleepyTime_2._0
         {
             this.Hide();
             ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
-            ntfReminder.Text = "Some Text";
+            ntfReminder.Text = "SleepyTime";
             ntfReminder.BalloonTipTitle = "SleepyTime has been Minimized to the System Tray";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
             ntfReminder.Visible = true;
@@ -2312,6 +2316,16 @@ namespace SleepyTime_2._0
                     Application.Exit();
                 }
             }
+        }
+
+        private void btnMinToTray_MouseEnter(object sender, EventArgs e)
+        {
+            btnMinToTray.BackColor = secondaryAccent;
+        }
+
+        private void btnMinToTray_MouseLeave(object sender, EventArgs e)
+        {
+            btnMinToTray.BackColor = Color.FromArgb(13, 15, 28);
         }
     }
 }
