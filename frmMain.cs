@@ -1525,6 +1525,7 @@ namespace SleepyTime_2._0
             cmbPresetAction.SelectedIndex = 0;
             cmbPresetRepeat.SelectedIndex = 0;
             txtHelpInfo.ReadOnly = true;
+            btnHelpCountdown.PerformClick();
 
             btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
@@ -2143,6 +2144,8 @@ namespace SleepyTime_2._0
             string settingsImage = Path.GetFullPath("Resources\\SettingsScreen.png");
             string otherImage = Path.GetFullPath("Resources\\SleepyTimeImgBlack.png");
 
+            txtHelpInfo.Clear();
+
             switch (helpType)
             {
                 case "Countdown":
@@ -2150,6 +2153,14 @@ namespace SleepyTime_2._0
                     imgHelpImage.Image = Image.FromFile(countdownImage);
 
                     //change help text
+                    txtHelpInfo.Text = "Countdown\n\n" +
+                        "Here you can choose a specific action using the drop down box at the top of the screen." +
+                        " Once an action has been chosen either type in or use the quick action buttons to set the desired time.\n\n" +
+                        "Click the \"Start Countdown\" button to begin the timer. Once the timer reaches zero, the action will occur.\n\n" +
+                        "You can cancel the timer by selecting the \"Cancel Countdown\" button. Additionally, the timer can be cleared using the \"CLR\" button.\n\n" +
+                        "There are quick timers for 15 minutes, 30 minutes, 1 hour and 2 hours. To save you having to manually type in these times.\n\n" +
+                        "Finally, you can change the layout of this menu in the settings menu, functional view will be the same as in the image above," +
+                        " minimal view will remove the quick timers and quick actions, decluttering the menu.";                    
                     break;
 
                 case "Schedule":
@@ -2157,6 +2168,12 @@ namespace SleepyTime_2._0
                     imgHelpImage.Image = Image.FromFile(scheduleImage);
 
                     //change help text
+                    txtHelpInfo.Text = "Schedule\n\n" +
+                        "Here you can set an action to occur at a specific date and time. Fill out the boxes at the top of the screen.\n\n" +
+                        "Set the action, date, time and reminder then click the \"Save\" button to save the scheduled item.\n\n" +
+                        "You will be reminded before the action occurs if you have chosen to set a reminder. This reminder will" +
+                        " be in the form of a Windows pop-up notification at the bottom right of your screen.\n\n" +
+                        "Saved items can also be edited and deleted using the \"✎\" and \"🗑\" buttons respectively.";
                     break;
 
                 case "Presets":
@@ -2164,6 +2181,13 @@ namespace SleepyTime_2._0
                     imgHelpImage.Image = Image.FromFile(presetsImage);
 
                     //change help text
+                    txtHelpInfo.Text = "Presets\n\n" +
+                        "Using the presets menu you can set recurring actions on your computer, either every day or only on certain days," +
+                        " specific times are also set here, so you can choose exactly when the actions will occur.\n\n" +
+                        "To create a preset, first fill out the Name, Action, Days and Time, the action can also be saved as on or off. " +
+                        "After filling out the boxes click the \"Save\" button to save your preset.\n\n" +
+                        "Items can then be toggled off and on using the toggle buttons on each item. Additionally, items can be edited or deleted" +
+                        " using the \"✎\" and \"🗑\" buttons respectively.";
                     break;
 
                 case "Settings":
@@ -2171,12 +2195,20 @@ namespace SleepyTime_2._0
                     imgHelpImage.Image = Image.FromFile(settingsImage);
 
                     //change help text
+                    txtHelpInfo.Text = "Settings\n\n" +
+                        "SleepyTime can be customised to your own preferences, from the settings menu you can change the accent colour, dark mode or light mode," +
+                        " the layout of the Countdown menu and other things.\n\nOnce you have made changes to your settings, make sure to hit \"Save Changes\" to apply" +
+                        " your new settings.\n\nYou can also change the app's behaviours such as keeping it \"Always on top\" meaning that it will not be hidden" +
+                        " underneath other open programs, additionally you can change what happens when you close the app.\n\n" +
+                        "Allowing the app to fully close will mean actions will be unable to occur, whereas just allowing it to minimise will allow the actions to occur.";
                     break;
 
                 case "Other":
                     //change help image
                     imgHelpImage.Image = Image.FromFile(otherImage);
+
                     //change help text
+                    txtHelpInfo.Text = "TBD";
                     break;
             }
         }
