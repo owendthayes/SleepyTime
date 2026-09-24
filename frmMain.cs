@@ -17,6 +17,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Diagnostics.Tracing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms.VisualStyles;
+using Microsoft.Win32;
 
 namespace SleepyTime_2._0
 {
@@ -60,6 +61,7 @@ namespace SleepyTime_2._0
         private Color secondaryTextColor = Color.FromArgb(177, 178, 181);
 
         private string countDownLayout = "";
+        private bool openOnStartup = false;
 
         Color primaryTheme;
         Color secondaryTheme;
@@ -85,6 +87,9 @@ namespace SleepyTime_2._0
             readSettingsFile();
             readPresetFile();
             readScheduleFile();
+
+            //check if the app should still be run at startup
+            SetStartup();
 
             //apply data from saved files.
             getAccentColour();
@@ -223,9 +228,10 @@ namespace SleepyTime_2._0
                 File.WriteAllLines("Settings.txt", new[]
                 {
                     "purple",
+                    "true",
                     "false",
-                    "false",
-                    "functional"
+                    "functional",
+                    "false"
                 });
                 //settingsFile = Path.GetFullPath("Settings.txt");
             }
@@ -259,7 +265,7 @@ namespace SleepyTime_2._0
             tglAOT.Checked = bool.Parse(settings[1]);
             this.TopMost = bool.Parse(settings[1]);
 
-            tglDarkMode.Checked = bool.Parse(settings[2]);
+            tglDarkMode.Checked = !bool.Parse(settings[2]);
             switch (settings[2])
             {
                 case "False":
@@ -284,6 +290,19 @@ namespace SleepyTime_2._0
             }
             applyCountDownLayout();
 
+
+            switch (settings[4])
+            {
+                case "false":
+                    openOnStartup = false;
+                    break;
+
+                case "true":
+                    openOnStartup = true;
+                    break;
+            }
+
+            tglStartUp.Checked = openOnStartup;
 
             applyDarkMode(mainTheme);
         }
@@ -1117,13 +1136,16 @@ namespace SleepyTime_2._0
             }
             applyCountDownLayout();
 
+            openOnStartup = tglStartUp.Checked;
+
             //save settings
             File.WriteAllLines("Settings.txt", new[]
             {
                 accentColour,
                 tglAOT.Checked.ToString(),
                 tglDarkMode.Checked.ToString(),
-                countDownLayout
+                countDownLayout,
+                tglStartUp.Checked.ToString()
             });
         }
 
@@ -2326,6 +2348,23 @@ namespace SleepyTime_2._0
         private void btnMinToTray_MouseLeave(object sender, EventArgs e)
         {
             btnMinToTray.BackColor = Color.FromArgb(13, 15, 28);
+        }
+
+
+        //this does not work currently
+        private void SetStartup()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (openOnStartup)
+            {
+                rk.SetValue("SleepyTime", Application.ExecutablePath);
+            }
+            else
+            {
+                rk.DeleteValue("SleepyTime", false);
+            }
         }
     }
 }

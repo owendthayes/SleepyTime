@@ -131,6 +131,7 @@ namespace SleepyTime_2._0
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
+            tglStartUp = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             btnQuickHelpSettings = new RoundedButton();
             label44 = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
@@ -1550,6 +1551,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            pnlSettings.Controls.Add(tglStartUp);
             pnlSettings.Controls.Add(btnQuickHelpSettings);
             pnlSettings.Controls.Add(label44);
             pnlSettings.Controls.Add(label43);
@@ -1567,6 +1569,19 @@ namespace SleepyTime_2._0
             pnlSettings.Name = "pnlSettings";
             pnlSettings.Size = new System.Drawing.Size(673, 385);
             pnlSettings.TabIndex = 25;
+            // 
+            // tglStartUp
+            // 
+            tglStartUp.Location = new System.Drawing.Point(430, 248);
+            tglStartUp.MinimumSize = new System.Drawing.Size(45, 22);
+            tglStartUp.Name = "tglStartUp";
+            tglStartUp.OffBackColor = System.Drawing.Color.Gray;
+            tglStartUp.OffToggleColor = System.Drawing.Color.Gainsboro;
+            tglStartUp.OnBackColor = System.Drawing.Color.Purple;
+            tglStartUp.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            tglStartUp.Size = new System.Drawing.Size(67, 22);
+            tglStartUp.TabIndex = 63;
+            tglStartUp.UseVisualStyleBackColor = true;
             // 
             // btnQuickHelpSettings
             // 
@@ -2136,8 +2151,8 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlHelp);
             Controls.Add(pnlSettings);
+            Controls.Add(pnlHelp);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlPresets);
             Controls.Add(pnlCountdown);
@@ -2335,6 +2350,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Button btnMinToTray;
         private System.Windows.Forms.ToolStripSeparator lmaoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator lOLToolStripMenuItem;
+        private Custom_Controls.ToggleButton tglStartUp;
     }
 }
 
