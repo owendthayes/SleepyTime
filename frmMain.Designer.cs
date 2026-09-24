@@ -132,7 +132,6 @@ namespace SleepyTime_2._0
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
             btnQuickHelpSettings = new RoundedButton();
-            label45 = new System.Windows.Forms.Label();
             label44 = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
@@ -1550,7 +1549,6 @@ namespace SleepyTime_2._0
             // pnlSettings
             // 
             pnlSettings.Controls.Add(btnQuickHelpSettings);
-            pnlSettings.Controls.Add(label45);
             pnlSettings.Controls.Add(label44);
             pnlSettings.Controls.Add(label43);
             pnlSettings.Controls.Add(label9);
@@ -1583,17 +1581,6 @@ namespace SleepyTime_2._0
             btnQuickHelpSettings.Text = "Help";
             btnQuickHelpSettings.UseVisualStyleBackColor = false;
             btnQuickHelpSettings.Click += btnQuickHelpSettings_Click;
-            // 
-            // label45
-            // 
-            label45.AutoSize = true;
-            label45.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            label45.ForeColor = System.Drawing.Color.White;
-            label45.Location = new System.Drawing.Point(196, 285);
-            label45.Name = "label45";
-            label45.Size = new System.Drawing.Size(150, 21);
-            label45.TabIndex = 56;
-            label45.Text = "Exit Behaviour";
             // 
             // label44
             // 
@@ -2130,8 +2117,8 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlHelp);
             Controls.Add(pnlSettings);
+            Controls.Add(pnlHelp);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlPresets);
             Controls.Add(pnlCountdown);
@@ -2306,7 +2293,6 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Panel pnlCountdownControls;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.PictureBox btnDonate;
         private RoundedButton btnQuickHelpCountdown;

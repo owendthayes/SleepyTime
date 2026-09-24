@@ -211,6 +211,7 @@ namespace SleepyTime_2._0
 
                 //MessageBox.Show("Added scheduled item");
             }
+            updateScheduleFile();
             //MessageBox.Show(scheduledItems[0].ToString());
             //MessageBox.Show(scheduledItems[1].ToString());
         }
@@ -463,7 +464,7 @@ namespace SleepyTime_2._0
             //MessageBox.Show($"NOW: {DateTime.Now.ToString(@"dd/MM/yyyy HH:mm")}\nREMINDER: {soonestReminder.ToString(@"dd/MM/yyyy HH:mm")}");
 
             //if the time now matches the reminder time then send the reminder.
-            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm") && Convert.ToBoolean(soonestItemReminder.Reminder) == false)
+            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm") && Convert.ToBoolean(soonestItemReminder.ReminderSent) == false)
             {
                 sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
                 scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
@@ -558,6 +559,9 @@ namespace SleepyTime_2._0
 
             //show the notification for one minute, not working.
             ntfReminder.ShowBalloonTip(60000);
+
+            //disable the edit button for this item SOMEHOW??.
+
 
             updateScheduleFile();
             updateScheduleUI();
