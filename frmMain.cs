@@ -1123,6 +1123,7 @@ namespace SleepyTime_2._0
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
+            unsavedChanges = false;
             switch (cmbAccent.SelectedIndex)
             {
                 case 0: //purple
@@ -1193,7 +1194,7 @@ namespace SleepyTime_2._0
             prevSettings[3] = countDownLayout.ToLower();
             prevSettings[4] = tglStartUp.Checked.ToString().ToLower();
 
-            unsavedChanges = false;
+
         }
 
         private void applyCountDownLayout()
