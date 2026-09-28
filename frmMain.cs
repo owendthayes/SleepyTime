@@ -51,6 +51,7 @@ namespace SleepyTime_2._0
 
         //APP SETTINGS
         private string settingsFile;
+        private bool unsavedChanges;
 
         //COLOUR THEME
         private string accentColour = "purple";
@@ -79,6 +80,8 @@ namespace SleepyTime_2._0
         private string[] reminderMins = { "0", "5", "10", "15", "30", "60", "120" };
         private string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
+        private string[] prevSettings;
+
         public frmMain()
         {
             InitializeComponent();
@@ -89,7 +92,7 @@ namespace SleepyTime_2._0
             readScheduleFile();
 
             //check if the app should still be run at startup
-            SetStartup();
+            //SetStartup();
 
             //apply data from saved files.
             getAccentColour();
@@ -265,7 +268,7 @@ namespace SleepyTime_2._0
             tglAOT.Checked = bool.Parse(settings[1]);
             this.TopMost = bool.Parse(settings[1]);
 
-            tglDarkMode.Checked = !bool.Parse(settings[2]);
+            tglDarkMode.Checked = bool.Parse(settings[2]);
             switch (settings[2])
             {
                 case "False":
@@ -303,6 +306,13 @@ namespace SleepyTime_2._0
             }
 
             tglStartUp.Checked = openOnStartup;
+
+            prevSettings = settings;
+
+            for (int i = 0; i < 5; i ++)
+            {
+                prevSettings[i] = settings[i].ToLower();
+            }
 
             applyDarkMode(mainTheme);
         }
@@ -697,6 +707,22 @@ namespace SleepyTime_2._0
 
         private void greyOutSidebar()
         {
+            if (unsavedChanges)
+            {
+                DialogResult exitBox = MessageBox.Show("You have unsaved changes, would you like to save?", "Save Settings", MessageBoxButtons.YesNo);
+                {
+                    if (exitBox == DialogResult.Yes)
+                    {
+                        unsavedChanges = false;
+                        btnSaveSettings.PerformClick();
+                    }
+                    else
+                    {
+                        readSettingsFile();
+                    }
+                }
+                unsavedChanges = false;
+            }
 
             btnSidebarAbout.ForeColor = secondaryTextColor;
             btnSidebarCountdown.ForeColor = secondaryTextColor;
@@ -961,6 +987,7 @@ namespace SleepyTime_2._0
             UpdateTimerDisplay();
         }
 
+        //check for changes in settings here, also add user feedback for when changes are saved.
         private void tmrValidation_Tick(object sender, EventArgs e)
         {
             if ((string.IsNullOrEmpty(txtHours.Text) || txtHours.Text == "00" || txtHours.Text == "0") && (string.IsNullOrEmpty(txtMinutes.Text) || txtMinutes.Text == "00" || txtMinutes.Text == "0") && (string.IsNullOrEmpty(txtSeconds.Text) || txtSeconds.Text == "00" || txtSeconds.Text == "0"))
@@ -970,6 +997,18 @@ namespace SleepyTime_2._0
             else
             {
                 btnStartCountdown.Enabled = true;
+            }
+
+            //check if the values have been changed in settings
+            string[] currSettings = { cmbAccent.Text.ToLower(), tglAOT.Checked.ToString().ToLower(), tglDarkMode.Checked.ToString().ToLower(), cmbCountdownLayout.Text.ToLower(), tglStartUp.Checked.ToString().ToLower() };
+            if (pnlSettings.Visible == true)
+            {
+                //only enable the save button if changes have actually been made.
+                btnSaveSettings.Enabled = !Enumerable.SequenceEqual(prevSettings, currSettings);
+
+                //if the user naviagtes somewhere else, first ask if they want to change save their changes.
+                unsavedChanges = !Enumerable.SequenceEqual(prevSettings, currSettings);
+
             }
         }
 
@@ -1147,6 +1186,14 @@ namespace SleepyTime_2._0
                 countDownLayout,
                 tglStartUp.Checked.ToString()
             });
+
+            prevSettings[0] = accentColour.ToLower();
+            prevSettings[1] = tglAOT.Checked.ToString().ToLower();
+            prevSettings[2] = tglDarkMode.Checked.ToString().ToLower();
+            prevSettings[3] = countDownLayout.ToLower();
+            prevSettings[4] = tglStartUp.Checked.ToString().ToLower();
+
+            unsavedChanges = false;
         }
 
         private void applyCountDownLayout()
@@ -1548,6 +1595,15 @@ namespace SleepyTime_2._0
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //prevent from running multiple instances.
+            System.Threading.Mutex mutex = new System.Threading.Mutex(false, Application.ProductName);
+            bool running = !mutex.WaitOne(0, false);
+            if (running)
+            {
+                Application.ExitThread();
+                return;
+            }
+
             cmbOperation.SelectedIndex = 0;
             cmbScheduleOperation.SelectedIndex = 0;
             cmbScheduleTime.SelectedIndex = 0;
@@ -2347,25 +2403,25 @@ namespace SleepyTime_2._0
 
         private void btnMinToTray_MouseLeave(object sender, EventArgs e)
         {
-            btnMinToTray.BackColor = Color.FromArgb(13, 15, 28);
+            btnMinToTray.BackColor = primaryTheme;
         }
 
 
         //this does not work currently
-        private void SetStartup()
-        {
-            RegistryKey rk = Registry.CurrentUser.OpenSubKey
-                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        //private void SetStartup()
+        //{
+        //    RegistryKey rk = Registry.CurrentUser.OpenSubKey
+        //        ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
-            if (openOnStartup)
-            {
-                rk.SetValue("SleepyTime", Application.ExecutablePath);
-            }
-            else
-            {
-                rk.DeleteValue("SleepyTime", false);
-            }
-        }
+        //    if (openOnStartup)
+        //    {
+        //        rk.SetValue("SleepyTime", Application.ExecutablePath);
+        //    }
+        //    else
+        //    {
+        //        rk.DeleteValue("SleepyTime", false);
+        //    }
+        //}
     }
 }
 

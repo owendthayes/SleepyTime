@@ -1712,6 +1712,7 @@ namespace SleepyTime_2._0
             // 
             btnSaveSettings.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnSaveSettings.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnSaveSettings.Enabled = false;
             btnSaveSettings.FlatAppearance.BorderSize = 0;
             btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaveSettings.Font = new System.Drawing.Font("JetBrains Mono", 12F);
