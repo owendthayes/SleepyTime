@@ -929,7 +929,7 @@ namespace SleepyTime_2._0
             label27.AutoSize = true;
             label27.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label27.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label27.Location = new System.Drawing.Point(503, 152);
+            label27.Location = new System.Drawing.Point(503, 155);
             label27.Name = "label27";
             label27.Size = new System.Drawing.Size(112, 16);
             label27.TabIndex = 41;
@@ -940,7 +940,7 @@ namespace SleepyTime_2._0
             label25.AutoSize = true;
             label25.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label25.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label25.Location = new System.Drawing.Point(365, 152);
+            label25.Location = new System.Drawing.Point(355, 155);
             label25.Name = "label25";
             label25.Size = new System.Drawing.Size(63, 16);
             label25.TabIndex = 40;
@@ -951,7 +951,7 @@ namespace SleepyTime_2._0
             label24.AutoSize = true;
             label24.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label24.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label24.Location = new System.Drawing.Point(276, 152);
+            label24.Location = new System.Drawing.Point(265, 156);
             label24.Name = "label24";
             label24.Size = new System.Drawing.Size(35, 16);
             label24.TabIndex = 39;
@@ -962,7 +962,7 @@ namespace SleepyTime_2._0
             label23.AutoSize = true;
             label23.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label23.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label23.Location = new System.Drawing.Point(168, 152);
+            label23.Location = new System.Drawing.Point(144, 156);
             label23.Name = "label23";
             label23.Size = new System.Drawing.Size(35, 16);
             label23.TabIndex = 38;
@@ -973,7 +973,7 @@ namespace SleepyTime_2._0
             label22.AutoSize = true;
             label22.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label22.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label22.Location = new System.Drawing.Point(61, 152);
+            label22.Location = new System.Drawing.Point(34, 155);
             label22.Name = "label22";
             label22.Size = new System.Drawing.Size(49, 16);
             label22.TabIndex = 37;
@@ -1001,9 +1001,9 @@ namespace SleepyTime_2._0
             pnlSavedSchedules.AutoScroll = true;
             pnlSavedSchedules.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             pnlSavedSchedules.Controls.Add(lblSavedItems);
-            pnlSavedSchedules.Location = new System.Drawing.Point(45, 171);
+            pnlSavedSchedules.Location = new System.Drawing.Point(20, 171);
             pnlSavedSchedules.Name = "pnlSavedSchedules";
-            pnlSavedSchedules.Size = new System.Drawing.Size(596, 198);
+            pnlSavedSchedules.Size = new System.Drawing.Size(638, 198);
             pnlSavedSchedules.TabIndex = 35;
             // 
             // lblSavedItems
@@ -1011,7 +1011,7 @@ namespace SleepyTime_2._0
             lblSavedItems.AutoSize = true;
             lblSavedItems.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             lblSavedItems.ForeColor = System.Drawing.Color.White;
-            lblSavedItems.Location = new System.Drawing.Point(199, 76);
+            lblSavedItems.Location = new System.Drawing.Point(231, 78);
             lblSavedItems.Name = "lblSavedItems";
             lblSavedItems.Size = new System.Drawing.Size(150, 21);
             lblSavedItems.TabIndex = 42;
@@ -2152,9 +2152,9 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlSchedule);
             Controls.Add(pnlSettings);
             Controls.Add(pnlHelp);
-            Controls.Add(pnlSchedule);
             Controls.Add(pnlPresets);
             Controls.Add(pnlCountdown);
             Controls.Add(pnlAbout);

@@ -1304,7 +1304,7 @@ namespace SleepyTime_2._0
                 Label lblTime = new Label
                 {
                     Text = item.Time.ToString(@"hh\:mm"),
-                    Location = new Point(225, 10),
+                    Location = new Point(235, 10),
                     AutoSize = true,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
@@ -1313,7 +1313,7 @@ namespace SleepyTime_2._0
                 Label lblReminder = new Label
                 {
                     Text = reminders[Convert.ToInt32(item.Reminder)],
-                    Location = new Point(310, 10),
+                    Location = new Point(325, 10),
                     AutoSize = true,
                     ForeColor = textColor,
                     Font = new Font("JetBrains Mono", 12),
@@ -1322,7 +1322,7 @@ namespace SleepyTime_2._0
                 RoundedButton btnEditSchedule = new RoundedButton
                 {
                     Text = "✎",
-                    Location = new Point(450, 5),
+                    Location = new Point(490, 5),
                     AutoSize = true,
                     ForeColor = primaryAccent,
                     BorderColor = primaryAccent,
@@ -1338,7 +1338,7 @@ namespace SleepyTime_2._0
                 RoundedButton btnDeleteSchedule = new RoundedButton
                 {
                     Text = "🗑",
-                    Location = new Point(500, 5),
+                    Location = new Point(540, 5),
                     AutoSize = true,
                     ForeColor = Color.FromArgb(247, 62, 62),
                     BorderColor = Color.FromArgb(247, 62, 62),
