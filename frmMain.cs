@@ -1698,7 +1698,7 @@ namespace SleepyTime_2._0
         {
             string name = "Unnamed Preset";
 
-            //validation here
+            //validation here, name cant be blank
             if (!string.IsNullOrEmpty(txtPresetName.Text))
             {
                 name = txtPresetName.Text;
@@ -1752,11 +1752,22 @@ namespace SleepyTime_2._0
                     MessageBox.Show($"This preset already exists under the name: {item.Name}");
                     return;
                 }
-                else if (cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")) &&
-                    selectedDays.SequenceEqual(itemDays))
+                else if (cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")))
                 {
-                    MessageBox.Show("You already have a preset action occuring on these days at this time");
-                    return;
+                    //if ALL days are the same
+                    if (selectedDays.SequenceEqual(itemDays))
+                    {
+                        MessageBox.Show("You already have a preset action occuring on these days at this time");
+                        return;
+                    }
+                    //if overlapping days are selected with the same time.
+                    var overlappingDays = selectedDays.Intersect(itemDays).ToList();
+                    
+                    if (overlappingDays.Count > 0)
+                    {
+                        MessageBox.Show($"This preset overlaps with another existing preset: {item.Name}");
+                        return;
+                    }
                 }
             }
 
