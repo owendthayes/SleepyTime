@@ -135,7 +135,7 @@ namespace SleepyTime_2._0
         {
             if (!File.Exists("Preset.txt"))
             {
-                File.Create("Preset.txt");
+                File.Create("Preset.txt").Dispose();
             }
 
             string[] lines = File.ReadAllLines("Preset.txt");
@@ -161,7 +161,7 @@ namespace SleepyTime_2._0
 
             if (!File.Exists("Schedule.txt"))
             {
-                File.Create("Schedule.txt");
+                File.Create("Schedule.txt").Dispose();
             }
 
             string[] lines = File.ReadAllLines("Schedule.txt");
@@ -216,12 +216,8 @@ namespace SleepyTime_2._0
                     MessageBox.Show("The date of one or more of your saved schedules has passed\nThey have been removed.", "Notice");
                     messageShown = true;
                 }
-
-                //MessageBox.Show("Added scheduled item");
             }
             updateScheduleFile();
-            //MessageBox.Show(scheduledItems[0].ToString());
-            //MessageBox.Show(scheduledItems[1].ToString());
         }
 
         private void readSettingsFile()
@@ -231,12 +227,11 @@ namespace SleepyTime_2._0
                 File.WriteAllLines("Settings.txt", new[]
                 {
                     "purple",
-                    "true",
                     "false",
+                    "true",
                     "functional",
                     "false"
                 });
-                //settingsFile = Path.GetFullPath("Settings.txt");
             }
 
             string[] settings = File.ReadAllLines("Settings.txt");
