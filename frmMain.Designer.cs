@@ -1914,7 +1914,7 @@ namespace SleepyTime_2._0
             // 
             imgHelpImage.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             imgHelpImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            imgHelpImage.Image = Properties.Resources.CountdownScreen;
+            imgHelpImage.Image = Properties.Resources.SleepyTimeImg;
             imgHelpImage.Location = new System.Drawing.Point(276, 33);
             imgHelpImage.Name = "imgHelpImage";
             imgHelpImage.Size = new System.Drawing.Size(322, 172);
@@ -2152,9 +2152,9 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlHelp);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlSettings);
-            Controls.Add(pnlHelp);
             Controls.Add(pnlPresets);
             Controls.Add(pnlCountdown);
             Controls.Add(pnlAbout);

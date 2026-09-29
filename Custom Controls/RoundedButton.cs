@@ -21,6 +21,7 @@ namespace SleepyTime_2._0
         [Category("Appearance")]
         [Description("The colour of the button border.")]
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color BorderColor
         {
             get { return borderColor; }

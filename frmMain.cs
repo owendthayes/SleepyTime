@@ -23,10 +23,6 @@ namespace SleepyTime_2._0
 {
     public partial class frmMain : Form
     {
-        //DELETE THIS LATER
-        private bool notifShown = false;
-
-
         //rounded borders values
         private int borderRadius = 30, BorderSize = 2;
 
@@ -50,7 +46,6 @@ namespace SleepyTime_2._0
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
         //APP SETTINGS
-        private string settingsFile;
         private bool unsavedChanges;
 
         //COLOUR THEME
@@ -68,9 +63,6 @@ namespace SleepyTime_2._0
         Color secondaryTheme;
 
         private bool quickActionsHidden = false;
-
-        //ALWAYS ON TOP
-        private bool formAOT = false;
 
         ScheduleItem scheduleEditTarget;
         PresetItem presetEditTarget;
@@ -380,7 +372,7 @@ namespace SleepyTime_2._0
                     c.ForeColor = primaryAccent;
                 }
 
-                if (c is RoundedButton button && c.Tag != "noColourChange" && c.ForeColor != Color.FromArgb(247, 62, 62))
+                if (c is RoundedButton button && c.ForeColor != Color.FromArgb(247, 62, 62))
                 {
                     button.BorderColor = primaryAccent;
                 }

@@ -20,6 +20,7 @@ namespace SleepyTime_2._0.Custom_Controls
         private Color offToggleColor = Color.Gainsboro;
 
         //properties
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color OnBackColor
         {
             get
@@ -33,6 +34,7 @@ namespace SleepyTime_2._0.Custom_Controls
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color OnToggleColor 
         {
             get
@@ -46,6 +48,7 @@ namespace SleepyTime_2._0.Custom_Controls
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color OffBackColor
         {
             get
@@ -59,6 +62,7 @@ namespace SleepyTime_2._0.Custom_Controls
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color OffToggleColor 
         {
             get
