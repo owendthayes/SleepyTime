@@ -496,6 +496,9 @@ namespace SleepyTime_2._0
             if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm") && Convert.ToBoolean(soonestItemReminder.ReminderSent) == false)
             {
                 sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
+                //disable the edit button.
+
+
                 scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
                 updateScheduleFile();
             }
@@ -586,14 +589,28 @@ namespace SleepyTime_2._0
             ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
 
+            soonest.ReminderSent = true;
+
             //show the notification for one minute, not working.
             ntfReminder.ShowBalloonTip(60000);
 
-            //disable the edit button for this item SOMEHOW??.
-
-
             updateScheduleFile();
             updateScheduleUI();
+
+            //disable the edit button for this item SOMEHOW??.
+            foreach (Control ctr in pnlSavedSchedules.Controls)
+            {
+                if (ctr is Panel pnl)
+                {
+                    RoundedButton btnEdit = pnl.Controls["btnEditSchedule"] as RoundedButton;
+
+                    if (btnEdit != null && btnEdit.Tag == soonest)
+                    {
+                        btnEdit.Enabled = false;
+                        break;
+                    }
+                }
+            }
         }
 
         //drag and drop functionality for header of form.
@@ -1314,7 +1331,8 @@ namespace SleepyTime_2._0
                     Width = 25,
                     Height = 25,
                     Cursor = Cursors.Hand,
-                    Tag = item
+                    Tag = item,
+                    Enabled = !item.ReminderSent
                 };
 
                 RoundedButton btnDeleteSchedule = new RoundedButton
