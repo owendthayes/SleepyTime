@@ -317,8 +317,8 @@ namespace SleepyTime_2._0
                     secondaryTheme = Color.FromArgb(25, 25, 41);
                     textColor = Color.White;
                     secondaryTextColor = Color.FromArgb(177, 178, 181);
-                    imgLogo.Image = Image.FromFile(whiteLogo);
-                    imgAboutLogo.Image = Image.FromFile(whiteLogo);
+                    imgLogo.Image = Properties.Resources.SleepyTimeImg;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeImg;
                     break;
 
                 case "light":
@@ -326,8 +326,8 @@ namespace SleepyTime_2._0
                     secondaryTheme = Color.FromArgb(225, 225, 235);
                     textColor = Color.Black;
                     secondaryTextColor = Color.FromArgb(39, 39, 41);
-                    imgLogo.Image = Image.FromFile(blackLogo);
-                    imgAboutLogo.Image = Image.FromFile(blackLogo);
+                    imgLogo.Image = Properties.Resources.SleepyTimeImgBlack;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeImgBlack;
                     break;
             }
 
@@ -2258,7 +2258,7 @@ namespace SleepyTime_2._0
             {
                 case "Countdown":
                     //change help image
-                    imgHelpImage.Image = Image.FromFile(countdownImage);
+                    imgHelpImage.Image = Properties.Resources.CountdownScreen;
 
                     //change help text
                     txtHelpInfo.Text = "Countdown\n\n" +
@@ -2273,7 +2273,7 @@ namespace SleepyTime_2._0
 
                 case "Schedule":
                     //change help image
-                    imgHelpImage.Image = Image.FromFile(scheduleImage);
+                    imgHelpImage.Image = Properties.Resources.ScheduleScreen;
 
                     //change help text
                     txtHelpInfo.Text = "Schedule\n\n" +
@@ -2286,7 +2286,7 @@ namespace SleepyTime_2._0
 
                 case "Presets":
                     //change help image
-                    imgHelpImage.Image = Image.FromFile(presetsImage);
+                    imgHelpImage.Image = Properties.Resources.PresetScreen;
 
                     //change help text
                     txtHelpInfo.Text = "Presets\n\n" +
@@ -2300,7 +2300,7 @@ namespace SleepyTime_2._0
 
                 case "Settings":
                     //change help image
-                    imgHelpImage.Image = Image.FromFile(settingsImage);
+                    imgHelpImage.Image = Properties.Resources.SettingsScreen;
 
                     //change help text
                     txtHelpInfo.Text = "Settings\n\n" +
@@ -2313,7 +2313,7 @@ namespace SleepyTime_2._0
 
                 case "Other":
                     //change help image
-                    imgHelpImage.Image = Image.FromFile(otherImage);
+                    imgHelpImage.Image = Properties.Resources.SleepyTime;
 
                     //change help text
                     txtHelpInfo.Text = "General Information\n\n" +

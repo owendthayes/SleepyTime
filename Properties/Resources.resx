@@ -133,9 +133,6 @@
   <data name="CountdownScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\net5.0-windows\Resources\CountdownScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CountdownScreen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\net9.0-windows7.0\Resources\CountdownScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="PresetScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\net9.0-windows7.0\Resources\PresetScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,16 +142,7 @@
   <data name="SettingsScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\net9.0-windows7.0\Resources\SettingsScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SleepyTime1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\net9.0-windows7.0\Resources\SleepyTime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SleepyTimeImg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\net9.0-windows7.0\Resources\SleepyTimeImg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SleepyTimeImgBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\net9.0-windows7.0\Resources\SleepyTimeImgBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SupportButton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\net9.0-windows7.0\Resources\SupportButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
