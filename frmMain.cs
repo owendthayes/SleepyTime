@@ -84,7 +84,7 @@ namespace SleepyTime_2._0
             readScheduleFile();
 
             //check if the app should still be run at startup
-            //SetStartup();
+            SetStartup(openOnStartup);
 
             //apply data from saved files.
             getAccentColour();
@@ -260,6 +260,7 @@ namespace SleepyTime_2._0
             {
                 case "False":
                     mainTheme = "light";
+
                     break;
 
                 case "True":
@@ -283,11 +284,11 @@ namespace SleepyTime_2._0
 
             switch (settings[4])
             {
-                case "false":
+                case "False":
                     openOnStartup = false;
                     break;
 
-                case "true":
+                case "True":
                     openOnStartup = true;
                     break;
             }
@@ -296,7 +297,7 @@ namespace SleepyTime_2._0
 
             prevSettings = settings;
 
-            for (int i = 0; i < 5; i ++)
+            for (int i = 0; i < 5; i++)
             {
                 prevSettings[i] = settings[i].ToLower();
             }
@@ -1181,6 +1182,7 @@ namespace SleepyTime_2._0
             applyCountDownLayout();
 
             openOnStartup = tglStartUp.Checked;
+            SetStartup(openOnStartup);
 
             //save settings
             File.WriteAllLines("Settings.txt", new[]
@@ -1767,7 +1769,7 @@ namespace SleepyTime_2._0
                     }
                     //if overlapping days are selected with the same time.
                     var overlappingDays = selectedDays.Intersect(itemDays).ToList();
-                    
+
                     if (overlappingDays.Count > 0)
                     {
                         MessageBox.Show($"This preset overlaps with another existing preset: {item.Name}");
@@ -2424,21 +2426,31 @@ namespace SleepyTime_2._0
         }
 
 
-        //this does not work currently
-        //private void SetStartup()
-        //{
-        //    RegistryKey rk = Registry.CurrentUser.OpenSubKey
-        //        ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        private void SetStartup(bool enabled)
+        {
+            const string runKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
 
-        //    if (openOnStartup)
-        //    {
-        //        rk.SetValue("SleepyTime", Application.ExecutablePath);
-        //    }
-        //    else
-        //    {
-        //        rk.DeleteValue("SleepyTime", false);
-        //    }
-        //}
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(runKey, true))
+            {
+                if (key == null)
+                {
+                    return;
+                }
+                if (enabled)
+                {
+                    key.SetValue("SleepyTime", Application.ExecutablePath);
+
+                    MessageBox.Show($"Saved to startup? {key.GetValue("SleepyTime")?.ToString()
+                   == Application.ExecutablePath}");
+                }
+                else
+                {
+                    key.DeleteValue("SleepyTime", false);
+
+                    MessageBox.Show($"Deleted from startup? {key.GetValue("SleepyTime") == null}");
+                }
+            }
+        }
     }
 }
 

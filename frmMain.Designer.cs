@@ -2152,11 +2152,11 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlPresets);
+            Controls.Add(pnlCountdown);
             Controls.Add(pnlHelp);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlSettings);
-            Controls.Add(pnlPresets);
-            Controls.Add(pnlCountdown);
             Controls.Add(pnlAbout);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
