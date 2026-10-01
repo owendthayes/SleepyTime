@@ -18,6 +18,7 @@ using System.Diagnostics.Tracing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms.VisualStyles;
 using Microsoft.Win32;
+using System.Security.Policy;
 
 namespace SleepyTime_2._0
 {
@@ -74,8 +75,16 @@ namespace SleepyTime_2._0
 
         private string[] prevSettings;
 
+        //app directory
+        private static readonly string appDataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SleepyTime");
+        private static readonly string SettingsFile = Path.Combine(appDataDirectory, "Settings.txt");
+        private static readonly string ScheduleFile = Path.Combine(appDataDirectory, "Schedule.txt");
+        private static readonly string PresetsFile = Path.Combine(appDataDirectory, "Preset.txt");
+
         public frmMain()
         {
+            Directory.CreateDirectory(appDataDirectory);
+
             InitializeComponent();
 
             //read data into lists from settings, presets and schedules.
@@ -125,12 +134,12 @@ namespace SleepyTime_2._0
 
         private void readPresetFile()
         {
-            if (!File.Exists("Preset.txt"))
+            if (!File.Exists(PresetsFile))
             {
-                File.Create("Preset.txt").Dispose();
+                File.Create(PresetsFile).Dispose();
             }
 
-            string[] lines = File.ReadAllLines("Preset.txt");
+            string[] lines = File.ReadAllLines(PresetsFile);
 
             foreach (string line in lines)
             {
@@ -151,12 +160,12 @@ namespace SleepyTime_2._0
         {
             bool messageShown = false;
 
-            if (!File.Exists("Schedule.txt"))
+            if (!File.Exists(ScheduleFile))
             {
-                File.Create("Schedule.txt").Dispose();
+                File.Create(ScheduleFile).Dispose();
             }
 
-            string[] lines = File.ReadAllLines("Schedule.txt");
+            string[] lines = File.ReadAllLines(ScheduleFile);
 
             foreach (string line in lines)
             {
@@ -214,9 +223,11 @@ namespace SleepyTime_2._0
 
         private void readSettingsFile()
         {
-            if (!File.Exists("Settings.txt"))
+            if (!File.Exists(SettingsFile))
             {
-                File.WriteAllLines("Settings.txt", new[]
+                File.Create(SettingsFile).Dispose();
+
+                File.WriteAllLines(SettingsFile, new[]
                 {
                     "purple",
                     "false",
@@ -226,7 +237,7 @@ namespace SleepyTime_2._0
                 });
             }
 
-            string[] settings = File.ReadAllLines("Settings.txt");
+            string[] settings = File.ReadAllLines(SettingsFile);
 
             accentColour = settings[0];
             switch (accentColour)
@@ -1185,7 +1196,7 @@ namespace SleepyTime_2._0
             SetStartup(openOnStartup);
 
             //save settings
-            File.WriteAllLines("Settings.txt", new[]
+            File.WriteAllLines(SettingsFile, new[]
             {
                 accentColour,
                 tglAOT.Checked.ToString(),
@@ -1412,7 +1423,7 @@ namespace SleepyTime_2._0
 
         private void updateScheduleFile()
         {
-            using (StreamWriter sw = new StreamWriter("Schedule.txt"))
+            using (StreamWriter sw = new StreamWriter(ScheduleFile))
             {
                 foreach (ScheduleItem item in scheduledItems)
                 {
@@ -1834,7 +1845,7 @@ namespace SleepyTime_2._0
 
         private void updatePresetFile()
         {
-            using (StreamWriter sw = new StreamWriter("Preset.txt"))
+            using (StreamWriter sw = new StreamWriter(PresetsFile))
             {
                 foreach (PresetItem item in presetItems)
                 {
@@ -2440,14 +2451,14 @@ namespace SleepyTime_2._0
                 {
                     key.SetValue("SleepyTime", Application.ExecutablePath);
 
-                    MessageBox.Show($"Saved to startup? {key.GetValue("SleepyTime")?.ToString()
-                   == Application.ExecutablePath}");
+                    //MessageBox.Show($"Saved to startup? {key.GetValue("SleepyTime")?.ToString()
+                   //== Application.ExecutablePath}");
                 }
                 else
                 {
                     key.DeleteValue("SleepyTime", false);
 
-                    MessageBox.Show($"Deleted from startup? {key.GetValue("SleepyTime") == null}");
+                    //MessageBox.Show($"Deleted from startup? {key.GetValue("SleepyTime") == null}");
                 }
             }
         }
