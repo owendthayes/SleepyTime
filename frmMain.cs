@@ -81,6 +81,9 @@ namespace SleepyTime_2._0
         private static readonly string ScheduleFile = Path.Combine(appDataDirectory, "Schedule.txt");
         private static readonly string PresetsFile = Path.Combine(appDataDirectory, "Preset.txt");
 
+        private bool mouseLeftPanel = false;
+        private bool mouseLeftBox = false;
+
         public frmMain()
         {
             Directory.CreateDirectory(appDataDirectory);
@@ -2480,7 +2483,7 @@ namespace SleepyTime_2._0
                     key.SetValue("SleepyTime", Application.ExecutablePath);
 
                     //MessageBox.Show($"Saved to startup? {key.GetValue("SleepyTime")?.ToString()
-                   //== Application.ExecutablePath}");
+                    //== Application.ExecutablePath}");
                 }
                 else
                 {
@@ -2488,6 +2491,36 @@ namespace SleepyTime_2._0
 
                     //MessageBox.Show($"Deleted from startup? {key.GetValue("SleepyTime") == null}");
                 }
+            }
+        }
+
+        private void pnlPresetDays_MouseLeave(object sender, EventArgs e)
+        {
+            mouseLeftPanel = true;
+            hidePanel();
+        }
+
+        private void cmbPresetDays_MouseLeave(object sender, EventArgs e)
+        {
+            mouseLeftBox = true;
+            hidePanel();
+        }
+
+        private void cmbPresetDays_MouseEnter(object sender, EventArgs e)
+        {
+            mouseLeftBox = false;
+        }
+
+        private void pnlPresetDays_MouseEnter(object sender, EventArgs e)
+        {
+            mouseLeftPanel = false;
+        }
+
+        private void hidePanel()
+        {
+            if (mouseLeftBox && mouseLeftPanel)
+            {
+                pnlPresetDays.Visible = false;
             }
         }
     }

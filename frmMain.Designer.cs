@@ -1204,6 +1204,8 @@ namespace SleepyTime_2._0
             pnlPresetDays.TabIndex = 50;
             pnlPresetDays.Visible = false;
             pnlPresetDays.Leave += pnlPresetDays_Leave;
+            pnlPresetDays.MouseEnter += pnlPresetDays_MouseEnter;
+            pnlPresetDays.MouseLeave += pnlPresetDays_MouseLeave;
             // 
             // listBoxDays
             // 
@@ -1218,7 +1220,6 @@ namespace SleepyTime_2._0
             listBoxDays.Size = new System.Drawing.Size(183, 172);
             listBoxDays.TabIndex = 0;
             listBoxDays.SelectedIndexChanged += listBoxDays_SelectedIndexChanged;
-            listBoxDays.MouseLeave += listBoxDays_MouseLeave;
             // 
             // label39
             // 
@@ -2152,8 +2153,8 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlSettings);
             Controls.Add(pnlPresets);
+            Controls.Add(pnlSettings);
             Controls.Add(pnlCountdown);
             Controls.Add(pnlHelp);
             Controls.Add(pnlSchedule);
