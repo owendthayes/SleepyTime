@@ -247,7 +247,7 @@ namespace SleepyTime_2._0
             // imgLogo
             // 
             imgLogo.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
-            imgLogo.Image = Properties.Resources.SleepyTimeImg;
+            imgLogo.Image = Properties.Resources.SleepyTime;
             imgLogo.Location = new System.Drawing.Point(19, 12);
             imgLogo.Name = "imgLogo";
             imgLogo.Size = new System.Drawing.Size(44, 41);
@@ -1837,7 +1837,7 @@ namespace SleepyTime_2._0
             // imgAboutLogo
             // 
             imgAboutLogo.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
-            imgAboutLogo.Image = Properties.Resources.SleepyTimeImg;
+            imgAboutLogo.Image = Properties.Resources.SleepyTime;
             imgAboutLogo.Location = new System.Drawing.Point(168, 20);
             imgAboutLogo.Name = "imgAboutLogo";
             imgAboutLogo.Size = new System.Drawing.Size(44, 41);
@@ -1915,7 +1915,7 @@ namespace SleepyTime_2._0
             // 
             imgHelpImage.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             imgHelpImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            imgHelpImage.Image = Properties.Resources.SleepyTimeImg;
+            imgHelpImage.Image = Properties.Resources.SleepyTime;
             imgHelpImage.Location = new System.Drawing.Point(276, 33);
             imgHelpImage.Name = "imgHelpImage";
             imgHelpImage.Size = new System.Drawing.Size(322, 172);

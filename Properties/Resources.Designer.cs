@@ -123,9 +123,9 @@ namespace SleepyTime_2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SleepyTimeImg {
+        internal static System.Drawing.Bitmap SleepyTimeLogoBlack {
             get {
-                object obj = ResourceManager.GetObject("SleepyTimeImg", resourceCulture);
+                object obj = ResourceManager.GetObject("SleepyTimeLogoBlack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace SleepyTime_2._0.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SleepyTimeImgBlack {
+        internal static System.Drawing.Bitmap SleepyTimeLogoWhite {
             get {
-                object obj = ResourceManager.GetObject("SleepyTimeImgBlack", resourceCulture);
+                object obj = ResourceManager.GetObject("SleepyTimeLogoWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

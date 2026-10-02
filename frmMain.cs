@@ -84,9 +84,12 @@ namespace SleepyTime_2._0
         private bool mouseLeftPanel = false;
         private bool mouseLeftBox = false;
 
+
         public frmMain()
         {
             Directory.CreateDirectory(appDataDirectory);
+
+            //this.Icon = Properties.Resources.SleepyTimeIcon;
 
             InitializeComponent();
 
@@ -329,8 +332,8 @@ namespace SleepyTime_2._0
 
         private void applyDarkMode(string mode)
         {
-            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeImg.png");
-            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeImgBlack.png");
+            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeLogoWhite.png");
+            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeLogoBlack.png");
 
             textColor = Color.Black;
             switch (mode)
@@ -340,8 +343,8 @@ namespace SleepyTime_2._0
                     secondaryTheme = Color.FromArgb(25, 25, 41);
                     textColor = Color.White;
                     secondaryTextColor = Color.FromArgb(177, 178, 181);
-                    imgLogo.Image = Properties.Resources.SleepyTimeImg;
-                    imgAboutLogo.Image = Properties.Resources.SleepyTimeImg;
+                    imgLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
                     break;
 
                 case "light":
@@ -349,8 +352,8 @@ namespace SleepyTime_2._0
                     secondaryTheme = Color.FromArgb(225, 225, 235);
                     textColor = Color.Black;
                     secondaryTextColor = Color.FromArgb(39, 39, 41);
-                    imgLogo.Image = Properties.Resources.SleepyTimeImgBlack;
-                    imgAboutLogo.Image = Properties.Resources.SleepyTimeImgBlack;
+                    imgLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoBlack ;
                     break;
             }
 
