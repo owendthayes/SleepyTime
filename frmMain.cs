@@ -375,10 +375,12 @@ namespace SleepyTime_2._0
             foreach (Control c in GetAllControls(this))
             {
                 if (c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
-                    c.ForeColor == Color.FromArgb(35, 35, 204) || //blue
+                    c.ForeColor == Color.FromArgb(74, 130, 194) || //blue
                     c.ForeColor == Color.FromArgb(70, 170, 105) || //green
                     c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
-                    c.ForeColor == Color.FromArgb(222, 13, 13) //red
+                    c.ForeColor == Color.FromArgb(194, 74, 74) || //red
+                    c.ForeColor == Color.FromArgb(212, 122, 58) || //orange
+                    c.ForeColor == Color.FromArgb(130, 60, 89) //pink
                     )
                 {
                     c.ForeColor = primaryAccent;
@@ -438,8 +440,8 @@ namespace SleepyTime_2._0
                     break;
 
                 case "blue":
-                    primaryAccent = Color.FromArgb(35, 35, 204);
-                    secondaryAccent = Color.FromArgb(19, 19, 99);
+                    primaryAccent = Color.FromArgb(74, 130, 194);
+                    secondaryAccent = Color.FromArgb(45, 82, 128);
                     break;
 
                 case "green":
@@ -453,8 +455,18 @@ namespace SleepyTime_2._0
                     break;
 
                 case "red":
-                    primaryAccent = Color.FromArgb(222, 13, 13);
-                    secondaryAccent = Color.FromArgb(82, 17, 12);
+                    primaryAccent = Color.FromArgb(194, 74, 74);
+                    secondaryAccent = Color.FromArgb(128, 45, 45);
+                    break;
+
+                case "orange":
+                    primaryAccent = Color.FromArgb(212, 122, 58);
+                    secondaryAccent = Color.FromArgb(143, 81, 40);
+                    break;
+
+                case "pink":
+                    primaryAccent = Color.FromArgb(196, 90, 134);
+                    secondaryAccent = Color.FromArgb(130, 60, 89);
                     break;
             }
         }
@@ -1160,6 +1172,14 @@ namespace SleepyTime_2._0
 
                 case 4: //red
                     accentColour = "red";
+                    break;
+
+                case 5: //orange
+                    accentColour = "orange";
+                    break;
+
+                case 6: //pink
+                    accentColour = "pink";
                     break;
             }
             getAccentColour();
