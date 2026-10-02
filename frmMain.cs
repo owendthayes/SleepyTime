@@ -261,6 +261,14 @@ namespace SleepyTime_2._0
                 case "red":
                     cmbAccent.SelectedIndex = 4;
                     break;
+
+                case "orange":
+                    cmbAccent.SelectedIndex = 5;
+                    break;
+
+                case "pink":
+                    cmbAccent.SelectedIndex = 6;
+                    break;
             }
 
             tglAOT.Checked = bool.Parse(settings[1]);
@@ -380,7 +388,7 @@ namespace SleepyTime_2._0
                     c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
                     c.ForeColor == Color.FromArgb(194, 74, 74) || //red
                     c.ForeColor == Color.FromArgb(212, 122, 58) || //orange
-                    c.ForeColor == Color.FromArgb(130, 60, 89) //pink
+                    c.ForeColor == Color.FromArgb(196, 90, 134) //pink
                     )
                 {
                     c.ForeColor = primaryAccent;
