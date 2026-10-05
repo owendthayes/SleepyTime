@@ -85,46 +85,50 @@ namespace SleepyTime_2._0
         private bool mouseLeftBox = false;
 
 
+        #region Main Form Functionaltiy
         public frmMain()
         {
+            // create a directory in appData for sleepytime where files such as settings etc can be saved.
             Directory.CreateDirectory(appDataDirectory);
-
-            //this.Icon = Properties.Resources.SleepyTimeIcon;
 
             InitializeComponent();
 
-            //read data into lists from settings, presets and schedules.
+            // read data into lists from settings, presets and schedules.
             readSettingsFile();
             readPresetFile();
             readScheduleFile();
 
-            //check if the app should still be run at startup
+            // check if the app should still be run at startup
             SetStartup(openOnStartup);
 
-            //apply data from saved files.
+            // apply data from saved files.
             getAccentColour();
             applyAccentColour(primaryAccent, secondaryAccent);
             applyDarkMode(mainTheme);
             applyCountDownLayout();
 
+            // update relevant UI based on data read in from save files.
             updatePresetUI();
             updateScheduleUI();
 
+            // fill out the combo boxes in presets and schedules with times.
             populateTimesComboBox();
 
-            //further options for rounded form borders
+            // settings for rounded border of form.
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(BorderSize);
 
+            // initial state for the time display in the bottom left of the form.
             lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
 
+            // start necessary timers used later on.
             tmrSchedule.Start();
             tmrPreset.Start();
             tmrValidation.Start();
             tmrCurrentTime.Start();
         }
 
-        //add times from 00:00 to 23:55, in increments of 5 minutes to combo boxes for saving presets or schedules.
+        // add times from 00:00 to 23:55, in increments of 5 minutes to combo boxes for saving presets or schedules.
         private void populateTimesComboBox()
         {
             cmbScheduleTime.Items.Clear();
@@ -138,295 +142,7 @@ namespace SleepyTime_2._0
             }
         }
 
-        private void readPresetFile()
-        {
-            if (!File.Exists(PresetsFile))
-            {
-                File.Create(PresetsFile).Dispose();
-            }
-
-            string[] lines = File.ReadAllLines(PresetsFile);
-
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split('|');
-
-                if (data.Length != 7)
-                    continue;
-
-                PresetItem item = new PresetItem(data[0], data[1], data[2], TimeSpan.Parse(data[3]), data[4], Convert.ToBoolean(data[5]), DateTime.Parse(data[6]));
-                presetItems.Add(item);
-            }
-        }
-
-        private void readScheduleFile()
-        {
-            bool messageShown = false;
-
-            if (!File.Exists(ScheduleFile))
-            {
-                File.Create(ScheduleFile).Dispose();
-            }
-
-            string[] lines = File.ReadAllLines(ScheduleFile);
-
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split('|');
-
-                //MessageBox.Show($"Action: {data[0]} Date: {data[1]} Time: {data[2]} Reminder: {data[3]}");
-
-                if (data.Length != 5)
-                    continue;
-
-                if (!DateTime.TryParseExact(
-                    data[1],
-                    "dd/MM/yyyy",
-                    null,
-                    System.Globalization.DateTimeStyles.None,
-                    out DateTime date))
-                {
-                    MessageBox.Show("Date incorrect", "Error");
-                    continue;
-                }
-
-
-
-                if (!TimeSpan.TryParse(data[2], out TimeSpan time))
-                {
-                    MessageBox.Show("Time incorrect", "Error");
-                    continue;
-                }
-
-                DateTime givenDate = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
-
-                if (DateTime.Now < givenDate)
-                {
-                    scheduledItems.Add(
-                        new ScheduleItem(
-                            data[0],
-                            date,
-                            time,
-                            data[3],
-                            bool.Parse(data[4])
-                            )
-                        );
-                }
-                else if (messageShown == false)
-                {
-                    MessageBox.Show("The date of one or more of your saved schedules has passed\nThey have been removed.", "Notice");
-                    messageShown = true;
-                }
-            }
-            updateScheduleFile();
-        }
-
-        private void readSettingsFile()
-        {
-            if (!File.Exists(SettingsFile))
-            {
-                File.Create(SettingsFile).Dispose();
-
-                File.WriteAllLines(SettingsFile, new[]
-                {
-                    "purple",
-                    "false",
-                    "true",
-                    "functional",
-                    "false"
-                });
-            }
-
-            string[] settings = File.ReadAllLines(SettingsFile);
-
-            accentColour = settings[0];
-            switch (accentColour)
-            {
-                case "purple":
-                    cmbAccent.SelectedIndex = 0;
-                    break;
-
-                case "blue":
-                    cmbAccent.SelectedIndex = 1;
-                    break;
-
-                case "green":
-                    cmbAccent.SelectedIndex = 2;
-                    break;
-
-                case "yellow":
-                    cmbAccent.SelectedIndex = 3;
-                    break;
-
-                case "red":
-                    cmbAccent.SelectedIndex = 4;
-                    break;
-
-                case "orange":
-                    cmbAccent.SelectedIndex = 5;
-                    break;
-
-                case "pink":
-                    cmbAccent.SelectedIndex = 6;
-                    break;
-            }
-
-            tglAOT.Checked = bool.Parse(settings[1]);
-            this.TopMost = bool.Parse(settings[1]);
-
-            tglDarkMode.Checked = bool.Parse(settings[2]);
-            switch (settings[2])
-            {
-                case "False":
-                    mainTheme = "light";
-
-                    break;
-
-                case "True":
-                    mainTheme = "dark";
-                    break;
-            }
-
-            countDownLayout = settings[3];
-            switch (settings[3])
-            {
-                case "functional":
-                    cmbCountdownLayout.SelectedIndex = 0;
-                    break;
-
-                case "minimal":
-                    cmbCountdownLayout.SelectedIndex = 1;
-                    break;
-            }
-            applyCountDownLayout();
-
-
-            switch (settings[4])
-            {
-                case "False":
-                    openOnStartup = false;
-                    break;
-
-                case "True":
-                    openOnStartup = true;
-                    break;
-            }
-
-            tglStartUp.Checked = openOnStartup;
-
-            prevSettings = settings;
-
-            for (int i = 0; i < 5; i++)
-            {
-                prevSettings[i] = settings[i].ToLower();
-            }
-
-            applyDarkMode(mainTheme);
-        }
-
-        private void applyDarkMode(string mode)
-        {
-            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeLogoWhite.png");
-            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeLogoBlack.png");
-
-            textColor = Color.Black;
-            switch (mode)
-            {
-                case "dark":
-                    primaryTheme = Color.FromArgb(13, 15, 28);
-                    secondaryTheme = Color.FromArgb(25, 25, 41);
-                    textColor = Color.White;
-                    secondaryTextColor = Color.FromArgb(177, 178, 181);
-                    imgLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
-                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
-                    break;
-
-                case "light":
-                    primaryTheme = Color.FromArgb(245, 245, 250);
-                    secondaryTheme = Color.FromArgb(225, 225, 235);
-                    textColor = Color.Black;
-                    secondaryTextColor = Color.FromArgb(39, 39, 41);
-                    imgLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
-                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoBlack ;
-                    break;
-            }
-
-            foreach (Control c in GetAllControls(this))
-            {
-                if (c.ForeColor == Color.White || c.ForeColor == Color.Black)
-                {
-                    c.ForeColor = textColor;
-                }
-
-                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.FromArgb(245, 245, 250))
-                {
-                    c.BackColor = primaryTheme;
-                }
-
-                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(225, 225, 235))
-                {
-                    c.BackColor = secondaryTheme;
-                }
-
-                if (c.ForeColor == Color.FromArgb(177, 178, 181) || c.ForeColor == Color.FromArgb(39, 39, 41))
-                {
-                    c.ForeColor = secondaryTextColor;
-                }
-            }
-            this.BackColor = primaryTheme;
-
-
-        }
-
-        private void applyAccentColour(Color accentColour, Color secondaryAccent)
-        {
-            foreach (Control c in GetAllControls(this))
-            {
-                if (c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
-                    c.ForeColor == Color.FromArgb(74, 130, 194) || //blue
-                    c.ForeColor == Color.FromArgb(70, 170, 105) || //green
-                    c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
-                    c.ForeColor == Color.FromArgb(194, 74, 74) || //red
-                    c.ForeColor == Color.FromArgb(212, 122, 58) || //orange
-                    c.ForeColor == Color.FromArgb(196, 90, 134) //pink
-                    )
-                {
-                    c.ForeColor = primaryAccent;
-                }
-
-                if (c is RoundedButton button && c.ForeColor != Color.FromArgb(247, 62, 62))
-                {
-                    button.BorderColor = primaryAccent;
-                }
-
-                if (c is Label && Text == ":")
-                {
-                    c.ForeColor = primaryAccent;
-                }
-
-                if (c is ToggleButton toggle)
-                {
-                    toggle.OnBackColor = primaryAccent;
-                }
-
-                if (c is LinkLabel label)
-                {
-                    label.LinkColor = primaryAccent;
-                }
-            }
-
-            lblTimeTitle.ForeColor = primaryAccent;
-            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
-            btnStartCountdown.ForeColor = primaryAccent;
-            btnSideBarSettings.PerformClick();
-        }
-
+        // get all controls in a parent object, used later on.
         private IEnumerable<Control> GetAllControls(Control parent)
         {
             foreach (Control c in parent.Controls)
@@ -443,117 +159,7 @@ namespace SleepyTime_2._0
             }
         }
 
-        private void getAccentColour()
-        {
-            //return accent colours here, lighter darker etc.
-            switch (accentColour)
-            {
-                case "purple":
-                    primaryAccent = Color.FromArgb(140, 71, 203);
-                    secondaryAccent = Color.FromArgb(55, 28, 79);
-                    break;
-
-                case "blue":
-                    primaryAccent = Color.FromArgb(74, 130, 194);
-                    secondaryAccent = Color.FromArgb(45, 82, 128);
-                    break;
-
-                case "green":
-                    primaryAccent = Color.FromArgb(70, 170, 105);
-                    secondaryAccent = Color.FromArgb(35, 105, 65);
-                    break;
-
-                case "yellow":
-                    primaryAccent = Color.FromArgb(215, 180, 65);
-                    secondaryAccent = Color.FromArgb(145, 115, 25);
-                    break;
-
-                case "red":
-                    primaryAccent = Color.FromArgb(194, 74, 74);
-                    secondaryAccent = Color.FromArgb(128, 45, 45);
-                    break;
-
-                case "orange":
-                    primaryAccent = Color.FromArgb(212, 122, 58);
-                    secondaryAccent = Color.FromArgb(143, 81, 40);
-                    break;
-
-                case "pink":
-                    primaryAccent = Color.FromArgb(196, 90, 134);
-                    secondaryAccent = Color.FromArgb(130, 60, 89);
-                    break;
-            }
-        }
-
-        private void tmrSchedule_Tick(object sender, EventArgs e)
-        {
-            //if there are no saved scheduled items, dont run this.
-            if (scheduledItems.Count < 1)
-            {
-                return;
-            }
-
-            //find the soonest time that a reminder should trigger
-            DateTime soonestReminder = DateTime.MaxValue;
-            ScheduleItem soonestItemReminder = null;
-
-            foreach (ScheduleItem sI in scheduledItems)
-            {
-                if (sI.Reminder == "0" || Convert.ToBoolean(sI.ReminderSent) == true)
-                {
-                    continue;
-                }
-
-                //calculate what time the reminder should trigger
-                DateTime reminderTime = sI.Date.Date + sI.Time - TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(sI.Reminder)]));
-
-                //if this reminder is the soonest, then update "soonestReminder"
-                if (reminderTime < soonestReminder)
-                {
-                    soonestReminder = reminderTime;
-                    soonestItemReminder = sI;
-                }
-            }
-
-            //MessageBox.Show($"NOW: {DateTime.Now.ToString(@"dd/MM/yyyy HH:mm")}\nREMINDER: {soonestReminder.ToString(@"dd/MM/yyyy HH:mm")}");
-
-            //if the time now matches the reminder time then send the reminder.
-            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm") && Convert.ToBoolean(soonestItemReminder.ReminderSent) == false)
-            {
-                sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
-                //disable the edit button.
-
-
-                scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
-                updateScheduleFile();
-            }
-
-            //find the soonest time that a scheduled item will happen
-            DateTime soonestAction = DateTime.MaxValue;
-            ScheduleItem soonestItemAction = null;
-
-            foreach (ScheduleItem sI in scheduledItems)
-            {
-                //calculate what time the action should occur
-                DateTime actionTime = sI.Date.Date + sI.Time;
-
-                if (actionTime < soonestAction)
-                {
-                    soonestAction = actionTime;
-                    soonestItemAction = sI;
-                }
-            }
-
-            //if the time matches the scheduled time then perform the action
-            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestAction.ToString(@"dd/MM/yyyy HH:mm"))
-            {
-                performAction(soonestItemAction.Action);
-                scheduledItems.Remove(soonestItemAction);
-                updateScheduleFile();
-                updateScheduleUI();
-            }
-        }
-
+        // performing an action such as shutdonw, restart, sleep or lock.
         private void performAction(string action)
         {
             switch (action)
@@ -576,68 +182,7 @@ namespace SleepyTime_2._0
             }
         }
 
-        private void sendReminderNotification(string reminder, ScheduleItem soonest)
-        {
-            string timePeriod = "";
-            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
-            string notifAction = operations[Convert.ToInt32(soonest.Action)];
-
-            switch (reminder)
-            {
-                case "1": // 5 mins
-                    timePeriod = "5 Minutes";
-                    break;
-
-                case "2": // 10 mins
-                    timePeriod = "10 Minutes";
-                    break;
-
-                case "3": // 15 mins
-                    timePeriod = "15 Minutes";
-                    break;
-
-                case "4": // 30 mins
-                    timePeriod = "30 Minutes";
-                    break;
-
-                case "5": // 1 hr
-                    timePeriod = "1 Hour";
-                    break;
-
-                case "6": // 2 hr
-                    timePeriod = "2 Hours";
-                    break;
-            }
-            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
-            ntfReminder.Text = "Some Text";
-            ntfReminder.Visible = true;
-            ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
-            ntfReminder.BalloonTipText = "Click to open SleepyTime";
-
-            soonest.ReminderSent = true;
-
-            //show the notification for one minute, not working.
-            ntfReminder.ShowBalloonTip(60000);
-
-            updateScheduleFile();
-            updateScheduleUI();
-
-            //disable the edit button for this item SOMEHOW??.
-            foreach (Control ctr in pnlSavedSchedules.Controls)
-            {
-                if (ctr is Panel pnl)
-                {
-                    RoundedButton btnEdit = pnl.Controls["btnEditSchedule"] as RoundedButton;
-
-                    if (btnEdit != null && btnEdit.Tag == soonest)
-                    {
-                        btnEdit.Enabled = false;
-                        break;
-                    }
-                }
-            }
-        }
-
+            #region Form drag/drop
         //drag and drop functionality for header of form.
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
         {
@@ -660,7 +205,9 @@ namespace SleepyTime_2._0
                 }
             }
         }
+        #endregion
 
+            #region Rounded form border
         //methods for form rounded borders
         private GraphicsPath GetRoundedPath(Rectangle rect, float radius)
         {
@@ -710,7 +257,9 @@ namespace SleepyTime_2._0
         {
             FormRegionAndBorder(this, borderRadius, e.Graphics, primaryTheme, 2);
         }
+        #endregion
 
+            #region Toolbar
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
             btnExit.BackColor = Color.FromArgb(169, 5, 5);
@@ -746,7 +295,9 @@ namespace SleepyTime_2._0
                 }
             }
         }
+        #endregion
 
+            #region Navigation
         private void greyOutSidebar()
         {
             if (unsavedChanges)
@@ -863,23 +414,351 @@ namespace SleepyTime_2._0
 
             SetActivePanel("pnlHelp");
         }
+        #endregion
+        #endregion
 
+        #region Timers
+        // ####################################################################################################
+        // SCHEUDLE
+        // ####################################################################################################
 
-        private void NumbersOnly(object sender, KeyPressEventArgs e)
+        // tmrSchedule, used to check when a scheduled item should run, or when the notification should trigger.
+        private void tmrSchedule_Tick(object sender, EventArgs e)
         {
-            char numsOnly = e.KeyChar;
-
-            if (!Char.IsDigit(numsOnly) && numsOnly != 8)
+            //if there are no saved scheduled items, dont run this.
+            if (scheduledItems.Count < 1)
             {
-                e.Handled = true;
+                return;
+            }
+
+            // find the soonest time that a reminder should trigger
+            DateTime soonestReminder = DateTime.MaxValue;
+            ScheduleItem soonestItemReminder = null;
+
+            foreach (ScheduleItem sI in scheduledItems)
+            {
+                if (sI.Reminder == "0" || Convert.ToBoolean(sI.ReminderSent) == true)
+                {
+                    continue;
+                }
+
+                //calculate what time the reminder should trigger
+                DateTime reminderTime = sI.Date.Date + sI.Time - TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(sI.Reminder)]));
+
+                //if this reminder is the soonest, then update "soonestReminder"
+                if (reminderTime < soonestReminder)
+                {
+                    soonestReminder = reminderTime;
+                    soonestItemReminder = sI;
+                }
+            }
+
+            //if the time now matches the reminder time then send the reminder.
+            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestReminder.ToString(@"dd/MM/yyyy HH:mm") && Convert.ToBoolean(soonestItemReminder.ReminderSent) == false)
+            {
+                sendReminderNotification(soonestItemReminder.Reminder, soonestItemReminder);
+                //disable the edit button.
+
+
+                scheduledItems[scheduledItems.IndexOf(soonestItemReminder)].ReminderSent = true;
+                updateScheduleFile();
+            }
+
+            //find the soonest time that a scheduled item will happen
+            DateTime soonestAction = DateTime.MaxValue;
+            ScheduleItem soonestItemAction = null;
+
+            foreach (ScheduleItem sI in scheduledItems)
+            {
+                //calculate what time the action should occur
+                DateTime actionTime = sI.Date.Date + sI.Time;
+
+                if (actionTime < soonestAction)
+                {
+                    soonestAction = actionTime;
+                    soonestItemAction = sI;
+                }
+            }
+
+            //if the time matches the scheduled time then perform the action
+            if (DateTime.Now.ToString(@"dd/MM/yyyy HH:mm") == soonestAction.ToString(@"dd/MM/yyyy HH:mm"))
+            {
+                performAction(soonestItemAction.Action);
+                scheduledItems.Remove(soonestItemAction);
+                updateScheduleFile();
+                updateScheduleUI();
             }
         }
 
+        // ################################################################################################
+        // COUNTDOWN
+        // ################################################################################################
+        private void tmrCountDown_Tick(object sender, EventArgs e)
+        {
+            if (remainingTime.TotalSeconds > 0)
+            {
+                remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
+
+                UpdateTimerDisplay();
+            }
+            else
+            {
+                tmrCountDown.Stop();
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+                countdownEnded = true;
+                btnStartCountdown.Enabled = true;
+                btnStartCountdown.PerformClick();
+                performAction(cmbOperation.SelectedIndex.ToString());
+            }
+        }
+
+        // ##############################################################################################
+        // SETTINGS
+        // ##############################################################################################
+        //check for changes in settings here, also add user feedback for when changes are saved.
+        private void tmrValidation_Tick(object sender, EventArgs e)
+        {
+            if ((string.IsNullOrEmpty(txtHours.Text) || txtHours.Text == "00" || txtHours.Text == "0") && (string.IsNullOrEmpty(txtMinutes.Text) || txtMinutes.Text == "00" || txtMinutes.Text == "0") && (string.IsNullOrEmpty(txtSeconds.Text) || txtSeconds.Text == "00" || txtSeconds.Text == "0"))
+            {
+                btnStartCountdown.Enabled = false;
+            }
+            else
+            {
+                btnStartCountdown.Enabled = true;
+            }
+
+            //check if the values have been changed in settings
+            string[] currSettings = { cmbAccent.Text.ToLower(), tglAOT.Checked.ToString().ToLower(), tglDarkMode.Checked.ToString().ToLower(), cmbCountdownLayout.Text.ToLower(), tglStartUp.Checked.ToString().ToLower() };
+            if (pnlSettings.Visible == true)
+            {
+                //only enable the save button if changes have actually been made.
+                btnSaveSettings.Enabled = !Enumerable.SequenceEqual(prevSettings, currSettings);
+
+                //if the user naviagtes somewhere else, first ask if they want to change save their changes.
+                unsavedChanges = !Enumerable.SequenceEqual(prevSettings, currSettings);
+
+            }
+        }
+        #endregion
+
+        #region File I/O
+        //#################################################################################################
+        // PRESETS
+        //#################################################################################################
+        private void readPresetFile()
+        {
+            // check if the file already exists, if not then create it.
+            if (!File.Exists(PresetsFile))
+            {
+                File.Create(PresetsFile).Dispose();
+            }
+
+            string[] lines = File.ReadAllLines(PresetsFile);
+
+            // read the data from the file into a list so we can use it later on.
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                string[] data = line.Split('|');
+
+                if (data.Length != 7)
+                    continue;
+
+                PresetItem item = new PresetItem(data[0], data[1], data[2], TimeSpan.Parse(data[3]), data[4], Convert.ToBoolean(data[5]), DateTime.Parse(data[6]));
+                presetItems.Add(item);
+            }
+        }
+
+        //#################################################################################################
+        //SCHEDULES
+        //#################################################################################################
+        private void readScheduleFile()
+        {
+            // used for when items are removed if they have already passed when first opening the app.
+            bool messageShown = false;
+
+            if (!File.Exists(ScheduleFile))
+            {
+                File.Create(ScheduleFile).Dispose();
+            }
+
+            // read all the scheduled items into a list for use later on.
+            string[] lines = File.ReadAllLines(ScheduleFile);
+
+            // validate the entries in the save file
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                string[] data = line.Split('|');
+
+                if (data.Length != 5)
+                    continue;
+
+                if (!DateTime.TryParseExact(
+                    data[1],
+                    "dd/MM/yyyy",
+                    null,
+                    System.Globalization.DateTimeStyles.None,
+                    out DateTime date))
+                {
+                    MessageBox.Show("Date incorrect", "Error");
+                    continue;
+                }
+
+                if (!TimeSpan.TryParse(data[2], out TimeSpan time))
+                {
+                    MessageBox.Show("Time incorrect", "Error");
+                    continue;
+                }
+
+                DateTime givenDate = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds);
+
+                if (DateTime.Now < givenDate)
+                {
+                    scheduledItems.Add(
+                        new ScheduleItem(
+                            data[0],
+                            date,
+                            time,
+                            data[3],
+                            bool.Parse(data[4])
+                            )
+                        );
+                }
+                // message shown when scheduled items have passed but were unable to occur if the app was closed.
+                else if (messageShown == false)
+                {
+                    MessageBox.Show("The date of one or more of your saved schedules has passed\nThey have been removed.", "Notice");
+                    messageShown = true;
+                }
+            }
+            // update to reflect potentially deleted items as per the else if above.
+            updateScheduleFile();
+        }
+
+        //#################################################################################################
+        // SETTINGS 
+        //################################################################################################# 
+        private void readSettingsFile()
+        {
+            // if there are currently no saved settings, create the file with default settings.
+            if (!File.Exists(SettingsFile))
+            {
+                File.Create(SettingsFile).Dispose();
+
+                File.WriteAllLines(SettingsFile, new[]
+                {
+                    "purple",
+                    "false",
+                    "true",
+                    "functional",
+                    "false"
+                });
+            }
+
+            // read the settings from the file and apply them on start-up.
+            string[] settings = File.ReadAllLines(SettingsFile);
+
+            // accent colour ==============================================================================================
+            accentColour = settings[0];
+            switch (accentColour)
+            {
+                case "purple":
+                    cmbAccent.SelectedIndex = 0;
+                    break;
+
+                case "blue":
+                    cmbAccent.SelectedIndex = 1;
+                    break;
+
+                case "green":
+                    cmbAccent.SelectedIndex = 2;
+                    break;
+
+                case "yellow":
+                    cmbAccent.SelectedIndex = 3;
+                    break;
+
+                case "red":
+                    cmbAccent.SelectedIndex = 4;
+                    break;
+
+                case "orange":
+                    cmbAccent.SelectedIndex = 5;
+                    break;
+
+                case "pink":
+                    cmbAccent.SelectedIndex = 6;
+                    break;
+            }
+
+            // always on top ==============================================================================================
+            tglAOT.Checked = bool.Parse(settings[1]);
+            this.TopMost = bool.Parse(settings[1]);
+
+            // Dark mode ==============================================================================================
+            tglDarkMode.Checked = bool.Parse(settings[2]);
+            switch (settings[2])
+            {
+                case "False":
+                    mainTheme = "light";
+
+                    break;
+
+                case "True":
+                    mainTheme = "dark";
+                    break;
+            }
+
+            // countdown layout ==============================================================================================
+            countDownLayout = settings[3];
+            switch (settings[3])
+            {
+                case "functional":
+                    cmbCountdownLayout.SelectedIndex = 0;
+                    break;
+
+                case "minimal":
+                    cmbCountdownLayout.SelectedIndex = 1;
+                    break;
+            }
+            applyCountDownLayout();
+
+            // open on startup ==============================================================================================
+            switch (settings[4])
+            {
+                case "False":
+                    openOnStartup = false;
+                    break;
+
+                case "True":
+                    openOnStartup = true;
+                    break;
+            }
+            tglStartUp.Checked = openOnStartup;
+
+            // save the current settings so later we can validate if there are unsaved changes.
+            prevSettings = settings;
+            for (int i = 0; i < 5; i++)
+            {
+                prevSettings[i] = settings[i].ToLower();
+            }
+
+            applyDarkMode(mainTheme);
+        }
+        #endregion
+
+        #region Countdown
         private void btnStartCountdown_Click(object sender, EventArgs e)
         {
             if (!countdownStarted)
             {
-                //start the countdown
+                //start the countdown, parse the entered text into a time span.
                 if (int.TryParse(txtHours.Text, out int Hours) &&
                    int.TryParse(txtMinutes.Text, out int Minutes) &&
                    int.TryParse(txtSeconds.Text, out int Seconds))
@@ -915,10 +794,12 @@ namespace SleepyTime_2._0
                     MessageBox.Show("Please enter a valid time", "Error");
                 }
             }
+            // if the countdown ends, reset the panel 
             else if (countdownEnded)
             {
                 CancelCountdown();
             }
+            // pause the timer when the user clicks cancel, give them time to decide.
             else
             {
                 tmrCountDown.Stop();
@@ -936,6 +817,7 @@ namespace SleepyTime_2._0
             }
         }
 
+        // cancelling the countdown, reset the panel, allow the user to restart if they wish or edit the timer.
         private void CancelCountdown()
         {
             enableQuickTimers();
@@ -961,25 +843,7 @@ namespace SleepyTime_2._0
             tmrCountDown.Stop();
         }
 
-        private void tmrCountDown_Tick(object sender, EventArgs e)
-        {
-            if (remainingTime.TotalSeconds > 0)
-            {
-                remainingTime = remainingTime.Subtract(TimeSpan.FromSeconds(1));
-
-                UpdateTimerDisplay();
-            }
-            else
-            {
-                tmrCountDown.Stop();
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
-                countdownEnded = true;
-                btnStartCountdown.Enabled = true;
-                btnStartCountdown.PerformClick();
-                performAction(cmbOperation.SelectedIndex.ToString());
-            }
-        }
+        //update the display to show the user how long remains on the timer.
         private void UpdateTimerDisplay()
         {
             txtHours.Text = ((int)remainingTime.TotalHours).ToString("00");
@@ -987,6 +851,14 @@ namespace SleepyTime_2._0
             txtSeconds.Text = remainingTime.Seconds.ToString("00");
         }
 
+        // clear the countdown timer, so the user can start fresh.
+        private void btnClearTimer_Click(object sender, EventArgs e)
+        {
+            remainingTime = remainingTime.Subtract(remainingTime);
+            UpdateTimerDisplay();
+        }
+
+        #region Quick Actions
         private void btnAdd5Min_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(remainingTime.TotalHours) <= 99)
@@ -1022,37 +894,255 @@ namespace SleepyTime_2._0
                 UpdateTimerDisplay();
             }
         }
+        #endregion
 
-        private void btnClearTimer_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Schedule
+        // ######################################################################################################
+        // REMINDERS FOR SAVED SCHEDULED ITEMS.
+        // ######################################################################################################
+        private void sendReminderNotification(string reminder, ScheduleItem soonest)
         {
-            remainingTime = remainingTime.Subtract(remainingTime);
-            UpdateTimerDisplay();
+            string timePeriod = "";
+            string[] operations = { "Shutdown", "Restart", "Sleep", "Lock" };
+            string notifAction = operations[Convert.ToInt32(soonest.Action)];
+
+            switch (reminder)
+            {
+                case "1": // 5 mins
+                    timePeriod = "5 Minutes";
+                    break;
+
+                case "2": // 10 mins
+                    timePeriod = "10 Minutes";
+                    break;
+
+                case "3": // 15 mins
+                    timePeriod = "15 Minutes";
+                    break;
+
+                case "4": // 30 mins
+                    timePeriod = "30 Minutes";
+                    break;
+
+                case "5": // 1 hr
+                    timePeriod = "1 Hour";
+                    break;
+
+                case "6": // 2 hr
+                    timePeriod = "2 Hours";
+                    break;
+            }
+            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
+            ntfReminder.Text = "Some Text";
+            ntfReminder.Visible = true;
+            ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
+            ntfReminder.BalloonTipText = "Click to open SleepyTime";
+
+            soonest.ReminderSent = true;
+
+            //show the notification for one minute, not working.
+            ntfReminder.ShowBalloonTip(60000);
+
+            updateScheduleFile();
+            updateScheduleUI();
+
+            //disable the edit button for this item SOMEHOW??.
+            foreach (Control ctr in pnlSavedSchedules.Controls)
+            {
+                if (ctr is Panel pnl)
+                {
+                    RoundedButton btnEdit = pnl.Controls["btnEditSchedule"] as RoundedButton;
+
+                    if (btnEdit != null && btnEdit.Tag == soonest)
+                    {
+                        btnEdit.Enabled = false;
+                        break;
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Presets
+        #endregion
+
+        #region Settings
+        // dark mode =============================================================================================
+        private void applyDarkMode(string mode)
+        {
+            // logo needs both a white and black version for corresponding themes.
+            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeLogoWhite.png");
+            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeLogoBlack.png");
+
+            //change all text and colours to the corresponding theme colours, also update the logo.
+            textColor = Color.Black;
+            switch (mode)
+            {
+                case "dark":
+                    primaryTheme = Color.FromArgb(13, 15, 28);
+                    secondaryTheme = Color.FromArgb(25, 25, 41);
+                    textColor = Color.White;
+                    secondaryTextColor = Color.FromArgb(177, 178, 181);
+                    imgLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
+                    break;
+
+                case "light":
+                    primaryTheme = Color.FromArgb(245, 245, 250);
+                    secondaryTheme = Color.FromArgb(225, 225, 235);
+                    textColor = Color.Black;
+                    secondaryTextColor = Color.FromArgb(39, 39, 41);
+                    imgLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
+                    break;
+            }
+
+            // change control colours based on theme.
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c.ForeColor == Color.White || c.ForeColor == Color.Black)
+                {
+                    c.ForeColor = textColor;
+                }
+
+                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.FromArgb(245, 245, 250))
+                {
+                    c.BackColor = primaryTheme;
+                }
+
+                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(225, 225, 235))
+                {
+                    c.BackColor = secondaryTheme;
+                }
+
+                if (c.ForeColor == Color.FromArgb(177, 178, 181) || c.ForeColor == Color.FromArgb(39, 39, 41))
+                {
+                    c.ForeColor = secondaryTextColor;
+                }
+            }
+            this.BackColor = primaryTheme;
         }
 
-        //check for changes in settings here, also add user feedback for when changes are saved.
-        private void tmrValidation_Tick(object sender, EventArgs e)
+        // accent colour =============================================================================================
+        // get the actual accent colour and save the values for use later.
+        private void getAccentColour()
         {
-            if ((string.IsNullOrEmpty(txtHours.Text) || txtHours.Text == "00" || txtHours.Text == "0") && (string.IsNullOrEmpty(txtMinutes.Text) || txtMinutes.Text == "00" || txtMinutes.Text == "0") && (string.IsNullOrEmpty(txtSeconds.Text) || txtSeconds.Text == "00" || txtSeconds.Text == "0"))
+            //return accent colours here, lighter darker etc.
+            switch (accentColour)
             {
-                btnStartCountdown.Enabled = false;
-            }
-            else
-            {
-                btnStartCountdown.Enabled = true;
-            }
+                case "purple":
+                    primaryAccent = Color.FromArgb(140, 71, 203);
+                    secondaryAccent = Color.FromArgb(55, 28, 79);
+                    break;
 
-            //check if the values have been changed in settings
-            string[] currSettings = { cmbAccent.Text.ToLower(), tglAOT.Checked.ToString().ToLower(), tglDarkMode.Checked.ToString().ToLower(), cmbCountdownLayout.Text.ToLower(), tglStartUp.Checked.ToString().ToLower() };
-            if (pnlSettings.Visible == true)
-            {
-                //only enable the save button if changes have actually been made.
-                btnSaveSettings.Enabled = !Enumerable.SequenceEqual(prevSettings, currSettings);
+                case "blue":
+                    primaryAccent = Color.FromArgb(74, 130, 194);
+                    secondaryAccent = Color.FromArgb(45, 82, 128);
+                    break;
 
-                //if the user naviagtes somewhere else, first ask if they want to change save their changes.
-                unsavedChanges = !Enumerable.SequenceEqual(prevSettings, currSettings);
+                case "green":
+                    primaryAccent = Color.FromArgb(70, 170, 105);
+                    secondaryAccent = Color.FromArgb(35, 105, 65);
+                    break;
 
+                case "yellow":
+                    primaryAccent = Color.FromArgb(215, 180, 65);
+                    secondaryAccent = Color.FromArgb(145, 115, 25);
+                    break;
+
+                case "red":
+                    primaryAccent = Color.FromArgb(194, 74, 74);
+                    secondaryAccent = Color.FromArgb(128, 45, 45);
+                    break;
+
+                case "orange":
+                    primaryAccent = Color.FromArgb(212, 122, 58);
+                    secondaryAccent = Color.FromArgb(143, 81, 40);
+                    break;
+
+                case "pink":
+                    primaryAccent = Color.FromArgb(196, 90, 134);
+                    secondaryAccent = Color.FromArgb(130, 60, 89);
+                    break;
             }
         }
+
+        // apply the chosen accent colour to each of the controls.
+        private void applyAccentColour(Color accentColour, Color secondaryAccent)
+        {
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
+                    c.ForeColor == Color.FromArgb(74, 130, 194) || //blue
+                    c.ForeColor == Color.FromArgb(70, 170, 105) || //green
+                    c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
+                    c.ForeColor == Color.FromArgb(194, 74, 74) || //red
+                    c.ForeColor == Color.FromArgb(212, 122, 58) || //orange
+                    c.ForeColor == Color.FromArgb(196, 90, 134) //pink
+                    )
+                {
+                    c.ForeColor = primaryAccent;
+                }
+
+                if (c is RoundedButton button && c.ForeColor != Color.FromArgb(247, 62, 62))
+                {
+                    button.BorderColor = primaryAccent;
+                }
+
+                if (c is Label && Text == ":")
+                {
+                    c.ForeColor = primaryAccent;
+                }
+
+                if (c is ToggleButton toggle)
+                {
+                    toggle.OnBackColor = primaryAccent;
+                }
+
+                if (c is LinkLabel label)
+                {
+                    label.LinkColor = primaryAccent;
+                }
+            }
+
+            lblTimeTitle.ForeColor = primaryAccent;
+            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
+            btnStartCountdown.ForeColor = primaryAccent;
+            btnSideBarSettings.PerformClick();
+        }
+
+        #endregion
+
+        #region About
+        #endregion
+
+        #region Help
+        #endregion
+
+        
+
+        
+
+        
+
+        
+
+       
+
+        
+
+
+        private void NumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            char numsOnly = e.KeyChar;
+
+            if (!Char.IsDigit(numsOnly) && numsOnly != 8)
+            {
+                e.Handled = true;
+            }
+        }    
 
         private void NotEmpty(object sender, EventArgs e)
         {
