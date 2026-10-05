@@ -432,7 +432,6 @@ namespace SleepyTime_2._0
             pnlCountdown.Name = "pnlCountdown";
             pnlCountdown.Size = new System.Drawing.Size(673, 385);
             pnlCountdown.TabIndex = 22;
-            pnlCountdown.Paint += pnlCountdown_Paint;
             // 
             // btnQuickHelpCountdown
             // 
@@ -1203,9 +1202,6 @@ namespace SleepyTime_2._0
             pnlPresetDays.Size = new System.Drawing.Size(183, 171);
             pnlPresetDays.TabIndex = 50;
             pnlPresetDays.Visible = false;
-            pnlPresetDays.Leave += pnlPresetDays_Leave;
-            pnlPresetDays.MouseEnter += pnlPresetDays_MouseEnter;
-            pnlPresetDays.MouseLeave += pnlPresetDays_MouseLeave;
             // 
             // listBoxDays
             // 
@@ -1253,7 +1249,6 @@ namespace SleepyTime_2._0
             label36.Size = new System.Drawing.Size(49, 16);
             label36.TabIndex = 54;
             label36.Text = "ON/OFF";
-            label36.Click += label36_Click;
             // 
             // label41
             // 
@@ -1383,7 +1378,6 @@ namespace SleepyTime_2._0
             cmbPresetDays.Text = "None Selected";
             cmbPresetDays.Visible = false;
             cmbPresetDays.Click += cmbPresetDays_Click;
-            cmbPresetDays.TextChanged += cmbPresetDays_TextChanged;
             // 
             // cmbPresetTime
             // 
@@ -1610,7 +1604,6 @@ namespace SleepyTime_2._0
             label44.Size = new System.Drawing.Size(170, 21);
             label44.TabIndex = 55;
             label44.Text = "Open on Start-up";
-            label44.Click += label44_Click;
             // 
             // label43
             // 
@@ -1644,7 +1637,6 @@ namespace SleepyTime_2._0
             label42.Size = new System.Drawing.Size(170, 21);
             label42.TabIndex = 25;
             label42.Text = "Countdown Layout";
-            label42.Click += label42_Click;
             // 
             // cmbCountdownLayout
             // 
@@ -1696,7 +1688,6 @@ namespace SleepyTime_2._0
             tglAOT.Size = new System.Drawing.Size(67, 22);
             tglAOT.TabIndex = 21;
             tglAOT.UseVisualStyleBackColor = true;
-            tglAOT.CheckedChanged += tglAOT_CheckedChanged;
             // 
             // label17
             // 
@@ -1909,7 +1900,6 @@ namespace SleepyTime_2._0
             txtHelpInfo.Size = new System.Drawing.Size(646, 153);
             txtHelpInfo.TabIndex = 38;
             txtHelpInfo.Text = resources.GetString("txtHelpInfo.Text");
-            txtHelpInfo.TextChanged += richTextBox1_TextChanged;
             // 
             // imgHelpImage
             // 
@@ -2043,7 +2033,6 @@ namespace SleepyTime_2._0
             cmsTrayMenu.Name = "cmsTrayMenu";
             cmsTrayMenu.Size = new System.Drawing.Size(168, 126);
             cmsTrayMenu.Text = "SleepyTime";
-            cmsTrayMenu.Opening += cmsTrayMenu_Opening;
             // 
             // countdownToolStripMenuItem
             // 

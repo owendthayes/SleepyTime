@@ -27,14 +27,15 @@ namespace SleepyTime_2._0
         //rounded borders values
         private int borderRadius = 30, BorderSize = 2;
 
-        private bool countdownStarted = false;
-        private TimeSpan remainingTime;
-        private bool countdownEnded = false;
-
         //Drag and Drop functionality for form header.
         private bool Dragging = false;
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
+
+        //values used for COUNTDOWN
+        private bool countdownStarted = false;
+        private TimeSpan remainingTime;
+        private bool countdownEnded = false;
 
         //list for populating scheduled items.
         private List<ScheduleItem> scheduledItems = new List<ScheduleItem>();
@@ -48,23 +49,28 @@ namespace SleepyTime_2._0
 
         //APP SETTINGS
         private bool unsavedChanges;
+        private string[] prevSettings;
 
-        //COLOUR THEME
+        //COLOUR OR APPEARANCE
+        //accent
         private string accentColour = "purple";
         private Color primaryAccent;
         private Color secondaryAccent;
+
+        //dark mode
         private string mainTheme = "dark";
         private Color textColor = Color.Black;
         private Color secondaryTextColor = Color.FromArgb(177, 178, 181);
-
-        private string countDownLayout = "";
-        private bool openOnStartup = false;
-
         Color primaryTheme;
         Color secondaryTheme;
 
+        //countdown layout
+        private string countDownLayout = "";
         private bool quickActionsHidden = false;
 
+        private bool openOnStartup = false;
+
+        //values needed for preset and schedule items.
         ScheduleItem scheduleEditTarget;
         PresetItem presetEditTarget;
 
@@ -73,17 +79,12 @@ namespace SleepyTime_2._0
         private string[] reminderMins = { "0", "5", "10", "15", "30", "60", "120" };
         private string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        private string[] prevSettings;
 
         //app directory
         private static readonly string appDataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SleepyTime");
         private static readonly string SettingsFile = Path.Combine(appDataDirectory, "Settings.txt");
         private static readonly string ScheduleFile = Path.Combine(appDataDirectory, "Schedule.txt");
         private static readonly string PresetsFile = Path.Combine(appDataDirectory, "Preset.txt");
-
-        private bool mouseLeftPanel = false;
-        private bool mouseLeftBox = false;
-
 
         #region Main Form Functionaltiy
         public frmMain()
@@ -2523,106 +2524,8 @@ namespace SleepyTime_2._0
         {
             loadHelp("Other");
         }
+
         #endregion
-
-
-        //remove everything below, double check everything still functions correctly.
-        private void tglAOT_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void imgHeaderDivider_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlCountdown_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        
-        private void listBoxDays_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void cmbPresetDays_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlPresetDays_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label36_Click(object sender, EventArgs e)
-        {
-
-        } 
-
-        private void label42_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label44_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-
-
-        
-
-        private void cmsTrayMenu_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        
-
-       
-
-        private void pnlPresetDays_MouseLeave(object sender, EventArgs e)
-        {
-            mouseLeftPanel = true;
-            hidePanel();
-        }
-
-        private void cmbPresetDays_MouseLeave(object sender, EventArgs e)
-        {
-            mouseLeftBox = true;
-            hidePanel();
-        }
-
-        private void cmbPresetDays_MouseEnter(object sender, EventArgs e)
-        {
-            mouseLeftBox = false;
-        }
-
-        private void pnlPresetDays_MouseEnter(object sender, EventArgs e)
-        {
-            mouseLeftPanel = false;
-        }
-
-        private void hidePanel()
-        {
-            if (mouseLeftBox && mouseLeftPanel)
-            {
-                pnlPresetDays.Visible = false;
-            }
-        }
     }
 }
 
