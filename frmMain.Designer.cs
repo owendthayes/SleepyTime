@@ -1899,7 +1899,7 @@ namespace SleepyTime_2._0
             txtHelpInfo.Name = "txtHelpInfo";
             txtHelpInfo.Size = new System.Drawing.Size(646, 153);
             txtHelpInfo.TabIndex = 38;
-            txtHelpInfo.Text = resources.GetString("txtHelpInfo.Text");
+            txtHelpInfo.Text = "";
             // 
             // imgHelpImage
             // 
@@ -1928,7 +1928,6 @@ namespace SleepyTime_2._0
             btnHelpOther.TabIndex = 35;
             btnHelpOther.Text = "General";
             btnHelpOther.UseVisualStyleBackColor = false;
-            btnHelpOther.Click += btnHelpOther_Click;
             // 
             // btnHelpSettings
             // 
@@ -1945,7 +1944,6 @@ namespace SleepyTime_2._0
             btnHelpSettings.TabIndex = 34;
             btnHelpSettings.Text = "Settings";
             btnHelpSettings.UseVisualStyleBackColor = false;
-            btnHelpSettings.Click += btnHelpSettings_Click;
             // 
             // btnHelpPresets
             // 
@@ -1962,7 +1960,6 @@ namespace SleepyTime_2._0
             btnHelpPresets.TabIndex = 33;
             btnHelpPresets.Text = "Presets";
             btnHelpPresets.UseVisualStyleBackColor = false;
-            btnHelpPresets.Click += btnHelpPresets_Click;
             // 
             // btnHelpSchedule
             // 
@@ -1979,7 +1976,6 @@ namespace SleepyTime_2._0
             btnHelpSchedule.TabIndex = 32;
             btnHelpSchedule.Text = "Schedule";
             btnHelpSchedule.UseVisualStyleBackColor = false;
-            btnHelpSchedule.Click += btnHelpSchedule_Click;
             // 
             // lblHelp
             // 
@@ -2007,7 +2003,6 @@ namespace SleepyTime_2._0
             btnHelpCountdown.TabIndex = 0;
             btnHelpCountdown.Text = "Countdown";
             btnHelpCountdown.UseVisualStyleBackColor = false;
-            btnHelpCountdown.Click += btnHelpCountdown_Click;
             // 
             // tmrCountDown
             // 
@@ -2142,10 +2137,10 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlHelp);
             Controls.Add(pnlPresets);
             Controls.Add(pnlSettings);
             Controls.Add(pnlCountdown);
-            Controls.Add(pnlHelp);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlAbout);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

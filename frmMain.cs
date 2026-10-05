@@ -202,8 +202,6 @@ namespace SleepyTime_2._0
             cmbPresetTime.SelectedIndex = 0;
             cmbPresetAction.SelectedIndex = 0;
             cmbPresetRepeat.SelectedIndex = 0;
-            txtHelpInfo.ReadOnly = true;
-            btnHelpOther.PerformClick();
 
             btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
 
@@ -2375,154 +2373,25 @@ namespace SleepyTime_2._0
         #endregion
 
         #region Help
-        private void openHelp(string menu)
-        {
-            btnHelp.PerformClick();
-
-            switch (menu)
-            {
-                case "Countdown":
-                    btnHelpCountdown.PerformClick();
-                    break;
-
-                case "Schedule":
-                    btnHelpSchedule.PerformClick();
-                    break;
-
-                case "Presets":
-                    btnHelpPresets.PerformClick();
-                    break;
-
-                case "Settings":
-                    btnHelpSettings.PerformClick();
-                    break;
-            }
-        }
 
         private void btnQuickHelpPresets_Click(object sender, EventArgs e)
         {
-            openHelp("Presets");
+
         }
 
         private void btnQuickHelpSettings_Click(object sender, EventArgs e)
         {
-            openHelp("Settings");
+
         }
 
         private void btnQuickHelpSchedule_Click(object sender, EventArgs e)
         {
-            openHelp("Schedule");
+
         }
 
         private void btnQuickHelpCountdown_Click(object sender, EventArgs e)
         {
-            openHelp("Countdown");
-        }
 
-        private void loadHelp(string helpType)
-        {
-            string countdownImage = Path.GetFullPath("Resources\\CountdownScreen.png");
-            string scheduleImage = Path.GetFullPath("Resources\\ScheduleScreen.png");
-            string presetsImage = Path.GetFullPath("Resources\\PresetScreen.png");
-            string settingsImage = Path.GetFullPath("Resources\\SettingsScreen.png");
-            string otherImage = Path.GetFullPath("Resources\\SleepyTime.png");
-
-            txtHelpInfo.Clear();
-
-            switch (helpType)
-            {
-                case "Countdown":
-                    //change help image
-                    imgHelpImage.Image = Properties.Resources.CountdownScreen;
-
-                    //change help text
-                    txtHelpInfo.Text = "Countdown\n\n" +
-                        "Here you can choose a specific action using the drop down box at the top of the screen." +
-                        " Once an action has been chosen either type in or use the quick action buttons to set the desired time.\n\n" +
-                        "Click the \"Start Countdown\" button to begin the timer. Once the timer reaches zero, the action will occur.\n\n" +
-                        "You can cancel the timer by selecting the \"Cancel Countdown\" button. Additionally, the timer can be cleared using the \"CLR\" button.\n\n" +
-                        "There are quick timers for 15 minutes, 30 minutes, 1 hour and 2 hours. To save you having to manually type in these times.\n\n" +
-                        "Finally, you can change the layout of this menu in the settings menu, functional view will be the same as in the image above," +
-                        " minimal view will remove the quick timers and quick actions, decluttering the menu.";
-                    break;
-
-                case "Schedule":
-                    //change help image
-                    imgHelpImage.Image = Properties.Resources.ScheduleScreen;
-
-                    //change help text
-                    txtHelpInfo.Text = "Schedule\n\n" +
-                        "Here you can set an action to occur at a specific date and time. Fill out the boxes at the top of the screen.\n\n" +
-                        "Set the action, date, time and reminder then click the \"Save\" button to save the scheduled item.\n\n" +
-                        "You will be reminded before the action occurs if you have chosen to set a reminder. This reminder will" +
-                        " be in the form of a Windows pop-up notification at the bottom right of your screen.\n\n" +
-                        "Saved items can also be edited and deleted using the \"✎\" and \"🗑\" buttons respectively.";
-                    break;
-
-                case "Presets":
-                    //change help image
-                    imgHelpImage.Image = Properties.Resources.PresetScreen;
-
-                    //change help text
-                    txtHelpInfo.Text = "Presets\n\n" +
-                        "Using the presets menu you can set recurring actions on your computer, either every day or only on certain days," +
-                        " specific times are also set here, so you can choose exactly when the actions will occur.\n\n" +
-                        "To create a preset, first fill out the Name, Action, Days and Time, the action can also be saved as on or off. " +
-                        "After filling out the boxes click the \"Save\" button to save your preset.\n\n" +
-                        "Items can then be toggled off and on using the toggle buttons on each item. Additionally, items can be edited or deleted" +
-                        " using the \"✎\" and \"🗑\" buttons respectively.";
-                    break;
-
-                case "Settings":
-                    //change help image
-                    imgHelpImage.Image = Properties.Resources.SettingsScreen;
-
-                    //change help text
-                    txtHelpInfo.Text = "Settings\n\n" +
-                        "SleepyTime can be customised to your own preferences, from the settings menu you can change the accent colour, dark mode or light mode," +
-                        " the layout of the Countdown menu and other things.\n\nOnce you have made changes to your settings, make sure to hit \"Save Changes\" to apply" +
-                        " your new settings.\n\nYou can also change the app's behaviours such as keeping it \"Always on top\" meaning that it will not be hidden" +
-                        " underneath other open programs, additionally you can change what happens when you close the app.\n\n" +
-                        "Allowing the app to fully close will mean actions will be unable to occur, whereas just allowing it to minimise will allow the actions to occur.";
-                    break;
-
-                case "Other":
-                    //change help image
-                    imgHelpImage.Image = Properties.Resources.SleepyTime;
-
-                    //change help text
-                    txtHelpInfo.Text = "General Information\n\n" +
-                        "Using the \"x\", \"-\" and \"↓\" you can close, minimise and minimise SleepyTime to the system tray respectively.\n\n" +
-                        "SleepyTime must be open in some form for actions to be able to occur, therefore it is recommend to minimise it to the system tray when not in immediate use.\n\n" +
-                        " This will ensure that scheduled and preset actions will still happen when they are supposed to.\n\n" +
-                        "If you experience any bugs while using SleepyTime please be sure to report them using the \"Report a bug\" link below the \"Help\" button on the sidebar.";
-                    break;
-            }
-        }
-
-        private void btnHelpCountdown_Click(object sender, EventArgs e)
-        {
-            loadHelp("Countdown");
-        }
-
-        private void btnHelpSchedule_Click(object sender, EventArgs e)
-        {
-            loadHelp("Schedule");
-        }
-
-        private void btnHelpPresets_Click(object sender, EventArgs e)
-        {
-            loadHelp("Presets");
-        }
-
-        private void btnHelpSettings_Click(object sender, EventArgs e)
-        {
-            loadHelp("Settings");
-        }
-
-        private void btnHelpOther_Click(object sender, EventArgs e)
-        {
-            loadHelp("Other");
         }
 
         #endregion
