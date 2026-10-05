@@ -182,7 +182,64 @@ namespace SleepyTime_2._0
             }
         }
 
-            #region Form drag/drop
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            //prevent from running multiple instances.
+            System.Threading.Mutex mutex = new System.Threading.Mutex(false, Application.ProductName);
+            bool running = !mutex.WaitOne(0, false);
+            if (running)
+            {
+                Application.ExitThread();
+                return;
+            }
+
+            cmbOperation.SelectedIndex = 0;
+            cmbScheduleOperation.SelectedIndex = 0;
+            cmbScheduleTime.SelectedIndex = 0;
+            cmbScheduleDate.MinDate = DateTime.Today;
+            cmbRemindMe.SelectedIndex = 0;
+            cmbPresetTime.SelectedIndex = 0;
+            cmbPresetAction.SelectedIndex = 0;
+            cmbPresetRepeat.SelectedIndex = 0;
+            txtHelpInfo.ReadOnly = true;
+            btnHelpOther.PerformClick();
+
+            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
+
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.FlatAppearance.BorderSize = 0;
+
+            btnMinToTray.FlatStyle = FlatStyle.Flat;
+            btnMinToTray.FlatAppearance.BorderSize = 0;
+
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.FlatAppearance.BorderSize = 0;
+
+            btnSidebarCountdown.FlatStyle = FlatStyle.Flat;
+            btnSidebarCountdown.FlatAppearance.BorderSize = 0;
+
+            btnSidebarSchedule.FlatStyle = FlatStyle.Flat;
+            btnSidebarSchedule.FlatAppearance.BorderSize = 0;
+
+            btnSideBarPresets.FlatStyle = FlatStyle.Flat;
+            btnSideBarPresets.FlatAppearance.BorderSize = 0;
+
+            btnSideBarSettings.FlatStyle = FlatStyle.Flat;
+            btnSideBarSettings.FlatAppearance.BorderSize = 0;
+
+            btnSidebarAbout.FlatStyle = FlatStyle.Flat;
+            btnSidebarAbout.FlatAppearance.BorderSize = 0;
+
+            btnHelp.FlatStyle = FlatStyle.Flat;
+            btnHelp.FlatAppearance.BorderSize = 0;
+
+            btnPresetDaysDropDown.FlatStyle = FlatStyle.Flat;
+            btnPresetDaysDropDown.FlatAppearance.BorderSize = 0;
+
+            btnSidebarCountdown.PerformClick();
+        }
+
+        #region Form drag/drop
         //drag and drop functionality for header of form.
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
         {
@@ -415,6 +472,83 @@ namespace SleepyTime_2._0
             SetActivePanel("pnlHelp");
         }
         #endregion
+
+        private void lblBugReport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://forms.gle/haAHduytqaXaEShFA");
+        }
+
+            #region System Tray
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            if (this.Visible == false)
+            {
+                ntfReminder.Visible = true;
+            }
+            else
+            {
+                ntfReminder.Visible = false;
+            }
+        }
+
+        private void btnMinToTray_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
+            ntfReminder.Text = "SleepyTime";
+            ntfReminder.BalloonTipTitle = "SleepyTime has been Minimized to the System Tray";
+            ntfReminder.BalloonTipText = "Click to open SleepyTime";
+            ntfReminder.Visible = true;
+            ntfReminder.ShowBalloonTip(60000);
+        }
+
+        private void countdownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSidebarCountdown.PerformClick();
+        }
+
+        private void scheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSidebarSchedule.PerformClick();
+        }
+
+        private void presetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSideBarPresets.PerformClick();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            btnSideBarSettings.PerformClick();
+        }
+        private void closeSleepyTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?\n\nScheduled actions will not occur when SleepyTime is closed.", "Close SleepyTime", MessageBoxButtons.YesNo);
+            {
+                if (exitBox == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+        private void btnMinToTray_MouseEnter(object sender, EventArgs e)
+        {
+            btnMinToTray.BackColor = secondaryAccent;
+        }
+
+        private void btnMinToTray_MouseLeave(object sender, EventArgs e)
+        {
+            btnMinToTray.BackColor = primaryTheme;
+        }
+
+        #endregion
+
+
         #endregion
 
         #region Timers
@@ -540,6 +674,50 @@ namespace SleepyTime_2._0
 
             }
         }
+
+        // #####################################################################################
+        // GENERAL 
+        // #####################################################################################
+        private void tmrCurrentTime_Tick(object sender, EventArgs e)
+        {
+            lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
+            imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
+        }
+
+        // #####################################################################################
+        // PRESETS
+        // #####################################################################################
+        private void tmrPreset_Tick(object sender, EventArgs e)
+        {
+            List<string> selectedDays = new List<string>();
+            DateTime now = DateTime.Now;
+
+            //check through all ENABLED preset items.
+            foreach (PresetItem item in presetItems)
+            {
+                if (Convert.ToBoolean(item.Enabled == false))
+                {
+                    continue;
+                }
+
+                //check which days are selected for this item
+                for (int i = 0; i < 7; i++)
+                {
+                    if (item.Days[i] == 'x')
+                    {
+                        selectedDays.Add(dayOfWeek[i]);
+                    }
+                }
+
+                // check if the current date and time match the preset item, if they do the perform the action.
+                if (selectedDays.Contains(now.DayOfWeek.ToString()) && item.Time.ToString(@"hh\:mm") == now.TimeOfDay.ToString(@"hh\:mm") && item.LastRun.Date.Date != now.Date.Date)
+                {
+                    performAction(item.Action);
+                    item.LastRun = now;
+                    updatePresetFile();
+                }
+            }
+        }
         #endregion
 
         #region File I/O
@@ -569,6 +747,19 @@ namespace SleepyTime_2._0
 
                 PresetItem item = new PresetItem(data[0], data[1], data[2], TimeSpan.Parse(data[3]), data[4], Convert.ToBoolean(data[5]), DateTime.Parse(data[6]));
                 presetItems.Add(item);
+            }
+        }
+
+        private void updatePresetFile()
+        {
+            using (StreamWriter sw = new StreamWriter(PresetsFile))
+            {
+                foreach (PresetItem item in presetItems)
+                {
+                    sw.WriteLine(
+                        $"{item.Name}|{item.Action}|{item.Repeat}|{item.Time}|{item.Days}|{item.Enabled}|{item.LastRun}"
+                        );
+                }
             }
         }
 
@@ -639,6 +830,18 @@ namespace SleepyTime_2._0
             }
             // update to reflect potentially deleted items as per the else if above.
             updateScheduleFile();
+        }
+        private void updateScheduleFile()
+        {
+            using (StreamWriter sw = new StreamWriter(ScheduleFile))
+            {
+                foreach (ScheduleItem item in scheduledItems)
+                {
+                    sw.WriteLine(
+                        $"{item.Action}|{item.Date:dd/MM/yyyy}|{item.Time:hh\\:mm}|{item.Reminder}|{item.ReminderSent}"
+                        );
+                }
+            }
         }
 
         //#################################################################################################
@@ -858,7 +1061,73 @@ namespace SleepyTime_2._0
             UpdateTimerDisplay();
         }
 
+        #region Validation
+        private void NumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            char numsOnly = e.KeyChar;
+
+            if (!Char.IsDigit(numsOnly) && numsOnly != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void NotEmpty(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                tb.Text = "00";
+            }
+
+            if (Convert.ToInt32(tb.Text) >= 60 && tb != txtHours)
+            {
+                tb.Text = "59";
+            }
+
+            SetRemainingTimeFromTextBoxes();
+
+        }
+
+        private void SetRemainingTimeFromTextBoxes()
+        {
+            if (int.TryParse(txtHours.Text, out int hours) &&
+                int.TryParse(txtMinutes.Text, out int mins) &&
+                int.TryParse(txtSeconds.Text, out int secs))
+            {
+                remainingTime = new TimeSpan(0, hours, mins, secs);
+            }
+        }
+        #endregion
+
         #region Quick Actions
+        private void lblShowHideQuick_Click(object sender, EventArgs e)
+        {
+            if (quickActionsHidden == false)
+            {
+                btnQuick1.Visible = false;
+                btnQuick15.Visible = false;
+                btnQuick2.Visible = false;
+                btnQuick30.Visible = false;
+                btnMoreQuick.Visible = false;
+
+                lblShowHideQuick.Text = "Quick Timers ▶";
+            }
+            else
+            {
+                btnQuick1.Visible = true;
+                btnQuick15.Visible = true;
+                btnQuick2.Visible = true;
+                btnQuick30.Visible = true;
+                btnMoreQuick.Visible = true;
+
+                lblShowHideQuick.Text = "Quick Timers ▼";
+            }
+
+            quickActionsHidden = !quickActionsHidden;
+        }
+
         private void btnAdd5Min_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(remainingTime.TotalHours) <= 99)
@@ -893,6 +1162,58 @@ namespace SleepyTime_2._0
                 remainingTime = remainingTime.Add(TimeSpan.FromHours(1));
                 UpdateTimerDisplay();
             }
+        }
+
+        private void disableQuickTimers()
+        {
+            btnQuick15.Enabled = false;
+            btnQuick30.Enabled = false;
+            btnQuick1.Enabled = false;
+            btnQuick2.Enabled = false;
+        }
+
+        private void enableQuickTimers()
+        {
+            btnQuick15.Enabled = true;
+            btnQuick30.Enabled = true;
+            btnQuick1.Enabled = true;
+            btnQuick2.Enabled = true;
+        }
+
+        private void btnQuick15_Click(object sender, EventArgs e)
+        {
+            remainingTime = new TimeSpan(0, 15, 0);
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
+        }
+
+        private void btnQuick30_Click(object sender, EventArgs e)
+        {
+            remainingTime = new TimeSpan(0, 30, 0);
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
+        }
+
+        private void btnQuick1_Click(object sender, EventArgs e)
+        {
+            remainingTime = new TimeSpan(1, 0, 0);
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
+        }
+
+        private void btnQuick2_Click(object sender, EventArgs e)
+        {
+            remainingTime = new TimeSpan(2, 0, 0);
+            UpdateTimerDisplay();
+            disableQuickTimers();
+            btnStartCountdown.Enabled = true;
+            btnStartCountdown.PerformClick();
         }
         #endregion
 
@@ -963,401 +1284,20 @@ namespace SleepyTime_2._0
                 }
             }
         }
-        #endregion
 
-        #region Presets
-        #endregion
-
-        #region Settings
-        // dark mode =============================================================================================
-        private void applyDarkMode(string mode)
+        //if the user clicks on the reminder, open the app again.
+        private void ntfReminder_BalloonTipClicked(object sender, EventArgs e)
         {
-            // logo needs both a white and black version for corresponding themes.
-            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeLogoWhite.png");
-            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeLogoBlack.png");
+            //open sleepytime again.
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
 
-            //change all text and colours to the corresponding theme colours, also update the logo.
-            textColor = Color.Black;
-            switch (mode)
-            {
-                case "dark":
-                    primaryTheme = Color.FromArgb(13, 15, 28);
-                    secondaryTheme = Color.FromArgb(25, 25, 41);
-                    textColor = Color.White;
-                    secondaryTextColor = Color.FromArgb(177, 178, 181);
-                    imgLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
-                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
-                    break;
-
-                case "light":
-                    primaryTheme = Color.FromArgb(245, 245, 250);
-                    secondaryTheme = Color.FromArgb(225, 225, 235);
-                    textColor = Color.Black;
-                    secondaryTextColor = Color.FromArgb(39, 39, 41);
-                    imgLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
-                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
-                    break;
-            }
-
-            // change control colours based on theme.
-            foreach (Control c in GetAllControls(this))
-            {
-                if (c.ForeColor == Color.White || c.ForeColor == Color.Black)
-                {
-                    c.ForeColor = textColor;
-                }
-
-                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.FromArgb(245, 245, 250))
-                {
-                    c.BackColor = primaryTheme;
-                }
-
-                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(225, 225, 235))
-                {
-                    c.BackColor = secondaryTheme;
-                }
-
-                if (c.ForeColor == Color.FromArgb(177, 178, 181) || c.ForeColor == Color.FromArgb(39, 39, 41))
-                {
-                    c.ForeColor = secondaryTextColor;
-                }
-            }
-            this.BackColor = primaryTheme;
+            //open it in the centre of the screen again.
+            this.CenterToScreen();
         }
 
-        // accent colour =============================================================================================
-        // get the actual accent colour and save the values for use later.
-        private void getAccentColour()
-        {
-            //return accent colours here, lighter darker etc.
-            switch (accentColour)
-            {
-                case "purple":
-                    primaryAccent = Color.FromArgb(140, 71, 203);
-                    secondaryAccent = Color.FromArgb(55, 28, 79);
-                    break;
-
-                case "blue":
-                    primaryAccent = Color.FromArgb(74, 130, 194);
-                    secondaryAccent = Color.FromArgb(45, 82, 128);
-                    break;
-
-                case "green":
-                    primaryAccent = Color.FromArgb(70, 170, 105);
-                    secondaryAccent = Color.FromArgb(35, 105, 65);
-                    break;
-
-                case "yellow":
-                    primaryAccent = Color.FromArgb(215, 180, 65);
-                    secondaryAccent = Color.FromArgb(145, 115, 25);
-                    break;
-
-                case "red":
-                    primaryAccent = Color.FromArgb(194, 74, 74);
-                    secondaryAccent = Color.FromArgb(128, 45, 45);
-                    break;
-
-                case "orange":
-                    primaryAccent = Color.FromArgb(212, 122, 58);
-                    secondaryAccent = Color.FromArgb(143, 81, 40);
-                    break;
-
-                case "pink":
-                    primaryAccent = Color.FromArgb(196, 90, 134);
-                    secondaryAccent = Color.FromArgb(130, 60, 89);
-                    break;
-            }
-        }
-
-        // apply the chosen accent colour to each of the controls.
-        private void applyAccentColour(Color accentColour, Color secondaryAccent)
-        {
-            foreach (Control c in GetAllControls(this))
-            {
-                if (c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
-                    c.ForeColor == Color.FromArgb(74, 130, 194) || //blue
-                    c.ForeColor == Color.FromArgb(70, 170, 105) || //green
-                    c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
-                    c.ForeColor == Color.FromArgb(194, 74, 74) || //red
-                    c.ForeColor == Color.FromArgb(212, 122, 58) || //orange
-                    c.ForeColor == Color.FromArgb(196, 90, 134) //pink
-                    )
-                {
-                    c.ForeColor = primaryAccent;
-                }
-
-                if (c is RoundedButton button && c.ForeColor != Color.FromArgb(247, 62, 62))
-                {
-                    button.BorderColor = primaryAccent;
-                }
-
-                if (c is Label && Text == ":")
-                {
-                    c.ForeColor = primaryAccent;
-                }
-
-                if (c is ToggleButton toggle)
-                {
-                    toggle.OnBackColor = primaryAccent;
-                }
-
-                if (c is LinkLabel label)
-                {
-                    label.LinkColor = primaryAccent;
-                }
-            }
-
-            lblTimeTitle.ForeColor = primaryAccent;
-            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
-            btnStartCountdown.ForeColor = primaryAccent;
-            btnSideBarSettings.PerformClick();
-        }
-
-        #endregion
-
-        #region About
-        #endregion
-
-        #region Help
-        #endregion
-
-        
-
-        
-
-        
-
-        
-
-       
-
-        
-
-
-        private void NumbersOnly(object sender, KeyPressEventArgs e)
-        {
-            char numsOnly = e.KeyChar;
-
-            if (!Char.IsDigit(numsOnly) && numsOnly != 8)
-            {
-                e.Handled = true;
-            }
-        }    
-
-        private void NotEmpty(object sender, EventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-
-            if (string.IsNullOrEmpty(tb.Text))
-            {
-                tb.Text = "00";
-            }
-
-            if (Convert.ToInt32(tb.Text) >= 60 && tb != txtHours)
-            {
-                tb.Text = "59";
-            }
-
-            SetRemainingTimeFromTextBoxes();
-
-        }
-
-        private void SetRemainingTimeFromTextBoxes()
-        {
-            if (int.TryParse(txtHours.Text, out int hours) &&
-                int.TryParse(txtMinutes.Text, out int mins) &&
-                int.TryParse(txtSeconds.Text, out int secs))
-            {
-                remainingTime = new TimeSpan(0, hours, mins, secs);
-            }
-        }
-
-        private void disableQuickTimers()
-        {
-            btnQuick15.Enabled = false;
-            btnQuick30.Enabled = false;
-            btnQuick1.Enabled = false;
-            btnQuick2.Enabled = false;
-        }
-
-        private void enableQuickTimers()
-        {
-            btnQuick15.Enabled = true;
-            btnQuick30.Enabled = true;
-            btnQuick1.Enabled = true;
-            btnQuick2.Enabled = true;
-        }
-
-        private void btnQuick15_Click(object sender, EventArgs e)
-        {
-            remainingTime = new TimeSpan(0, 15, 0);
-            UpdateTimerDisplay();
-            disableQuickTimers();
-            btnStartCountdown.Enabled = true;
-            btnStartCountdown.PerformClick();
-        }
-
-        private void btnQuick30_Click(object sender, EventArgs e)
-        {
-            remainingTime = new TimeSpan(0, 30, 0);
-            UpdateTimerDisplay();
-            disableQuickTimers();
-            btnStartCountdown.Enabled = true;
-            btnStartCountdown.PerformClick();
-        }
-
-        private void btnQuick1_Click(object sender, EventArgs e)
-        {
-            remainingTime = new TimeSpan(1, 0, 0);
-            UpdateTimerDisplay();
-            disableQuickTimers();
-            btnStartCountdown.Enabled = true;
-            btnStartCountdown.PerformClick();
-        }
-
-        private void btnQuick2_Click(object sender, EventArgs e)
-        {
-            remainingTime = new TimeSpan(2, 0, 0);
-            UpdateTimerDisplay();
-            disableQuickTimers();
-            btnStartCountdown.Enabled = true;
-            btnStartCountdown.PerformClick();
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OpenLink("https://github.com/owendthayes/SleepyTime1.0");
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OpenLink("https://github.com/owendthayes/SleepyTime");
-        }
-
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OpenLink("https://github.com/owendthayes");
-        }
-
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OpenLink("https://www.linkedin.com/in/owendthayes/");
-        }
-
-        private void OpenLink(string url)
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = url,
-                UseShellExecute = true
-            });
-        }
-
-        private void btnSaveSettings_Click(object sender, EventArgs e)
-        {
-            unsavedChanges = false;
-            switch (cmbAccent.SelectedIndex)
-            {
-                case 0: //purple
-                    accentColour = "purple";
-                    break;
-
-                case 1: //blue
-                    accentColour = "blue";
-                    break;
-
-                case 2: //green
-                    accentColour = "green";
-                    break;
-
-                case 3: //yellow
-                    accentColour = "yellow";
-                    break;
-
-                case 4: //red
-                    accentColour = "red";
-                    break;
-
-                case 5: //orange
-                    accentColour = "orange";
-                    break;
-
-                case 6: //pink
-                    accentColour = "pink";
-                    break;
-            }
-            getAccentColour();
-            applyAccentColour(primaryAccent, secondaryAccent);
-
-            this.TopMost = tglAOT.Checked;
-
-            switch (tglDarkMode.Checked)
-            {
-                case true:
-                    mainTheme = "dark";
-                    break;
-
-                case false:
-                    mainTheme = "light";
-                    break;
-            }
-
-            applyDarkMode(mainTheme);
-
-            switch (cmbCountdownLayout.SelectedIndex)
-            {
-                case 0:
-                    countDownLayout = "functional";
-                    break;
-
-                case 1:
-                    countDownLayout = "minimal";
-                    break;
-            }
-            applyCountDownLayout();
-
-            openOnStartup = tglStartUp.Checked;
-            SetStartup(openOnStartup);
-
-            //save settings
-            File.WriteAllLines(SettingsFile, new[]
-            {
-                accentColour,
-                tglAOT.Checked.ToString(),
-                tglDarkMode.Checked.ToString(),
-                countDownLayout,
-                tglStartUp.Checked.ToString()
-            });
-
-            prevSettings[0] = accentColour.ToLower();
-            prevSettings[1] = tglAOT.Checked.ToString().ToLower();
-            prevSettings[2] = tglDarkMode.Checked.ToString().ToLower();
-            prevSettings[3] = countDownLayout.ToLower();
-            prevSettings[4] = tglStartUp.Checked.ToString().ToLower();
-
-
-        }
-
-        private void applyCountDownLayout()
-        {
-            int x = 0;
-            int y = 0;
-            if (countDownLayout == "minimal")
-            {
-                pnlCountdownExtras.Visible = false;
-                x = 27;
-                y = 91;
-            }
-            else
-            {
-                pnlCountdownExtras.Visible = true;
-                x = 27;
-                y = 33;
-            }
-
-            this.pnlCountdownControls.Location = new Point(x, y);
-        }
-
+        //reset the entry controls to their original states, user can start fresh.
+        //OR cancel editing an item
         private void btnClearSchedule_Click(object sender, EventArgs e)
         {
             if (btnClearSchedule.Text == "Cancel")
@@ -1374,6 +1314,7 @@ namespace SleepyTime_2._0
             cmbScheduleDate.Value = DateTime.Today;
         }
 
+        //update the schedule UI, create a record for each saved item.
         private void updateScheduleUI()
         {
             foreach (Control ctr in pnlSavedSchedules.Controls.Cast<Control>().ToList())
@@ -1496,8 +1437,6 @@ namespace SleepyTime_2._0
             }
         }
 
-
-
         private void btnEditSchedule_Click(object sender, EventArgs e)
         {
             //get the target
@@ -1541,19 +1480,6 @@ namespace SleepyTime_2._0
                         updateScheduleUI();
                         return;
                     }
-                }
-            }
-        }
-
-        private void updateScheduleFile()
-        {
-            using (StreamWriter sw = new StreamWriter(ScheduleFile))
-            {
-                foreach (ScheduleItem item in scheduledItems)
-                {
-                    sw.WriteLine(
-                        $"{item.Action}|{item.Date:dd/MM/yyyy}|{item.Time:hh\\:mm}|{item.Reminder}|{item.ReminderSent}"
-                        );
                 }
             }
         }
@@ -1679,146 +1605,9 @@ namespace SleepyTime_2._0
             }
         }
 
-        private void tglAOT_CheckedChanged(object sender, EventArgs e)
-        {
+        #endregion
 
-        }
-
-        private void imgHeaderDivider_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlCountdown_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblShowHideQuick_Click(object sender, EventArgs e)
-        {
-            if (quickActionsHidden == false)
-            {
-                btnQuick1.Visible = false;
-                btnQuick15.Visible = false;
-                btnQuick2.Visible = false;
-                btnQuick30.Visible = false;
-                btnMoreQuick.Visible = false;
-
-                lblShowHideQuick.Text = "Quick Timers ▶";
-            }
-            else
-            {
-                btnQuick1.Visible = true;
-                btnQuick15.Visible = true;
-                btnQuick2.Visible = true;
-                btnQuick30.Visible = true;
-                btnMoreQuick.Visible = true;
-
-                lblShowHideQuick.Text = "Quick Timers ▼";
-            }
-
-            quickActionsHidden = !quickActionsHidden;
-        }
-
-        private void ntfReminder_BalloonTipClicked(object sender, EventArgs e)
-        {
-            //open sleepytime again.
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
-
-            //open it in the centre of the screen again.
-            this.CenterToScreen();
-        }
-
-        private void tmrCurrentTime_Tick(object sender, EventArgs e)
-        {
-            lblCurrentTime.Text = (DateTime.Now.ToString("HH:mm"));
-            imgTimeAnimation.Visible = !imgTimeAnimation.Visible;
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            //prevent from running multiple instances.
-            System.Threading.Mutex mutex = new System.Threading.Mutex(false, Application.ProductName);
-            bool running = !mutex.WaitOne(0, false);
-            if (running)
-            {
-                Application.ExitThread();
-                return;
-            }
-
-            cmbOperation.SelectedIndex = 0;
-            cmbScheduleOperation.SelectedIndex = 0;
-            cmbScheduleTime.SelectedIndex = 0;
-            cmbScheduleDate.MinDate = DateTime.Today;
-            cmbRemindMe.SelectedIndex = 0;
-            cmbPresetTime.SelectedIndex = 0;
-            cmbPresetAction.SelectedIndex = 0;
-            cmbPresetRepeat.SelectedIndex = 0;
-            txtHelpInfo.ReadOnly = true;
-            btnHelpOther.PerformClick();
-
-            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
-
-            btnExit.FlatStyle = FlatStyle.Flat;
-            btnExit.FlatAppearance.BorderSize = 0;
-
-            btnMinToTray.FlatStyle = FlatStyle.Flat;
-            btnMinToTray.FlatAppearance.BorderSize = 0;
-
-            btnMinimize.FlatStyle = FlatStyle.Flat;
-            btnMinimize.FlatAppearance.BorderSize = 0;
-
-            btnSidebarCountdown.FlatStyle = FlatStyle.Flat;
-            btnSidebarCountdown.FlatAppearance.BorderSize = 0;
-
-            btnSidebarSchedule.FlatStyle = FlatStyle.Flat;
-            btnSidebarSchedule.FlatAppearance.BorderSize = 0;
-
-            btnSideBarPresets.FlatStyle = FlatStyle.Flat;
-            btnSideBarPresets.FlatAppearance.BorderSize = 0;
-
-            btnSideBarSettings.FlatStyle = FlatStyle.Flat;
-            btnSideBarSettings.FlatAppearance.BorderSize = 0;
-
-            btnSidebarAbout.FlatStyle = FlatStyle.Flat;
-            btnSidebarAbout.FlatAppearance.BorderSize = 0;
-
-            btnHelp.FlatStyle = FlatStyle.Flat;
-            btnHelp.FlatAppearance.BorderSize = 0;
-
-            btnPresetDaysDropDown.FlatStyle = FlatStyle.Flat;
-            btnPresetDaysDropDown.FlatAppearance.BorderSize = 0;
-
-            btnSidebarCountdown.PerformClick();
-        }
-        private void cmbPresetDays_Click(object sender, EventArgs e)
-        {
-            pnlPresetDays.Visible = !pnlPresetDays.Visible;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pnlPresetDays.Visible = !pnlPresetDays.Visible;
-        }
-
-
-        private void listBoxDays_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void cmbPresetDays_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlPresetDays_Leave(object sender, EventArgs e)
-        {
-            //pnlPresetDays.Visible = false;
-        }
-
+        #region Presets
         private void cmbPresetRepeat_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbPresetRepeat.SelectedIndex == 1)
@@ -1966,21 +1755,6 @@ namespace SleepyTime_2._0
 
             btnPresetCancel.PerformClick();
         }
-
-        private void updatePresetFile()
-        {
-            using (StreamWriter sw = new StreamWriter(PresetsFile))
-            {
-                foreach (PresetItem item in presetItems)
-                {
-                    sw.WriteLine(
-                        $"{item.Name}|{item.Action}|{item.Repeat}|{item.Time}|{item.Days}|{item.Enabled}|{item.LastRun}"
-                        );
-                }
-            }
-        }
-
-        //CHECK THAT THE SAVED ITEMS ARE BEING READ TO THE LIST PROPERLY!!!
 
         private void updatePresetUI()
         {
@@ -2163,43 +1937,6 @@ namespace SleepyTime_2._0
                 pnlSavedPresets.Controls.Add(row);
                 y += row.Height + 5;
             }
-
-        }
-
-
-
-        private void label36_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPresetCancel_Click(object sender, EventArgs e)
-        {
-
-            txtPresetName.Text = "";
-            cmbPresetAction.SelectedIndex = 0;
-            cmbPresetRepeat.SelectedIndex = 0;
-            cmbPresetTime.SelectedIndex = 0;
-            tglPresetEnabled.Checked = true;
-            uncheckAll();
-            cmbPresetDays.Text = "None selected";
-
-            if (btnPresetCancel.Text == "Cancel")
-            {
-                pnlSavedPresets.Enabled = true;
-                btnPresetSave.Text = "Save Preset";
-                btnPresetCancel.Text = "Reset";
-                btnPresetCancel.PerformClick();
-            }
-        }
-
-        private void uncheckAll()
-        {
-            for (int i = 0; i < listBoxDays.Items.Count; i++)
-            {
-                listBoxDays.SetItemChecked(i, false);
-            }
-            listBoxDays.SelectedIndex = -1;
         }
 
         private void btnEditPreset_Click(object sender, EventArgs e)
@@ -2257,10 +1994,50 @@ namespace SleepyTime_2._0
             }
         }
 
+        private void btnPresetCancel_Click(object sender, EventArgs e)
+        {
+
+            txtPresetName.Text = "";
+            cmbPresetAction.SelectedIndex = 0;
+            cmbPresetRepeat.SelectedIndex = 0;
+            cmbPresetTime.SelectedIndex = 0;
+            tglPresetEnabled.Checked = true;
+            uncheckAll();
+            cmbPresetDays.Text = "None selected";
+
+            if (btnPresetCancel.Text == "Cancel")
+            {
+                pnlSavedPresets.Enabled = true;
+                btnPresetSave.Text = "Save Preset";
+                btnPresetCancel.Text = "Reset";
+                btnPresetCancel.PerformClick();
+            }
+        }
+        #region Multi-Select Combo-Box
+        private void cmbPresetDays_Click(object sender, EventArgs e)
+        {
+            pnlPresetDays.Visible = !pnlPresetDays.Visible;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnlPresetDays.Visible = !pnlPresetDays.Visible;
+        }
+
+        private void uncheckAll()
+        {
+            for (int i = 0; i < listBoxDays.Items.Count; i++)
+            {
+                listBoxDays.SetItemChecked(i, false);
+            }
+            listBoxDays.SelectedIndex = -1;
+        }
+
         private void listBoxDays_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbPresetDays.Text = $"{listBoxDays.CheckedItems.Count.ToString()} days selected";
         }
+        #endregion
 
         private void tglEnabled_CheckedChanged(object sender, EventArgs e)
         {
@@ -2279,52 +2056,306 @@ namespace SleepyTime_2._0
             updatePresetFile();
 
         }
+        #endregion
 
-        private void lblBugReport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        #region Settings
+        private void btnSaveSettings_Click(object sender, EventArgs e)
         {
-            OpenLink("https://forms.gle/haAHduytqaXaEShFA");
+            unsavedChanges = false;
+            switch (cmbAccent.SelectedIndex)
+            {
+                case 0: //purple
+                    accentColour = "purple";
+                    break;
+
+                case 1: //blue
+                    accentColour = "blue";
+                    break;
+
+                case 2: //green
+                    accentColour = "green";
+                    break;
+
+                case 3: //yellow
+                    accentColour = "yellow";
+                    break;
+
+                case 4: //red
+                    accentColour = "red";
+                    break;
+
+                case 5: //orange
+                    accentColour = "orange";
+                    break;
+
+                case 6: //pink
+                    accentColour = "pink";
+                    break;
+            }
+            getAccentColour();
+            applyAccentColour(primaryAccent, secondaryAccent);
+
+            this.TopMost = tglAOT.Checked;
+
+            switch (tglDarkMode.Checked)
+            {
+                case true:
+                    mainTheme = "dark";
+                    break;
+
+                case false:
+                    mainTheme = "light";
+                    break;
+            }
+
+            applyDarkMode(mainTheme);
+
+            switch (cmbCountdownLayout.SelectedIndex)
+            {
+                case 0:
+                    countDownLayout = "functional";
+                    break;
+
+                case 1:
+                    countDownLayout = "minimal";
+                    break;
+            }
+            applyCountDownLayout();
+
+            openOnStartup = tglStartUp.Checked;
+            SetStartup(openOnStartup);
+
+            //save settings
+            File.WriteAllLines(SettingsFile, new[]
+            {
+                accentColour,
+                tglAOT.Checked.ToString(),
+                tglDarkMode.Checked.ToString(),
+                countDownLayout,
+                tglStartUp.Checked.ToString()
+            });
+
+            prevSettings[0] = accentColour.ToLower();
+            prevSettings[1] = tglAOT.Checked.ToString().ToLower();
+            prevSettings[2] = tglDarkMode.Checked.ToString().ToLower();
+            prevSettings[3] = countDownLayout.ToLower();
+            prevSettings[4] = tglStartUp.Checked.ToString().ToLower();
+
+
         }
 
-        private void tmrPreset_Tick(object sender, EventArgs e)
+        // dark mode =============================================================================================
+        private void applyDarkMode(string mode)
         {
-            List<string> selectedDays = new List<string>();
-            DateTime now = DateTime.Now;
+            // logo needs both a white and black version for corresponding themes.
+            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeLogoWhite.png");
+            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeLogoBlack.png");
 
-            //check through all ENABLED preset items.
-            foreach (PresetItem item in presetItems)
+            //change all text and colours to the corresponding theme colours, also update the logo.
+            textColor = Color.Black;
+            switch (mode)
             {
-                if (Convert.ToBoolean(item.Enabled == false))
+                case "dark":
+                    primaryTheme = Color.FromArgb(13, 15, 28);
+                    secondaryTheme = Color.FromArgb(25, 25, 41);
+                    textColor = Color.White;
+                    secondaryTextColor = Color.FromArgb(177, 178, 181);
+                    imgLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoWhite;
+                    break;
+
+                case "light":
+                    primaryTheme = Color.FromArgb(245, 245, 250);
+                    secondaryTheme = Color.FromArgb(225, 225, 235);
+                    textColor = Color.Black;
+                    secondaryTextColor = Color.FromArgb(39, 39, 41);
+                    imgLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
+                    imgAboutLogo.Image = Properties.Resources.SleepyTimeLogoBlack;
+                    break;
+            }
+
+            // change control colours based on theme.
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c.ForeColor == Color.White || c.ForeColor == Color.Black)
                 {
-                    continue;
+                    c.ForeColor = textColor;
                 }
 
-                //check which days are selected for this item
-                for (int i = 0; i < 7; i++)
+                if (c.BackColor == Color.FromArgb(13, 15, 28) || c.BackColor == Color.FromArgb(245, 245, 250))
                 {
-                    if (item.Days[i] == 'x')
-                    {
-                        selectedDays.Add(dayOfWeek[i]);
-                    }
+                    c.BackColor = primaryTheme;
                 }
 
-                // check if the current date and time match the preset item, if they do the perform the action.
-                if (selectedDays.Contains(now.DayOfWeek.ToString()) && item.Time.ToString(@"hh\:mm") == now.TimeOfDay.ToString(@"hh\:mm") && item.LastRun.Date.Date != now.Date.Date)
+                if (c.BackColor == Color.FromArgb(25, 25, 41) || c.BackColor == Color.FromArgb(225, 225, 235))
                 {
-                    performAction(item.Action);
-                    item.LastRun = now;
-                    updatePresetFile();
+                    c.BackColor = secondaryTheme;
                 }
+
+                if (c.ForeColor == Color.FromArgb(177, 178, 181) || c.ForeColor == Color.FromArgb(39, 39, 41))
+                {
+                    c.ForeColor = secondaryTextColor;
+                }
+            }
+            this.BackColor = primaryTheme;
+        }
+
+        // accent colour =============================================================================================
+        // get the actual accent colour and save the values for use later.
+        private void getAccentColour()
+        {
+            //return accent colours here, lighter darker etc.
+            switch (accentColour)
+            {
+                case "purple":
+                    primaryAccent = Color.FromArgb(140, 71, 203);
+                    secondaryAccent = Color.FromArgb(55, 28, 79);
+                    break;
+
+                case "blue":
+                    primaryAccent = Color.FromArgb(74, 130, 194);
+                    secondaryAccent = Color.FromArgb(45, 82, 128);
+                    break;
+
+                case "green":
+                    primaryAccent = Color.FromArgb(70, 170, 105);
+                    secondaryAccent = Color.FromArgb(35, 105, 65);
+                    break;
+
+                case "yellow":
+                    primaryAccent = Color.FromArgb(215, 180, 65);
+                    secondaryAccent = Color.FromArgb(145, 115, 25);
+                    break;
+
+                case "red":
+                    primaryAccent = Color.FromArgb(194, 74, 74);
+                    secondaryAccent = Color.FromArgb(128, 45, 45);
+                    break;
+
+                case "orange":
+                    primaryAccent = Color.FromArgb(212, 122, 58);
+                    secondaryAccent = Color.FromArgb(143, 81, 40);
+                    break;
+
+                case "pink":
+                    primaryAccent = Color.FromArgb(196, 90, 134);
+                    secondaryAccent = Color.FromArgb(130, 60, 89);
+                    break;
             }
         }
 
-        private void label42_Click(object sender, EventArgs e)
+        // apply the chosen accent colour to each of the controls.
+        private void applyAccentColour(Color accentColour, Color secondaryAccent)
         {
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c.ForeColor == Color.FromArgb(140, 71, 203) || //purple
+                    c.ForeColor == Color.FromArgb(74, 130, 194) || //blue
+                    c.ForeColor == Color.FromArgb(70, 170, 105) || //green
+                    c.ForeColor == Color.FromArgb(215, 180, 65) || //yellow                   
+                    c.ForeColor == Color.FromArgb(194, 74, 74) || //red
+                    c.ForeColor == Color.FromArgb(212, 122, 58) || //orange
+                    c.ForeColor == Color.FromArgb(196, 90, 134) //pink
+                    )
+                {
+                    c.ForeColor = primaryAccent;
+                }
 
+                if (c is RoundedButton button && c.ForeColor != Color.FromArgb(247, 62, 62))
+                {
+                    button.BorderColor = primaryAccent;
+                }
+
+                if (c is Label && Text == ":")
+                {
+                    c.ForeColor = primaryAccent;
+                }
+
+                if (c is ToggleButton toggle)
+                {
+                    toggle.OnBackColor = primaryAccent;
+                }
+
+                if (c is LinkLabel label)
+                {
+                    label.LinkColor = primaryAccent;
+                }
+            }
+
+            lblTimeTitle.ForeColor = primaryAccent;
+            btnClearSchedule.BorderColor = Color.FromArgb(247, 62, 62);
+            btnStartCountdown.ForeColor = primaryAccent;
+            btnSideBarSettings.PerformClick();
         }
 
-        private void label44_Click(object sender, EventArgs e)
+        // countdown layout ========================================================================
+        private void applyCountDownLayout()
         {
+            int x = 0;
+            int y = 0;
+            if (countDownLayout == "minimal")
+            {
+                pnlCountdownExtras.Visible = false;
+                x = 27;
+                y = 91;
+            }
+            else
+            {
+                pnlCountdownExtras.Visible = true;
+                x = 27;
+                y = 33;
+            }
 
+            this.pnlCountdownControls.Location = new Point(x, y);
+        }
+
+        // open on startup ======================================================================
+        private void SetStartup(bool enabled)
+        {
+            const string runKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(runKey, true))
+            {
+                if (key == null)
+                {
+                    return;
+                }
+                if (enabled)
+                {
+                    key.SetValue("SleepyTime", Application.ExecutablePath);
+
+                    //MessageBox.Show($"Saved to startup? {key.GetValue("SleepyTime")?.ToString()
+                    //== Application.ExecutablePath}");
+                }
+                else
+                {
+                    key.DeleteValue("SleepyTime", false);
+
+                    //MessageBox.Show($"Deleted from startup? {key.GetValue("SleepyTime") == null}");
+                }
+            }
+        }
+        #endregion
+
+        #region About
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://github.com/owendthayes/SleepyTime1.0");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://github.com/owendthayes/SleepyTime");
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://github.com/owendthayes");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenLink("https://www.linkedin.com/in/owendthayes/");
         }
 
         private void btnDonate_Click(object sender, EventArgs e)
@@ -2332,11 +2363,17 @@ namespace SleepyTime_2._0
             OpenLink("https://ko-fi.com/smellslikesmoke#checkoutModal");
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void OpenLink(string url)
         {
-
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });
         }
+        #endregion
 
+        #region Help
         private void openHelp(string menu)
         {
             btnHelp.PerformClick();
@@ -2486,106 +2523,76 @@ namespace SleepyTime_2._0
         {
             loadHelp("Other");
         }
+        #endregion
 
-        private void frmMain_Resize(object sender, EventArgs e)
+
+        //remove everything below, double check everything still functions correctly.
+        private void tglAOT_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.Visible == false)
-            {
-                ntfReminder.Visible = true;
-            }
-            else
-            {
-                ntfReminder.Visible = false;
-            }
+
         }
 
-        private void btnMinToTray_Click(object sender, EventArgs e)
+        private void imgHeaderDivider_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
-            ntfReminder.Text = "SleepyTime";
-            ntfReminder.BalloonTipTitle = "SleepyTime has been Minimized to the System Tray";
-            ntfReminder.BalloonTipText = "Click to open SleepyTime";
-            ntfReminder.Visible = true;
-            ntfReminder.ShowBalloonTip(60000);
+
         }
 
-        private void countdownToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pnlCountdown_Paint(object sender, PaintEventArgs e)
         {
-            this.Show();
-            btnSidebarCountdown.PerformClick();
+
+        }
+        
+        private void listBoxDays_MouseLeave(object sender, EventArgs e)
+        {
+
         }
 
-        private void scheduleToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void cmbPresetDays_TextChanged(object sender, EventArgs e)
         {
-            this.Show();
-            btnSidebarSchedule.PerformClick();
+
         }
 
-        private void presetsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pnlPresetDays_Leave(object sender, EventArgs e)
         {
-            this.Show();
-            btnSideBarPresets.PerformClick();
+
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void label36_Click(object sender, EventArgs e)
         {
-            this.Show();
-            btnSideBarSettings.PerformClick();
+
+        } 
+
+        private void label42_Click(object sender, EventArgs e)
+        {
+
         }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+
+
+        
 
         private void cmsTrayMenu_Opening(object sender, CancelEventArgs e)
         {
 
         }
 
-        private void closeSleepyTimeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult exitBox = MessageBox.Show("Are you sure you want to exit?\n\nScheduled actions will not occur when SleepyTime is closed.", "Close SleepyTime", MessageBoxButtons.YesNo);
-            {
-                if (exitBox == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-            }
-        }
+        
 
-        private void btnMinToTray_MouseEnter(object sender, EventArgs e)
-        {
-            btnMinToTray.BackColor = secondaryAccent;
-        }
-
-        private void btnMinToTray_MouseLeave(object sender, EventArgs e)
-        {
-            btnMinToTray.BackColor = primaryTheme;
-        }
-
-
-        private void SetStartup(bool enabled)
-        {
-            const string runKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-
-            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(runKey, true))
-            {
-                if (key == null)
-                {
-                    return;
-                }
-                if (enabled)
-                {
-                    key.SetValue("SleepyTime", Application.ExecutablePath);
-
-                    //MessageBox.Show($"Saved to startup? {key.GetValue("SleepyTime")?.ToString()
-                    //== Application.ExecutablePath}");
-                }
-                else
-                {
-                    key.DeleteValue("SleepyTime", false);
-
-                    //MessageBox.Show($"Deleted from startup? {key.GetValue("SleepyTime") == null}");
-                }
-            }
-        }
+       
 
         private void pnlPresetDays_MouseLeave(object sender, EventArgs e)
         {
