@@ -111,12 +111,12 @@ namespace SleepyTime_2._0.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.Drawing.Icon SleepyTimeIcon {
+        internal static byte[] SleepyTimeIcon {
             get {
                 object obj = ResourceManager.GetObject("SleepyTimeIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((byte[])(obj));
             }
         }
         
