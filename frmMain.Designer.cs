@@ -157,15 +157,15 @@ namespace SleepyTime_2._0
             btnHelp = new System.Windows.Forms.Button();
             pnlHelp = new System.Windows.Forms.Panel();
             pnlSettingsHelp = new System.Windows.Forms.Panel();
-            label48 = new System.Windows.Forms.Label();
+            lblSettingsHelp = new System.Windows.Forms.Label();
             pnlPresetHelp = new System.Windows.Forms.Panel();
-            label47 = new System.Windows.Forms.Label();
+            lblPresetHelp = new System.Windows.Forms.Label();
             pnlScheduleHelp = new System.Windows.Forms.Panel();
-            label46 = new System.Windows.Forms.Label();
+            lblScheduleHelp = new System.Windows.Forms.Label();
             pnlCountdownHelp = new System.Windows.Forms.Panel();
-            label45 = new System.Windows.Forms.Label();
+            lblCountdownHelp = new System.Windows.Forms.Label();
             pnlGeneralHelp = new System.Windows.Forms.Panel();
-            label15 = new System.Windows.Forms.Label();
+            lblGenHelp = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
             lblHelpIndex = new System.Windows.Forms.Label();
             lblHelpMenuTitle = new System.Windows.Forms.Label();
@@ -186,6 +186,7 @@ namespace SleepyTime_2._0
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
             btnMinToTray = new System.Windows.Forms.Button();
+            label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -1558,6 +1559,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSettings
             // 
+            pnlSettings.Controls.Add(label15);
             pnlSettings.Controls.Add(tglStartUp);
             pnlSettings.Controls.Add(btnQuickHelpSettings);
             pnlSettings.Controls.Add(label44);
@@ -1902,97 +1904,107 @@ namespace SleepyTime_2._0
             // pnlSettingsHelp
             // 
             pnlSettingsHelp.AutoScroll = true;
-            pnlSettingsHelp.Controls.Add(label48);
+            pnlSettingsHelp.Controls.Add(lblSettingsHelp);
             pnlSettingsHelp.Location = new System.Drawing.Point(10, 73);
             pnlSettingsHelp.Name = "pnlSettingsHelp";
             pnlSettingsHelp.Size = new System.Drawing.Size(651, 301);
             pnlSettingsHelp.TabIndex = 5;
             // 
-            // label48
+            // lblSettingsHelp
             // 
-            label48.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label48.ForeColor = System.Drawing.Color.White;
-            label48.Location = new System.Drawing.Point(2, 0);
-            label48.Name = "label48";
-            label48.Size = new System.Drawing.Size(631, 380);
-            label48.TabIndex = 0;
-            label48.Text = "Settings";
+            lblSettingsHelp.AutoSize = true;
+            lblSettingsHelp.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblSettingsHelp.ForeColor = System.Drawing.Color.White;
+            lblSettingsHelp.Location = new System.Drawing.Point(2, 0);
+            lblSettingsHelp.MaximumSize = new System.Drawing.Size(631, 0);
+            lblSettingsHelp.Name = "lblSettingsHelp";
+            lblSettingsHelp.Size = new System.Drawing.Size(630, 672);
+            lblSettingsHelp.TabIndex = 0;
+            lblSettingsHelp.Text = resources.GetString("lblSettingsHelp.Text");
             // 
             // pnlPresetHelp
             // 
             pnlPresetHelp.AutoScroll = true;
-            pnlPresetHelp.Controls.Add(label47);
+            pnlPresetHelp.Controls.Add(lblPresetHelp);
             pnlPresetHelp.Location = new System.Drawing.Point(10, 73);
             pnlPresetHelp.Name = "pnlPresetHelp";
             pnlPresetHelp.Size = new System.Drawing.Size(651, 301);
             pnlPresetHelp.TabIndex = 4;
             // 
-            // label47
+            // lblPresetHelp
             // 
-            label47.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label47.ForeColor = System.Drawing.Color.White;
-            label47.Location = new System.Drawing.Point(2, 0);
-            label47.Name = "label47";
-            label47.Size = new System.Drawing.Size(631, 380);
-            label47.TabIndex = 0;
-            label47.Text = "Preset";
+            lblPresetHelp.AutoSize = true;
+            lblPresetHelp.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblPresetHelp.ForeColor = System.Drawing.Color.White;
+            lblPresetHelp.Location = new System.Drawing.Point(2, 0);
+            lblPresetHelp.MaximumSize = new System.Drawing.Size(631, 0);
+            lblPresetHelp.Name = "lblPresetHelp";
+            lblPresetHelp.Size = new System.Drawing.Size(630, 504);
+            lblPresetHelp.TabIndex = 0;
+            lblPresetHelp.Text = resources.GetString("lblPresetHelp.Text");
             // 
             // pnlScheduleHelp
             // 
             pnlScheduleHelp.AutoScroll = true;
-            pnlScheduleHelp.Controls.Add(label46);
+            pnlScheduleHelp.Controls.Add(lblScheduleHelp);
             pnlScheduleHelp.Location = new System.Drawing.Point(10, 73);
             pnlScheduleHelp.Name = "pnlScheduleHelp";
             pnlScheduleHelp.Size = new System.Drawing.Size(651, 301);
             pnlScheduleHelp.TabIndex = 3;
             // 
-            // label46
+            // lblScheduleHelp
             // 
-            label46.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label46.ForeColor = System.Drawing.Color.White;
-            label46.Location = new System.Drawing.Point(2, 0);
-            label46.Name = "label46";
-            label46.Size = new System.Drawing.Size(631, 380);
-            label46.TabIndex = 0;
-            label46.Text = "Schedule";
+            lblScheduleHelp.AutoSize = true;
+            lblScheduleHelp.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblScheduleHelp.ForeColor = System.Drawing.Color.White;
+            lblScheduleHelp.Location = new System.Drawing.Point(2, 0);
+            lblScheduleHelp.MaximumSize = new System.Drawing.Size(631, 0);
+            lblScheduleHelp.Name = "lblScheduleHelp";
+            lblScheduleHelp.Size = new System.Drawing.Size(630, 672);
+            lblScheduleHelp.TabIndex = 0;
+            lblScheduleHelp.Text = resources.GetString("lblScheduleHelp.Text");
             // 
             // pnlCountdownHelp
             // 
             pnlCountdownHelp.AutoScroll = true;
-            pnlCountdownHelp.Controls.Add(label45);
+            pnlCountdownHelp.Controls.Add(lblCountdownHelp);
             pnlCountdownHelp.Location = new System.Drawing.Point(10, 73);
             pnlCountdownHelp.Name = "pnlCountdownHelp";
             pnlCountdownHelp.Size = new System.Drawing.Size(651, 301);
             pnlCountdownHelp.TabIndex = 2;
             // 
-            // label45
+            // lblCountdownHelp
             // 
-            label45.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label45.ForeColor = System.Drawing.Color.White;
-            label45.Location = new System.Drawing.Point(2, 0);
-            label45.Name = "label45";
-            label45.Size = new System.Drawing.Size(631, 380);
-            label45.TabIndex = 0;
-            label45.Text = "Countdown";
+            lblCountdownHelp.AutoSize = true;
+            lblCountdownHelp.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblCountdownHelp.ForeColor = System.Drawing.Color.White;
+            lblCountdownHelp.Location = new System.Drawing.Point(2, 0);
+            lblCountdownHelp.MaximumSize = new System.Drawing.Size(631, 0);
+            lblCountdownHelp.Name = "lblCountdownHelp";
+            lblCountdownHelp.Size = new System.Drawing.Size(630, 399);
+            lblCountdownHelp.TabIndex = 0;
+            lblCountdownHelp.Text = resources.GetString("lblCountdownHelp.Text");
             // 
             // pnlGeneralHelp
             // 
             pnlGeneralHelp.AutoScroll = true;
-            pnlGeneralHelp.Controls.Add(label15);
+            pnlGeneralHelp.Controls.Add(lblGenHelp);
             pnlGeneralHelp.Location = new System.Drawing.Point(10, 73);
             pnlGeneralHelp.Name = "pnlGeneralHelp";
             pnlGeneralHelp.Size = new System.Drawing.Size(651, 301);
             pnlGeneralHelp.TabIndex = 1;
             // 
-            // label15
+            // lblGenHelp
             // 
-            label15.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label15.ForeColor = System.Drawing.Color.White;
-            label15.Location = new System.Drawing.Point(2, 0);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(631, 500);
-            label15.TabIndex = 0;
-            label15.Text = resources.GetString("label15.Text");
+            lblGenHelp.AutoSize = true;
+            lblGenHelp.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblGenHelp.ForeColor = System.Drawing.Color.White;
+            lblGenHelp.Location = new System.Drawing.Point(2, 0);
+            lblGenHelp.MaximumSize = new System.Drawing.Size(631, 0);
+            lblGenHelp.Name = "lblGenHelp";
+            lblGenHelp.Size = new System.Drawing.Size(630, 546);
+            lblGenHelp.TabIndex = 0;
+            lblGenHelp.Text = resources.GetString("lblGenHelp.Text");
             // 
             // panel1
             // 
@@ -2168,6 +2180,17 @@ namespace SleepyTime_2._0
             btnMinToTray.MouseEnter += btnMinToTray_MouseEnter;
             btnMinToTray.MouseLeave += btnMinToTray_MouseLeave;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label15.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label15.Location = new System.Drawing.Point(111, 253);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(84, 16);
+            label15.TabIndex = 30;
+            label15.Text = "Recommended";
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2193,9 +2216,9 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlSettings);
             Controls.Add(pnlHelp);
             Controls.Add(pnlPresets);
-            Controls.Add(pnlSettings);
             Controls.Add(pnlCountdown);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlAbout);
@@ -2237,10 +2260,15 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).EndInit();
             pnlHelp.ResumeLayout(false);
             pnlSettingsHelp.ResumeLayout(false);
+            pnlSettingsHelp.PerformLayout();
             pnlPresetHelp.ResumeLayout(false);
+            pnlPresetHelp.PerformLayout();
             pnlScheduleHelp.ResumeLayout(false);
+            pnlScheduleHelp.PerformLayout();
             pnlCountdownHelp.ResumeLayout(false);
+            pnlCountdownHelp.PerformLayout();
             pnlGeneralHelp.ResumeLayout(false);
+            pnlGeneralHelp.PerformLayout();
             panel1.ResumeLayout(false);
             cmsTrayMenu.ResumeLayout(false);
             ResumeLayout(false);
@@ -2394,16 +2422,17 @@ namespace SleepyTime_2._0
         private RoundedButton btnHelpRight;
         private RoundedButton btnHelpLeft;
         private System.Windows.Forms.Panel pnlGeneralHelp;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblGenHelp;
         private System.Windows.Forms.Panel pnlCountdownHelp;
-        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label lblCountdownHelp;
         private System.Windows.Forms.Panel pnlSettingsHelp;
-        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label lblSettingsHelp;
         private System.Windows.Forms.Panel pnlPresetHelp;
-        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label lblPresetHelp;
         private System.Windows.Forms.Panel pnlScheduleHelp;
-        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label lblScheduleHelp;
         private System.Windows.Forms.Label lblHelpIndex;
+        private System.Windows.Forms.Label label15;
     }
 }
 

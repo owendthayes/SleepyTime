@@ -135,8 +135,77 @@ August 2026
 
 Thanks for downloading :D</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
+  <data name="lblSettingsHelp.Text" xml:space="preserve">
+    <value>Settings
+
+1. Accent Colour and Theme
+You can select an accent colour from the drop-down box at the very top of the screen. This will change all of the coloured elements of the app to your desired colour. 
+
+Additionally the app can be swapped between "Light" and "Dark" mode using the toggle button just below the accent colour.
+
+2. Countdown Layout
+The Countdown menu can be customised, "Functional" will show the Quick Actions and Quick Timer buttons on the window, where as "Minimal" will only show the countdown timer itself, decluttering the menu.
+
+3. Always on Top
+Using the toggle button, you can set SleepyTime to be "always on top" meaning that it will not be covered by other programs you may have open.
+
+4. Open on Start-up
+When this option is toggled on, SleepyTime will open when you start up your computer, this is recommended to ensure that your scheduled and presets actions can occur when they are supposed to.
+
+5. Saving changes
+Enssure that you save your changes using the "Save" button at the bottom of the window, if you navigate to another section of the app before clicking save you will be asked if you wish to save your changes.</value>
+  </data>
+  <data name="lblPresetHelp.Text" xml:space="preserve">
+    <value>Presets
+
+1. Creating a Preset
+Using the boxes at the top of the window you can create a preset with a name, action, days and time. You can also save the preset item as On or Off by default. Once you have filled out these boxes click "Save" to save the preset.
+
+2. Saved Presets
+You can view your saved presets at the bottom of the window, you can save as many items as you like. Additionally, you can enable or disable presets by using the toggle button at the far left side of the item. You may also use the "✎" or "🗑" buttons to edit or delete the item.
+
+3. Editing and Deleting
+When clicking the "✎" button, the saved item data will be loaded into the boxes at the top of the window. You may then edit these values and click "Update" to save your changes. You may also cancel your changes.
+
+When clicking the "🗑" button, you will be prompted if you want to delete the item or not, if you confirm this then the item will be deleted and it will not occur.</value>
+  </data>
+  <data name="lblScheduleHelp.Text" xml:space="preserve">
+    <value>Schedule
+
+1. Creating a Scheduled Item.
+Using the boxes at the top of the window, you can select an action, date, time and reminder. Once these have been filled out you can click the "Save Schedule" button to save the item.
+
+2. Saved Items.
+You can see your saved schedule items in the bottom half of the window, they are listed from soonest-&gt;latest, you can save as many scheduled items as you like.
+
+3. Editing and Deleting
+Using the "✎" and "🗑" buttons on each saved item, you can edit or delete saved items. 
+
+After clicking the "✎" button, the saved item's data will be loaded into the boxes at the top of the window. You can then edit these values and click "Update" to save your changes. You may also cancel this process by clicking "Cancel". Note: Saved items cannot be edited once a reminder has been sent for that item.
+
+When clicking the "🗑" button, you will be asked if you are sure you want to delete that saved item. If you confirm this action, then the saved item is removed and will not occur.
+
+4. Reminders
+If you have chosen to set a reminder, you will receieve a Windows desktop notification before the action occurs based on the reminder time you have chosen. Clicking this notification will re-open sleepytime if you need to cancel the saved item.</value>
+  </data>
+  <data name="lblCountdownHelp.Text" xml:space="preserve">
+    <value>Countdown
+
+1. Selecting an Action
+First, use the drop-down box at the top of the window to choose which action you would like to occur.
+
+2. Setting a timer
+Next, you can either type in a time by clicking on and editing the Hours, Minutes and Seconds labels, or you can Select between some "Quick Timers" and "Quick Actions".
+
+Additionally, you can use the "CLR" button to reset the timer value to 0, allowing you to start fresh.
+
+3. Starting and Stopping the Timer
+When you have entered your desired time, click the "Start Countdown" button to begin the timer. This button will then turn red, you can then click the button again to cancel the timer, stopping the action from occuring.</value>
+  </data>
+  <data name="lblGenHelp.Text" xml:space="preserve">
     <value>Welcome to SleepyTime!
+
+Help can be accessed from any of the main windows using the "Help" button located at the top right of the window.
 
 1. Important Notice
 SleepyTime must be running either open, minimized or within the system tray for actions to occur. It is recommended to minimize SleepyTime to the system tray when not in immediate use.

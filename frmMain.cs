@@ -1641,6 +1641,12 @@ namespace SleepyTime_2._0
                 return;
             }
 
+            if (listBoxDays.SelectedItems.Count == 0 && cmbPresetRepeat.SelectedIndex == 1)
+            {
+                MessageBox.Show("Please select which days this action should occur.");
+                return;
+            }
+
             foreach (PresetItem item in presetItems)
             {
                 List<string> itemDays = new List<string>();
@@ -2377,6 +2383,12 @@ namespace SleepyTime_2._0
         #region Help
         private void loadHelp()
         {
+            pnlCountdownHelp.VerticalScroll.Value = 0;
+            pnlGeneralHelp.VerticalScroll.Value = 0;
+            pnlScheduleHelp.VerticalScroll.Value = 0;
+            pnlPresetHelp.VerticalScroll.Value = 0;
+            pnlSettingsHelp.VerticalScroll.Value = 0;
+
             pnlCountdownHelp.Visible = false;
             pnlGeneralHelp.Visible = false;
             pnlScheduleHelp.Visible = false;
@@ -2415,22 +2427,30 @@ namespace SleepyTime_2._0
 
         private void btnQuickHelpPresets_Click(object sender, EventArgs e)
         {
-
+            helpIndex = 3;
+            loadHelp();
+            btnHelp.PerformClick();
         }
 
         private void btnQuickHelpSettings_Click(object sender, EventArgs e)
         {
-
+            helpIndex = 4;
+            loadHelp();
+            btnHelp.PerformClick();
         }
 
         private void btnQuickHelpSchedule_Click(object sender, EventArgs e)
         {
-
+            helpIndex = 2;
+            loadHelp();
+            btnHelp.PerformClick();
         }
 
         private void btnQuickHelpCountdown_Click(object sender, EventArgs e)
         {
-
+            helpIndex = 1;
+            loadHelp();
+            btnHelp.PerformClick();
         }
 
         #endregion
