@@ -286,7 +286,7 @@ namespace SleepyTime_2._0
             btnMinimize.Location = new System.Drawing.Point(608, 0);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new System.Drawing.Size(65, 37);
-            btnMinimize.TabIndex = 12;
+            btnMinimize.TabIndex = 7;
             btnMinimize.Text = "-";
             btnMinimize.UseVisualStyleBackColor = false;
             btnMinimize.Click += btnMinimize_Click;
@@ -303,7 +303,7 @@ namespace SleepyTime_2._0
             btnExit.Location = new System.Drawing.Point(734, 0);
             btnExit.Name = "btnExit";
             btnExit.Size = new System.Drawing.Size(65, 37);
-            btnExit.TabIndex = 11;
+            btnExit.TabIndex = 9;
             btnExit.Text = "×";
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
@@ -331,7 +331,7 @@ namespace SleepyTime_2._0
             btnSidebarCountdown.Location = new System.Drawing.Point(0, 77);
             btnSidebarCountdown.Name = "btnSidebarCountdown";
             btnSidebarCountdown.Size = new System.Drawing.Size(130, 37);
-            btnSidebarCountdown.TabIndex = 14;
+            btnSidebarCountdown.TabIndex = 0;
             btnSidebarCountdown.Text = "Countdown";
             btnSidebarCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnSidebarCountdown.UseVisualStyleBackColor = false;
@@ -347,7 +347,7 @@ namespace SleepyTime_2._0
             btnSidebarSchedule.Location = new System.Drawing.Point(0, 120);
             btnSidebarSchedule.Name = "btnSidebarSchedule";
             btnSidebarSchedule.Size = new System.Drawing.Size(130, 37);
-            btnSidebarSchedule.TabIndex = 15;
+            btnSidebarSchedule.TabIndex = 1;
             btnSidebarSchedule.Text = "Schedule";
             btnSidebarSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnSidebarSchedule.UseVisualStyleBackColor = false;
@@ -363,7 +363,7 @@ namespace SleepyTime_2._0
             btnSideBarPresets.Location = new System.Drawing.Point(0, 163);
             btnSideBarPresets.Name = "btnSideBarPresets";
             btnSideBarPresets.Size = new System.Drawing.Size(130, 37);
-            btnSideBarPresets.TabIndex = 16;
+            btnSideBarPresets.TabIndex = 2;
             btnSideBarPresets.Text = "Presets";
             btnSideBarPresets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnSideBarPresets.UseVisualStyleBackColor = false;
@@ -379,7 +379,7 @@ namespace SleepyTime_2._0
             btnSideBarSettings.Location = new System.Drawing.Point(0, 206);
             btnSideBarSettings.Name = "btnSideBarSettings";
             btnSideBarSettings.Size = new System.Drawing.Size(130, 37);
-            btnSideBarSettings.TabIndex = 17;
+            btnSideBarSettings.TabIndex = 3;
             btnSideBarSettings.Text = "Settings";
             btnSideBarSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnSideBarSettings.UseVisualStyleBackColor = false;
@@ -395,7 +395,7 @@ namespace SleepyTime_2._0
             btnSidebarAbout.Location = new System.Drawing.Point(0, 249);
             btnSidebarAbout.Name = "btnSidebarAbout";
             btnSidebarAbout.Size = new System.Drawing.Size(130, 37);
-            btnSidebarAbout.TabIndex = 18;
+            btnSidebarAbout.TabIndex = 4;
             btnSidebarAbout.Text = "About";
             btnSidebarAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnSidebarAbout.UseVisualStyleBackColor = false;
@@ -457,7 +457,7 @@ namespace SleepyTime_2._0
             btnQuickHelpCountdown.Location = new System.Drawing.Point(586, 26);
             btnQuickHelpCountdown.Name = "btnQuickHelpCountdown";
             btnQuickHelpCountdown.Size = new System.Drawing.Size(63, 33);
-            btnQuickHelpCountdown.TabIndex = 0;
+            btnQuickHelpCountdown.TabIndex = 25;
             btnQuickHelpCountdown.Text = "Help";
             btnQuickHelpCountdown.UseVisualStyleBackColor = false;
             btnQuickHelpCountdown.Click += btnQuickHelpCountdown_Click;
@@ -536,7 +536,7 @@ namespace SleepyTime_2._0
             btnAdd5Min.Location = new System.Drawing.Point(46, 24);
             btnAdd5Min.Name = "btnAdd5Min";
             btnAdd5Min.Size = new System.Drawing.Size(119, 31);
-            btnAdd5Min.TabIndex = 19;
+            btnAdd5Min.TabIndex = 16;
             btnAdd5Min.Text = "+5 Min";
             btnAdd5Min.UseVisualStyleBackColor = false;
             btnAdd5Min.Click += btnAdd5Min_Click;
@@ -553,7 +553,7 @@ namespace SleepyTime_2._0
             btnAdd15Min.Location = new System.Drawing.Point(173, 24);
             btnAdd15Min.Name = "btnAdd15Min";
             btnAdd15Min.Size = new System.Drawing.Size(119, 31);
-            btnAdd15Min.TabIndex = 12;
+            btnAdd15Min.TabIndex = 17;
             btnAdd15Min.Text = "+15 Min";
             btnAdd15Min.UseVisualStyleBackColor = false;
             btnAdd15Min.Click += btnAdd15Min_Click;
@@ -570,7 +570,7 @@ namespace SleepyTime_2._0
             btnAdd30Min.Location = new System.Drawing.Point(298, 24);
             btnAdd30Min.Name = "btnAdd30Min";
             btnAdd30Min.Size = new System.Drawing.Size(119, 31);
-            btnAdd30Min.TabIndex = 13;
+            btnAdd30Min.TabIndex = 18;
             btnAdd30Min.Text = "+30 Min";
             btnAdd30Min.UseVisualStyleBackColor = false;
             btnAdd30Min.Click += btnAdd30Min_Click;
@@ -587,7 +587,7 @@ namespace SleepyTime_2._0
             btnMoreQuick.Location = new System.Drawing.Point(502, 89);
             btnMoreQuick.Name = "btnMoreQuick";
             btnMoreQuick.Size = new System.Drawing.Size(41, 31);
-            btnMoreQuick.TabIndex = 26;
+            btnMoreQuick.TabIndex = 24;
             btnMoreQuick.Text = "⋯";
             btnMoreQuick.UseVisualStyleBackColor = false;
             btnMoreQuick.Click += btnSideBarPresets_Click;
@@ -604,7 +604,7 @@ namespace SleepyTime_2._0
             btnAdd1Hr.Location = new System.Drawing.Point(420, 24);
             btnAdd1Hr.Name = "btnAdd1Hr";
             btnAdd1Hr.Size = new System.Drawing.Size(119, 31);
-            btnAdd1Hr.TabIndex = 14;
+            btnAdd1Hr.TabIndex = 19;
             btnAdd1Hr.Text = "+1 Hr";
             btnAdd1Hr.UseVisualStyleBackColor = false;
             btnAdd1Hr.Click += btnAdd1Hr_Click;
@@ -621,7 +621,7 @@ namespace SleepyTime_2._0
             btnQuick2.Location = new System.Drawing.Point(388, 91);
             btnQuick2.Name = "btnQuick2";
             btnQuick2.Size = new System.Drawing.Size(108, 31);
-            btnQuick2.TabIndex = 25;
+            btnQuick2.TabIndex = 23;
             btnQuick2.Text = "2 Hr";
             btnQuick2.UseVisualStyleBackColor = false;
             btnQuick2.Click += btnQuick2_Click;
@@ -651,7 +651,7 @@ namespace SleepyTime_2._0
             btnQuick1.Location = new System.Drawing.Point(275, 91);
             btnQuick1.Name = "btnQuick1";
             btnQuick1.Size = new System.Drawing.Size(108, 31);
-            btnQuick1.TabIndex = 24;
+            btnQuick1.TabIndex = 22;
             btnQuick1.Text = "1 Hr";
             btnQuick1.UseVisualStyleBackColor = false;
             btnQuick1.Click += btnQuick1_Click;
@@ -668,7 +668,7 @@ namespace SleepyTime_2._0
             btnQuick15.Location = new System.Drawing.Point(47, 91);
             btnQuick15.Name = "btnQuick15";
             btnQuick15.Size = new System.Drawing.Size(108, 31);
-            btnQuick15.TabIndex = 22;
+            btnQuick15.TabIndex = 20;
             btnQuick15.Text = "15 Mins";
             btnQuick15.UseVisualStyleBackColor = false;
             btnQuick15.Click += btnQuick15_Click;
@@ -685,7 +685,7 @@ namespace SleepyTime_2._0
             btnQuick30.Location = new System.Drawing.Point(161, 91);
             btnQuick30.Name = "btnQuick30";
             btnQuick30.Size = new System.Drawing.Size(108, 31);
-            btnQuick30.TabIndex = 23;
+            btnQuick30.TabIndex = 21;
             btnQuick30.Text = "30 Mins";
             btnQuick30.UseVisualStyleBackColor = false;
             btnQuick30.Click += btnQuick30_Click;
@@ -721,7 +721,7 @@ namespace SleepyTime_2._0
             txtHours.MaxLength = 2;
             txtHours.Name = "txtHours";
             txtHours.Size = new System.Drawing.Size(61, 64);
-            txtHours.TabIndex = 0;
+            txtHours.TabIndex = 11;
             txtHours.Text = "00";
             txtHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             txtHours.KeyPress += NumbersOnly;
@@ -751,7 +751,7 @@ namespace SleepyTime_2._0
             cmbOperation.Location = new System.Drawing.Point(294, 13);
             cmbOperation.Name = "cmbOperation";
             cmbOperation.Size = new System.Drawing.Size(121, 29);
-            cmbOperation.TabIndex = 16;
+            cmbOperation.TabIndex = 10;
             // 
             // btnStartCountdown
             // 
@@ -825,7 +825,7 @@ namespace SleepyTime_2._0
             txtSeconds.MaxLength = 2;
             txtSeconds.Name = "txtSeconds";
             txtSeconds.Size = new System.Drawing.Size(61, 64);
-            txtSeconds.TabIndex = 2;
+            txtSeconds.TabIndex = 13;
             txtSeconds.Text = "00";
             txtSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             txtSeconds.KeyPress += NumbersOnly;
@@ -843,7 +843,7 @@ namespace SleepyTime_2._0
             btnClearTimer.Location = new System.Drawing.Point(423, 54);
             btnClearTimer.Name = "btnClearTimer";
             btnClearTimer.Size = new System.Drawing.Size(50, 31);
-            btnClearTimer.TabIndex = 27;
+            btnClearTimer.TabIndex = 14;
             btnClearTimer.Text = "CLR";
             btnClearTimer.UseVisualStyleBackColor = false;
             btnClearTimer.Click += btnClearTimer_Click;
@@ -859,7 +859,7 @@ namespace SleepyTime_2._0
             txtMinutes.MaxLength = 2;
             txtMinutes.Name = "txtMinutes";
             txtMinutes.Size = new System.Drawing.Size(61, 64);
-            txtMinutes.TabIndex = 1;
+            txtMinutes.TabIndex = 12;
             txtMinutes.Text = "00";
             txtMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             txtMinutes.KeyPress += NumbersOnly;
@@ -925,7 +925,7 @@ namespace SleepyTime_2._0
             btnQuickHelpSchedule.Location = new System.Drawing.Point(586, 26);
             btnQuickHelpSchedule.Name = "btnQuickHelpSchedule";
             btnQuickHelpSchedule.Size = new System.Drawing.Size(63, 33);
-            btnQuickHelpSchedule.TabIndex = 61;
+            btnQuickHelpSchedule.TabIndex = 32;
             btnQuickHelpSchedule.Text = "Help";
             btnQuickHelpSchedule.UseVisualStyleBackColor = false;
             btnQuickHelpSchedule.Click += btnQuickHelpSchedule_Click;
@@ -1008,7 +1008,7 @@ namespace SleepyTime_2._0
             btnClearSchedule.Location = new System.Drawing.Point(479, 106);
             btnClearSchedule.Name = "btnClearSchedule";
             btnClearSchedule.Size = new System.Drawing.Size(162, 33);
-            btnClearSchedule.TabIndex = 36;
+            btnClearSchedule.TabIndex = 31;
             btnClearSchedule.Tag = "noColourChange";
             btnClearSchedule.Text = "Reset";
             btnClearSchedule.UseVisualStyleBackColor = false;
@@ -1062,7 +1062,7 @@ namespace SleepyTime_2._0
             cmbRemindMe.MaxDropDownItems = 10;
             cmbRemindMe.Name = "cmbRemindMe";
             cmbRemindMe.Size = new System.Drawing.Size(201, 29);
-            cmbRemindMe.TabIndex = 33;
+            cmbRemindMe.TabIndex = 29;
             // 
             // btnSaveSchedule
             // 
@@ -1076,7 +1076,7 @@ namespace SleepyTime_2._0
             btnSaveSchedule.Location = new System.Drawing.Point(313, 106);
             btnSaveSchedule.Name = "btnSaveSchedule";
             btnSaveSchedule.Size = new System.Drawing.Size(162, 32);
-            btnSaveSchedule.TabIndex = 31;
+            btnSaveSchedule.TabIndex = 30;
             btnSaveSchedule.Text = "Save";
             btnSaveSchedule.UseVisualStyleBackColor = false;
             btnSaveSchedule.Click += btnSaveSchedule_Click;
@@ -1108,7 +1108,7 @@ namespace SleepyTime_2._0
             cmbScheduleTime.MaxDropDownItems = 10;
             cmbScheduleTime.Name = "cmbScheduleTime";
             cmbScheduleTime.Size = new System.Drawing.Size(121, 29);
-            cmbScheduleTime.TabIndex = 29;
+            cmbScheduleTime.TabIndex = 28;
             // 
             // cmbScheduleDate
             // 
@@ -1120,7 +1120,7 @@ namespace SleepyTime_2._0
             cmbScheduleDate.Location = new System.Drawing.Point(170, 68);
             cmbScheduleDate.Name = "cmbScheduleDate";
             cmbScheduleDate.Size = new System.Drawing.Size(137, 29);
-            cmbScheduleDate.TabIndex = 28;
+            cmbScheduleDate.TabIndex = 27;
             // 
             // label19
             // 
@@ -1168,7 +1168,7 @@ namespace SleepyTime_2._0
             cmbScheduleOperation.Location = new System.Drawing.Point(34, 68);
             cmbScheduleOperation.Name = "cmbScheduleOperation";
             cmbScheduleOperation.Size = new System.Drawing.Size(129, 29);
-            cmbScheduleOperation.TabIndex = 17;
+            cmbScheduleOperation.TabIndex = 26;
             // 
             // pnlPresets
             // 
@@ -1201,7 +1201,7 @@ namespace SleepyTime_2._0
             btnQuickHelpPresets.Location = new System.Drawing.Point(586, 26);
             btnQuickHelpPresets.Name = "btnQuickHelpPresets";
             btnQuickHelpPresets.Size = new System.Drawing.Size(63, 33);
-            btnQuickHelpPresets.TabIndex = 60;
+            btnQuickHelpPresets.TabIndex = 41;
             btnQuickHelpPresets.Text = "Help";
             btnQuickHelpPresets.UseVisualStyleBackColor = false;
             btnQuickHelpPresets.Click += btnQuickHelpPresets_Click;
@@ -1344,7 +1344,7 @@ namespace SleepyTime_2._0
             tglPresetEnabled.OnBackColor = System.Drawing.Color.Purple;
             tglPresetEnabled.OnToggleColor = System.Drawing.Color.WhiteSmoke;
             tglPresetEnabled.Size = new System.Drawing.Size(77, 24);
-            tglPresetEnabled.TabIndex = 52;
+            tglPresetEnabled.TabIndex = 37;
             tglPresetEnabled.UseVisualStyleBackColor = true;
             // 
             // cmbPresetRepeat
@@ -1361,7 +1361,7 @@ namespace SleepyTime_2._0
             cmbPresetRepeat.Location = new System.Drawing.Point(350, 40);
             cmbPresetRepeat.Name = "cmbPresetRepeat";
             cmbPresetRepeat.Size = new System.Drawing.Size(159, 29);
-            cmbPresetRepeat.TabIndex = 51;
+            cmbPresetRepeat.TabIndex = 35;
             cmbPresetRepeat.SelectedIndexChanged += cmbPresetRepeat_SelectedIndexChanged;
             // 
             // label34
@@ -1400,7 +1400,7 @@ namespace SleepyTime_2._0
             cmbPresetDays.Name = "cmbPresetDays";
             cmbPresetDays.ReadOnly = true;
             cmbPresetDays.Size = new System.Drawing.Size(183, 29);
-            cmbPresetDays.TabIndex = 49;
+            cmbPresetDays.TabIndex = 38;
             cmbPresetDays.TabStop = false;
             cmbPresetDays.Text = "None Selected";
             cmbPresetDays.Visible = false;
@@ -1420,7 +1420,7 @@ namespace SleepyTime_2._0
             cmbPresetTime.MaxDropDownItems = 10;
             cmbPresetTime.Name = "cmbPresetTime";
             cmbPresetTime.Size = new System.Drawing.Size(91, 29);
-            cmbPresetTime.TabIndex = 48;
+            cmbPresetTime.TabIndex = 36;
             // 
             // label31
             // 
@@ -1459,7 +1459,7 @@ namespace SleepyTime_2._0
             cmbPresetAction.Location = new System.Drawing.Point(222, 40);
             cmbPresetAction.Name = "cmbPresetAction";
             cmbPresetAction.Size = new System.Drawing.Size(121, 29);
-            cmbPresetAction.TabIndex = 44;
+            cmbPresetAction.TabIndex = 34;
             // 
             // label30
             // 
@@ -1482,7 +1482,7 @@ namespace SleepyTime_2._0
             txtPresetName.Name = "txtPresetName";
             txtPresetName.PlaceholderText = "e.g. \"Daily Reset\"";
             txtPresetName.Size = new System.Drawing.Size(206, 29);
-            txtPresetName.TabIndex = 41;
+            txtPresetName.TabIndex = 33;
             // 
             // btnPresetCancel
             // 
@@ -1496,7 +1496,7 @@ namespace SleepyTime_2._0
             btnPresetCancel.Location = new System.Drawing.Point(451, 84);
             btnPresetCancel.Name = "btnPresetCancel";
             btnPresetCancel.Size = new System.Drawing.Size(162, 33);
-            btnPresetCancel.TabIndex = 37;
+            btnPresetCancel.TabIndex = 40;
             btnPresetCancel.Tag = "noColourChange";
             btnPresetCancel.Text = "Reset";
             btnPresetCancel.UseVisualStyleBackColor = false;
@@ -1525,7 +1525,7 @@ namespace SleepyTime_2._0
             btnPresetSave.Location = new System.Drawing.Point(284, 84);
             btnPresetSave.Name = "btnPresetSave";
             btnPresetSave.Size = new System.Drawing.Size(162, 33);
-            btnPresetSave.TabIndex = 0;
+            btnPresetSave.TabIndex = 39;
             btnPresetSave.Text = "Save Preset";
             btnPresetSave.UseVisualStyleBackColor = false;
             btnPresetSave.Click += btnPresetSave_Click;
@@ -1617,7 +1617,7 @@ namespace SleepyTime_2._0
             tglStartUp.OnBackColor = System.Drawing.Color.Purple;
             tglStartUp.OnToggleColor = System.Drawing.Color.WhiteSmoke;
             tglStartUp.Size = new System.Drawing.Size(67, 22);
-            tglStartUp.TabIndex = 63;
+            tglStartUp.TabIndex = 51;
             tglStartUp.UseVisualStyleBackColor = true;
             // 
             // btnQuickHelpSettings
@@ -1632,7 +1632,7 @@ namespace SleepyTime_2._0
             btnQuickHelpSettings.Location = new System.Drawing.Point(586, 26);
             btnQuickHelpSettings.Name = "btnQuickHelpSettings";
             btnQuickHelpSettings.Size = new System.Drawing.Size(63, 33);
-            btnQuickHelpSettings.TabIndex = 62;
+            btnQuickHelpSettings.TabIndex = 53;
             btnQuickHelpSettings.Text = "Help";
             btnQuickHelpSettings.UseVisualStyleBackColor = false;
             btnQuickHelpSettings.Click += btnQuickHelpSettings_Click;
@@ -1694,7 +1694,7 @@ namespace SleepyTime_2._0
             cmbCountdownLayout.Location = new System.Drawing.Point(369, 127);
             cmbCountdownLayout.Name = "cmbCountdownLayout";
             cmbCountdownLayout.Size = new System.Drawing.Size(128, 29);
-            cmbCountdownLayout.TabIndex = 24;
+            cmbCountdownLayout.TabIndex = 49;
             // 
             // tglDarkMode
             // 
@@ -1707,7 +1707,7 @@ namespace SleepyTime_2._0
             tglDarkMode.OnBackColor = System.Drawing.Color.Purple;
             tglDarkMode.OnToggleColor = System.Drawing.Color.WhiteSmoke;
             tglDarkMode.Size = new System.Drawing.Size(67, 22);
-            tglDarkMode.TabIndex = 23;
+            tglDarkMode.TabIndex = 48;
             tglDarkMode.UseVisualStyleBackColor = true;
             // 
             // label26
@@ -1732,7 +1732,7 @@ namespace SleepyTime_2._0
             tglAOT.OnBackColor = System.Drawing.Color.Purple;
             tglAOT.OnToggleColor = System.Drawing.Color.WhiteSmoke;
             tglAOT.Size = new System.Drawing.Size(67, 22);
-            tglAOT.TabIndex = 21;
+            tglAOT.TabIndex = 50;
             tglAOT.UseVisualStyleBackColor = true;
             // 
             // label17
@@ -1759,7 +1759,7 @@ namespace SleepyTime_2._0
             btnSaveSettings.Location = new System.Drawing.Point(245, 322);
             btnSaveSettings.Name = "btnSaveSettings";
             btnSaveSettings.Size = new System.Drawing.Size(150, 40);
-            btnSaveSettings.TabIndex = 19;
+            btnSaveSettings.TabIndex = 52;
             btnSaveSettings.Text = "Save Changes";
             btnSaveSettings.UseVisualStyleBackColor = false;
             btnSaveSettings.Click += btnSaveSettings_Click;
@@ -1777,7 +1777,7 @@ namespace SleepyTime_2._0
             cmbAccent.Location = new System.Drawing.Point(349, 52);
             cmbAccent.Name = "cmbAccent";
             cmbAccent.Size = new System.Drawing.Size(148, 29);
-            cmbAccent.TabIndex = 18;
+            cmbAccent.TabIndex = 47;
             // 
             // label11
             // 
@@ -1825,7 +1825,7 @@ namespace SleepyTime_2._0
             linkLabel4.Location = new System.Drawing.Point(275, 219);
             linkLabel4.Name = "linkLabel4";
             linkLabel4.Size = new System.Drawing.Size(290, 21);
-            linkLabel4.TabIndex = 32;
+            linkLabel4.TabIndex = 43;
             linkLabel4.TabStop = true;
             linkLabel4.Text = "linkedin.com/in/owendthayes/";
             linkLabel4.VisitedLinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
@@ -1840,7 +1840,7 @@ namespace SleepyTime_2._0
             linkLabel3.Location = new System.Drawing.Point(268, 196);
             linkLabel3.Name = "linkLabel3";
             linkLabel3.Size = new System.Drawing.Size(230, 21);
-            linkLabel3.TabIndex = 31;
+            linkLabel3.TabIndex = 42;
             linkLabel3.TabStop = true;
             linkLabel3.Text = "GitHub.com/owendthayes";
             linkLabel3.VisitedLinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
@@ -1855,7 +1855,7 @@ namespace SleepyTime_2._0
             linkLabel2.Location = new System.Drawing.Point(317, 175);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new System.Drawing.Size(110, 21);
-            linkLabel2.TabIndex = 30;
+            linkLabel2.TabIndex = 41;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "SleepyTime";
             linkLabel2.VisitedLinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
@@ -1904,7 +1904,7 @@ namespace SleepyTime_2._0
             btnHelp.Location = new System.Drawing.Point(0, 292);
             btnHelp.Name = "btnHelp";
             btnHelp.Size = new System.Drawing.Size(130, 37);
-            btnHelp.TabIndex = 27;
+            btnHelp.TabIndex = 5;
             btnHelp.Text = "Help";
             btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnHelp.UseVisualStyleBackColor = false;
@@ -2074,7 +2074,7 @@ namespace SleepyTime_2._0
             btnHelpRight.Location = new System.Drawing.Point(488, 8);
             btnHelpRight.Name = "btnHelpRight";
             btnHelpRight.Size = new System.Drawing.Size(150, 40);
-            btnHelpRight.TabIndex = 2;
+            btnHelpRight.TabIndex = 45;
             btnHelpRight.Text = ">";
             btnHelpRight.UseVisualStyleBackColor = false;
             btnHelpRight.Click += btnHelpRight_Click;
@@ -2091,7 +2091,7 @@ namespace SleepyTime_2._0
             btnHelpLeft.Location = new System.Drawing.Point(11, 8);
             btnHelpLeft.Name = "btnHelpLeft";
             btnHelpLeft.Size = new System.Drawing.Size(150, 40);
-            btnHelpLeft.TabIndex = 1;
+            btnHelpLeft.TabIndex = 44;
             btnHelpLeft.Text = "<";
             btnHelpLeft.UseVisualStyleBackColor = false;
             btnHelpLeft.Click += btnHelpLeft_Click;
@@ -2178,7 +2178,7 @@ namespace SleepyTime_2._0
             lblBugReport.Location = new System.Drawing.Point(0, 341);
             lblBugReport.Name = "lblBugReport";
             lblBugReport.Size = new System.Drawing.Size(91, 16);
-            lblBugReport.TabIndex = 28;
+            lblBugReport.TabIndex = 6;
             lblBugReport.TabStop = true;
             lblBugReport.Text = "Report a Bug";
             lblBugReport.LinkClicked += lblBugReport_LinkClicked;
@@ -2197,7 +2197,7 @@ namespace SleepyTime_2._0
             btnMinToTray.Location = new System.Drawing.Point(672, 0);
             btnMinToTray.Name = "btnMinToTray";
             btnMinToTray.Size = new System.Drawing.Size(65, 37);
-            btnMinToTray.TabIndex = 29;
+            btnMinToTray.TabIndex = 8;
             btnMinToTray.Text = "↓";
             btnMinToTray.UseVisualStyleBackColor = false;
             btnMinToTray.Click += btnMinToTray_Click;
@@ -2229,12 +2229,12 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlSettings);
+            Controls.Add(pnlHelp);
             Controls.Add(pnlAbout);
+            Controls.Add(pnlPresets);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlCountdown);
-            Controls.Add(pnlPresets);
-            Controls.Add(pnlHelp);
-            Controls.Add(pnlSettings);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "frmMain";
