@@ -151,7 +151,6 @@ namespace SleepyTime_2._0
             linkLabel4 = new System.Windows.Forms.LinkLabel();
             linkLabel3 = new System.Windows.Forms.LinkLabel();
             linkLabel2 = new System.Windows.Forms.LinkLabel();
-            linkLabel1 = new System.Windows.Forms.LinkLabel();
             imgAboutLogo = new System.Windows.Forms.PictureBox();
             label16 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
@@ -1600,7 +1599,7 @@ namespace SleepyTime_2._0
             // 
             label15.AutoSize = true;
             label15.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label15.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label15.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
             label15.Location = new System.Drawing.Point(111, 253);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(84, 16);
@@ -1797,7 +1796,6 @@ namespace SleepyTime_2._0
             pnlAbout.Controls.Add(linkLabel4);
             pnlAbout.Controls.Add(linkLabel3);
             pnlAbout.Controls.Add(linkLabel2);
-            pnlAbout.Controls.Add(linkLabel1);
             pnlAbout.Controls.Add(imgAboutLogo);
             pnlAbout.Controls.Add(label16);
             pnlAbout.Controls.Add(label13);
@@ -1824,7 +1822,7 @@ namespace SleepyTime_2._0
             linkLabel4.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel4.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel4.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            linkLabel4.Location = new System.Drawing.Point(276, 240);
+            linkLabel4.Location = new System.Drawing.Point(275, 219);
             linkLabel4.Name = "linkLabel4";
             linkLabel4.Size = new System.Drawing.Size(290, 21);
             linkLabel4.TabIndex = 32;
@@ -1839,7 +1837,7 @@ namespace SleepyTime_2._0
             linkLabel3.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel3.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel3.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            linkLabel3.Location = new System.Drawing.Point(265, 219);
+            linkLabel3.Location = new System.Drawing.Point(268, 196);
             linkLabel3.Name = "linkLabel3";
             linkLabel3.Size = new System.Drawing.Size(230, 21);
             linkLabel3.TabIndex = 31;
@@ -1854,7 +1852,7 @@ namespace SleepyTime_2._0
             linkLabel2.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel2.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel2.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            linkLabel2.Location = new System.Drawing.Point(385, 197);
+            linkLabel2.Location = new System.Drawing.Point(317, 175);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new System.Drawing.Size(110, 21);
             linkLabel2.TabIndex = 30;
@@ -1862,21 +1860,6 @@ namespace SleepyTime_2._0
             linkLabel2.Text = "SleepyTime";
             linkLabel2.VisitedLinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
-            // 
-            // linkLabel1
-            // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            linkLabel1.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            linkLabel1.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            linkLabel1.Location = new System.Drawing.Point(245, 175);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new System.Drawing.Size(140, 21);
-            linkLabel1.TabIndex = 29;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "SleepyTime1.0";
-            linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // imgAboutLogo
             // 
@@ -1896,7 +1879,7 @@ namespace SleepyTime_2._0
             label16.ForeColor = System.Drawing.Color.White;
             label16.Location = new System.Drawing.Point(25, 71);
             label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(590, 273);
+            label16.Size = new System.Drawing.Size(590, 252);
             label16.TabIndex = 18;
             label16.Text = resources.GetString("label16.Text");
             // 
@@ -2126,7 +2109,6 @@ namespace SleepyTime_2._0
             // 
             ntfReminder.BalloonTipTitle = "SleepyTime";
             ntfReminder.ContextMenuStrip = cmsTrayMenu;
-            ntfReminder.Icon = (System.Drawing.Icon)resources.GetObject("ntfReminder.Icon");
             ntfReminder.Text = "SleepyTme";
             ntfReminder.Visible = true;
             ntfReminder.BalloonTipClicked += ntfReminder_BalloonTipClicked;
@@ -2362,7 +2344,6 @@ namespace SleepyTime_2._0
         private RoundedButton btnClearTimer;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox imgAboutLogo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.LinkLabel linkLabel4;

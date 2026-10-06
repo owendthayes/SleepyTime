@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms.VisualStyles;
 using Microsoft.Win32;
 using System.Security.Policy;
+using SleepyTime_2._0.Properties;
 
 namespace SleepyTime_2._0
 {
@@ -495,7 +496,7 @@ namespace SleepyTime_2._0
         private void btnMinToTray_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
+            ntfReminder.Icon = Resources.SleepyTimeIcon2;
             ntfReminder.Text = "SleepyTime";
             ntfReminder.BalloonTipTitle = "SleepyTime has been Minimized to the System Tray";
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
@@ -1256,7 +1257,7 @@ namespace SleepyTime_2._0
                     timePeriod = "2 Hours";
                     break;
             }
-            ntfReminder.Icon = new System.Drawing.Icon(Path.GetFullPath("Resources\\SleepyTimeIcon.ico"));
+            ntfReminder.Icon = Resources.SleepyTimeIcon2;
             ntfReminder.Text = "Some Text";
             ntfReminder.Visible = true;
             ntfReminder.BalloonTipTitle = $"Your computer will {notifAction} in {timePeriod}";
@@ -2154,10 +2155,6 @@ namespace SleepyTime_2._0
         // dark mode =============================================================================================
         private void applyDarkMode(string mode)
         {
-            // logo needs both a white and black version for corresponding themes.
-            string whiteLogo = Path.GetFullPath("Resources\\SleepyTimeLogoWhite.png");
-            string blackLogo = Path.GetFullPath("Resources\\SleepyTimeLogoBlack.png");
-
             //change all text and colours to the corresponding theme colours, also update the logo.
             textColor = Color.Black;
             switch (mode)
@@ -2352,7 +2349,7 @@ namespace SleepyTime_2._0
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            OpenLink("https://github.com/owendthayes/SleepyTime");
+            OpenLink("https://smellslikesmoke.itch.io/sleepytime");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -2452,9 +2449,6 @@ namespace SleepyTime_2._0
             loadHelp();
             btnHelp.PerformClick();
         }
-
-        #endregion
-
         private void btnHelpLeft_Click(object sender, EventArgs e)
         {
             helpIndex--;
@@ -2466,6 +2460,10 @@ namespace SleepyTime_2._0
             helpIndex++;
             loadHelp();
         }
+
+        #endregion
+
+
     }
 }
 
