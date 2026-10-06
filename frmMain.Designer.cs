@@ -131,6 +131,7 @@ namespace SleepyTime_2._0
             pnlSavedPresets = new System.Windows.Forms.Panel();
             lblSavedItemsPresets = new System.Windows.Forms.Label();
             pnlSettings = new System.Windows.Forms.Panel();
+            label15 = new System.Windows.Forms.Label();
             tglStartUp = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             btnQuickHelpSettings = new RoundedButton();
             label44 = new System.Windows.Forms.Label();
@@ -186,7 +187,6 @@ namespace SleepyTime_2._0
             lblBugReport = new System.Windows.Forms.LinkLabel();
             tmrPreset = new System.Windows.Forms.Timer(components);
             btnMinToTray = new System.Windows.Forms.Button();
-            label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)imgHeaderDivider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -450,6 +450,7 @@ namespace SleepyTime_2._0
             // 
             btnQuickHelpCountdown.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnQuickHelpCountdown.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickHelpCountdown.FlatAppearance.BorderSize = 0;
             btnQuickHelpCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickHelpCountdown.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -714,6 +715,7 @@ namespace SleepyTime_2._0
             // 
             txtHours.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             txtHours.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtHours.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtHours.Font = new System.Drawing.Font("JetBrains Mono", 36F);
             txtHours.ForeColor = System.Drawing.Color.White;
             txtHours.Location = new System.Drawing.Point(174, 52);
@@ -740,6 +742,7 @@ namespace SleepyTime_2._0
             // cmbOperation
             // 
             cmbOperation.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbOperation.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbOperation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             cmbOperation.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -816,6 +819,7 @@ namespace SleepyTime_2._0
             // 
             txtSeconds.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             txtSeconds.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtSeconds.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtSeconds.Font = new System.Drawing.Font("JetBrains Mono", 36F);
             txtSeconds.ForeColor = System.Drawing.Color.White;
             txtSeconds.Location = new System.Drawing.Point(352, 52);
@@ -849,6 +853,7 @@ namespace SleepyTime_2._0
             // 
             txtMinutes.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             txtMinutes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtMinutes.Cursor = System.Windows.Forms.Cursors.IBeam;
             txtMinutes.Font = new System.Drawing.Font("JetBrains Mono", 36F);
             txtMinutes.ForeColor = System.Drawing.Color.White;
             txtMinutes.Location = new System.Drawing.Point(266, 52);
@@ -913,6 +918,7 @@ namespace SleepyTime_2._0
             // 
             btnQuickHelpSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnQuickHelpSchedule.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickHelpSchedule.FlatAppearance.BorderSize = 0;
             btnQuickHelpSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickHelpSchedule.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -995,6 +1001,7 @@ namespace SleepyTime_2._0
             // 
             btnClearSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnClearSchedule.BorderColor = System.Drawing.Color.FromArgb(247, 62, 62);
+            btnClearSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             btnClearSchedule.FlatAppearance.BorderSize = 0;
             btnClearSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClearSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1043,6 +1050,7 @@ namespace SleepyTime_2._0
             // cmbRemindMe
             // 
             cmbRemindMe.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbRemindMe.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbRemindMe.DropDownHeight = 200;
             cmbRemindMe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbRemindMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1061,6 +1069,7 @@ namespace SleepyTime_2._0
             // 
             btnSaveSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnSaveSchedule.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnSaveSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSaveSchedule.FlatAppearance.BorderSize = 0;
             btnSaveSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaveSchedule.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1087,6 +1096,7 @@ namespace SleepyTime_2._0
             // cmbScheduleTime
             // 
             cmbScheduleTime.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbScheduleTime.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbScheduleTime.DropDownHeight = 200;
             cmbScheduleTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbScheduleTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1104,6 +1114,7 @@ namespace SleepyTime_2._0
             // cmbScheduleDate
             // 
             cmbScheduleDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(13, 15, 28);
+            cmbScheduleDate.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbScheduleDate.CustomFormat = "dd/MM/yyyy";
             cmbScheduleDate.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             cmbScheduleDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -1148,6 +1159,7 @@ namespace SleepyTime_2._0
             // cmbScheduleOperation
             // 
             cmbScheduleOperation.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbScheduleOperation.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbScheduleOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbScheduleOperation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             cmbScheduleOperation.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1182,6 +1194,7 @@ namespace SleepyTime_2._0
             // 
             btnQuickHelpPresets.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnQuickHelpPresets.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpPresets.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickHelpPresets.FlatAppearance.BorderSize = 0;
             btnQuickHelpPresets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickHelpPresets.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -1220,6 +1233,7 @@ namespace SleepyTime_2._0
             // 
             listBoxDays.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             listBoxDays.CheckOnClick = true;
+            listBoxDays.Cursor = System.Windows.Forms.Cursors.Hand;
             listBoxDays.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             listBoxDays.ForeColor = System.Drawing.Color.White;
             listBoxDays.FormattingEnabled = true;
@@ -1322,6 +1336,7 @@ namespace SleepyTime_2._0
             // 
             tglPresetEnabled.Checked = true;
             tglPresetEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            tglPresetEnabled.Cursor = System.Windows.Forms.Cursors.Hand;
             tglPresetEnabled.Location = new System.Drawing.Point(10, 93);
             tglPresetEnabled.MinimumSize = new System.Drawing.Size(45, 22);
             tglPresetEnabled.Name = "tglPresetEnabled";
@@ -1474,6 +1489,7 @@ namespace SleepyTime_2._0
             // 
             btnPresetCancel.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnPresetCancel.BorderColor = System.Drawing.Color.FromArgb(247, 62, 62);
+            btnPresetCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             btnPresetCancel.FlatAppearance.BorderSize = 0;
             btnPresetCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPresetCancel.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1502,6 +1518,7 @@ namespace SleepyTime_2._0
             // 
             btnPresetSave.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnPresetSave.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnPresetSave.Cursor = System.Windows.Forms.Cursors.Hand;
             btnPresetSave.FlatAppearance.BorderSize = 0;
             btnPresetSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPresetSave.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1579,8 +1596,20 @@ namespace SleepyTime_2._0
             pnlSettings.Size = new System.Drawing.Size(673, 385);
             pnlSettings.TabIndex = 25;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new System.Drawing.Font("JetBrains Mono", 9F);
+            label15.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
+            label15.Location = new System.Drawing.Point(111, 253);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(84, 16);
+            label15.TabIndex = 30;
+            label15.Text = "Recommended";
+            // 
             // tglStartUp
             // 
+            tglStartUp.Cursor = System.Windows.Forms.Cursors.Hand;
             tglStartUp.Location = new System.Drawing.Point(430, 248);
             tglStartUp.MinimumSize = new System.Drawing.Size(45, 22);
             tglStartUp.Name = "tglStartUp";
@@ -1596,6 +1625,7 @@ namespace SleepyTime_2._0
             // 
             btnQuickHelpSettings.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnQuickHelpSettings.BorderColor = System.Drawing.Color.White;
+            btnQuickHelpSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickHelpSettings.FlatAppearance.BorderSize = 0;
             btnQuickHelpSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickHelpSettings.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -1655,6 +1685,7 @@ namespace SleepyTime_2._0
             // cmbCountdownLayout
             // 
             cmbCountdownLayout.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbCountdownLayout.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbCountdownLayout.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbCountdownLayout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             cmbCountdownLayout.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1668,6 +1699,7 @@ namespace SleepyTime_2._0
             // 
             // tglDarkMode
             // 
+            tglDarkMode.Cursor = System.Windows.Forms.Cursors.Hand;
             tglDarkMode.Location = new System.Drawing.Point(431, 94);
             tglDarkMode.MinimumSize = new System.Drawing.Size(45, 22);
             tglDarkMode.Name = "tglDarkMode";
@@ -1692,6 +1724,7 @@ namespace SleepyTime_2._0
             // 
             // tglAOT
             // 
+            tglAOT.Cursor = System.Windows.Forms.Cursors.Hand;
             tglAOT.Location = new System.Drawing.Point(430, 210);
             tglAOT.MinimumSize = new System.Drawing.Size(45, 22);
             tglAOT.Name = "tglAOT";
@@ -1718,6 +1751,7 @@ namespace SleepyTime_2._0
             // 
             btnSaveSettings.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
             btnSaveSettings.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnSaveSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSaveSettings.Enabled = false;
             btnSaveSettings.FlatAppearance.BorderSize = 0;
             btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1734,6 +1768,7 @@ namespace SleepyTime_2._0
             // cmbAccent
             // 
             cmbAccent.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbAccent.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbAccent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cmbAccent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             cmbAccent.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -1786,6 +1821,7 @@ namespace SleepyTime_2._0
             // linkLabel4
             // 
             linkLabel4.AutoSize = true;
+            linkLabel4.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel4.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel4.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
             linkLabel4.Location = new System.Drawing.Point(276, 240);
@@ -1800,6 +1836,7 @@ namespace SleepyTime_2._0
             // linkLabel3
             // 
             linkLabel3.AutoSize = true;
+            linkLabel3.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel3.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel3.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
             linkLabel3.Location = new System.Drawing.Point(265, 219);
@@ -1814,6 +1851,7 @@ namespace SleepyTime_2._0
             // linkLabel2
             // 
             linkLabel2.AutoSize = true;
+            linkLabel2.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel2.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel2.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
             linkLabel2.Location = new System.Drawing.Point(385, 197);
@@ -1828,6 +1866,7 @@ namespace SleepyTime_2._0
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
+            linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             linkLabel1.Font = new System.Drawing.Font("JetBrains Mono", 12F);
             linkLabel1.LinkColor = System.Drawing.Color.FromArgb(140, 71, 203);
             linkLabel1.Location = new System.Drawing.Point(245, 175);
@@ -2044,6 +2083,7 @@ namespace SleepyTime_2._0
             // 
             btnHelpRight.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             btnHelpRight.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpRight.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpRight.FlatAppearance.BorderSize = 0;
             btnHelpRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpRight.Font = new System.Drawing.Font("JetBrains Mono", 15.75F, System.Drawing.FontStyle.Bold);
@@ -2060,6 +2100,7 @@ namespace SleepyTime_2._0
             // 
             btnHelpLeft.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             btnHelpLeft.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             btnHelpLeft.FlatAppearance.BorderSize = 0;
             btnHelpLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnHelpLeft.Font = new System.Drawing.Font("JetBrains Mono", 15.75F, System.Drawing.FontStyle.Bold);
@@ -2150,6 +2191,7 @@ namespace SleepyTime_2._0
             // lblBugReport
             // 
             lblBugReport.AutoSize = true;
+            lblBugReport.Cursor = System.Windows.Forms.Cursors.Hand;
             lblBugReport.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             lblBugReport.Location = new System.Drawing.Point(0, 341);
             lblBugReport.Name = "lblBugReport";
@@ -2180,17 +2222,6 @@ namespace SleepyTime_2._0
             btnMinToTray.MouseEnter += btnMinToTray_MouseEnter;
             btnMinToTray.MouseLeave += btnMinToTray_MouseLeave;
             // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label15.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label15.Location = new System.Drawing.Point(111, 253);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(84, 16);
-            label15.TabIndex = 30;
-            label15.Text = "Recommended";
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2216,12 +2247,12 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlSettings);
-            Controls.Add(pnlHelp);
-            Controls.Add(pnlPresets);
-            Controls.Add(pnlCountdown);
-            Controls.Add(pnlSchedule);
             Controls.Add(pnlAbout);
+            Controls.Add(pnlSchedule);
+            Controls.Add(pnlCountdown);
+            Controls.Add(pnlPresets);
+            Controls.Add(pnlHelp);
+            Controls.Add(pnlSettings);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "frmMain";
