@@ -135,6 +135,23 @@ August 2026
 
 Thanks for downloading :D</value>
   </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Welcome to SleepyTime!
+
+1. Important Notice
+SleepyTime must be running either open, minimized or within the system tray for actions to occur. It is recommended to minimize SleepyTime to the system tray when not in immediate use.
+
+2. Navigation
+The app can be navigated using the sidebar on the left side of the app
+
+3. Minimizing and Exiting
+At the top right of the app, you can Minimize, Minimize to system tray and Exit the app.
+
+Minimizing to system tray will ensure SleepyTime stays open so that actions can still occur.
+
+4. System tray
+When SleepyTime has been minimized to the system tray, you can open the tray and click the SleepyTime icon to re-open or to exit the app.</value>
+  </data>
   <metadata name="tmrCountDown.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>114, 18</value>
   </metadata>

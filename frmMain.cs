@@ -78,13 +78,14 @@ namespace SleepyTime_2._0
         private string[] reminders = { "No Reminder", "5 Mins", "10 Mins", "15 Mins", "30 Mins", "1 Hour", "2 Hours" };
         private string[] reminderMins = { "0", "5", "10", "15", "30", "60", "120" };
         private string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
+        private string[] helpTypes = { "General", "Countdown", "Schedule", "Presets", "Settings" };
 
         //app directory
         private static readonly string appDataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SleepyTime");
         private static readonly string SettingsFile = Path.Combine(appDataDirectory, "Settings.txt");
         private static readonly string ScheduleFile = Path.Combine(appDataDirectory, "Schedule.txt");
         private static readonly string PresetsFile = Path.Combine(appDataDirectory, "Preset.txt");
+        private int helpIndex = 0;
 
         #region Main Form Functionaltiy
         public frmMain()
@@ -111,6 +112,7 @@ namespace SleepyTime_2._0
             // update relevant UI based on data read in from save files.
             updatePresetUI();
             updateScheduleUI();
+            loadHelp();
 
             // fill out the combo boxes in presets and schedules with times.
             populateTimesComboBox();
@@ -263,7 +265,7 @@ namespace SleepyTime_2._0
         }
         #endregion
 
-            #region Rounded form border
+        #region Rounded form border
         //methods for form rounded borders
         private GraphicsPath GetRoundedPath(Rectangle rect, float radius)
         {
@@ -315,7 +317,7 @@ namespace SleepyTime_2._0
         }
         #endregion
 
-            #region Toolbar
+        #region Toolbar
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
             btnExit.BackColor = Color.FromArgb(169, 5, 5);
@@ -353,7 +355,7 @@ namespace SleepyTime_2._0
         }
         #endregion
 
-            #region Navigation
+        #region Navigation
         private void greyOutSidebar()
         {
             if (unsavedChanges)
@@ -477,7 +479,7 @@ namespace SleepyTime_2._0
             OpenLink("https://forms.gle/haAHduytqaXaEShFA");
         }
 
-            #region System Tray
+        #region System Tray
         private void frmMain_Resize(object sender, EventArgs e)
         {
             if (this.Visible == false)
@@ -2373,6 +2375,43 @@ namespace SleepyTime_2._0
         #endregion
 
         #region Help
+        private void loadHelp()
+        {
+            pnlCountdownHelp.Visible = false;
+            pnlGeneralHelp.Visible = false;
+            pnlScheduleHelp.Visible = false;
+            pnlPresetHelp.Visible = false;
+            pnlSettingsHelp.Visible = false;
+
+            btnHelpLeft.Enabled = !(helpIndex == 0);
+            btnHelpRight.Enabled = !(helpIndex == 4);
+
+            lblHelpIndex.Text = $"{helpIndex + 1}/5";
+
+            switch (helpTypes[helpIndex])
+            {
+                case "General":
+                    pnlGeneralHelp.Visible = true;
+                    break;
+
+                case "Countdown":
+                    pnlCountdownHelp.Visible = true;
+                    break;
+
+                case "Schedule":
+                    pnlScheduleHelp.Visible = true;
+                    break;
+
+                case "Presets":
+                    pnlPresetHelp.Visible = true;
+                    break;
+
+                case "Settings":
+                    pnlSettingsHelp.Visible = true;
+                    break;
+            }
+            lblHelpMenuTitle.Text = helpTypes[helpIndex].ToString();
+        }
 
         private void btnQuickHelpPresets_Click(object sender, EventArgs e)
         {
@@ -2395,6 +2434,18 @@ namespace SleepyTime_2._0
         }
 
         #endregion
+
+        private void btnHelpLeft_Click(object sender, EventArgs e)
+        {
+            helpIndex--;
+            loadHelp();
+        }
+
+        private void btnHelpRight_Click(object sender, EventArgs e)
+        {
+            helpIndex++;
+            loadHelp();
+        }
     }
 }
 

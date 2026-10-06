@@ -156,14 +156,21 @@ namespace SleepyTime_2._0
             label13 = new System.Windows.Forms.Label();
             btnHelp = new System.Windows.Forms.Button();
             pnlHelp = new System.Windows.Forms.Panel();
-            txtHelpInfo = new System.Windows.Forms.RichTextBox();
-            imgHelpImage = new System.Windows.Forms.PictureBox();
-            btnHelpOther = new RoundedButton();
-            btnHelpSettings = new RoundedButton();
-            btnHelpPresets = new RoundedButton();
-            btnHelpSchedule = new RoundedButton();
-            lblHelp = new System.Windows.Forms.Label();
-            btnHelpCountdown = new RoundedButton();
+            pnlSettingsHelp = new System.Windows.Forms.Panel();
+            label48 = new System.Windows.Forms.Label();
+            pnlPresetHelp = new System.Windows.Forms.Panel();
+            label47 = new System.Windows.Forms.Label();
+            pnlScheduleHelp = new System.Windows.Forms.Panel();
+            label46 = new System.Windows.Forms.Label();
+            pnlCountdownHelp = new System.Windows.Forms.Panel();
+            label45 = new System.Windows.Forms.Label();
+            pnlGeneralHelp = new System.Windows.Forms.Panel();
+            label15 = new System.Windows.Forms.Label();
+            panel1 = new System.Windows.Forms.Panel();
+            lblHelpIndex = new System.Windows.Forms.Label();
+            lblHelpMenuTitle = new System.Windows.Forms.Label();
+            btnHelpRight = new RoundedButton();
+            btnHelpLeft = new RoundedButton();
             tmrCountDown = new System.Windows.Forms.Timer(components);
             tmrValidation = new System.Windows.Forms.Timer(components);
             ntfReminder = new System.Windows.Forms.NotifyIcon(components);
@@ -198,7 +205,12 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)btnDonate).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).BeginInit();
             pnlHelp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)imgHelpImage).BeginInit();
+            pnlSettingsHelp.SuspendLayout();
+            pnlPresetHelp.SuspendLayout();
+            pnlScheduleHelp.SuspendLayout();
+            pnlCountdownHelp.SuspendLayout();
+            pnlGeneralHelp.SuspendLayout();
+            panel1.SuspendLayout();
             cmsTrayMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -1876,133 +1888,177 @@ namespace SleepyTime_2._0
             // 
             // pnlHelp
             // 
-            pnlHelp.Controls.Add(txtHelpInfo);
-            pnlHelp.Controls.Add(imgHelpImage);
-            pnlHelp.Controls.Add(btnHelpOther);
-            pnlHelp.Controls.Add(btnHelpSettings);
-            pnlHelp.Controls.Add(btnHelpPresets);
-            pnlHelp.Controls.Add(btnHelpSchedule);
-            pnlHelp.Controls.Add(lblHelp);
-            pnlHelp.Controls.Add(btnHelpCountdown);
+            pnlHelp.Controls.Add(pnlSettingsHelp);
+            pnlHelp.Controls.Add(pnlPresetHelp);
+            pnlHelp.Controls.Add(pnlScheduleHelp);
+            pnlHelp.Controls.Add(pnlCountdownHelp);
+            pnlHelp.Controls.Add(pnlGeneralHelp);
+            pnlHelp.Controls.Add(panel1);
             pnlHelp.Location = new System.Drawing.Point(127, 68);
             pnlHelp.Name = "pnlHelp";
             pnlHelp.Size = new System.Drawing.Size(673, 385);
             pnlHelp.TabIndex = 24;
             // 
-            // txtHelpInfo
+            // pnlSettingsHelp
             // 
-            txtHelpInfo.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            txtHelpInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            txtHelpInfo.Font = new System.Drawing.Font("JetBrains Mono", 11.95F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtHelpInfo.ForeColor = System.Drawing.Color.White;
-            txtHelpInfo.Location = new System.Drawing.Point(12, 225);
-            txtHelpInfo.Name = "txtHelpInfo";
-            txtHelpInfo.Size = new System.Drawing.Size(646, 153);
-            txtHelpInfo.TabIndex = 38;
-            txtHelpInfo.Text = "";
+            pnlSettingsHelp.AutoScroll = true;
+            pnlSettingsHelp.Controls.Add(label48);
+            pnlSettingsHelp.Location = new System.Drawing.Point(10, 73);
+            pnlSettingsHelp.Name = "pnlSettingsHelp";
+            pnlSettingsHelp.Size = new System.Drawing.Size(651, 301);
+            pnlSettingsHelp.TabIndex = 5;
             // 
-            // imgHelpImage
+            // label48
             // 
-            imgHelpImage.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            imgHelpImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            imgHelpImage.Image = Properties.Resources.SleepyTime;
-            imgHelpImage.Location = new System.Drawing.Point(276, 33);
-            imgHelpImage.Name = "imgHelpImage";
-            imgHelpImage.Size = new System.Drawing.Size(322, 172);
-            imgHelpImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            imgHelpImage.TabIndex = 36;
-            imgHelpImage.TabStop = false;
+            label48.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label48.ForeColor = System.Drawing.Color.White;
+            label48.Location = new System.Drawing.Point(2, 0);
+            label48.Name = "label48";
+            label48.Size = new System.Drawing.Size(631, 380);
+            label48.TabIndex = 0;
+            label48.Text = "Settings";
             // 
-            // btnHelpOther
+            // pnlPresetHelp
             // 
-            btnHelpOther.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnHelpOther.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpOther.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnHelpOther.FlatAppearance.BorderSize = 0;
-            btnHelpOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelpOther.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnHelpOther.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpOther.Location = new System.Drawing.Point(14, 41);
-            btnHelpOther.Name = "btnHelpOther";
-            btnHelpOther.Size = new System.Drawing.Size(215, 28);
-            btnHelpOther.TabIndex = 35;
-            btnHelpOther.Text = "General";
-            btnHelpOther.UseVisualStyleBackColor = false;
+            pnlPresetHelp.AutoScroll = true;
+            pnlPresetHelp.Controls.Add(label47);
+            pnlPresetHelp.Location = new System.Drawing.Point(10, 73);
+            pnlPresetHelp.Name = "pnlPresetHelp";
+            pnlPresetHelp.Size = new System.Drawing.Size(651, 301);
+            pnlPresetHelp.TabIndex = 4;
             // 
-            // btnHelpSettings
+            // label47
             // 
-            btnHelpSettings.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnHelpSettings.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnHelpSettings.FlatAppearance.BorderSize = 0;
-            btnHelpSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelpSettings.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnHelpSettings.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpSettings.Location = new System.Drawing.Point(14, 175);
-            btnHelpSettings.Name = "btnHelpSettings";
-            btnHelpSettings.Size = new System.Drawing.Size(215, 28);
-            btnHelpSettings.TabIndex = 34;
-            btnHelpSettings.Text = "Settings";
-            btnHelpSettings.UseVisualStyleBackColor = false;
+            label47.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label47.ForeColor = System.Drawing.Color.White;
+            label47.Location = new System.Drawing.Point(2, 0);
+            label47.Name = "label47";
+            label47.Size = new System.Drawing.Size(631, 380);
+            label47.TabIndex = 0;
+            label47.Text = "Preset";
             // 
-            // btnHelpPresets
+            // pnlScheduleHelp
             // 
-            btnHelpPresets.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnHelpPresets.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpPresets.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnHelpPresets.FlatAppearance.BorderSize = 0;
-            btnHelpPresets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelpPresets.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnHelpPresets.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpPresets.Location = new System.Drawing.Point(14, 141);
-            btnHelpPresets.Name = "btnHelpPresets";
-            btnHelpPresets.Size = new System.Drawing.Size(215, 28);
-            btnHelpPresets.TabIndex = 33;
-            btnHelpPresets.Text = "Presets";
-            btnHelpPresets.UseVisualStyleBackColor = false;
+            pnlScheduleHelp.AutoScroll = true;
+            pnlScheduleHelp.Controls.Add(label46);
+            pnlScheduleHelp.Location = new System.Drawing.Point(10, 73);
+            pnlScheduleHelp.Name = "pnlScheduleHelp";
+            pnlScheduleHelp.Size = new System.Drawing.Size(651, 301);
+            pnlScheduleHelp.TabIndex = 3;
             // 
-            // btnHelpSchedule
+            // label46
             // 
-            btnHelpSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnHelpSchedule.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnHelpSchedule.FlatAppearance.BorderSize = 0;
-            btnHelpSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelpSchedule.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnHelpSchedule.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpSchedule.Location = new System.Drawing.Point(14, 107);
-            btnHelpSchedule.Name = "btnHelpSchedule";
-            btnHelpSchedule.Size = new System.Drawing.Size(215, 28);
-            btnHelpSchedule.TabIndex = 32;
-            btnHelpSchedule.Text = "Schedule";
-            btnHelpSchedule.UseVisualStyleBackColor = false;
+            label46.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label46.ForeColor = System.Drawing.Color.White;
+            label46.Location = new System.Drawing.Point(2, 0);
+            label46.Name = "label46";
+            label46.Size = new System.Drawing.Size(631, 380);
+            label46.TabIndex = 0;
+            label46.Text = "Schedule";
             // 
-            // lblHelp
+            // pnlCountdownHelp
             // 
-            lblHelp.AutoSize = true;
-            lblHelp.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            lblHelp.ForeColor = System.Drawing.Color.White;
-            lblHelp.Location = new System.Drawing.Point(9, 9);
-            lblHelp.Name = "lblHelp";
-            lblHelp.Size = new System.Drawing.Size(220, 21);
-            lblHelp.TabIndex = 31;
-            lblHelp.Text = "Help with SleepyTime:";
+            pnlCountdownHelp.AutoScroll = true;
+            pnlCountdownHelp.Controls.Add(label45);
+            pnlCountdownHelp.Location = new System.Drawing.Point(10, 73);
+            pnlCountdownHelp.Name = "pnlCountdownHelp";
+            pnlCountdownHelp.Size = new System.Drawing.Size(651, 301);
+            pnlCountdownHelp.TabIndex = 2;
             // 
-            // btnHelpCountdown
+            // label45
             // 
-            btnHelpCountdown.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            btnHelpCountdown.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnHelpCountdown.FlatAppearance.BorderSize = 0;
-            btnHelpCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnHelpCountdown.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnHelpCountdown.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
-            btnHelpCountdown.Location = new System.Drawing.Point(14, 75);
-            btnHelpCountdown.Name = "btnHelpCountdown";
-            btnHelpCountdown.Size = new System.Drawing.Size(215, 28);
-            btnHelpCountdown.TabIndex = 0;
-            btnHelpCountdown.Text = "Countdown";
-            btnHelpCountdown.UseVisualStyleBackColor = false;
+            label45.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label45.ForeColor = System.Drawing.Color.White;
+            label45.Location = new System.Drawing.Point(2, 0);
+            label45.Name = "label45";
+            label45.Size = new System.Drawing.Size(631, 380);
+            label45.TabIndex = 0;
+            label45.Text = "Countdown";
+            // 
+            // pnlGeneralHelp
+            // 
+            pnlGeneralHelp.AutoScroll = true;
+            pnlGeneralHelp.Controls.Add(label15);
+            pnlGeneralHelp.Location = new System.Drawing.Point(10, 73);
+            pnlGeneralHelp.Name = "pnlGeneralHelp";
+            pnlGeneralHelp.Size = new System.Drawing.Size(651, 301);
+            pnlGeneralHelp.TabIndex = 1;
+            // 
+            // label15
+            // 
+            label15.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label15.ForeColor = System.Drawing.Color.White;
+            label15.Location = new System.Drawing.Point(2, 0);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(631, 500);
+            label15.TabIndex = 0;
+            label15.Text = resources.GetString("label15.Text");
+            // 
+            // panel1
+            // 
+            panel1.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
+            panel1.Controls.Add(lblHelpIndex);
+            panel1.Controls.Add(lblHelpMenuTitle);
+            panel1.Controls.Add(btnHelpRight);
+            panel1.Controls.Add(btnHelpLeft);
+            panel1.Location = new System.Drawing.Point(10, 8);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(651, 57);
+            panel1.TabIndex = 0;
+            // 
+            // lblHelpIndex
+            // 
+            lblHelpIndex.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblHelpIndex.ForeColor = System.Drawing.Color.White;
+            lblHelpIndex.Location = new System.Drawing.Point(429, 29);
+            lblHelpIndex.Name = "lblHelpIndex";
+            lblHelpIndex.Size = new System.Drawing.Size(56, 23);
+            lblHelpIndex.TabIndex = 3;
+            lblHelpIndex.Text = "x/5";
+            lblHelpIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblHelpMenuTitle
+            // 
+            lblHelpMenuTitle.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblHelpMenuTitle.ForeColor = System.Drawing.Color.White;
+            lblHelpMenuTitle.Location = new System.Drawing.Point(167, 8);
+            lblHelpMenuTitle.Name = "lblHelpMenuTitle";
+            lblHelpMenuTitle.Size = new System.Drawing.Size(315, 40);
+            lblHelpMenuTitle.TabIndex = 1;
+            lblHelpMenuTitle.Text = "General";
+            lblHelpMenuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnHelpRight
+            // 
+            btnHelpRight.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
+            btnHelpRight.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpRight.FlatAppearance.BorderSize = 0;
+            btnHelpRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHelpRight.Font = new System.Drawing.Font("JetBrains Mono", 15.75F, System.Drawing.FontStyle.Bold);
+            btnHelpRight.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpRight.Location = new System.Drawing.Point(488, 8);
+            btnHelpRight.Name = "btnHelpRight";
+            btnHelpRight.Size = new System.Drawing.Size(150, 40);
+            btnHelpRight.TabIndex = 2;
+            btnHelpRight.Text = ">";
+            btnHelpRight.UseVisualStyleBackColor = false;
+            btnHelpRight.Click += btnHelpRight_Click;
+            // 
+            // btnHelpLeft
+            // 
+            btnHelpLeft.BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
+            btnHelpLeft.BorderColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpLeft.FlatAppearance.BorderSize = 0;
+            btnHelpLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHelpLeft.Font = new System.Drawing.Font("JetBrains Mono", 15.75F, System.Drawing.FontStyle.Bold);
+            btnHelpLeft.ForeColor = System.Drawing.Color.FromArgb(140, 71, 203);
+            btnHelpLeft.Location = new System.Drawing.Point(11, 8);
+            btnHelpLeft.Name = "btnHelpLeft";
+            btnHelpLeft.Size = new System.Drawing.Size(150, 40);
+            btnHelpLeft.TabIndex = 1;
+            btnHelpLeft.Text = "<";
+            btnHelpLeft.UseVisualStyleBackColor = false;
+            btnHelpLeft.Click += btnHelpLeft_Click;
             // 
             // tmrCountDown
             // 
@@ -2180,8 +2236,12 @@ namespace SleepyTime_2._0
             ((System.ComponentModel.ISupportInitialize)btnDonate).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgAboutLogo).EndInit();
             pnlHelp.ResumeLayout(false);
-            pnlHelp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)imgHelpImage).EndInit();
+            pnlSettingsHelp.ResumeLayout(false);
+            pnlPresetHelp.ResumeLayout(false);
+            pnlScheduleHelp.ResumeLayout(false);
+            pnlCountdownHelp.ResumeLayout(false);
+            pnlGeneralHelp.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             cmsTrayMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -2319,14 +2379,6 @@ namespace SleepyTime_2._0
         private RoundedButton btnQuickHelpPresets;
         private RoundedButton btnQuickHelpSchedule;
         private RoundedButton btnQuickHelpSettings;
-        private RoundedButton btnHelpSettings;
-        private RoundedButton btnHelpPresets;
-        private RoundedButton btnHelpSchedule;
-        private System.Windows.Forms.Label lblHelp;
-        private RoundedButton btnHelpCountdown;
-        private System.Windows.Forms.PictureBox imgHelpImage;
-        private RoundedButton btnHelpOther;
-        private System.Windows.Forms.RichTextBox txtHelpInfo;
         private System.Windows.Forms.ContextMenuStrip cmsTrayMenu;
         private System.Windows.Forms.ToolStripMenuItem countdownToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scheduleToolStripMenuItem;
@@ -2337,6 +2389,21 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ToolStripSeparator lmaoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator lOLToolStripMenuItem;
         private Custom_Controls.ToggleButton tglStartUp;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblHelpMenuTitle;
+        private RoundedButton btnHelpRight;
+        private RoundedButton btnHelpLeft;
+        private System.Windows.Forms.Panel pnlGeneralHelp;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel pnlCountdownHelp;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Panel pnlSettingsHelp;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Panel pnlPresetHelp;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Panel pnlScheduleHelp;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label lblHelpIndex;
     }
 }
 
