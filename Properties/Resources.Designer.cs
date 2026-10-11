@@ -71,6 +71,26 @@ namespace SleepyTime_2._0.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] JetBrainsMono_Italic_VariableFont_wght {
+            get {
+                object obj = ResourceManager.GetObject("JetBrainsMono-Italic-VariableFont_wght", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] JetBrainsMono_VariableFont_wght {
+            get {
+                object obj = ResourceManager.GetObject("JetBrainsMono-VariableFont_wght", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap PresetScreen {

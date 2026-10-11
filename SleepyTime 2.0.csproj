@@ -16,7 +16,21 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
 
   <ItemGroup>
+    <None Remove="Fonts\JETBRAINSMONO-ITALIC-VARIABLEFONT_WGHT.TTF" />
+    <None Remove="Fonts\JETBRAINSMONO-VARIABLEFONT_WGHT.TTF" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="SleepyTimeIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\JETBRAINSMONO-ITALIC-VARIABLEFONT_WGHT.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fonts\JETBRAINSMONO-VARIABLEFONT_WGHT.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

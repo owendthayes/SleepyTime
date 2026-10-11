@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+using System.Reflection;
 using System.Diagnostics;
 using SleepyTime_2._0.Custom_Controls;
 using System.IO;
@@ -88,9 +90,16 @@ namespace SleepyTime_2._0
         private static readonly string PresetsFile = Path.Combine(appDataDirectory, "Preset.txt");
         private int helpIndex = 0;
 
+        //custom font
+        PrivateFontCollection pfc = new PrivateFontCollection();
+        private Font appFont;
+
         #region Main Form Functionaltiy
         public frmMain()
         {
+            appFont = loadCustomFont(10f);
+            ApplyFontToControls(this);
+
             // create a directory in appData for sleepytime where files such as settings etc can be saved.
             Directory.CreateDirectory(appDataDirectory);
 
@@ -130,6 +139,44 @@ namespace SleepyTime_2._0
             tmrPreset.Start();
             tmrValidation.Start();
             tmrCurrentTime.Start();
+        }
+
+        private Font loadCustomFont(float size, FontStyle style = FontStyle.Regular)
+        {
+            using Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SleepyTime_2._0.Fonts.JETBRAINSMONO-VARIABLEFONT_WGHT.TTF") ?? throw new Exception("Could not find embedded font");
+
+            byte[] fontData = new byte[fontStream.Length];
+            fontStream.ReadExactly(fontData);
+
+            IntPtr memory = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+
+            try
+            {
+                System.Runtime.InteropServices.Marshal.Copy(
+                    fontData, 0, memory, fontData.Length);
+
+                pfc.AddMemoryFont(memory, fontData.Length);
+            }
+            finally
+            {
+                System.Runtime.InteropServices.Marshal.FreeCoTaskMem(memory);
+            }
+
+            return new Font(pfc.Families[0], size, style);
+
+        }
+
+        private void ApplyFontToControls(Control parent)
+        {
+            parent.Font = new Font(
+                appFont.FontFamily,
+                parent.Font.Size,
+                parent.Font.Style);
+
+            foreach (Control child in parent.Controls)
+            {
+                ApplyFontToControls(child);
+            }
         }
 
         // add times from 00:00 to 23:55, in increments of 5 minutes to combo boxes for saving presets or schedules.
@@ -1639,7 +1686,7 @@ namespace SleepyTime_2._0
             }
             else
             {
-                MessageBox.Show("Please enter a name for your preset action");
+                MessageBox.Show("Preset name cannot be blank.");
                 return;
             }
 
