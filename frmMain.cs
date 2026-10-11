@@ -1523,9 +1523,10 @@ namespace SleepyTime_2._0
                     return;
                 }
 
-                else if (itemDate == proposedReminderDate)
+                //validate that it is not comparing to ITSELF.
+                else if (itemDate == proposedReminderDate && item != scheduleEditTarget)
                 {
-                    DialogResult exitBox = MessageBox.Show("You have an reminder scheduled at this time already.\nSave anyway?", "Save", MessageBoxButtons.YesNo);
+                    DialogResult exitBox = MessageBox.Show("You have a reminder scheduled at this time already.\nSave anyway?", "Save", MessageBoxButtons.YesNo);
                     {
                         if (exitBox == DialogResult.No)
                         {
@@ -1632,7 +1633,7 @@ namespace SleepyTime_2._0
             string name = "Unnamed Preset";
 
             //validation here, name cant be blank
-            if (!string.IsNullOrEmpty(txtPresetName.Text))
+            if (!string.IsNullOrWhiteSpace(txtPresetName.Text))
             {
                 name = txtPresetName.Text;
             }
@@ -1677,7 +1678,7 @@ namespace SleepyTime_2._0
                     }
                 }
 
-                if (txtPresetName.Text == item.Name)
+                if (txtPresetName.Text == item.Name && btnPresetSave.Text != "Update") 
                 {
                     MessageBox.Show("You already have a preset with this name, please choose another name");
                     return;
@@ -1685,7 +1686,8 @@ namespace SleepyTime_2._0
                 else if (cmbPresetAction.SelectedIndex == Convert.ToInt32(item.Action) &&
                     cmbPresetRepeat.SelectedIndex == Convert.ToInt32(item.Repeat) &&
                     cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")) &&
-                    selectedDays.SequenceEqual(itemDays)
+                    selectedDays.SequenceEqual(itemDays) &&
+                    item != presetEditTarget
                     )
                 {
                     MessageBox.Show($"This preset already exists under the name: {item.Name}");
@@ -1694,7 +1696,7 @@ namespace SleepyTime_2._0
                 else if (cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")))
                 {
                     //if ALL days are the same
-                    if (selectedDays.SequenceEqual(itemDays))
+                    if (selectedDays.SequenceEqual(itemDays) && item != presetEditTarget)
                     {
                         MessageBox.Show("You already have a preset action occuring on these days at this time");
                         return;
@@ -1702,7 +1704,7 @@ namespace SleepyTime_2._0
                     //if overlapping days are selected with the same time.
                     var overlappingDays = selectedDays.Intersect(itemDays).ToList();
 
-                    if (overlappingDays.Count > 0)
+                    if (overlappingDays.Count > 0 && item != presetEditTarget)
                     {
                         MessageBox.Show($"This preset overlaps with another existing preset: {item.Name}");
                         return;
@@ -2308,6 +2310,12 @@ namespace SleepyTime_2._0
                 pnlCountdownExtras.Visible = true;
                 x = 27;
                 y = 33;
+            }
+
+            if (btnStartCountdown.Text == "Cancel")
+            {
+                btnStartCountdown.BorderColor = Color.FromArgb(247, 62, 62);
+                btnStartCountdown.ForeColor = Color.FromArgb(247, 62, 62);
             }
 
             this.pnlCountdownControls.Location = new Point(x, y);
