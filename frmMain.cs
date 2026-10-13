@@ -97,17 +97,13 @@ namespace SleepyTime_2._0
         #region Main Form Functionaltiy
         public frmMain()
         {
-            installFont();
-            applyFont(this);
-
-            MessageBox.Show(
-                $"Loaded Custom font: {customFontFamily.Name ?? "None"}",
-                "SleepyTime Font test");
-
             // create a directory in appData for sleepytime where files such as settings etc can be saved.
             Directory.CreateDirectory(appDataDirectory);
 
             InitializeComponent();
+
+            installFont();
+            ApplySleepyTimeFont(this);
 
             // read data into lists from settings, presets and schedules.
             readSettingsFile();
@@ -147,53 +143,46 @@ namespace SleepyTime_2._0
 
         private void installFont()
         {
-            byte[] fontData1 = Properties.Resources.JetBrainsMono1;
-            byte[] fontData2 = Properties.Resources.JetBrainsMono2;
+            byte[] fontData = Properties.Resources.JetBrainsMono2;
 
-            IntPtr fontPtr1 = Marshal.AllocCoTaskMem(fontData1.Length);
-            IntPtr fontPtr2 = Marshal.AllocCoTaskMem(fontData2.Length);
+            string fontPath = Path.Combine(
+                Path.GetTempPath(),
+                "JetBrainsMono-VariableFont_wght.ttf"
+            );
 
-            try 
+            File.WriteAllBytes(fontPath, fontData);
+
+            pfc.AddFontFile(fontPath);
+
+            if (pfc.Families.Length > 0)
             {
-                Marshal.Copy(fontData1, 0, fontPtr1, fontData1.Length);
-                pfc.AddMemoryFont(fontPtr1, fontData1.Length);
-
-                Marshal.Copy(fontData2, 0, fontPtr2, fontData2.Length);
-                pfc.AddMemoryFont(fontPtr2, fontData2.Length);
+                fontData = File.ReadAllBytes(fontPath);
+                IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
+                Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                pfc.AddMemoryFont(fontPtr, fontData.Length);
+                Marshal.FreeCoTaskMem(fontPtr);
+                customFontFamily = pfc.Families[0];
             }
-            finally
-            {
-                Marshal.FreeCoTaskMem(fontPtr1);
-                Marshal.FreeCoTaskMem(fontPtr2);    
-            }
-
-            if (pfc.Families.Length == 0)
-            {
-                throw new InvalidOperationException("The custom font has not been loaded");
-            }
-
-            customFontFamily = pfc.Families[0];
         }
 
-        private void applyFont(Control parent)
+        private void ApplySleepyTimeFont(Control parent)
         {
             if (customFontFamily == null)
-            {
                 return;
-            }
 
+            // Preserve each control's existing size and style.
             Font oldFont = parent.Font;
 
             parent.Font = new Font(
                 customFontFamily,
                 oldFont.Size,
                 oldFont.Style,
-                oldFont.Unit
-            );
+                oldFont.Unit);
 
+            // Apply to nested controls, including panels.
             foreach (Control child in parent.Controls)
             {
-                applyFont(child);
+                ApplySleepyTimeFont(child);
             }
         }
 

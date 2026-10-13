@@ -467,11 +467,11 @@ namespace SleepyTime_2._0
             MEMEME.AutoSize = true;
             MEMEME.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             MEMEME.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            MEMEME.Location = new System.Drawing.Point(355, 6);
+            MEMEME.Location = new System.Drawing.Point(349, 6);
             MEMEME.Name = "MEMEME";
-            MEMEME.Size = new System.Drawing.Size(315, 16);
+            MEMEME.Size = new System.Drawing.Size(322, 16);
             MEMEME.TabIndex = 53;
-            MEMEME.Text = "*SleepyTime must be open for actons to occur";
+            MEMEME.Text = "*SleepyTime must be open for actions to occur";
             // 
             // label33
             // 
@@ -935,11 +935,11 @@ namespace SleepyTime_2._0
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label2.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label2.Location = new System.Drawing.Point(355, 6);
+            label2.Location = new System.Drawing.Point(349, 6);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(315, 16);
+            label2.Size = new System.Drawing.Size(322, 16);
             label2.TabIndex = 28;
-            label2.Text = "*SleepyTime must be open for actons to occur";
+            label2.Text = "*SleepyTime must be open for actions to occur";
             // 
             // label27
             // 
@@ -1535,11 +1535,11 @@ namespace SleepyTime_2._0
             label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label10.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label10.Location = new System.Drawing.Point(355, 6);
+            label10.Location = new System.Drawing.Point(349, 6);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(315, 16);
+            label10.Size = new System.Drawing.Size(322, 16);
             label10.TabIndex = 30;
-            label10.Text = "*SleepyTime must be open for actons to occur";
+            label10.Text = "*SleepyTime must be open for actions to occur";
             // 
             // label38
             // 
