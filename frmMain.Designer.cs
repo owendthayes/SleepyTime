@@ -2206,8 +2206,8 @@ namespace SleepyTime_2._0
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.FromArgb(13, 15, 28);
             ClientSize = new System.Drawing.Size(797, 454);
             Controls.Add(btnMinToTray);
@@ -2237,6 +2237,8 @@ namespace SleepyTime_2._0
             Controls.Add(pnlSchedule);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new System.Drawing.Size(797, 454);
+            MinimumSize = new System.Drawing.Size(797, 454);
             Name = "frmMain";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "SleepyTime";
