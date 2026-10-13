@@ -92,13 +92,17 @@ namespace SleepyTime_2._0
 
         //custom font
         PrivateFontCollection pfc = new PrivateFontCollection();
-        private Font appFont;
+        private FontFamily? customFontFamily;
 
         #region Main Form Functionaltiy
         public frmMain()
         {
-            appFont = loadCustomFont(10f);
-            ApplyFontToControls(this);
+            installFont();
+            applyFont(this);
+
+            MessageBox.Show(
+                $"Loaded Custom font: {customFontFamily.Name ?? "None"}",
+                "SleepyTime Font test");
 
             // create a directory in appData for sleepytime where files such as settings etc can be saved.
             Directory.CreateDirectory(appDataDirectory);
@@ -141,41 +145,55 @@ namespace SleepyTime_2._0
             tmrCurrentTime.Start();
         }
 
-        private Font loadCustomFont(float size, FontStyle style = FontStyle.Regular)
+        private void installFont()
         {
-            using Stream fontStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SleepyTime_2._0.Fonts.JETBRAINSMONO-VARIABLEFONT_WGHT.TTF") ?? throw new Exception("Could not find embedded font");
+            byte[] fontData1 = Properties.Resources.JetBrainsMono1;
+            byte[] fontData2 = Properties.Resources.JetBrainsMono2;
 
-            byte[] fontData = new byte[fontStream.Length];
-            fontStream.ReadExactly(fontData);
+            IntPtr fontPtr1 = Marshal.AllocCoTaskMem(fontData1.Length);
+            IntPtr fontPtr2 = Marshal.AllocCoTaskMem(fontData2.Length);
 
-            IntPtr memory = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
-
-            try
+            try 
             {
-                System.Runtime.InteropServices.Marshal.Copy(
-                    fontData, 0, memory, fontData.Length);
+                Marshal.Copy(fontData1, 0, fontPtr1, fontData1.Length);
+                pfc.AddMemoryFont(fontPtr1, fontData1.Length);
 
-                pfc.AddMemoryFont(memory, fontData.Length);
+                Marshal.Copy(fontData2, 0, fontPtr2, fontData2.Length);
+                pfc.AddMemoryFont(fontPtr2, fontData2.Length);
             }
             finally
             {
-                System.Runtime.InteropServices.Marshal.FreeCoTaskMem(memory);
+                Marshal.FreeCoTaskMem(fontPtr1);
+                Marshal.FreeCoTaskMem(fontPtr2);    
             }
 
-            return new Font(pfc.Families[0], size, style);
+            if (pfc.Families.Length == 0)
+            {
+                throw new InvalidOperationException("The custom font has not been loaded");
+            }
 
+            customFontFamily = pfc.Families[0];
         }
 
-        private void ApplyFontToControls(Control parent)
+        private void applyFont(Control parent)
         {
+            if (customFontFamily == null)
+            {
+                return;
+            }
+
+            Font oldFont = parent.Font;
+
             parent.Font = new Font(
-                appFont.FontFamily,
-                parent.Font.Size,
-                parent.Font.Style);
+                customFontFamily,
+                oldFont.Size,
+                oldFont.Style,
+                oldFont.Unit
+            );
 
             foreach (Control child in parent.Controls)
             {
-                ApplyFontToControls(child);
+                applyFont(child);
             }
         }
 
