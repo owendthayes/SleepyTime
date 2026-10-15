@@ -190,13 +190,11 @@ namespace SleepyTime_2._0
         // add times from 00:00 to 23:55, in increments of 5 minutes to combo boxes for saving presets or schedules.
         private void populateTimesComboBox()
         {
-            cmbScheduleTime.Items.Clear();
             cmbPresetTime.Items.Clear();
 
             for (int minutes = 0; minutes < 24 * 60; minutes += 5)
             {
                 TimeSpan time = TimeSpan.FromMinutes(minutes);
-                cmbScheduleTime.Items.Add(time.ToString(@"hh\:mm"));
                 cmbPresetTime.Items.Add(time.ToString(@"hh\:mm"));
             }
         }
@@ -254,7 +252,7 @@ namespace SleepyTime_2._0
 
             cmbOperation.SelectedIndex = 0;
             cmbScheduleOperation.SelectedIndex = 0;
-            cmbScheduleTime.SelectedIndex = 0;
+            cmbScheduleTime.Value = DateTime.Today;
             cmbScheduleDate.MinDate = DateTime.Today;
             cmbRemindMe.SelectedIndex = 0;
             cmbPresetTime.SelectedIndex = 0;
@@ -1371,7 +1369,7 @@ namespace SleepyTime_2._0
             }
 
             cmbScheduleOperation.SelectedIndex = 0;
-            cmbScheduleTime.SelectedIndex = 0;
+            cmbScheduleTime.Value = DateTime.Today;
             cmbRemindMe.SelectedIndex = 0;
             cmbScheduleDate.Value = DateTime.Today;
         }
@@ -1513,7 +1511,7 @@ namespace SleepyTime_2._0
             //load the option boxes with the corresponding data.
             cmbScheduleOperation.SelectedIndex = Convert.ToInt32(target.Action);
             cmbScheduleDate.Value = target.Date;
-            cmbScheduleTime.SelectedIndex = cmbScheduleTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
+            cmbScheduleTime.Value = DateTime.Today.Add(target.Time);
             cmbRemindMe.SelectedIndex = Convert.ToInt32(target.Reminder);
 
             pnlSavedSchedules.Enabled = false;
@@ -1551,12 +1549,12 @@ namespace SleepyTime_2._0
             TimeSpan scheduleTime;
 
             DateTime validDate = new DateTime(cmbScheduleDate.Value.Date.Year, cmbScheduleDate.Value.Month, cmbScheduleDate.Value.Day);
-            TimeSpan validTime = TimeSpan.Parse(cmbScheduleTime.Text);
+            TimeSpan validTime = TimeSpan.Parse(cmbScheduleTime.Value.ToString("HH:mm"));
 
             DateTime validationDate = validDate.Date + validTime;
 
             // check that the chosen reminder time has not already passed.
-            TimeSpan proposedReminderTime = TimeSpan.Parse(cmbScheduleTime.Text).Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[cmbRemindMe.SelectedIndex])));
+            TimeSpan proposedReminderTime = TimeSpan.Parse(cmbScheduleTime.Value.ToString("HH:mm")).Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[cmbRemindMe.SelectedIndex])));
             DateTime proposedReminderDate = validDate + proposedReminderTime;
 
 
@@ -1565,10 +1563,9 @@ namespace SleepyTime_2._0
                 DateTime itemDate = new DateTime(item.Date.Year, item.Date.Month, item.Date.Day, item.Time.Hours, item.Time.Minutes, item.Time.Seconds);
                 itemDate = itemDate.Subtract(TimeSpan.FromMinutes(Convert.ToDouble(reminderMins[Convert.ToInt32(item.Reminder)])));
 
-                //MessageBox.Show($"Saved: {item.Action}|{item.Date}|{item.Time}|{item.Reminder}\nNew: {cmbScheduleOperation.SelectedIndex.ToString()}|{cmbScheduleDate.Value}|{TimeSpan.Parse(cmbScheduleTime.Text)}|{cmbRemindMe.SelectedIndex.ToString()}");
                 if (item.Action == cmbScheduleOperation.SelectedIndex.ToString()
                     && item.Date == cmbScheduleDate.Value.Date
-                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Text)
+                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Value.ToString("HH:mm"))
                     && item.Reminder == cmbRemindMe.SelectedIndex.ToString())
                 {
                     MessageBox.Show("This item already exists", "Could not save item.");
@@ -1576,7 +1573,7 @@ namespace SleepyTime_2._0
                 }
 
                 else if (item.Date == cmbScheduleDate.Value.Date
-                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Text)
+                    && item.Time == TimeSpan.Parse(cmbScheduleTime.Value.ToString("HH:mm"))
                     && btnSaveSchedule.Text != "Update Schedule")
                 {
                     MessageBox.Show("Item already scheduled for this date/time", "Could not save item.");
@@ -1613,7 +1610,7 @@ namespace SleepyTime_2._0
             if (btnSaveSchedule.Text == "Save")
             {
                 if (!TimeSpan.TryParse(
-                cmbScheduleTime.GetItemText(cmbScheduleTime.SelectedItem),
+                cmbScheduleTime.Value.ToString("HH:mm"),
                 out scheduleTime))
                 {
                     MessageBox.Show("Invalid time selected", "Error");
@@ -1645,7 +1642,7 @@ namespace SleepyTime_2._0
                         ScheduleItem updated = new ScheduleItem(
                             cmbScheduleOperation.SelectedIndex.ToString(),
                             cmbScheduleDate.Value,
-                            TimeSpan.Parse(cmbScheduleTime.Text),
+                            TimeSpan.Parse(cmbScheduleTime.Value.ToString("HH:mm")),
                             cmbRemindMe.SelectedIndex.ToString(),
                             item.ReminderSent
                             );

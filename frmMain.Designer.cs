@@ -79,7 +79,7 @@ namespace SleepyTime_2._0
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             pnlSchedule = new System.Windows.Forms.Panel();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            cmbScheduleTime = new System.Windows.Forms.DateTimePicker();
             btnQuickHelpSchedule = new RoundedButton();
             label2 = new System.Windows.Forms.Label();
             label27 = new System.Windows.Forms.Label();
@@ -94,7 +94,6 @@ namespace SleepyTime_2._0
             cmbRemindMe = new System.Windows.Forms.ComboBox();
             btnSaveSchedule = new RoundedButton();
             label20 = new System.Windows.Forms.Label();
-            cmbScheduleTime = new System.Windows.Forms.ComboBox();
             cmbScheduleDate = new System.Windows.Forms.DateTimePicker();
             label19 = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
@@ -877,7 +876,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSchedule
             // 
-            pnlSchedule.Controls.Add(dateTimePicker1);
+            pnlSchedule.Controls.Add(cmbScheduleTime);
             pnlSchedule.Controls.Add(btnQuickHelpSchedule);
             pnlSchedule.Controls.Add(label2);
             pnlSchedule.Controls.Add(label27);
@@ -891,7 +890,6 @@ namespace SleepyTime_2._0
             pnlSchedule.Controls.Add(cmbRemindMe);
             pnlSchedule.Controls.Add(btnSaveSchedule);
             pnlSchedule.Controls.Add(label20);
-            pnlSchedule.Controls.Add(cmbScheduleTime);
             pnlSchedule.Controls.Add(cmbScheduleDate);
             pnlSchedule.Controls.Add(label19);
             pnlSchedule.Controls.Add(label18);
@@ -902,13 +900,18 @@ namespace SleepyTime_2._0
             pnlSchedule.Size = new System.Drawing.Size(673, 385);
             pnlSchedule.TabIndex = 23;
             // 
-            // dateTimePicker1
+            // cmbScheduleTime
             // 
-            dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            dateTimePicker1.Location = new System.Drawing.Point(242, 127);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(200, 23);
-            dateTimePicker1.TabIndex = 42;
+            cmbScheduleTime.CalendarFont = new System.Drawing.Font("JetBrains Mono", 12F);
+            cmbScheduleTime.CalendarMonthBackground = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbScheduleTime.CustomFormat = "HH:mm";
+            cmbScheduleTime.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            cmbScheduleTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            cmbScheduleTime.Location = new System.Drawing.Point(314, 68);
+            cmbScheduleTime.Name = "cmbScheduleTime";
+            cmbScheduleTime.ShowUpDown = true;
+            cmbScheduleTime.Size = new System.Drawing.Size(118, 29);
+            cmbScheduleTime.TabIndex = 42;
             // 
             // btnQuickHelpSchedule
             // 
@@ -1089,27 +1092,11 @@ namespace SleepyTime_2._0
             label20.TabIndex = 30;
             label20.Text = "Schedule Action:";
             // 
-            // cmbScheduleTime
-            // 
-            cmbScheduleTime.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            cmbScheduleTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            cmbScheduleTime.DropDownHeight = 200;
-            cmbScheduleTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            cmbScheduleTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            cmbScheduleTime.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            cmbScheduleTime.ForeColor = System.Drawing.Color.White;
-            cmbScheduleTime.FormattingEnabled = true;
-            cmbScheduleTime.IntegralHeight = false;
-            cmbScheduleTime.Items.AddRange(new object[] { "Shutdown", "Restart", "Sleep", "Lock" });
-            cmbScheduleTime.Location = new System.Drawing.Point(313, 68);
-            cmbScheduleTime.MaxDropDownItems = 10;
-            cmbScheduleTime.Name = "cmbScheduleTime";
-            cmbScheduleTime.Size = new System.Drawing.Size(121, 29);
-            cmbScheduleTime.TabIndex = 28;
-            // 
             // cmbScheduleDate
             // 
             cmbScheduleDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(13, 15, 28);
+            cmbScheduleDate.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
+            cmbScheduleDate.CalendarTitleForeColor = System.Drawing.SystemColors.ButtonFace;
             cmbScheduleDate.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbScheduleDate.CustomFormat = "dd/MM/yyyy";
             cmbScheduleDate.Font = new System.Drawing.Font("JetBrains Mono", 12F);
@@ -2227,8 +2214,8 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
-            Controls.Add(pnlCountdown);
             Controls.Add(pnlSchedule);
+            Controls.Add(pnlCountdown);
             Controls.Add(pnlSettings);
             Controls.Add(pnlHelp);
             Controls.Add(pnlAbout);
@@ -2354,7 +2341,6 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.DateTimePicker cmbScheduleDate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox cmbScheduleTime;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbScheduleOperation;
@@ -2444,7 +2430,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label lblScheduleHelp;
         private System.Windows.Forms.Label lblHelpIndex;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker cmbScheduleTime;
     }
 }
 
