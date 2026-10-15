@@ -125,9 +125,6 @@ namespace SleepyTime_2._0
             updateScheduleUI();
             loadHelp();
 
-            // fill out the combo boxes in presets and schedules with times.
-            populateTimesComboBox();
-
             // settings for rounded border of form.
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(BorderSize);
@@ -187,18 +184,6 @@ namespace SleepyTime_2._0
             }
         }
 
-        // add times from 00:00 to 23:55, in increments of 5 minutes to combo boxes for saving presets or schedules.
-        private void populateTimesComboBox()
-        {
-            cmbPresetTime.Items.Clear();
-
-            for (int minutes = 0; minutes < 24 * 60; minutes += 5)
-            {
-                TimeSpan time = TimeSpan.FromMinutes(minutes);
-                cmbPresetTime.Items.Add(time.ToString(@"hh\:mm"));
-            }
-        }
-
         // get all controls in a parent object, used later on.
         private IEnumerable<Control> GetAllControls(Control parent)
         {
@@ -255,7 +240,7 @@ namespace SleepyTime_2._0
             cmbScheduleTime.Value = DateTime.Today;
             cmbScheduleDate.MinDate = DateTime.Today;
             cmbRemindMe.SelectedIndex = 0;
-            cmbPresetTime.SelectedIndex = 0;
+            cmbPresetTime.Value = DateTime.Today;
             cmbPresetAction.SelectedIndex = 0;
             cmbPresetRepeat.SelectedIndex = 0;
 
@@ -1742,7 +1727,7 @@ namespace SleepyTime_2._0
                 }
                 else if (cmbPresetAction.SelectedIndex == Convert.ToInt32(item.Action) &&
                     cmbPresetRepeat.SelectedIndex == Convert.ToInt32(item.Repeat) &&
-                    cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")) &&
+                    cmbPresetTime.Value.TimeOfDay == item.Time &&
                     selectedDays.SequenceEqual(itemDays) &&
                     item != presetEditTarget
                     )
@@ -1750,7 +1735,7 @@ namespace SleepyTime_2._0
                     MessageBox.Show($"This preset already exists under the name: {item.Name}");
                     return;
                 }
-                else if (cmbPresetTime.SelectedIndex == cmbPresetTime.Items.IndexOf(item.Time.ToString(@"hh\:mm")))
+                else if (cmbPresetTime.Value.TimeOfDay == item.Time)
                 {
                     //if ALL days are the same
                     if (selectedDays.SequenceEqual(itemDays) && item != presetEditTarget)
@@ -1795,7 +1780,7 @@ namespace SleepyTime_2._0
                 name,
                 cmbPresetAction.SelectedIndex.ToString(),
                 cmbPresetRepeat.SelectedIndex.ToString(),
-                TimeSpan.Parse(cmbPresetTime.Text),
+                TimeSpan.Parse(cmbPresetTime.Value.ToString("HH:mm")),
                 days,
                 tglPresetEnabled.Checked,
                 DateTime.MaxValue
@@ -2023,7 +2008,7 @@ namespace SleepyTime_2._0
             txtPresetName.Text = target.Name;
             cmbPresetAction.SelectedIndex = Convert.ToInt32(target.Action);
             cmbPresetRepeat.SelectedIndex = Convert.ToInt32(target.Repeat);
-            cmbPresetTime.SelectedIndex = cmbPresetTime.Items.IndexOf(target.Time.ToString(@"hh\:mm"));
+            cmbPresetTime.Value = DateTime.Today.Add(target.Time);
             tglPresetEnabled.Checked = target.Enabled;
 
             for (int i = 0; i < 7; i++)
@@ -2067,7 +2052,7 @@ namespace SleepyTime_2._0
             txtPresetName.Text = "";
             cmbPresetAction.SelectedIndex = 0;
             cmbPresetRepeat.SelectedIndex = 0;
-            cmbPresetTime.SelectedIndex = 0;
+            cmbPresetTime.Value = DateTime.Today;
             tglPresetEnabled.Checked = true;
             uncheckAll();
             cmbPresetDays.Text = "None selected";

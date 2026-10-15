@@ -110,13 +110,13 @@ namespace SleepyTime_2._0
             label41 = new System.Windows.Forms.Label();
             label32 = new System.Windows.Forms.Label();
             pnlPresetUpcoming = new System.Windows.Forms.Panel();
+            cmbPresetTime = new System.Windows.Forms.DateTimePicker();
             label35 = new System.Windows.Forms.Label();
             tglPresetEnabled = new SleepyTime_2._0.Custom_Controls.ToggleButton();
             cmbPresetRepeat = new System.Windows.Forms.ComboBox();
             label34 = new System.Windows.Forms.Label();
             btnPresetDaysDropDown = new System.Windows.Forms.Button();
             cmbPresetDays = new System.Windows.Forms.TextBox();
-            cmbPresetTime = new System.Windows.Forms.ComboBox();
             label31 = new System.Windows.Forms.Label();
             label29 = new System.Windows.Forms.Label();
             cmbPresetAction = new System.Windows.Forms.ComboBox();
@@ -1284,13 +1284,13 @@ namespace SleepyTime_2._0
             // 
             // pnlPresetUpcoming
             // 
+            pnlPresetUpcoming.Controls.Add(cmbPresetTime);
             pnlPresetUpcoming.Controls.Add(label35);
             pnlPresetUpcoming.Controls.Add(tglPresetEnabled);
             pnlPresetUpcoming.Controls.Add(cmbPresetRepeat);
             pnlPresetUpcoming.Controls.Add(label34);
             pnlPresetUpcoming.Controls.Add(btnPresetDaysDropDown);
             pnlPresetUpcoming.Controls.Add(cmbPresetDays);
-            pnlPresetUpcoming.Controls.Add(cmbPresetTime);
             pnlPresetUpcoming.Controls.Add(label31);
             pnlPresetUpcoming.Controls.Add(label29);
             pnlPresetUpcoming.Controls.Add(cmbPresetAction);
@@ -1303,6 +1303,19 @@ namespace SleepyTime_2._0
             pnlPresetUpcoming.Name = "pnlPresetUpcoming";
             pnlPresetUpcoming.Size = new System.Drawing.Size(621, 124);
             pnlPresetUpcoming.TabIndex = 32;
+            // 
+            // cmbPresetTime
+            // 
+            cmbPresetTime.CalendarFont = new System.Drawing.Font("JetBrains Mono", 12F);
+            cmbPresetTime.CalendarMonthBackground = System.Drawing.Color.FromArgb(25, 25, 41);
+            cmbPresetTime.CustomFormat = "HH:mm";
+            cmbPresetTime.Font = new System.Drawing.Font("JetBrains Mono", 12F);
+            cmbPresetTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            cmbPresetTime.Location = new System.Drawing.Point(515, 40);
+            cmbPresetTime.Name = "cmbPresetTime";
+            cmbPresetTime.ShowUpDown = true;
+            cmbPresetTime.Size = new System.Drawing.Size(91, 29);
+            cmbPresetTime.TabIndex = 60;
             // 
             // label35
             // 
@@ -1389,22 +1402,6 @@ namespace SleepyTime_2._0
             cmbPresetDays.Text = "None Selected";
             cmbPresetDays.Visible = false;
             cmbPresetDays.Click += cmbPresetDays_Click;
-            // 
-            // cmbPresetTime
-            // 
-            cmbPresetTime.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
-            cmbPresetTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            cmbPresetTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            cmbPresetTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            cmbPresetTime.Font = new System.Drawing.Font("JetBrains Mono", 11.9999981F);
-            cmbPresetTime.ForeColor = System.Drawing.Color.White;
-            cmbPresetTime.FormattingEnabled = true;
-            cmbPresetTime.IntegralHeight = false;
-            cmbPresetTime.Location = new System.Drawing.Point(515, 40);
-            cmbPresetTime.MaxDropDownItems = 10;
-            cmbPresetTime.Name = "cmbPresetTime";
-            cmbPresetTime.Size = new System.Drawing.Size(91, 29);
-            cmbPresetTime.TabIndex = 36;
             // 
             // label31
             // 
@@ -2214,12 +2211,12 @@ namespace SleepyTime_2._0
             Controls.Add(btnSideBarSettings);
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
+            Controls.Add(pnlPresets);
             Controls.Add(pnlSchedule);
             Controls.Add(pnlCountdown);
             Controls.Add(pnlSettings);
             Controls.Add(pnlHelp);
             Controls.Add(pnlAbout);
-            Controls.Add(pnlPresets);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximumSize = new System.Drawing.Size(797, 454);
@@ -2369,7 +2366,6 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.ComboBox cmbPresetAction;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txtPresetName;
-        private System.Windows.Forms.ComboBox cmbPresetTime;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Panel pnlPresetDays;
@@ -2431,6 +2427,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label lblHelpIndex;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker cmbScheduleTime;
+        private System.Windows.Forms.DateTimePicker cmbPresetTime;
     }
 }
 
