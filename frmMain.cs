@@ -105,6 +105,7 @@ namespace SleepyTime_2._0
             installFont();
             ApplySleepyTimeFont(this);
 
+
             // read data into lists from settings, presets and schedules.
             readSettingsFile();
             readPresetFile();
@@ -556,6 +557,11 @@ namespace SleepyTime_2._0
             ntfReminder.BalloonTipText = "Click to open SleepyTime";
             ntfReminder.Visible = true;
             ntfReminder.ShowBalloonTip(60000);
+        }
+
+        private void ntfReminder_Click(object sender, EventArgs e)
+        {
+            this.Show();
         }
 
         private void countdownToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1732,7 +1738,7 @@ namespace SleepyTime_2._0
                     }
                 }
 
-                if (txtPresetName.Text == item.Name && btnPresetSave.Text != "Update") 
+                if (txtPresetName.Text == item.Name && btnPresetSave.Text != "Update")
                 {
                     MessageBox.Show("You already have a preset with this name, please choose another name");
                     return;
@@ -2524,6 +2530,7 @@ namespace SleepyTime_2._0
         }
 
         #endregion
+
 
 
     }

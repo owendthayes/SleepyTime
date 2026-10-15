@@ -52,7 +52,6 @@ namespace SleepyTime_2._0
             btnQuickHelpCountdown = new RoundedButton();
             MEMEME = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
-            label14 = new System.Windows.Forms.Label();
             pnlCountdownExtras = new System.Windows.Forms.Panel();
             lblAdjustTimer = new System.Windows.Forms.Label();
             btnAdd5Min = new RoundedButton();
@@ -80,6 +79,7 @@ namespace SleepyTime_2._0
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             pnlSchedule = new System.Windows.Forms.Panel();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             btnQuickHelpSchedule = new RoundedButton();
             label2 = new System.Windows.Forms.Label();
             label27 = new System.Windows.Forms.Label();
@@ -315,7 +315,7 @@ namespace SleepyTime_2._0
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label1.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label1.Location = new System.Drawing.Point(704, 46);
+            label1.Location = new System.Drawing.Point(701, 48);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(84, 16);
             label1.TabIndex = 13;
@@ -437,7 +437,6 @@ namespace SleepyTime_2._0
             pnlCountdown.Controls.Add(btnQuickHelpCountdown);
             pnlCountdown.Controls.Add(MEMEME);
             pnlCountdown.Controls.Add(label33);
-            pnlCountdown.Controls.Add(label14);
             pnlCountdown.Controls.Add(pnlCountdownExtras);
             pnlCountdown.Controls.Add(pnlCountdownControls);
             pnlCountdown.Location = new System.Drawing.Point(127, 68);
@@ -467,7 +466,7 @@ namespace SleepyTime_2._0
             MEMEME.AutoSize = true;
             MEMEME.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             MEMEME.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            MEMEME.Location = new System.Drawing.Point(349, 6);
+            MEMEME.Location = new System.Drawing.Point(340, 6);
             MEMEME.Name = "MEMEME";
             MEMEME.Size = new System.Drawing.Size(322, 16);
             MEMEME.TabIndex = 53;
@@ -483,17 +482,6 @@ namespace SleepyTime_2._0
             label33.Size = new System.Drawing.Size(240, 21);
             label33.TabIndex = 52;
             label33.Text = "Countdown to an Action:";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("JetBrains Mono", 9F);
-            label14.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label14.Location = new System.Drawing.Point(355, 6);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(315, 16);
-            label14.TabIndex = 29;
-            label14.Text = "*SleepyTime must be open for actons to occur";
             // 
             // pnlCountdownExtras
             // 
@@ -889,6 +877,7 @@ namespace SleepyTime_2._0
             // 
             // pnlSchedule
             // 
+            pnlSchedule.Controls.Add(dateTimePicker1);
             pnlSchedule.Controls.Add(btnQuickHelpSchedule);
             pnlSchedule.Controls.Add(label2);
             pnlSchedule.Controls.Add(label27);
@@ -913,6 +902,14 @@ namespace SleepyTime_2._0
             pnlSchedule.Size = new System.Drawing.Size(673, 385);
             pnlSchedule.TabIndex = 23;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            dateTimePicker1.Location = new System.Drawing.Point(242, 127);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            dateTimePicker1.TabIndex = 42;
+            // 
             // btnQuickHelpSchedule
             // 
             btnQuickHelpSchedule.BackColor = System.Drawing.Color.FromArgb(25, 25, 41);
@@ -935,7 +932,7 @@ namespace SleepyTime_2._0
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label2.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label2.Location = new System.Drawing.Point(349, 6);
+            label2.Location = new System.Drawing.Point(340, 6);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(322, 16);
             label2.TabIndex = 28;
@@ -1535,7 +1532,7 @@ namespace SleepyTime_2._0
             label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("JetBrains Mono", 9F);
             label10.ForeColor = System.Drawing.Color.FromArgb(177, 178, 181);
-            label10.Location = new System.Drawing.Point(349, 6);
+            label10.Location = new System.Drawing.Point(340, 6);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(322, 16);
             label10.TabIndex = 30;
@@ -2112,6 +2109,7 @@ namespace SleepyTime_2._0
             ntfReminder.Text = "SleepyTme";
             ntfReminder.Visible = true;
             ntfReminder.BalloonTipClicked += ntfReminder_BalloonTipClicked;
+            ntfReminder.Click += ntfReminder_Click;
             // 
             // cmsTrayMenu
             // 
@@ -2230,11 +2228,11 @@ namespace SleepyTime_2._0
             Controls.Add(btnSidebarAbout);
             Controls.Add(btnHelp);
             Controls.Add(pnlCountdown);
+            Controls.Add(pnlSchedule);
             Controls.Add(pnlSettings);
             Controls.Add(pnlHelp);
             Controls.Add(pnlAbout);
             Controls.Add(pnlPresets);
-            Controls.Add(pnlSchedule);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximumSize = new System.Drawing.Size(797, 454);
@@ -2376,7 +2374,6 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label lblSavedItems;
         private System.Windows.Forms.NotifyIcon ntfReminder;
         private System.Windows.Forms.Timer tmrCurrentTime;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel pnlPresetUpcoming;
         private RoundedButton btnPresetSave;
@@ -2447,6 +2444,7 @@ namespace SleepyTime_2._0
         private System.Windows.Forms.Label lblScheduleHelp;
         private System.Windows.Forms.Label lblHelpIndex;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
